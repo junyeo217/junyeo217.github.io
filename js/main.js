@@ -128,6 +128,33 @@
   solos.forEach(function (el) { io.observe(el); });
   counters.forEach(function (el) { io.observe(el); });
 
+  /* 안전망 — 어떤 이유로든 옵저버가 놓쳐 뷰포트 안에 숨은 채 남은 요소를 강제로 드러낸다.
+     콘텐츠가 보이는 것이 애니메이션보다 우선이다. */
+  function forceShow(el) {
+    el.style.transitionDuration = '0s';
+    el.classList.add('is-in');
+  }
+
+  function sweep() {
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    groups.concat(solos).forEach(function (el) {
+      var shown = el.hasAttribute('data-reveal-group')
+        ? (el.firstElementChild ? el.firstElementChild.classList.contains('is-in') : true)
+        : el.classList.contains('is-in');
+      if (shown) return;
+      var r = el.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < vh) {
+        io.unobserve(el);
+        /* 정상 경로가 놓친 요소다 — 애니메이션 없이 즉시 최종 상태로 스냅한다.
+           (트랜지션이 얼어 있는 환경에서도 is-in만으로는 안 보일 수 있다) */
+        if (el.hasAttribute('data-reveal-group')) toArray(el.children).forEach(forceShow);
+        else forceShow(el);
+      }
+    });
+  }
+  window.addEventListener('load', function () { window.setTimeout(sweep, 1800); });
+  window.addEventListener('pageshow', function () { window.setTimeout(sweep, 600); });
+
   /* 다른 스크립트에서 쓸 수 있게 최소한만 노출 (검증·수동 트리거용) */
   window.__reveal = { reveal: reveal, countUp: countUp };
 })();
