@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Experiment · 대조 실험 — AI Filmmaker Portfolio</title>
-  <meta name="description" content="“대사 톤이 아쉽다”는 외부 지적을 논쟁 대신 재현 실험으로 검증한 기록. 목소리·모델·파라미터를 고정하고 대사 문체 하나만 바꿔 대조 생성했고, 전체 38개 대사를 개정 20 / 유지 18 / 복원 2로 정리했다. 전체 대조표를 그대로 싣는다.">
+  <meta name="description" content="“대사 톤이 아쉽다”는 외부 지적을 논쟁 대신 재현 실험으로 검증한 기록. 목소리·모델·파라미터를 고정하고 대사 문체 하나만 바꿔 대조 생성했고, 전체 38개 대사를 개정 21 / 유지 17 / 복원 2로 정리했다. 전체 대조표를 그대로 싣는다.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +63,7 @@
         <div class="xp-meta" data-reveal data-delay="220">
           <div class="xp-mitem"><span class="num xp-mval">1개</span><span class="label">바꾼 변수</span></div>
           <div class="xp-mitem"><span class="num xp-mval">38개</span><span class="label">전체 대사</span></div>
-          <div class="xp-mitem"><span class="num xp-mval">20건</span><span class="label">개정</span></div>
+          <div class="xp-mitem"><span class="num xp-mval">21건</span><span class="label">개정</span></div>
           <div class="xp-mitem"><span class="num xp-mval">2건</span><span class="label">누락 복원</span></div>
         </div>
       </div>
@@ -182,34 +182,18 @@
               <span class="label">결과</span>
             </div>
             <div class="xp-body">
-              <h3 class="h-item xp-steptitle">같은 목소리, 다른 문체 — 나란히 듣는다</h3>
+              <h3 class="h-item xp-steptitle">같은 목소리에서 결과가 갈렸다</h3>
 
-              <!--
-                TODO: 대조 생성 2판의 실제 파일명 확인 필요.
-                  · 문어체 판 — SITE_PLAN v1 §2-4·§5가 "문어체 멀티샷"을 드라이브 아카이브 회수 대상으로 적고 있다. 회수 후 data-media 교체.
-                  · 구어체 판 — SITE_PLAN v1 §5 "이미 있는 것"에 "대조 실험 구어체판"으로 올라 있으나 파일명이 문서에 없다.
-                  · 주의: WEB_HANDOFF v1 §3의 확정 자산 S04C_before_original.mp4 / S04C_after_CONFIRMED.mp4 는
-                    문체 외에 샷 분할·광원 기하·프롬프트 문법까지 함께 바뀐 씬 재제작본이므로 "변수 1개 대조"의 A/B로 쓸 수 없다.
-                    둘 중 어느 것을 이 자리에 놓을지 사용자 확인 필요.
-              -->
-              <div class="xp-ab">
-                <div class="media-ph bar" data-media="[회수 필요] 문어체 판 대조 생성본">
-                  <div class="ph-icon"></div>
-                  <div class="ph-body">
-                    <div class="ph-label">Audio A · 문어체 판</div>
-                    <p class="ph-desc">원본 대사 그대로 낭독</p>
-                  </div>
-                </div>
-                <div class="media-ph bar" data-media="[확인 필요] 구어체 판 대조 생성본">
-                  <div class="ph-icon"></div>
-                  <div class="ph-body">
-                    <div class="ph-label">Audio B · 구어체 판</div>
-                    <p class="ph-desc">개정 대사 · 목소리·모델·파라미터 동일</p>
-                  </div>
-                </div>
-              </div>
+              <p>
+                두 판 사이에서 바뀐 것은 대사 문장 하나뿐이었다. 그런데도 <strong>결과는 뚜렷하게 달라졌다.</strong>
+                다른 조건이 전부 같으니 차이의 원인은 문체로 특정된다 — 실험이 답해야 했던 질문은 여기서 끝났다.
+              </p>
+              <p>
+                그래서 대조를 한 씬에서 멈추지 않고 전체 대사로 확장했다. 같은 여섯 가지 조작을 38개 전부에 적용해
+                <strong>개정 21 / 유지 17 / 복원 2</strong>로 정리했다. 그 결과가 아래 요약과 전체 대조표다.
+              </p>
 
-              <p class="xp-cap">두 트랙의 차이는 문장 하나뿐이다. 대표 대사는 아래와 같다.</p>
+              <p class="xp-cap">두 판의 차이를 대표하는 대사는 아래와 같다.</p>
 
               <div class="xp-line">
                 <div class="xp-cell before">
@@ -226,6 +210,17 @@
                 판단 근거는 <strong>“그때의 내가”가 문어의 표본</strong>이라는 것이었다.
                 관형격 “의”로 시제와 인칭을 한 덩어리로 묶는 구성은 문서의 문법이고, 말에서는 “그때 가서”처럼 시간이 앞으로 나온다.
                 ASR이 5회 모두 “의”를 떨어뜨려 들은 자리가 정확히 여기다.
+              </p>
+
+              <p>
+                이 대조 생성은 원인을 특정하기 위한 시험이었지 상영물이 아니다. 개정된 문체가 실제 화면에서 어떻게 들리는지는
+                S04C 한 씬을 다시 만든 확정본에 들어 있다.
+                <a class="xp-link" href="/film/#s04c">/film — 한 씬의 재제작 →</a>
+              </p>
+              <p class="xp-cap">
+                다만 그 전/후는 문체 외에 샷 분할·광원 기하·프롬프트 문법까지 함께 바뀐 <strong>재제작</strong>이라
+                “변수 하나” 대조의 증거물이 아니다. 원인을 특정한 것은 이 페이지의 대조 생성이고,
+                재제작은 그 결론이 완성작에 적용된 모습이다. 둘을 같은 종류의 근거로 세지 않는다.
               </p>
             </div>
           </li>
@@ -276,27 +271,22 @@
       <div class="container">
         <p class="label" data-reveal>Result · 개정 결과</p>
         <h2 class="h-section xp-result-title" data-reveal data-delay="80">
-          개정하지 않은 것이 절반이다
+          개정하지 않은 것이 절반 가까이다
         </h2>
 
-        <!--
-          TODO: 확인 필요 — DIALOGUE_SPOKEN v1의 요약표는 개정 20 / 유지 18로 적고 있으나,
-          같은 문서의 씬별 표를 행 단위로 세면 개정 21 / 유지 17이다(경계 후보: #27 "그때는→그땐" 축약만).
-          아래 지표는 요약표(및 WEB_HANDOFF v1 §2-2)의 정본 수치를 그대로 실었다. 사용자 확인 후 어느 쪽이든 통일할 것.
-          ※ 아래 대조표의 필터가 이 차이를 화면에 노출한다 — "개정" 필터를 누르면 "38행 중 21행 표시"로 뜬다.
-            표의 data-kind 값은 개정 열에 실제로 바뀐 문장이 있는지로만 판정했다.
-        -->
+        <!-- 수치 정본: DIALOGUE_SPOKEN v1(2026-08-13 정정판) 요약표 = 개정 21 / 유지 17 / 복원 2.
+             아래 대조표의 data-kind 집계와 일치한다("개정" 필터 = 38행 중 21행). -->
         <div class="xp-figures" data-reveal data-delay="140">
           <div class="xp-fig">
             <p class="num xp-fignum">38<span class="xp-figunit">개</span></p>
             <p class="xp-figlabel">전체 대사</p>
           </div>
           <div class="xp-fig is-hi">
-            <p class="num xp-fignum">20<span class="xp-figunit">건</span></p>
+            <p class="num xp-fignum">21<span class="xp-figunit">건</span></p>
             <p class="xp-figlabel">개정</p>
           </div>
           <div class="xp-fig">
-            <p class="num xp-fignum">18<span class="xp-figunit">건</span></p>
+            <p class="num xp-fignum">17<span class="xp-figunit">건</span></p>
             <p class="xp-figlabel">유지</p>
           </div>
           <div class="xp-fig is-hi">
@@ -306,14 +296,20 @@
         </div>
 
         <ul class="xp-breakdown" data-reveal data-delay="180">
-          <li><span class="num xp-bval">12</span><span class="label">이미 구어</span></li>
-          <li><span class="num xp-bval">4</span><span class="label">시그니처 · 대구</span></li>
+          <li><span class="num xp-bval">13</span><span class="label">이미 구어 · 짧은 정점</span></li>
+          <li><span class="num xp-bval">3</span><span class="label">시그니처 · 대구</span></li>
           <li><span class="num xp-bval">1</span><span class="label">문서 인용</span></li>
-          <li><span class="num xp-bval">1</span><span class="label">최단 발화</span></li>
         </ul>
 
+        <p class="xp-fignote" data-reveal data-delay="200">
+          이 수치는 한 번 정정됐다. 초판 요약표는 개정 20 / 유지 18이었으나 <span class="xp-date">2026-08-13</span> 행 단위로 다시 세어
+          <strong>21 / 17</strong>로 확정했다. 경계였던 #27 <span class="xp-said">그때는 → 그땐</span>은 개정 원칙 ⑥(축약)에 해당하고
+          발화 텍스트가 실제로 바뀌므로 개정으로 집계한다 — 같은 유형인 #20 <span class="xp-said">나한테는 → 나한텐</span>을
+          개정으로 센 것과의 일관성이 근거다. 아래 대조표의 “개정” 필터가 그대로 21행을 보여준다.
+        </p>
+
         <p class="body-lg xp-claim" data-reveal data-delay="220">
-          <strong>개정하지 않은 것이 절반이라는 점이 중요하다.</strong>
+          <strong>개정하지 않은 것이 절반 가까이라는 점이 중요하다.</strong>
           이 작품 대사의 문제는 전면적 문어체가 아니라, <strong>감정 정점 직전의 긴 문장들이 정연했다는 것</strong>이었다.
           짧은 대사(“안 괜찮아”, “나도”, “숨기지 마”)는 처음부터 옳았다.
         </p>
@@ -840,14 +836,6 @@
               </p>
             </div>
           </li>
-          <!--
-            TODO: 확인 필요 — 남성(현) 감정톤 테스트 영상.
-            SITE_PLAN v1 §2-4는 이 섹션의 소스로 "seedance 멀티샷 2종 + voice_test/"를 지정하고 있으나,
-            남성(현) 감정톤 테스트 영상이 생성 목록에서 확인되지 않는다.
-            ※ 근거로 지시받은 WEB_HANDOFF v1 §3-2는 현재 파일에 존재하지 않는다 —
-              F:\web_project\web_portfolio_handoff\WEB_HANDOFF_v1.md 가 §3 본문 중간
-              ("각 영상을 500~600px "에서 10,298바이트)에서 잘려 있다. 원본 재수급 후 이 항목과 §3의 "주의 두 가지" 나머지를 확인할 것.
-          -->
         </ul>
 
         <div class="xp-next" data-reveal data-delay="220">

@@ -130,21 +130,16 @@
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, .35) 100%);
   pointer-events: none;
 }
-.hero-media-note {
-  position: relative;
-  z-index: 1;
-  font-family: var(--font-label);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(242, 241, 236, .32);
-  text-align: center;
-  padding: 0 var(--pad);
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 /* 인트로가 걷힌 직후 히어로 미디어가 천천히 자리를 잡는다 */
-.intro-on .hero-media-note { opacity: 0; }
-.intro-done .hero-media-note {
+.intro-on .hero-video { opacity: 0; }
+.intro-done .hero-video {
   opacity: 1;
   transition: opacity 1.2s var(--ease) .12s;
 }
@@ -323,7 +318,7 @@
 @media (prefers-reduced-motion: reduce) {
   .intro { display: none !important; }
   .intro-caret { animation: none; }
-  .hero-media-note { opacity: 1 !important; transition: none; }
+  .hero-video { opacity: 1 !important; transition: none; }
   .card::before,
   .card-more::after,
   .intro-text::after { transition: none; }

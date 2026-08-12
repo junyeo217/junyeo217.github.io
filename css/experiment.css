@@ -155,28 +155,7 @@
 }
 .xp-principles .xp-pnum { color: var(--ink-44); font-size: 12px; }
 
-/* ---------- 결과 단 — 오디오 A/B ---------- */
-.xp-ab {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 24px);
-}
-
-/* 오디오용 얇은 가로 바 (main.css .media-ph 변형) */
-.media-ph.bar {
-  aspect-ratio: auto;
-  min-height: 96px;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 18px;
-  padding: 18px clamp(18px, 2.5vw, 28px);
-}
-.media-ph.bar .ph-icon { width: 36px; height: 36px; flex: 0 0 36px; }
-.media-ph.bar .ph-icon::after { border-width: 6px 0 6px 10px; margin-left: 2px; }
-.media-ph.bar .ph-body { text-align: left; min-width: 0; }
-.media-ph.bar .ph-desc { text-align: left; padding: 4px 0 0; }
-
-/* 대표 대사 before/after */
+/* ---------- 결과 단 — 대표 대사 before/after ---------- */
 .xp-line {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -231,12 +210,12 @@
 }
 .xp-fig.is-hi .xp-fignum { color: var(--accent); }
 
-/* 유지 18의 내역 */
+/* 유지 17의 내역 */
 .xp-breakdown {
   margin-top: clamp(24px, 3vw, 36px);
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px clamp(16px, 2vw, 28px);
 }
 .xp-breakdown li {
@@ -247,6 +226,16 @@
   border-bottom: 1px solid var(--ink-12);
 }
 .xp-bval { font-size: 15px; font-weight: 600; }
+
+/* 수치 정정 경위 각주 */
+.xp-fignote {
+  margin-top: clamp(20px, 2.4vw, 28px);
+  max-width: 68ch;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink-66);
+}
+.xp-fignote strong { color: var(--ink); font-weight: 600; }
 
 .xp-claim {
   margin-top: clamp(32px, 4vw, 52px);
@@ -454,7 +443,6 @@
 /* ---------- 반응형 ---------- */
 @media (max-width: 1023px) {
   .xp-principles { grid-template-columns: minmax(0, 1fr); }
-  .xp-breakdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 767px) {
@@ -474,8 +462,8 @@
   .xp-steptitle { max-width: none; }
 
   .xp-fixed li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-  .xp-ab { grid-template-columns: minmax(0, 1fr); }
   .xp-line { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .xp-breakdown { grid-template-columns: minmax(0, 1fr); }
 
   .xp-figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .xp-fig { padding: 20px 12px; border-left: 0; }

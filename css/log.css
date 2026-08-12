@@ -1,5 +1,5 @@
 /* ============================================================
-   /log — 제작 로그 아카이브 (Pinned + 시기 필터 + Release Note)
+   /log — 제작 로그 아카이브 (Pinned 8 + 시기 필터 + Release Note 3 + 통계)
    main.css의 토큰만 사용 (paper / ink / accent / ink-66,44,12 / ease)
    ============================================================ */
 
@@ -41,7 +41,7 @@
 .log-meta {
   margin-top: clamp(36px, 5vw, 60px);
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1px;
   border-top: 1px solid var(--ink-12);
   border-bottom: 1px solid var(--ink-12);
@@ -53,10 +53,13 @@
   gap: 6px;
 }
 .lm-val {
-  font-size: clamp(18px, 2.2vw, 28px);
+  font-size: clamp(17px, 2vw, 27px);
   font-weight: 700;
-  letter-spacing: -.01em;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+  white-space: nowrap;
 }
+.lm-item .label { letter-spacing: .14em; }
 
 /* ---------- 2. Pinned + 시기 필터 ---------- */
 .pin-heading { margin-top: 16px; max-width: 20ch; }
@@ -141,9 +144,13 @@
 .pin-card:hover { border-color: var(--ink-44); }
 .pin-card[hidden] { display: none; }
 
+/* 전 기간 관통(핀 4) · 회고(핀 8) — 성격이 다른 두 건은 좌측 accent로 구분 */
+.pin-card.is-wide { border-left: 2px solid var(--accent); }
+.pin-card.is-retro { border-left: 2px solid var(--accent); }
+
 .pc-top {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 20px;
@@ -155,18 +162,56 @@
   letter-spacing: -.02em;
   color: var(--ink-12);
 }
-.pc-title { margin: 0; max-width: 22ch; }
+.pc-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.pc-date {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--ink-44);
+  white-space: nowrap;
+}
+
+.pc-title { margin: 0; max-width: 24ch; }
 .pc-sum {
   margin-top: 16px;
   font-size: 15px;
-  line-height: 1.82;
+  line-height: 1.85;
   color: var(--ink-66);
   max-width: 60ch;
 }
+.pc-code {
+  font-family: var(--font-label);
+  font-size: .88em;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-12);
+  padding-bottom: 1px;
+}
+
+/* 배운 것 — 카드 하단 고정, accent 좌측선 */
+.pc-learn {
+  margin-top: auto;
+  padding: clamp(18px, 2vw, 24px) 0 0;
+}
+.pc-learn > .label { color: var(--accent); }
+.pc-learn > p {
+  margin-top: 10px;
+  padding-left: clamp(12px, 1.4vw, 18px);
+  border-left: 2px solid var(--accent);
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--ink);
+  max-width: 56ch;
+}
 
 .pc-src {
-  margin-top: auto;
-  padding-top: clamp(20px, 2.4vw, 30px);
+  margin-top: 22px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -182,11 +227,18 @@ a.pc-src::after {
 a.pc-src:hover { color: var(--accent); }
 a.pc-src:hover::after { transform: translateX(6px); }
 
-/* 상세 미보유 카드 */
-.pin-card.is-pending { border-style: dashed; }
-.pc-src-none { color: var(--accent); }
+/* 필터 결과 없음 */
+.group-empty {
+  grid-column: 1 / -1;
+  padding: clamp(24px, 3vw, 40px);
+  border: 1px dashed var(--ink-12);
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: var(--ink-44);
+}
+.group-empty[hidden] { display: none; }
 
-/* ---------- 3. Release Note 연재 ---------- */
+/* ---------- 3. Release Note 3편 ---------- */
 .rn-heading { margin-top: 16px; max-width: 18ch; }
 .rn-lead {
   margin-top: 20px;
@@ -201,44 +253,132 @@ a.pc-src:hover::after { transform: translateX(6px); }
   display: grid;
   grid-template-columns: clamp(200px, 24vw, 320px) minmax(0, 1fr);
   gap: clamp(20px, 3vw, 56px);
-  padding: clamp(26px, 3.2vw, 44px) 0;
+  padding: clamp(30px, 3.6vw, 52px) 0;
   border-bottom: 1px solid var(--ink-12);
 }
+.rn-item[hidden] { display: none; }
 
-.rn-head {
-  display: grid;
-  grid-template-columns: clamp(38px, 4vw, 58px) minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
-}
+.rn-left { align-self: start; }
 .rn-idx {
-  font-size: clamp(20px, 2.4vw, 30px);
+  display: block;
+  font-size: clamp(22px, 2.6vw, 34px);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: -.02em;
   color: var(--ink-12);
 }
-.rn-title { margin: 0; }
-.rn-range { margin-top: 8px; }
+.rn-title { margin-top: 14px; max-width: 16ch; }
+.rn-range { margin-top: 12px; }
+.rn-tag { margin-top: 14px; }
 
-.rn-format {
+.rn-p {
+  font-size: clamp(15px, 1.2vw, 16.5px);
+  line-height: 1.9;
+  color: var(--ink-66);
+  max-width: 66ch;
+}
+.rn-p + .rn-p { margin-top: 18px; }
+
+/* "이 시기가 남긴 것" — 본문과 시각적으로 분리 */
+.rn-left-behind {
+  margin-top: clamp(24px, 2.6vw, 32px);
+  padding: clamp(18px, 2vw, 24px) clamp(18px, 2vw, 26px);
+  border: 1px solid var(--ink-12);
+  border-left: 2px solid var(--accent);
+  background: rgba(138, 106, 73, .05);
+  max-width: 66ch;
+}
+.rn-left-behind > .label { color: var(--accent); }
+.rn-left-behind > p {
+  margin-top: 10px;
   font-size: 15px;
   line-height: 1.8;
   color: var(--ink);
-  max-width: 62ch;
 }
 
-.rn-pending {
-  margin-top: 20px;
-  padding: clamp(18px, 2vw, 26px);
-  border: 1px dashed var(--ink-12);
+.rn-list .group-empty { margin: clamp(28px, 3vw, 40px) 0; }
+
+/* ---------- 4. 통계 박스 ---------- */
+.st-heading { margin-top: 16px; max-width: 18ch; }
+.st-lead { margin-top: 20px; max-width: 64ch; }
+
+.st-table-wrap {
+  margin-top: clamp(32px, 4vw, 52px);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
-.rn-pending .label { color: var(--accent); margin-bottom: 10px; }
-.rn-pending p {
-  font-size: 14px;
-  line-height: 1.8;
+.st-table {
+  width: 100%;
+  max-width: 720px;
+  border-collapse: collapse;
+  text-align: left;
+}
+.st-table th[scope="col"] {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-44);
+  padding: 0 16px 10px 0;
+  border-bottom: 1px solid var(--ink-12);
+  white-space: nowrap;
+}
+.st-table th[scope="row"] {
+  font-weight: 400;
+  font-size: 15px;
   color: var(--ink-66);
-  max-width: 60ch;
+  padding: 16px 16px 16px 0;
+  border-bottom: 1px solid var(--ink-12);
+  white-space: nowrap;
+  width: 34%;
+}
+.st-table td {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ink-12);
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+.st-sub {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .08em;
+  color: var(--ink-44);
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.st-side {
+  margin-top: clamp(36px, 4vw, 56px);
+  padding-top: clamp(22px, 2.6vw, 32px);
+  border-top: 1px solid var(--ink-12);
+}
+.st-list {
+  margin-top: 18px;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  max-width: 720px;
+}
+.st-list li {
+  display: grid;
+  grid-template-columns: clamp(130px, 15vw, 180px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: baseline;
+}
+.st-n {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+.st-d {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-66);
 }
 
 /* 현재 상태 블록 */
@@ -260,21 +400,42 @@ a.pc-src:hover::after { transform: translateX(6px); }
 @media (max-width: 1023px) {
   .pin-grid { grid-template-columns: minmax(0, 1fr); }
   .rn-item { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .rn-title { max-width: none; }
+  .rn-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px 16px;
+  }
+  .rn-idx { font-size: 22px; }
+  .rn-title, .rn-range, .rn-tag { margin-top: 0; }
+  .rn-title { flex: 1 1 100%; }
+
+  .log-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lm-item:nth-child(-n+3) { border-bottom: 1px solid var(--ink-12); }
 }
 
 @media (max-width: 767px) {
   .log-intro .log-lede { max-width: none; }
-  .pin-heading, .rn-heading { max-width: none; }
+  .pin-heading, .rn-heading, .st-heading { max-width: none; }
 
   .log-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lm-item { padding: 18px 0; }
-  .lm-item:nth-child(-n+2) { border-bottom: 1px solid var(--ink-12); }
+  .lm-item:nth-child(-n+3) { border-bottom: none; }
+  .lm-item:not(:nth-last-child(-n+1)) { border-bottom: 1px solid var(--ink-12); }
+  .lm-val { font-size: 20px; }
 
   .filter-btns { gap: 8px; }
   .fbtn { padding: 8px 13px; font-size: 13.5px; }
 
   .pc-title { max-width: none; }
-  .rn-head { grid-template-columns: 34px minmax(0, 1fr); gap: 10px; }
+  .pc-top { align-items: center; }
+  .pc-meta { flex-direction: row; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+
+  .st-table th[scope="row"] { width: 40%; white-space: normal; }
+  .st-sub { display: block; margin-left: 0; margin-top: 4px; }
+
+  .st-list li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

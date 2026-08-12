@@ -1,43 +1,14 @@
-/* /film 전용 — 파생판 탭 전환 (WAI-ARIA Tabs 패턴) */
+/* /film 전용 — 페이지 안에 영상이 여럿이라(본편 + S04C 전/후) 하나가 재생되면
+   나머지는 일시정지한다. 두 소리가 겹치면 전/후 대조 자체가 성립하지 않는다. */
 (function () {
-  var tablist = document.querySelector('[data-tabs]');
-  if (!tablist) return;
+  var videos = Array.prototype.slice.call(document.querySelectorAll('video'));
+  if (videos.length < 2) return;
 
-  var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
-  if (!tabs.length) return;
-
-  function panelOf(tab) {
-    return document.getElementById(tab.getAttribute('aria-controls'));
-  }
-
-  function select(tab, moveFocus) {
-    tabs.forEach(function (t) {
-      var on = (t === tab);
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-      t.setAttribute('tabindex', on ? '0' : '-1');
-      var panel = panelOf(t);
-      if (!panel) return;
-      if (on) panel.removeAttribute('hidden');
-      else panel.setAttribute('hidden', '');
+  videos.forEach(function (v) {
+    v.addEventListener('play', function () {
+      videos.forEach(function (other) {
+        if (other !== v && !other.paused) other.pause();
+      });
     });
-    if (moveFocus) tab.focus();
-  }
-
-  tablist.addEventListener('click', function (e) {
-    var t = e.target.closest ? e.target.closest('[role="tab"]') : null;
-    if (t && tabs.indexOf(t) !== -1) select(t, false);
-  });
-
-  tablist.addEventListener('keydown', function (e) {
-    var i = tabs.indexOf(document.activeElement);
-    if (i === -1) return;
-    var next = null;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
-    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
-    else if (e.key === 'Home') next = tabs[0];
-    else if (e.key === 'End') next = tabs[tabs.length - 1];
-    if (!next) return;
-    e.preventDefault();
-    select(next, true);
   });
 })();

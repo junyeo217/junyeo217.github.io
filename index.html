@@ -74,8 +74,11 @@
 
     <!-- (1) 히어로 -->
     <section class="hero" aria-labelledby="heroName">
-      <div class="hero-media" data-media="highlight_loop.mp4">
-        <p class="hero-media-note">Highlight Loop 15–20s — 미디어 삽입 예정</p>
+      <div class="hero-media">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+               poster="/assets/poster_film.jpg" aria-label="본편 「너가 힘들지 않았으면 해」 무음 루프">
+          <source src="/assets/FILM_master_web.mp4" type="video/mp4">
+        </video>
       </div>
 
       <div class="container hero-caption">
@@ -160,7 +163,7 @@
             <p class="label card-label">Experiment</p>
             <h3 class="h-item card-title">대조 실험</h3>
             <p class="card-desc">
-              "대사 톤이 아쉽다"는 외부 지적을 연기 문제로 받으면 손댈 데가 없다. 목소리·모델·파라미터를 고정하고 대사 문체만 바꿔 대조 생성했다. 결론은 개정 20 / 유지 18 / 복원 2 — 유지가 18개라는 게 핵심이다.
+              "대사 톤이 아쉽다"는 외부 지적을 연기 문제로 받으면 손댈 데가 없다. 목소리·모델·파라미터를 고정하고 대사 문체만 바꿔 대조 생성했다. 결론은 개정 21 / 유지 17 / 복원 2 — 유지가 17개라는 게 핵심이다.
             </p>
             <span class="card-more">More Detail</span>
           </a>

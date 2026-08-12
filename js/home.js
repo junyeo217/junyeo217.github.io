@@ -168,3 +168,13 @@
     finish();
   }
 })();
+
+/* iOS Safari 자동재생 보장 — 속성만으로는 부족해 프로퍼티로도 세팅 */
+(function () {
+  var v = document.querySelector('.hero-video');
+  if (!v) return;
+  v.muted = true;
+  v.playsInline = true;
+  var p = v.play();
+  if (p && p.catch) p.catch(function () {});
+})();

@@ -124,6 +124,56 @@
 }
 .rc-btn { margin-top: 24px; }
 
+/* 본문 안 인라인 링크 (작품 페이지 대조로 보내는 자리) */
+.rc-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 14.5px;
+  color: var(--accent);
+  border-bottom: 1px solid var(--ink-12);
+  padding-bottom: 3px;
+  transition: border-color .4s var(--ease);
+}
+.rc-link::after { content: "→"; }
+.rc-link:hover { border-color: var(--accent); }
+
+/* ①·④ 서술 블록 — 실패한 출력 / 적용 후 출력 */
+.state {
+  border: 1px solid var(--ink-12);
+  padding: clamp(18px, 2.2vw, 28px);
+}
+.state.is-after { border-left: 2px solid var(--accent); }
+.state p {
+  font-size: 15.5px;
+  line-height: 1.8;
+}
+.state > * + * { margin-top: 14px; }
+
+/* 서술 블록 하단 실측 스트립 */
+.fact-strip {
+  list-style: none;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--ink-12);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px clamp(16px, 2.5vw, 36px);
+}
+.fact-strip li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fact-val {
+  font-size: clamp(16px, 1.7vw, 21px);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.25;
+}
+.state.is-after .fact-val { color: var(--accent); }
+.fact-key { line-height: 1.6; }
+
 .ba {
   font-family: var(--font-label);
   font-size: 10px;
@@ -144,13 +194,6 @@
   border-radius: 2px;
   word-break: break-word;
 }
-.filename {
-  font-family: var(--font-label);
-  font-size: .9em;
-  letter-spacing: .02em;
-  color: var(--ink-44);
-}
-
 .conflict { list-style: none; display: grid; gap: 10px; }
 .conflict li {
   display: grid;
@@ -187,6 +230,15 @@
   vertical-align: baseline;
 }
 .metric-table td.hi { color: var(--accent); font-weight: 600; }
+.td-note {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-44);
+}
 
 /* 부수 발견 박스 */
 .note-box {
@@ -209,13 +261,6 @@
 .rule-quote .rq-src { margin-top: 12px; }
 
 /* 카드 04 — 대사 before/after */
-.media-split {
-  display: grid;
-  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
-  gap: clamp(20px, 3vw, 40px);
-  align-items: start;
-}
-.ph-narrow { max-width: 260px; }
 .dialog-ab { display: grid; gap: 14px; }
 .da-row {
   display: grid;
@@ -228,20 +273,6 @@
 .da-cell p { font-size: 15px; line-height: 1.7; color: var(--ink-44); }
 .da-cell.after p { color: var(--ink); }
 .da-cell.after .label { color: var(--accent); }
-
-/* 오디오용 얇은 가로 바 플레이스홀더 (main.css .media-ph 변형) */
-.media-ph.bar {
-  aspect-ratio: auto;
-  min-height: 96px;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 18px;
-  padding: 18px clamp(18px, 2.5vw, 28px);
-}
-.media-ph.bar .ph-icon { width: 36px; height: 36px; flex: 0 0 36px; }
-.media-ph.bar .ph-icon::after { border-width: 6px 0 6px 10px; margin-left: 2px; }
-.media-ph.bar .ph-body { text-align: left; }
-.media-ph.bar .ph-desc { text-align: left; padding: 4px 0 0; }
 
 /* ---------- 3. 재사용 Top 10 ---------- */
 .rules-steady .steady-title { margin-top: 16px; }
@@ -291,8 +322,6 @@
 /* ---------- 반응형 ---------- */
 @media (max-width: 1023px) {
   .rules-index { grid-template-columns: minmax(0, 1fr); }
-  .media-split { grid-template-columns: minmax(0, 1fr); }
-  .ph-narrow { max-width: 220px; }
 }
 
 @media (max-width: 767px) {
@@ -314,6 +343,7 @@
   .rc-mark { font-size: 20px; }
 
   .conflict li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .fact-strip { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .da-row { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .st-item { grid-template-columns: 40px minmax(0, 1fr); }
 }

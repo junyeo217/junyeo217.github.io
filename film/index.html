@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Film · 너가 힘들지 않았으면 해 — AI Filmmaker Portfolio</title>
-  <meta name="description" content="AI로 만든 3분 14초 단편 「너가 힘들지 않았으면 해」 본편과 파생판 2종. 기획·시나리오, 이미지 217→44, 영상 41샷, 편집 v0~v8.7, 검증(ASR·SNR·독립 QA) 각 공정에서 무엇을 판단했고 근거가 무엇이었는지 적었다.">
+  <meta name="description" content="AI로 만든 3분 14초 단편 「너가 힘들지 않았으면 해」 본편과, 같은 씬(S04C 제1클라이맥스)을 두 번 만든 전/후 대조. 대사 문체·샷 분할·광원 기하·프롬프트 문법 네 항목에서 무엇을 판단했고 근거가 무엇이었는지 적었다.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,14 +47,12 @@
       <div class="container">
         <p class="label" data-reveal>Feature</p>
 
-        <!-- TODO: 포스터(정지 썸네일) 프레임 자산 선정 필요 — 현재는 플레이스홀더 -->
         <div class="film-player" data-reveal data-delay="80">
-          <div class="media-ph r169" data-media="FINAL_master_v2.mp4">
-            <div class="ph-icon"></div>
-            <div class="ph-label">Video Placeholder</div>
-            <p class="ph-desc">본편 「너가 힘들지 않았으면 해」 3:14</p>
-          </div>
-          <p class="film-hint">정지 썸네일 + 재생 오버레이 · 클릭하면 재생 · 자동재생 없음</p>
+          <video class="film-video" controls preload="none" poster="/assets/poster_film.jpg" playsinline>
+            <source src="/assets/FILM_master_web.mp4" type="video/mp4">
+            <p>이 브라우저에서는 영상을 재생할 수 없다. <a href="/assets/FILM_master_web.mp4">파일 직접 열기</a></p>
+          </video>
+          <p class="film-caption">본편 전체 · 3:14 · 1080p</p>
         </div>
 
         <div class="film-titleline" data-reveal data-delay="160">
@@ -63,14 +61,234 @@
         </div>
 
         <p class="film-note muted" data-reveal data-delay="220">
-          본편과 파생판을 전부 사이트 안에서 재생한다. 외부 플랫폼 링크로 넘기면 감상 전에 이탈이 생긴다고 보고 임베드를 원칙으로 뒀고,
+          본편은 사이트 안에서 재생한다. 외부 플랫폼 링크로 넘기면 감상 전에 이탈이 생긴다고 보고 임베드를 원칙으로 뒀고,
           자동재생은 넣지 않았다 — 재생 시점은 보는 쪽이 정하는 편이 맞다고 판단했다.
         </p>
       </div>
     </section>
 
     <!-- ============================================================
-         2. 로그라인 + 시놉시스
+         2. 핵심 대조 — S04C 한 씬의 재제작
+         ============================================================ -->
+    <section class="section film-rebuild" id="s04c">
+      <div class="container">
+        <p class="label" data-reveal>Core</p>
+        <h2 class="h-section sec-title" data-reveal data-delay="80">한 씬의 재제작</h2>
+        <p class="body-lg muted sec-lead" data-reveal data-delay="140">
+          사이트의 심장은 단 하나의 대조다. 개선 사례를 여러 씬에 흩어놓지 않고, 같은 씬을 두 번 만든 것을 나란히 놓았다.
+          영상 두 개만 보면 되고, 그 사이의 차이가 곧 배운 것의 목록이 된다.
+        </p>
+
+        <!-- ---- 2-1. 대상 씬 ---- -->
+        <div class="rb-scene">
+          <div class="rb-scene-text" data-reveal>
+            <p class="label rb-key">S04C · 제1클라이맥스</p>
+            <p class="rb-scene-desc">
+              밤의 원룸. 현은 바닥에 앉아 고개를 숙이고 있고, 선은 서서 그를 내려다본다.
+              방의 유일한 광원은 책상 위 모니터다.
+            </p>
+            <p class="rb-scene-why">
+              <strong>이 씬을 고른 이유</strong> — 작품의 감정 최고조이고, 두 인물이 정면으로 부딪히는 유일한 구간이며,
+              1차 완성본에서 누락됐던 대사 “내 현실에 너도 있어”를 복원할 수 있는 자리다.
+            </p>
+          </div>
+
+          <table class="rb-dialog" data-reveal data-delay="120">
+            <caption class="sr-only">S04C 씬의 대사 4개</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="label">화자</th>
+                <th scope="col" class="label">대사</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row" class="rb-spk">선</th><td>너 혼자 계산하고, 혼자 결론 내고. / 나한텐 결과만 주잖아.</td></tr>
+              <tr><th scope="row" class="rb-spk">현</th><td>너… 나 때문에 낮아지는 거 보기 싫었어.</td></tr>
+              <tr><th scope="row" class="rb-spk">선</th><td>내 현실에 너도 있어.</td></tr>
+              <tr><th scope="row" class="rb-spk">선</th><td>근데 널 빼는 게 왜 날 지키는 건데?</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ---- 2-2. 전 / 후 영상 ---- -->
+        <div class="ab-grid">
+          <figure class="ab-item" data-reveal>
+            <video class="ab-video" controls preload="none" poster="/assets/poster_s04c_before.jpg" playsinline>
+              <source src="/assets/S04C_before_original.mp4" type="video/mp4">
+              <p>이 브라우저에서는 영상을 재생할 수 없다. <a href="/assets/S04C_before_original.mp4">파일 직접 열기</a></p>
+            </video>
+            <figcaption class="ab-cap">
+              <span class="ab-tag label">전 — 1차 완성본</span>
+              <span class="ab-meta num">11.12s · 1080p</span>
+              <span class="ab-note">동일 씬 · 재제작 · 본편 98.292s~109.375s 구간</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ab-item" data-reveal data-delay="120">
+            <video class="ab-video" controls preload="none" poster="/assets/poster_s04c_after.jpg" playsinline>
+              <source src="/assets/S04C_after_CONFIRMED.mp4" type="video/mp4">
+              <p>이 브라우저에서는 영상을 재생할 수 없다. <a href="/assets/S04C_after_CONFIRMED.mp4">파일 직접 열기</a></p>
+            </video>
+            <figcaption class="ab-cap">
+              <span class="ab-tag label">후 — 재제작 확정본</span>
+              <span class="ab-meta num">15.07s · 720p</span>
+              <span class="ab-note">동일 씬 · 재제작 · 통제 실험이 아니다</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- ---- 2-3. 무엇을 바꿨는가 — 네 항목 ---- -->
+        <h3 class="h-item rb-subtitle" data-reveal>무엇을 바꿨는가 — 네 항목</h3>
+
+        <ol class="change-list">
+          <li class="change" data-reveal>
+            <p class="change-head"><span class="change-idx num">①</span>대사 문체 — 연기 문제의 절반은 텍스트 문제였다</p>
+            <div class="change-body">
+              <p>
+                완성본을 본 외부 지적이 “대사 톤이 아쉽다, 차라리 자막 처리가 낫겠다”였다.
+                원인을 배우(AI) 연기로만 보면 손댈 데가 없다. 대본을 다시 읽으니 문어체였다 —
+                “그건 그때의 내가 판단할 일이야”, “아플 때 도망가지 않는 게 더 중요할 때도 있어”처럼
+                글로는 읽히지만 입으로는 나오지 않는 문장이다. ASR이 5회 모두 “그때의 내가”를 “그때 내가”로 들은 것이 방증이었다.
+              </p>
+              <p>
+                목소리·모델·파라미터를 전부 고정하고 대사 문체만 바꿔 대조 생성했더니 결과가 뚜렷하게 달라졌다.
+                전체 38개 대사를 재검토해 <strong>개정 21 / 유지 17 / 복원 2</strong>로 정리했다.
+                유지가 17개인 게 중요하다 — 문어체 전체가 문제가 아니라 감정 정점 직전의 긴 문장만 문제였다는 뜻이기 때문이다.
+              </p>
+              <p class="change-ex">
+                이 씬의 예 —
+                <span class="ex-before">너를 나 때문에 낮추게 하고 싶지 않았어</span>
+                <span class="ex-arrow" aria-hidden="true">→</span>
+                <span class="ex-after">너… 나 때문에 낮아지는 거 보기 싫었어</span>
+                <span class="ex-reason">사동(“낮추게 하고”)이 문어의 핵심이라 자동사로 풀었다.</span>
+              </p>
+            </div>
+          </li>
+
+          <li class="change" data-reveal>
+            <p class="change-head"><span class="change-idx num">②</span>샷 분할 — 감정은 얼굴이 보여야 읽힌다</p>
+            <div class="change-body">
+              <p>
+                처음에는 2샷으로 만들었다(투샷 → 선 클로즈업). 대사는 전부 나왔지만 현의 방어가 투샷 안에서 처리돼 얼굴이 멀었다.
+                소리는 들리는데 연기가 안 보였다. 근거는 1차 영상 자체다 —
+                <strong>이 씬에 남자 인물의 얼굴이 한 번도 나오지 않는다.</strong>
+                앞 컷은 OTS라 뒷머리만 걸리고, 뒤 컷은 선 단독이다.
+              </p>
+              <p>
+                투샷 → 현 → 선 3샷으로 나누고, 두 단독 샷의 앵글을 서로의 눈높이로 교차시켰다.
+                현은 선이 서 있는 높이에서 내려다보고, 선은 현이 앉은 바닥 높이에서 올려다본다.
+                앉은 자와 선 자의 관계가 대사가 아니라 카메라로 드러난다.
+                결과: 현의 클로즈업에서 눈물과 올려다보는 시선이 살아났다.
+              </p>
+            </div>
+          </li>
+
+          <li class="change" data-reveal>
+            <p class="change-head"><span class="change-idx num">③</span>광원 기하 — 불가능한 조명은 무시되지 않고 임의로 대체된다</p>
+            <div class="change-body">
+              <p>
+                앞선 씬에서 밤인데 인물 얼굴만 과하게 밝게 나왔다. 프롬프트에는 “모니터가 유일한 광원”이라고 분명히 적혀 있었다.
+                지시를 무시한 게 아니었다. 그 컷은 카메라가 상자 바닥에 있고 인물이 위에서 내려다보는 구도였는데,
+                모니터는 상자 옆 벽 너머에 있어 아래를 향한 얼굴에 물리적으로 닿을 수 없었다.
+                모델은 인물을 보여줘야 하니 없는 광원을 만들어냈다.
+              </p>
+              <p>
+                이 씬에서는 광원 기하를 먼저 검산했다. 선은 서 있고 모니터는 책상 위라 빛이 아래에서 올라오는 게 물리적으로 맞다.
+                현은 바닥에 앉아 어두운 게 맞고, 대사 직전 고개를 드는 동작을 넣어 그때 빛이 얼굴에 닿게 했다.
+                결과: 얼굴 과다 노출이 사라졌고 샷 간 톤 점프가 <strong>Δ24.4 → Δ6.5</strong>로 줄었다.
+              </p>
+            </div>
+          </li>
+
+          <li class="change" data-reveal>
+            <p class="change-head"><span class="change-idx num">④</span>프롬프트 문법 — 감이 아니라 대조로 정했다</p>
+            <div class="change-body">
+              <p>
+                대형 플랫폼의 실제 프로젝트 4건(프롬프트 그룹 약 4만 개)을 분석해 만든 자체 템플릿과,
+                외부 크리에이터가 배포한 스킬 문법이 있었다. 어느 쪽이 나은지 감으로 정할 수 없어 같은 씬으로 직접 붙였다.
+              </p>
+
+              <table class="rb-table">
+                <caption class="sr-only">프롬프트 문법 A/B 및 광원 기하 검산 후의 샷별 평균 휘도와 톤 점프 실측</caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="label">판</th>
+                    <th scope="col" class="label">Shot 1</th>
+                    <th scope="col" class="label">Shot 2</th>
+                    <th scope="col" class="label">톤 점프</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">A · 자체 템플릿</th>
+                    <td class="num">Y≈64</td><td class="num">Y≈39.7</td><td class="num rb-hl">Δ24.4</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">B · 스킬 문법</th>
+                    <td class="num">Y≈51</td><td class="num">Y≈38</td><td class="num rb-hl">Δ12</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">B + 광원 기하 검산</th>
+                    <td class="num">Y≈34.4</td><td class="num">Y≈45</td><td class="num rb-hl">Δ6.5 <span class="rb-sub">중간 샷 기준</span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>
+                A판은 앞 샷이 낮처럼 밝다가 뒤 샷에서 갑자기 밤이 됐다. 원인은 프롬프트 안의 모순된 지시였다 —
+                <code class="rb-code">lifted milky blacks, low contrast</code>(외부 문법)와
+                <code class="rb-code">dense blacks with no milky haze</code>(자체 규율)가 한 문장 안에 함께 있었다.
+              </p>
+              <p>
+                <strong>부수 사고</strong> — 비교 도중 두 프롬프트가 섞여 전송된 사고가 있었다.
+                생성 로그에서 실제 전송된 문자열을 대조해 발견했다(7,062자 + 3,700자 = 10,811자로 정확히 합산).
+                결과물만 보고 판단했으면 잘못된 결론을 냈을 사고다. 이후 생성마다 전송 프롬프트를 대조하는 절차를 넣었다.
+              </p>
+            </div>
+          </li>
+        </ol>
+
+        <!-- ---- 2-4. 결과 실측 ---- -->
+        <div class="rb-result">
+          <h3 class="h-item rb-subtitle" data-reveal>결과 실측</h3>
+          <table class="rb-table rb-table-kv" data-reveal data-delay="80">
+            <caption class="sr-only">재제작 확정본의 실측값</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="label">항목</th>
+                <th scope="col" class="label">값</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">샷 분할</th><td>4.0s / 7.0s — 설계 위치와 일치</td></tr>
+              <tr><th scope="row">침묵 비트</th><td>9.0~11.0s (2.5초 무음, −45dB)</td></tr>
+              <tr><th scope="row">마지막 여백</th><td>14.0~15.0s (1.5초 무음) — 규율 38 이행</td></tr>
+              <tr><th scope="row">샷 간 톤 점프</th><td>Δ6.5 (1차 방식 대비 1/4)</td></tr>
+              <tr><th scope="row">좌우 축</th><td>현=frame-left / 선=frame-right 유지</td></tr>
+              <tr><th scope="row">대사</th><td>4개 전부 발화, 누락 대사 복원</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ---- 2-5. 남은 한계 ---- -->
+        <div class="rb-limits">
+          <h3 class="h-item rb-subtitle" data-reveal>남은 한계</h3>
+          <ul class="limit-list">
+            <li data-reveal>투샷이 의도보다 넓게 잡혀 두 인물이 작다.</li>
+            <li data-reveal data-delay="60">선의 단독 샷이 뒤 벽 때문에 다른 샷보다 밝다(Y=45 vs 34).</li>
+            <li data-reveal data-delay="120">모니터 화면의 텍스트가 판독 가능하게 렌더됐다(작품 규칙은 비판독).</li>
+          </ul>
+        </div>
+
+        <p class="rb-links" data-reveal>
+          <a class="inline-link" href="/experiment/">대사 문체 대조 실험 기록 →</a>
+          <a class="inline-link" href="/rules/">제작 규율 38개 원문 →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. 로그라인 + 시놉시스
          ============================================================ -->
     <section class="section">
       <div class="container">
@@ -103,7 +321,7 @@
     </section>
 
     <!-- ============================================================
-         3. 공정별 역할 명세
+         4. 공정별 역할 명세
          ============================================================ -->
     <section class="section">
       <div class="container">
@@ -162,11 +380,12 @@
                 <p class="proc-judg">엔진과 프롬프트 문법은 같은 씬으로 직접 붙여 실측으로 정했고, 조명은 지시가 아니라 기하로 검산했다.</p>
                 <p class="proc-basis">
                   H3 2K와 Seedance 720p를 같은 씬 파일럿으로 비교했다. 프롬프트 문법 A/B에서는 샷 간 평균 휘도 차(톤 점프)를
-                  프레임 단위로 실측해 A판 Δ24.4, B판 Δ12를 얻었고, A판의 원인은 한 문장 안에 함께 있던 모순 지시
+                  프레임 단위로 실측해 A판 Δ24.4, B판 Δ12를 얻었고,
+                  A판의 원인은 한 문장 안에 함께 있던 모순 지시
                   (“lifted milky blacks, low contrast” vs “dense blacks with no milky haze”)였다.
                   밤 씬인데 얼굴만 밝게 나온 컷은 지시를 무시한 것이 아니라, 모니터가 상자 옆 벽 너머에 있어
                   아래를 향한 얼굴에는 물리적으로 닿을 수 없는 구도였다. 광원이 인물의 카메라 쪽 면에 닿는지 먼저 검산하도록
-                  바꾸자 톤 점프는 Δ6.5로 떨어졌다.
+                  바꾸자 톤 점프는 Δ6.5로 떨어졌다. 실측 표와 전/후 영상은 위의 「한 씬의 재제작」에 있다.
                 </p>
               </td>
             </tr>
@@ -210,67 +429,19 @@
     </section>
 
     <!-- ============================================================
-         4. 파생판 (탭)
+         5. 파생판 — 보관 중, 게재 미정
          ============================================================ -->
     <section class="section">
       <div class="container">
         <p class="label" data-reveal>Versions</p>
         <h2 class="h-section sec-title" data-reveal data-delay="80">파생판</h2>
-        <p class="body-lg muted sec-lead" data-reveal data-delay="140">
-          본편 외에 두 판을 유지한다. 보기 좋으라고 만든 변주가 아니라 각각 다른 쓰임이 있어서 남긴 판이고, 아래에 그 쓰임을 적었다.
+        <!-- TODO: 파생판 게재 여부 사용자 판단 -->
+        <p class="body-lg film-derived" data-reveal data-delay="140">
+          자막판과 음성 제거판 두 판을 아카이브에 보관하고 있다. 게재는 지면을 보고 판단하기로 했다 — 이 페이지가 증명해야 하는 것은
+          S04C 한 씬의 전/후 대조 하나이고, 판을 늘리면 그 대조가 흐려진다고 봤다.
+          음성 제거판은 통과 기준을 레벨 측정이 아니라 ASR 재전사로 옮긴 판이다: 완성본과 +15~18dB 증폭본을 전사해 대사 어휘 0을 증명하고,
+          같은 harness가 원본에서는 대사를 검출한다는 양성 대조를 함께 둬야 제거로 인정했다(규율 16).
         </p>
-
-        <div class="film-tabs" data-reveal data-delay="200">
-          <div class="tablist" role="tablist" aria-label="파생판 선택" data-tabs>
-            <button class="tab" type="button" role="tab" id="tab-sub" aria-controls="panel-sub" aria-selected="true" tabindex="0">
-              <span class="tab-idx num">01</span>자막판
-            </button>
-            <button class="tab" type="button" role="tab" id="tab-nodial" aria-controls="panel-nodial" aria-selected="false" tabindex="-1">
-              <span class="tab-idx num">02</span>무대사판
-            </button>
-          </div>
-
-          <!-- TODO: 파생판 실제 파일명 확인 필요 — Drive 아카이브에서 회수 후 data-media 값 교체 -->
-          <div class="tabpanel" role="tabpanel" id="panel-sub" aria-labelledby="tab-sub" tabindex="0">
-            <div class="panel-grid">
-              <div class="media-ph r169" data-media="자막판.mp4">
-                <div class="ph-icon"></div>
-                <div class="ph-label">Video Placeholder</div>
-                <p class="ph-desc">자막판 — 대사 자막 삽입본</p>
-              </div>
-              <div class="panel-text">
-                <p class="panel-why">대사 정보 전달을 보강하는 판이다.</p>
-                <p class="panel-basis">
-                  완성본을 본 외부 지적이 “대사 톤이 아쉽다, 차라리 자막 처리가 낫겠다”였다. 자막판은 그 지적 중 전달 쪽을 직접 해결한다.
-                  톤 자체는 자막으로 덮지 않고 원인을 따로 규명했다 — 배우(AI) 연기가 아니라 대본 문체가 원인이었고,
-                  전체 38개 대사를 재검토해 개정 20 / 유지 18 / 복원 2로 정리했다. 유지가 18개라는 점이 근거다.
-                  문어체 전반이 아니라 감정 정점 직전의 긴 문장만 문제였다는 뜻이기 때문이다.
-                  <a class="inline-link" href="/experiment/">대조 실험 기록 보기 →</a>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- TODO: 무대사판의 파생판으로서의 존재 이유(대조 실험 '전' 소스 외) 사용자 확인 필요 -->
-          <div class="tabpanel" role="tabpanel" id="panel-nodial" aria-labelledby="tab-nodial" tabindex="0" hidden>
-            <div class="panel-grid">
-              <div class="media-ph r169" data-media="무대사판.mp4">
-                <div class="ph-icon"></div>
-                <div class="ph-label">Video Placeholder</div>
-                <p class="ph-desc">무대사판 — 음성 제거본</p>
-              </div>
-              <div class="panel-text">
-                <p class="panel-why">대사 트랙을 제거한 판이자, 문체가 연기 톤을 만든다는 대조 실험의 “전” 소스다.</p>
-                <p class="panel-basis">
-                  자산 목록에서 이 판은 파생판이면서 동시에 그 사례의 비교 기준으로 지정돼 있다.
-                  음성이 지워졌는지는 레벨 측정으로 판정하지 않았다 — 완성본과 +15~18dB 증폭본을 전사해 대사 어휘 0을 증명하고,
-                  같은 harness가 원본에서는 대사를 검출한다는 양성 대조를 함께 뒀다(규율 16).
-                  뮤트 자리에는 디지털 무음을 쓰지 않고 같은 씬의 무대사 룸톤을 레벨·대역을 맞춰 채웠다(규율 17).
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 

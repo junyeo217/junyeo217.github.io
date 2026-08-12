@@ -4,16 +4,6 @@
    --ink-12 / --ease)만 사용한다. 새 색·새 이징 도입 없음.
    ============================================================ */
 
-/* 스크린리더 전용 (main.css에 없어 여기서 정의) */
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap; border: 0;
-}
-
 /* ---- 섹션 공통 헤더 ---- */
 .sec-title { margin-top: 16px; }
 .sec-lead { margin-top: 20px; max-width: 68ch; }
@@ -23,7 +13,14 @@
    ============================================================ */
 .film-player { margin-top: 20px; }
 
-.film-hint {
+.film-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border-radius: 2px;
+}
+
+.film-caption {
   margin-top: 12px;
   font-family: var(--font-label);
   font-size: 10.5px;
@@ -58,7 +55,248 @@
 }
 
 /* ============================================================
-   2. 로그라인 + 시놉시스
+   2. 핵심 대조 — S04C 한 씬의 재제작
+   ============================================================ */
+
+/* ---- 2-1. 대상 씬 + 대사 ---- */
+.rb-scene {
+  margin-top: clamp(30px, 3.6vw, 52px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+}
+.rb-key { color: var(--accent); }
+.rb-scene-desc {
+  margin-top: 14px;
+  max-width: 46ch;
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.75;
+  letter-spacing: -.005em;
+}
+.rb-scene-why {
+  margin-top: 16px;
+  max-width: 50ch;
+  font-size: clamp(13px, 1vw, 14.5px);
+  line-height: 1.85;
+  color: var(--ink-66);
+}
+.rb-scene-why strong { color: var(--ink); font-weight: 600; }
+
+.rb-dialog {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.rb-dialog th,
+.rb-dialog td {
+  vertical-align: top;
+  text-align: left;
+  font-weight: 400;
+  padding: 12px 0;
+  border-top: 1px solid var(--ink-12);
+}
+.rb-dialog thead th {
+  padding-top: 0;
+  padding-bottom: 10px;
+  border-top: 0;
+}
+.rb-dialog tbody tr:last-child th,
+.rb-dialog tbody tr:last-child td { border-bottom: 1px solid var(--ink-12); }
+.rb-spk {
+  width: 64px;
+  padding-right: 20px !important;
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  color: var(--accent);
+  line-height: 2.2;
+}
+.rb-dialog td {
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.75;
+}
+
+/* ---- 2-2. 전 / 후 나란히 ---- */
+.ab-grid {
+  margin-top: clamp(34px, 4.4vw, 64px);
+  max-width: 1240px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 3.2vw, 40px);
+  align-items: start;
+}
+.ab-item { margin: 0; }
+.ab-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border-radius: 2px;
+}
+.ab-cap {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+.ab-tag { color: var(--ink); }
+.ab-meta {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  color: var(--ink-44);
+}
+.ab-note {
+  flex-basis: 100%;
+  margin-top: 2px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink-66);
+}
+
+/* ---- 2-3. 네 항목 ---- */
+.rb-subtitle {
+  margin-top: clamp(48px, 6vw, 88px);
+  padding-bottom: clamp(14px, 1.6vw, 20px);
+  border-bottom: 1px solid var(--ink-12);
+}
+
+.change-list {
+  list-style: none;
+  counter-reset: none;
+}
+.change {
+  padding: clamp(24px, 2.8vw, 38px) 0;
+  border-bottom: 1px solid var(--ink-12);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
+  gap: clamp(20px, 3vw, 56px);
+  align-items: start;
+}
+.change-head {
+  font-size: clamp(16px, 1.35vw, 20px);
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: -.01em;
+  max-width: 26ch;
+}
+.change-idx {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: var(--accent);
+}
+.change-body {
+  max-width: 74ch;
+  font-size: clamp(13px, 1vw, 14.5px);
+  line-height: 1.85;
+  color: var(--ink-66);
+}
+.change-body p + p { margin-top: 14px; }
+.change-body strong { color: var(--ink); font-weight: 600; }
+
+.change-ex {
+  margin-top: 18px !important;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
+}
+.ex-before,
+.ex-after { display: block; color: var(--ink); }
+.ex-before { color: var(--ink-44); text-decoration: line-through; text-decoration-thickness: 1px; }
+.ex-arrow { display: block; color: var(--accent); line-height: 1.4; }
+.ex-reason { display: block; margin-top: 6px; }
+
+/* ---- 실측 표 (프롬프트 A/B · 결과) ---- */
+.rb-table {
+  width: 100%;
+  max-width: 780px;
+  margin: 20px 0 4px;
+  border-collapse: collapse;
+  text-align: left;
+}
+.rb-table th,
+.rb-table td {
+  vertical-align: top;
+  text-align: left;
+  font-weight: 400;
+  padding: 12px 16px 12px 0;
+  border-top: 1px solid var(--ink-12);
+}
+.rb-table thead th {
+  padding-top: 0;
+  padding-bottom: 10px;
+  border-top: 0;
+}
+.rb-table tbody th { color: var(--ink); }
+.rb-table tbody tr:last-child th,
+.rb-table tbody tr:last-child td { border-bottom: 1px solid var(--ink-12); }
+.rb-table td:last-child,
+.rb-table th:last-child { padding-right: 0; }
+.rb-hl { color: var(--accent); font-weight: 600; }
+.rb-sub {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--ink-44);
+}
+.rb-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .92em;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-12);
+}
+
+.rb-table-kv {
+  margin-top: clamp(20px, 2.4vw, 30px);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.75;
+}
+.rb-table-kv tbody th { width: 30%; min-width: 120px; font-weight: 600; }
+.rb-table-kv tbody td { color: var(--ink-66); }
+
+/* ---- 남은 한계 ---- */
+.limit-list {
+  margin-top: clamp(20px, 2.4vw, 30px);
+  list-style: none;
+  max-width: 72ch;
+}
+.limit-list li {
+  position: relative;
+  padding: 12px 0 12px 22px;
+  border-bottom: 1px solid var(--ink-12);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.8;
+  color: var(--ink-66);
+}
+.limit-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 22px;
+  width: 8px; height: 1px;
+  background: var(--accent);
+}
+
+.rb-links {
+  margin-top: clamp(28px, 3.2vw, 44px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+}
+
+@media (max-width: 900px) {
+  .rb-scene { grid-template-columns: 1fr; gap: 30px; }
+  .change { grid-template-columns: 1fr; gap: 14px; }
+  .change-head { max-width: none; }
+}
+@media (max-width: 767px) {
+  .ab-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* ============================================================
+   3. 로그라인 + 시놉시스
    ============================================================ */
 .film-story {
   margin-top: clamp(24px, 3vw, 40px);
@@ -79,7 +317,7 @@
 }
 
 /* ============================================================
-   3. 공정별 역할 명세 (표 → 767px 이하 카드 스택)
+   4. 공정별 역할 명세 (표 → 767px 이하 카드 스택)
    ============================================================ */
 .role-table {
   width: 100%;
@@ -171,79 +409,21 @@
 }
 
 /* ============================================================
-   4. 파생판 탭
+   5. 파생판 텍스트 블록
    ============================================================ */
-.film-tabs { margin-top: clamp(26px, 3.2vw, 44px); }
-
-.tablist {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(22px, 3vw, 44px);
-  border-bottom: 1px solid var(--ink-12);
-}
-.tab {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 10px;
-  padding: 0 0 14px;
-  margin-bottom: -1px;
-  font-size: clamp(15px, 1.2vw, 17px);
-  font-weight: 600;
-  letter-spacing: -.01em;
-  color: var(--ink-44);
-  border-bottom: 1px solid transparent;
-  transition: color .5s var(--ease), border-color .5s var(--ease);
-}
-.tab:hover { color: var(--ink); }
-.tab[aria-selected="true"] {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
-}
-.tab-idx {
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: .18em;
-  color: var(--ink-44);
-  transition: color .5s var(--ease);
-}
-.tab[aria-selected="true"] .tab-idx { color: var(--accent); }
-
-.tabpanel { padding-top: clamp(26px, 3.2vw, 44px); }
-.tabpanel[hidden] { display: none; }
-.tabpanel:focus-visible,
-.tab:focus-visible {
-  outline: 1px solid var(--accent);
-  outline-offset: 6px;
-}
-
-.panel-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  gap: clamp(24px, 3.4vw, 56px);
-  align-items: start;
-}
-.panel-why {
-  font-size: clamp(16px, 1.35vw, 20px);
-  font-weight: 600;
-  line-height: 1.6;
-  letter-spacing: -.01em;
-}
-.panel-basis {
-  margin-top: 14px;
-  font-size: clamp(13px, 1vw, 14.5px);
-  line-height: 1.85;
+.film-derived {
+  margin-top: clamp(20px, 2.4vw, 30px);
+  max-width: 70ch;
   color: var(--ink-66);
 }
+
+/* ---- 인라인 링크 ---- */
 .inline-link {
   display: inline-block;
-  margin-top: 10px;
   color: var(--ink);
   border-bottom: 1px solid var(--ink-12);
   padding-bottom: 1px;
+  font-size: clamp(13px, 1vw, 15px);
   transition: border-color .5s var(--ease);
 }
 .inline-link:hover { border-bottom-color: var(--ink); }
-
-@media (max-width: 900px) {
-  .panel-grid { grid-template-columns: 1fr; }
-}
