@@ -1,0 +1,319 @@
+/* ============================================================
+   /rules — 실패 → 규율 갤러리
+   main.css의 토큰만 사용 (paper / ink / accent / ink-66,44,12 / ease)
+   ============================================================ */
+
+/* ---------- 1. 인트로 ---------- */
+.rules-intro .rules-lede {
+  margin-top: 18px;
+  max-width: 16ch;
+}
+.rules-intro .rules-sub {
+  margin-top: clamp(24px, 3vw, 36px);
+  max-width: 68ch;
+  color: var(--ink-66);
+}
+.rules-sub .mark {
+  color: var(--ink);
+  white-space: nowrap;
+}
+.src-name {
+  font-family: var(--font-label);
+  font-size: .86em;
+  letter-spacing: .04em;
+  color: var(--accent);
+}
+
+.rules-meta {
+  margin-top: clamp(36px, 5vw, 60px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  border-top: 1px solid var(--ink-12);
+  border-bottom: 1px solid var(--ink-12);
+}
+.rm-item {
+  padding: 22px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rm-val {
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.rules-index {
+  margin-top: clamp(36px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(20px, 4vw, 64px);
+}
+.ri-item {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ink-12);
+  transition: color .4s var(--ease);
+}
+.ri-item:hover { color: var(--accent); }
+.ri-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--ink-44);
+}
+.ri-item:hover .ri-num { color: var(--accent); }
+.ri-t { font-size: 15px; line-height: 1.5; }
+
+/* ---------- 2. 규율 카드 ---------- */
+.rule-card + .rule-card { margin-top: clamp(72px, 10vw, 148px); }
+
+.rc-head {
+  display: grid;
+  grid-template-columns: clamp(64px, 8vw, 116px) minmax(0, 1fr);
+  gap: clamp(12px, 2vw, 28px);
+  align-items: start;
+  padding-bottom: clamp(20px, 2.5vw, 32px);
+}
+.rc-num {
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink-12);
+  letter-spacing: -.02em;
+}
+.rc-headtext .tag { margin-bottom: 14px; }
+.rc-title { max-width: 22ch; }
+.rc-lede {
+  margin-top: 16px;
+  max-width: 62ch;
+}
+
+/* 4단 서식 */
+.rc-step {
+  display: grid;
+  grid-template-columns: clamp(140px, 16vw, 200px) minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 48px);
+  padding: clamp(24px, 3vw, 40px) 0;
+  border-top: 1px solid var(--ink-12);
+}
+.rc-key {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: sticky;
+  top: 88px;
+  align-self: start;
+}
+.rc-mark {
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1;
+  color: var(--accent);
+}
+.rc-body > * + * { margin-top: 18px; }
+.rc-body p { max-width: 66ch; }
+.rc-body strong { font-weight: 600; }
+.rc-cap {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--ink-66);
+}
+.rc-btn { margin-top: 24px; }
+
+.ba {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.arrow { color: var(--ink-44); padding: 0 2px; }
+
+/* 프롬프트·명령 인용 */
+.prompt {
+  font-family: var(--font-label);
+  font-size: .92em;
+  letter-spacing: .01em;
+  background: var(--ink-12);
+  padding: 2px 7px;
+  border-radius: 2px;
+  word-break: break-word;
+}
+.filename {
+  font-family: var(--font-label);
+  font-size: .9em;
+  letter-spacing: .02em;
+  color: var(--ink-44);
+}
+
+.conflict { list-style: none; display: grid; gap: 10px; }
+.conflict li {
+  display: grid;
+  grid-template-columns: clamp(80px, 10vw, 116px) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ink-12);
+}
+
+/* 실측 표 */
+.table-wrap { overflow-x: auto; }
+.metric-table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+.metric-table th {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-44);
+  text-align: left;
+  padding: 0 16px 10px 0;
+  border-bottom: 1px solid var(--ink-12);
+  white-space: nowrap;
+}
+.metric-table td {
+  padding: 13px 16px 13px 0;
+  border-bottom: 1px solid var(--ink-12);
+  vertical-align: baseline;
+}
+.metric-table td.hi { color: var(--accent); font-weight: 600; }
+
+/* 부수 발견 박스 */
+.note-box {
+  border: 1px solid var(--ink-12);
+  padding: clamp(18px, 2vw, 26px);
+}
+.note-box .label { margin-bottom: 10px; color: var(--accent); }
+.note-box p { font-size: 15px; line-height: 1.8; color: var(--ink-66); }
+
+/* 규율 원문 인용 */
+.rule-quote {
+  border-left: 2px solid var(--accent);
+  padding: 2px 0 2px clamp(16px, 2vw, 24px);
+}
+.rule-quote + .rule-quote { margin-top: 20px; }
+.rule-quote p {
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.75;
+}
+.rule-quote .rq-src { margin-top: 12px; }
+
+/* 카드 04 — 대사 before/after */
+.media-split {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+.ph-narrow { max-width: 260px; }
+.dialog-ab { display: grid; gap: 14px; }
+.da-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ink-12);
+}
+.da-cell .label { display: block; margin-bottom: 6px; }
+.da-cell p { font-size: 15px; line-height: 1.7; color: var(--ink-44); }
+.da-cell.after p { color: var(--ink); }
+.da-cell.after .label { color: var(--accent); }
+
+/* 오디오용 얇은 가로 바 플레이스홀더 (main.css .media-ph 변형) */
+.media-ph.bar {
+  aspect-ratio: auto;
+  min-height: 96px;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 18px;
+  padding: 18px clamp(18px, 2.5vw, 28px);
+}
+.media-ph.bar .ph-icon { width: 36px; height: 36px; flex: 0 0 36px; }
+.media-ph.bar .ph-icon::after { border-width: 6px 0 6px 10px; margin-left: 2px; }
+.media-ph.bar .ph-body { text-align: left; }
+.media-ph.bar .ph-desc { text-align: left; padding: 4px 0 0; }
+
+/* ---------- 3. 재사용 Top 10 ---------- */
+.rules-steady .steady-title { margin-top: 16px; }
+.rules-steady .steady-sub {
+  margin-top: 20px;
+  max-width: 66ch;
+}
+.steady {
+  margin-top: clamp(32px, 4vw, 52px);
+  list-style: none;
+  border-top: 1px solid var(--ink-12);
+}
+.st-item {
+  display: grid;
+  grid-template-columns: clamp(52px, 6vw, 84px) minmax(0, 1fr);
+  gap: clamp(12px, 2vw, 24px);
+  padding: clamp(18px, 2vw, 26px) 0;
+  border-bottom: 1px solid var(--ink-12);
+}
+.st-num {
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 700;
+  color: var(--ink-12);
+  line-height: 1.5;
+}
+.st-text {
+  font-size: clamp(15px, 1.2vw, 17.5px);
+  line-height: 1.75;
+  max-width: 70ch;
+}
+.st-src { margin-top: 10px; }
+
+/* ---------- 4. 전체 38개 안내 ---------- */
+.repo-inner { text-align: center; }
+.repo-title { margin-top: 16px; }
+.repo-sub {
+  margin: 20px auto 0;
+  max-width: 58ch;
+}
+.repo-btn { margin-top: 32px; }
+.repo-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--ink-44);
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 1023px) {
+  .rules-index { grid-template-columns: minmax(0, 1fr); }
+  .media-split { grid-template-columns: minmax(0, 1fr); }
+  .ph-narrow { max-width: 220px; }
+}
+
+@media (max-width: 767px) {
+  .rules-intro .rules-lede { max-width: none; }
+  .rules-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rm-item { padding: 18px 0; }
+  .rm-item:nth-child(-n+2) { border-bottom: 1px solid var(--ink-12); }
+
+  .rc-head { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .rc-title { max-width: none; }
+
+  .rc-step { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .rc-key {
+    position: static;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .rc-mark { font-size: 20px; }
+
+  .conflict li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .da-row { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .st-item { grid-template-columns: 40px minmax(0, 1fr); }
+}

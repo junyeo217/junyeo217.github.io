@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rules — 실패에서 나온 제작 규율 38개 — AI Filmmaker Portfolio</title>
+  <meta name="description" content="사고 → 원인 규명 → 규율. 단편 「너가 힘들지 않았으면 해」 제작 중 실제로 겪은 실패 8건을 실측 근거와 함께 공개하고, 거기서 나온 제작 규율 38개 중 재사용 Top 10을 정리했다.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/rules.css">
+</head>
+<body data-page="rules">
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-wordmark" href="/">○○○</a>
+      <ul class="nav-links">
+        <li><a data-nav="film" href="/film/">Film</a></li>
+        <li><a data-nav="process" href="/process/">Process</a></li>
+        <li><a data-nav="rules" href="/rules/">Rules</a></li>
+        <li><a data-nav="experiment" href="/experiment/">Experiment</a></li>
+        <li><a data-nav="log" href="/log/">Log</a></li>
+        <li><a data-nav="about" href="/about/">About</a></li>
+      </ul>
+      <div class="nav-lang"><span class="on">KR</span><span class="off">|</span><span class="off">EN</span></div>
+      <button class="nav-burger" aria-label="메뉴" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu">
+    <a data-nav="film" href="/film/">Film</a>
+    <a data-nav="process" href="/process/">Process</a>
+    <a data-nav="rules" href="/rules/">Rules</a>
+    <a data-nav="experiment" href="/experiment/">Experiment</a>
+    <a data-nav="log" href="/log/">Log</a>
+    <a data-nav="about" href="/about/">About</a>
+  </nav>
+
+  <main>
+
+    <!-- ============ 1. 인트로 ============ -->
+    <section class="section rules-intro">
+      <div class="container">
+        <p class="label" data-reveal>Rules · 실패 → 규율 갤러리</p>
+
+        <h1 class="h-display rules-lede" data-reveal data-delay="80">
+          규율 38개.<br>선언이 먼저 온 것은<br>하나도 없다.
+        </h1>
+
+        <p class="body-lg rules-sub" data-reveal data-delay="160">
+          전부 사고 뒤에 붙었다. 아래 여덟 장은 그중 근거가 가장 두꺼운 사고들이다.
+          각 카드는 같은 서식으로 읽힌다 — <span class="mark">① 실패한 출력</span> ·
+          <span class="mark">② 원인 규명</span> · <span class="mark">③ 도출한 규율</span> ·
+          <span class="mark">④ 적용 후 출력</span>.
+          규율 문장은 <span class="src-name">PRODUCTION_RULES v1</span> 원문 그대로 인용했고,
+          수치는 전부 제작 중 실측값이다.
+        </p>
+
+        <div class="rules-meta" data-reveal data-delay="220">
+          <div class="rm-item"><span class="num rm-val">1편 · 3:14</span><span class="label">단편</span></div>
+          <div class="rm-item"><span class="num rm-val">18일</span><span class="label">완주</span></div>
+          <div class="rm-item"><span class="num rm-val">334건</span><span class="label">작업 로그</span></div>
+          <div class="rm-item"><span class="num rm-val">38개</span><span class="label">제작 규율</span></div>
+        </div>
+
+        <nav class="rules-index" aria-label="대표 규율 목록" data-reveal data-delay="280">
+          <a class="ri-item" href="#rule-01"><span class="num ri-num">01</span><span class="ri-t">한 문장 안의 모순된 지시가 톤 점프를 만든다</span></a>
+          <a class="ri-item" href="#rule-02"><span class="num ri-num">02</span><span class="ri-t">불가능한 조명은 무시되지 않고 임의로 대체된다</span></a>
+          <a class="ri-item" href="#rule-03"><span class="num ri-num">03</span><span class="ri-t">카메라는 시점이 아니라 물리적 자리다</span></a>
+          <a class="ri-item" href="#rule-04"><span class="num ri-num">04</span><span class="ri-t">대사 문체가 연기 톤을 만든다</span></a>
+          <a class="ri-item" href="#rule-05"><span class="num ri-num">05</span><span class="ri-t">트림과 필터를 함께 쓰면 시킹 위치가 결과를 바꾼다</span></a>
+          <a class="ri-item" href="#rule-06"><span class="num ri-num">06</span><span class="ri-t">최종본은 스트림 카피 concat으로 만들지 않는다</span></a>
+          <a class="ri-item" href="#rule-07"><span class="num ri-num">07</span><span class="ri-t">저레벨 소스의 증폭은 노이즈의 증폭이다</span></a>
+          <a class="ri-item" href="#rule-08"><span class="num ri-num">08</span><span class="ri-t">작은 한글은 후반 패치가 아니라 설계로 푼다</span></a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============ 2. 대표 규율 카드 8 ============ -->
+    <section class="section rules-cards">
+      <div class="container">
+
+        <!-- ── 카드 01 ── -->
+        <article class="rule-card" id="rule-01">
+          <header class="rc-head" data-reveal>
+            <span class="num rc-num">01</span>
+            <div class="rc-headtext">
+              <span class="tag">이미지 · 영상 생성</span>
+              <h2 class="h-section rc-title">한 문장 안의 모순된 지시가 톤 점프를 만든다</h2>
+              <p class="body-lg rc-lede muted">
+                자체 템플릿 문법과 외부 배포 스킬 문법 중 어느 쪽이 나은지 감으로 정할 수 없어,
+                같은 씬을 두 문법으로 각각 생성해 붙였다.
+              </p>
+            </div>
+          </header>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">①</span><span class="label">실패한 출력</span></div>
+            <div class="rc-body">
+              <div class="media-ph r169" data-media="S03_methodA_template_v2.mp4">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">A판 · 자체 템플릿 문법 · S03 · 톤 점프 Δ24.4</p>
+              </div>
+              <p class="rc-cap">앞 샷이 낮처럼 밝다가 뒤 샷에서 갑자기 밤이 된다. 두 샷은 같은 씬, 같은 시간대다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
+            <div class="rc-body">
+              <p>샷 간 평균 휘도 차이(톤 점프)를 프레임 단위로 실측했다.</p>
+              <div class="table-wrap">
+                <table class="metric-table">
+                  <thead>
+                    <tr><th>판</th><th>SHOT 1</th><th>SHOT 2</th><th>톤 점프</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>A · 자체 템플릿</td><td class="num">Y≈64</td><td class="num">Y≈39.7</td><td class="num hi">Δ24.4</td></tr>
+                    <tr><td>B · 스킬 문법</td><td class="num">Y≈51</td><td class="num">Y≈38</td><td class="num hi">Δ12</td></tr>
+                    <tr><td>B + 광원 기하 검산</td><td class="num">Y≈45</td><td class="num">Y≈38.5</td><td class="num hi">Δ6.5</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>원인은 프롬프트 안의 모순된 지시였다. 한 문장 안에 다음 둘이 함께 있었다.</p>
+              <ul class="conflict">
+                <li><span class="label">외부 문법</span><code class="prompt">lifted milky blacks, low contrast</code></li>
+                <li><span class="label">자체 규율</span><code class="prompt">dense blacks with no milky haze</code></li>
+              </ul>
+              <div class="note-box">
+                <p class="label">부수 발견 — 프롬프트 혼입</p>
+                <p>비교 도중 프롬프트가 섞여 들어간 사고가 있었다. 생성 로그에서 실제 전송된 문자열을 대조해
+                  <span class="num">7,062자 + 3,700자 = 10,811자</span>로 정확히 합산되는 것을 확인하고 잡아냈다.
+                  결과물만 보고 판단했으면 잘못된 결론을 냈을 사고다. 이후 생성마다 전송된 프롬프트를 대조하는 절차를 넣었다.
+                  (혼입본: <span class="filename">S03_methodB_skill_v1.mp4</span>)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
+            <div class="rc-body">
+              <blockquote class="rule-quote">
+                <p>멀티샷 타임스탬프 활용: Seedance 2.5는 <code class="prompt">[00:00-00:03.5]</code> 대괄호 타임스탬프가 하드컷 지시로 작동 — 한 생성에 여러 비트를 배치할 수 있다. 고정 기술 블록(카메라·렌즈·스톡)으로 샷 간 룩을 잠근다.</p>
+                <p class="label rq-src">규율 8 · 이미지·영상 생성</p>
+              </blockquote>
+              <blockquote class="rule-quote">
+                <p>외부 지적은 재현 실험으로 검증한다. 변수 하나만 바꾼 대조 생성(문어체 vs 구어체)이 논쟁보다 싸고 빠르다.</p>
+                <p class="label rq-src">규율 34 · 협업·프로세스</p>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
+            <div class="rc-body">
+              <div class="media-ph r169" data-media="S03_methodB_skill_v2_pure.mp4">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">B판 · 스킬 문법 단독 · S03 · 톤 점프 Δ12</p>
+              </div>
+              <p class="rc-cap">
+                <span class="ba">before</span> Δ24.4 <span class="arrow">→</span>
+                <span class="ba">after</span> Δ12. 모순 지시를 제거하는 것만으로 절반이 줄었고,
+                남은 절반은 광원 기하 검산(카드 02)에서 Δ6.5까지 내려갔다.
+                채택 근거는 취향이 아니라 이 세 줄의 실측치다.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 카드 02 ── -->
+        <article class="rule-card" id="rule-02">
+          <header class="rc-head" data-reveal>
+            <span class="num rc-num">02</span>
+            <div class="rc-headtext">
+              <span class="tag">이미지 · 영상 생성</span>
+              <h2 class="h-section rc-title">불가능한 조명은 무시되지 않고 임의로 대체된다</h2>
+              <p class="body-lg rc-lede muted">
+                밤 씬인데 인물의 얼굴만 과하게 밝게 나왔다. 프롬프트에는 “모니터가 유일한 광원”이라고 분명히 적혀 있었다.
+              </p>
+            </div>
+          </header>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">①</span><span class="label">실패한 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: 밤 씬 얼굴 과노출 원본 클립 파일명 미확인 — 드라이브 아카이브에서 회수 후 data-media 기입 -->
+              <div class="media-ph r169" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">밤 씬 · 얼굴 과노출 판 (아카이브 회수 필요)</p>
+              </div>
+              <p class="rc-cap">지시된 광원은 하나뿐인데, 화면의 얼굴은 그 광원으로 설명되지 않는 밝기였다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
+            <div class="rc-body">
+              <p>지시를 무시한 게 아니었다. 그 컷은 <strong>카메라가 상자 바닥에 있고 인물이 위에서 내려다보는</strong> 구도였는데,
+                모니터는 상자 옆 벽 너머에 있어 <strong>아래를 향한 얼굴에는 물리적으로 닿을 수 없었다</strong>.
+                모델은 인물을 보여줘야 하니 없는 광원을 만들어냈다.</p>
+              <p>즉 이건 순응도 문제가 아니라 기하 문제였다. 광원 위치·인물이 향한 면·카메라 위치 셋을 종이에서 먼저 맞춰보면
+                생성 전에 판정된다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
+            <div class="rc-body">
+              <blockquote class="rule-quote">
+                <p>지정한 광원이 인물의 카메라 쪽 면에 닿는지 먼저 검산한다.</p>
+                <p class="label rq-src">개선 사례 3 · 규율화 문안 (번호 미부여 — 승격 대기)</p>
+              </blockquote>
+              <p class="rc-cap">번호가 없는 이유도 규율이다 — 교훈은 사고 직후 로그에 적고, 재사용 가치가 확정된 뒤에 규율 문서로 승격한다(규율 35).
+                이 문장은 아직 사례 문서에만 있다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
+            <div class="rc-body">
+              <div class="media-ph r169" data-media="S04C_CD_v1.mp4">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">S04C · 광원 기하 검산 후 · 톤 점프 Δ6.5</p>
+              </div>
+              <p class="rc-cap">
+                인물이 서 있고 모니터가 책상 위에 있어 빛이 아래에서 올라오는 게 물리적으로 맞는 구도로 바꿨다.
+                <span class="ba">after</span> 톤 점프 Δ6.5, 얼굴 노출 정상, 이후 컷에서 재발 없음.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 카드 03 ── -->
+        <article class="rule-card" id="rule-03">
+          <header class="rc-head" data-reveal>
+            <span class="num rc-num">03</span>
+            <div class="rc-headtext">
+              <span class="tag">이미지 · 영상 생성</span>
+              <h2 class="h-section rc-title">카메라는 시점이 아니라 물리적 자리다</h2>
+              <p class="body-lg rc-lede muted">
+                상자 안에서 올려다보는 구도를 요청했는데, 모델은 상자를 바깥에서 바라보는 구도로 해석했다.
+              </p>
+            </div>
+          </header>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">①</span><span class="label">실패한 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: worm's-eye 오해석본 파일명 미확인 — 드라이브 아카이브에서 회수 후 data-media 기입 -->
+              <div class="media-ph r169" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">상자 외부 구도로 해석된 판 (아카이브 회수 필요)</p>
+              </div>
+              <ul class="conflict">
+                <li><span class="label">보낸 지시</span><code class="prompt">Worm's-eye view from inside the open box</code></li>
+              </ul>
+              <p class="rc-cap">상자 형태와 내부가 통째로 화면에 보였다. 의도한 건 상자 안에 들어가 있는 카메라였다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
+            <div class="rc-body">
+              <p>“어디서 보는지”만 쓰고 <strong>“카메라가 물리적으로 어디에 놓여 있는지”</strong>를 쓰지 않았다.
+                시점 명사(<code class="prompt">worm's-eye view</code>)는 렌즈의 좌표를 지정하지 않는다 —
+                모델은 그 이름이 붙은 익숙한 화면을 그린다.</p>
+              <p>덧붙여, 카메라가 사물 안에 있다는 사실만으로는 “그 사물이 화면에 보이지 않는다”가 따라오지 않는다.
+                그 배제 조건도 문장으로 써야 한다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
+            <div class="rc-body">
+              <blockquote class="rule-quote">
+                <p>카메라가 사물 안에 있으면 그 사물이 화면에 보이지 않는다는 것까지 명시한다.</p>
+                <p class="label rq-src">개선 사례 4 · 규율화 문안 (번호 미부여 — 승격 대기)</p>
+              </blockquote>
+              <p class="rc-cap">교체한 프롬프트는 다음과 같다.</p>
+              <ul class="conflict">
+                <li><span class="label">교체 · 위치</span><code class="prompt">The camera is lying flat on the bottom of the open box, lens pointing straight up</code></li>
+                <li><span class="label">교체 · 배제</span><code class="prompt">The box itself is never seen from outside</code></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: 교체 프롬프트 적용본 파일명 미확인 — 드라이브 아카이브 회수 후 data-media 기입 -->
+              <div class="media-ph r169" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">교체 프롬프트 적용본 (아카이브 회수 필요)</p>
+              </div>
+              <p class="rc-cap">
+                <span class="ba">before</span> 상자를 바깥에서 본 구도 <span class="arrow">→</span>
+                <span class="ba">after</span> 의도한 구도. 바꾼 것은 렌더 설정이 아니라 문장 두 줄이었다.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 카드 04 ── -->
+        <article class="rule-card" id="rule-04">
+          <header class="rc-head" data-reveal>
+            <span class="num rc-num">04</span>
+            <div class="rc-headtext">
+              <span class="tag">기획 · 시나리오</span>
+              <h2 class="h-section rc-title">대사 문체가 연기 톤을 만든다</h2>
+              <p class="body-lg rc-lede muted">
+                완성본을 본 외부 지적은 “대사 톤이 아쉽다, 차라리 자막 처리가 낫겠다”였다.
+                원인을 배우(AI) 연기로만 보면 손댈 데가 없다.
+              </p>
+            </div>
+          </header>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">①</span><span class="label">실패한 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: 문어체 판 오디오/멀티샷 — 드라이브 아카이브에서 회수 필요(WEB_HANDOFF §5 회수 목록) -->
+              <div class="media-ph bar" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-body">
+                  <div class="ph-label">Audio Placeholder</div>
+                  <p class="ph-desc">문어체 대본 낭독본 · 대조 실험 A (아카이브 회수 필요)</p>
+                </div>
+              </div>
+              <p class="rc-cap">글로는 읽히지만 입으로는 나오지 않는 문장이 낭독조 그대로 재생된다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
+            <div class="rc-body">
+              <p>대본을 다시 읽으니 문어체였다. “그건 그때의 내가 판단할 일이야”, “아플 때 도망가지 않는 게 더 중요할 때도 있어” —
+                글로는 읽히지만 입으로는 나오지 않는 문장이다.
+                <strong>ASR이 5회 모두 “그때의 내가”를 “그때 내가”로 들은 것</strong>이 방증이었다.</p>
+              <p>검증은 논쟁 대신 대조 생성으로 했다. 목소리·모델·파라미터를 전부 고정하고 <strong>대사 문체만</strong> 바꿔 뽑았다.
+                변수는 하나였다.</p>
+              <div class="table-wrap">
+                <table class="metric-table">
+                  <thead><tr><th>전체 대사 재검토 결과</th><th>수</th></tr></thead>
+                  <tbody>
+                    <tr><td>전체 대사</td><td class="num">38</td></tr>
+                    <tr><td>개정</td><td class="num hi">20</td></tr>
+                    <tr><td>유지</td><td class="num">18</td></tr>
+                    <tr><td>복원 (최종본 누락분)</td><td class="num">2</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>유지가 18개인 게 중요하다 — 문어체 전체가 문제가 아니라 <strong>감정 정점 직전의 긴 문장만</strong> 문제였다.
+                짧은 대사(“안 괜찮아”, “나도”, “숨기지 마”)는 처음부터 옳았다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
+            <div class="rc-body">
+              <blockquote class="rule-quote">
+                <p>대사는 구어체로 쓴다. 문법적으로 완결된 문어체 대사는 사람이 말해도 딱딱하고, AI 음성은 그대로 낭독조로 읽는다.
+                  주어 생략·조사 탈락·문장 조각화·앞 절 생략 후 대명사 수용(“…그게 왜 날 위하는 건데?”)을 쓴다.
+                  <strong>대사 확정 전 TTS로 한 번 낭독시켜 검사한다</strong>(문어체는 즉시 드러남, 비용 미미).
+                  검수 항목은 “의미가 전달되는가”가 아니라 <strong>“입에 붙는가”</strong>.</p>
+                <p class="label rq-src">규율 2 · 기획·시나리오</p>
+              </blockquote>
+              <p class="rc-cap">TTS 낭독은 취향 토론을 대체하는 게이트다. 통과하지 못한 문장은 대본에 남지 않는다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
+            <div class="rc-body">
+              <div class="media-split">
+                <div class="ph-narrow">
+                  <div class="media-ph r916" data-media="mono_seon_night_4shot.mp4">
+                    <div class="ph-icon"></div>
+                    <div class="ph-label">Video Placeholder</div>
+                    <p class="ph-desc">감정톤 테스트 · 세로 9:16</p>
+                  </div>
+                  <!-- TODO: 남성(현) 감정톤 테스트 영상은 현재 생성 목록에서 확인되지 않음 — 별도 확인 또는 재생성 필요 -->
+                </div>
+                <div class="dialog-ab">
+                  <div class="da-row">
+                    <div class="da-cell"><span class="label">원본 · 문어체</span><p>그건 그때의 내가 판단할 일이야.</p></div>
+                    <div class="da-cell after"><span class="label">개정 · 구어체</span><p>그건… 그때 가서 내가 정해.</p></div>
+                  </div>
+                  <div class="da-row">
+                    <div class="da-cell"><span class="label">원본 · 문어체</span><p>아플 때 도망가지 않는 게 더 중요할 때도 있어.</p></div>
+                    <div class="da-cell after"><span class="label">개정 · 구어체</span><p>아파도 안 도망가는 거. / 그게 더 중요할 때도 있어.</p></div>
+                  </div>
+                  <div class="da-row">
+                    <div class="da-cell"><span class="label">원본 · 문어체</span><p>내 물건을 왜 네가 정리했어?</p></div>
+                    <div class="da-cell after"><span class="label">개정 · 구어체</span><p>내 물건은 왜?</p></div>
+                  </div>
+                  <div class="da-row">
+                    <div class="da-cell"><span class="label">유지 판정</span><p>너가 힘들지 않았으면 해.</p></div>
+                    <div class="da-cell after"><span class="label">근거</span><p>제목·시그니처. 3회 등장 구조의 축이라 구어화하면 설계가 깨진다.</p></div>
+                  </div>
+                </div>
+              </div>
+              <p class="rc-cap">
+                연기 문제의 절반은 텍스트 문제였다. 이 실험의 설계·A/B 오디오·개정 대조표 전문은 별도 페이지에 있다.
+              </p>
+              <a class="btn btn-arrow rc-btn" href="/experiment/">대조 실험 전문 보기</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 카드 05 ── -->
+        <article class="rule-card" id="rule-05">
+          <header class="rc-head" data-reveal>
+            <span class="num rc-num">05</span>
+            <div class="rc-headtext">
+              <span class="tag">ffmpeg 조립 · 편집</span>
+              <h2 class="h-section rc-title">트림과 필터를 함께 쓰면 시킹 위치가 결과를 바꾼다</h2>
+              <p class="body-lg rc-lede muted">
+                세그먼트 8개의 오디오가 통째로 사라졌다. 명령은 정상 종료했고 파일도 정상 재생됐다.
+              </p>
+            </div>
+          </header>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">①</span><span class="label">실패한 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: 조기 페이드 오디오 소거 판 파일명 미확인 — 드라이브 아카이브 회수 목록(WEB_HANDOFF §5) -->
+              <div class="media-ph bar" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-body">
+                  <div class="ph-label">Audio Placeholder</div>
+                  <p class="ph-desc">조기 페이드로 오디오가 소거된 세그먼트 (아카이브 회수 필요)</p>
+                </div>
+              </div>
+              <p class="rc-cap">8개 세그먼트에서 대사가 시작되기 전에 이미 페이드가 끝나 있었다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
+            <div class="rc-body">
+              <p>출력측 시킹(<code class="prompt">-i ... -ss</code>)을 쓰면 필터 그래프가 <strong>원본 타임라인 기준</strong>으로 작동한다.
+                페이드는 잘라낸 구간이 아니라 원본 0초 기준으로 발동하므로, 세그먼트가 시작될 때는 이미 감쇠가 끝나 있다.
+                레벨 로그만 보면 “페이드가 걸렸다”로 읽혀 정상처럼 보인다 — 그래서 8개가 누적될 때까지 발견되지 않았다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
+            <div class="rc-body">
+              <blockquote class="rule-quote">
+                <p>트림+필터 조합은 반드시 입력측 시킹(<code class="prompt">-ss ... -i</code>). 출력측 시킹은 필터가 원본 타임라인 기준으로 작동해 페이드가 조기 발동한다(8개 세그먼트 오디오 소거 사고).</p>
+                <p class="label rq-src">규율 20 · ffmpeg 조립·편집</p>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: 입력측 시킹 재조립본 파일명 미확인 — 회수 또는 재생성 후 data-media 기입 -->
+              <div class="media-ph bar" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-body">
+                  <div class="ph-label">Audio Placeholder</div>
+                  <p class="ph-desc">입력측 시킹으로 재조립한 세그먼트</p>
+                </div>
+              </div>
+              <p class="rc-cap">
+                <span class="ba">before</span> 8개 세그먼트 오디오 소거 <span class="arrow">→</span>
+                <span class="ba">after</span> 전 세그먼트 정상. 재발 방지는 명령 수정에서 끝나지 않았다 —
+                수정 후 바뀐 세그먼트만 재인코딩하되 경계 음량 스캔은 전수 재검하는 회귀 검사를 상시화했다(규율 27).
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 카드 06 ── -->
+        <article class="rule-card" id="rule-06">
+          <header class="rc-head" data-reveal>
+            <span class="num rc-num">06</span>
+            <div class="rc-headtext">
+              <span class="tag">ffmpeg 조립 · 편집</span>
+              <h2 class="h-section rc-title">최종본은 스트림 카피 concat으로 만들지 않는다</h2>
+              <p class="body-lg rc-lede muted">
+                가장 빠른 조립 방법이 가장 늦게 드러나는 결함을 만든다. 이음새마다 오디오가 겹치고 어긋남이 누적됐다.
+              </p>
+            </div>
+          </header>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">①</span><span class="label">실패한 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: 스트림 카피 concat 판(이음새 드리프트) 파일명 미확인 — 회수 또는 재현본 생성 필요 -->
+              <div class="media-ph r169" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">스트림 카피 concat 판 · 이음새 드리프트 구간</p>
+              </div>
+              <p class="rc-cap">뒤로 갈수록 입과 소리가 벌어진다. 초반 몇 이음새에서는 지각되지 않는다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
+            <div class="rc-body">
+              <p>AAC 프레임 경계와 세그먼트 경계가 어긋난다. 이음새마다 오디오가 조금씩 겹치고, 그 오차가 누적된다.
+                실측 결과 <strong class="num">37이음새에서 816ms</strong>가 밀렸다.</p>
+              <p>길이 계산을 컨테이너에서 읽은 것도 같은 계열의 오류였다 — 컨테이너 길이에는 오디오 패딩이 포함되어 있어,
+                프레임 수는 비디오 스트림 실측(<code class="prompt">-count_frames</code>)으로 세야 한다(규율 22).</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
+            <div class="rc-body">
+              <blockquote class="rule-quote">
+                <p>최종본을 스트림 카피 concat으로 만들지 않는다. AAC 프레임 경계와 세그먼트 경계가 어긋나 이음새마다 오디오가 겹치고 누적 드리프트가 생긴다(37이음새 816ms). 최종본은 <strong>전 세그먼트 디코드 → 오디오를 각 세그먼트의 비디오 프레임수/24로 트림 → PCM 도메인 concat → 단일 인코딩</strong>. 작업 중간본에만 스트림 카피 허용.</p>
+                <p class="label rq-src">규율 21 · ffmpeg 조립·편집</p>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
+            <div class="rc-body">
+              <div class="media-ph r169" data-media="FINAL_master_v2.mp4">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">본편 「너가 힘들지 않았으면 해」 3:14 · PCM 도메인 concat + 단일 인코딩</p>
+              </div>
+              <p class="rc-cap">
+                <span class="ba">before</span> 37이음새 816ms 드리프트 <span class="arrow">→</span>
+                <span class="ba">after</span> 단일 인코딩 마스터. 조립 속도를 포기하고 이음새를 얻었다.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 카드 07 ── -->
+        <article class="rule-card" id="rule-07">
+          <header class="rc-head" data-reveal>
+            <span class="num rc-num">07</span>
+            <div class="rc-headtext">
+              <span class="tag">오디오 처리</span>
+              <h2 class="h-section rc-title">저레벨 소스의 증폭은 노이즈의 증폭이다</h2>
+              <p class="body-lg rc-lede muted">
+                타건음이 작아서 정규화로 끌어올렸다. 올라온 것은 타건음이 아니라 룸톤이었다.
+              </p>
+            </div>
+          </header>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">①</span><span class="label">실패한 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: “지지직” 타건음 판(v8.1) 파일명 미확인 — 드라이브 아카이브 회수 목록(WEB_HANDOFF §5) -->
+              <div class="media-ph bar" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-body">
+                  <div class="ph-label">Audio Placeholder</div>
+                  <p class="ph-desc">타건음 증폭 판 v8.1 · “지지직” 노이즈 버스트 (아카이브 회수 필요)</p>
+                </div>
+              </div>
+              <p class="rc-cap">키보드 소리가 커진 게 아니라, 그 자리에 노이즈 버스트가 생겼다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
+            <div class="rc-body">
+              <p>증폭은 신호와 잡음을 구분하지 않는다. SNR을 먼저 실측했어야 했다 — 타건 피크와 그 전후 룸톤을 비교하면
+                증폭 가능 여부가 사전에 나온다. SNR이 낮은 소스에 <strong class="num">30dB</strong>를 걸면 결과는 노이즈 버스트다.</p>
+              <p>음량 블록만으로는 소스의 성격도 판정되지 않았다. 마찰·타건처럼 고역에 편중된 소스는
+                저역/고역 비를 보는 스펙트럼 대역 검사로 성격을 먼저 확인해야 진동음·핸들링 잡음과 구분된다.</p>
+              <div class="table-wrap">
+                <table class="metric-table">
+                  <thead><tr><th>판정 기준</th><th>값</th></tr></thead>
+                  <tbody>
+                    <tr><td>정규화 후 노이즈 플로어</td><td class="num hi">-46dBFS 이하</td></tr>
+                    <tr><td>사고 당시 증폭량</td><td class="num">30dB</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
+            <div class="rc-body">
+              <blockquote class="rule-quote">
+                <p>저레벨 소스를 정규화 증폭하지 않는다. SNR을 먼저 실측한다(타건 피크 vs 전후 룸톤). SNR 낮은 소스의 30dB 증폭 = 노이즈 버스트(“지지직” 사고). 기준: 정규화 후 노이즈 플로어 -46dBFS 이하.</p>
+                <p class="label rq-src">규율 11 · 오디오 처리</p>
+              </blockquote>
+              <blockquote class="rule-quote">
+                <p>SFX 소스는 이식 전 스펙트럼 대역 검사(저역/고역 비)로 성격을 확인한다. 음량 블록만으로는 진동/핸들링 잡음을 구분 못 한다. 고역 편중 성격(마찰·타건)은 대역 한정 SNR로 스캔한다.</p>
+                <p class="label rq-src">규율 12 · 오디오 처리</p>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: SNR 기준 통과 소스로 교체한 판 파일명 미확인 — 회수 후 data-media 기입 -->
+              <div class="media-ph bar" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-body">
+                  <div class="ph-label">Audio Placeholder</div>
+                  <p class="ph-desc">SNR 기준을 통과한 소스로 교체한 판</p>
+                </div>
+              </div>
+              <p class="rc-cap">
+                <span class="ba">before</span> 증폭으로 해결 시도 <span class="arrow">→</span>
+                <span class="ba">after</span> 소스 교체로 해결. 증폭 여부는 취향이 아니라 SNR 실측이 결정한다.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 카드 08 ── -->
+        <article class="rule-card" id="rule-08">
+          <header class="rc-head" data-reveal>
+            <span class="num rc-num">08</span>
+            <div class="rc-headtext">
+              <span class="tag">이미지 · 영상 생성</span>
+              <h2 class="h-section rc-title">작은 한글은 후반 패치가 아니라 설계로 푼다</h2>
+              <p class="body-lg rc-lede muted">
+                생성 모델이 만든 휴대폰 배너의 한글이 깨졌다. 후반에서 네 단계로 고쳤고, 네 단계 모두 “뜨는 느낌”이 남았다.
+              </p>
+            </div>
+          </header>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">①</span><span class="label">실패한 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: 배너 패치 4단 산출물 파일명 미확인 — 드라이브 아카이브 회수 목록(WEB_HANDOFF §5) -->
+              <div class="media-ph r169" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">배너 패치 4단 산출물 (아카이브 회수 필요)</p>
+              </div>
+              <p class="rc-cap">정적 합성 → 트래킹 → 프레임 단위 → 도너 소스. 네 번 다 화면에서 떠 보였다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
+            <div class="rc-body">
+              <p>문제는 패치의 정교함이 아니라 작업 영역이었다. <strong>움직이는 생성 푸티지 위의 유기적 합성</strong>은
+                트래킹과 질감 정합을 동시에 요구하는데, 이건 스크립트의 한계 영역이다.
+                반대로 정지 캔버스 위 그리기(텍스트·카드·오버레이·전환·소리)에서는 스크립트가 이긴다.
+                네 단계를 시도한 비용이 이 경계를 실측으로 알려줬다.</p>
+              <p>그래서 해법을 패치가 아니라 <strong>설계 전환</strong>에서 찾았다 —
+                작은 글자로 전달하려던 정보를 행동으로 바꾼다. “부재중 3건 표시”를 “수신 중 뒤집기”로 대체하면
+                읽어야 할 한글 자체가 사라진다.</p>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
+            <div class="rc-body">
+              <blockquote class="rule-quote">
+                <p>생성 모델에 작은 한글을 맡기지 않는다. 소형 텍스트(배너·UI)는 생성 결함이 나며, 후반 패치(정적→트래킹→프레임단위→도너 4단)로도 “뜨는 느낌”이 남는다. 근본 해법은 <strong>정보를 행동으로 대체하는 설계 전환</strong>(부재중 3건 표시 → 수신 중 뒤집기).</p>
+                <p class="label rq-src">규율 6 · 이미지·영상 생성</p>
+              </blockquote>
+              <blockquote class="rule-quote">
+                <p>움직이는 생성 푸티지 위 유기적 합성(트래킹+질감 정합)은 스크립트의 한계 영역. 정지 캔버스 위 그리기(텍스트·카드·오버레이·전환·소리)는 스크립트가 이긴다. 경계를 헷갈리지 말 것.</p>
+                <p class="label rq-src">규율 7 · 이미지·영상 생성</p>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="rc-step" data-reveal>
+            <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
+            <div class="rc-body">
+              <!-- TODO: 설계 전환본(수신 중 뒤집기) 컷 파일명 미확인 — 회수 후 data-media 기입 -->
+              <div class="media-ph r169" data-media="">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">설계 전환본 · 정보를 행동으로 대체한 컷</p>
+              </div>
+              <p class="rc-cap">
+                <span class="ba">before</span> 후반 패치 4단 <span class="arrow">→</span>
+                <span class="ba">after</span> 읽을 글자가 없는 연출. 고칠 수 없는 결함은 고치는 대신 필요 없게 만든다.
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ 3. 재사용 Top 10 ============ -->
+    <section class="section rules-steady">
+      <div class="container">
+        <p class="label" data-reveal>Steady Sellers</p>
+        <h2 class="h-section steady-title" data-reveal data-delay="80">재사용 Top 10</h2>
+        <p class="body-lg muted steady-sub" data-reveal data-delay="140">
+          38개 중 이 열 개는 도구·환경에 묶여 있지 않다. ffmpeg도 생성 모델도 없는 작업에 그대로 옮겨 쓴 것들만 골랐다.
+          문장은 <span class="src-name">PRODUCTION_RULES v1</span> 원문이며, 근거 경위 서술은 줄임표로 생략했다.
+        </p>
+
+        <ol class="steady" data-reveal data-delay="200">
+          <li class="st-item">
+            <span class="num st-num">01</span>
+            <div class="st-body">
+              <p class="st-text">계획 초는 과대추정된다. 컷 하나를 실측으로 뽑아본 뒤에 전체 물량을 확정한다.</p>
+              <p class="label st-src">규율 1 · 기획·시나리오</p>
+            </div>
+          </li>
+          <li class="st-item">
+            <span class="num st-num">02</span>
+            <div class="st-body">
+              <p class="st-text">But/Therefore 검사: 씬을 한 줄씩 나열하고 사이 접속사를 적는다. “그리고”의 나열이면 실패, “그래서/그러나”면 통과.</p>
+              <p class="label st-src">규율 3 · 기획·시나리오</p>
+            </div>
+          </li>
+          <li class="st-item">
+            <span class="num st-num">03</span>
+            <div class="st-body">
+              <p class="st-text">대조 기준은 항상 그 산출물의 직속 정본이다. … 상위 원문은 표기·문안 확인용으로만.</p>
+              <p class="label st-src">규율 28 · 검증 방법론</p>
+            </div>
+          </li>
+          <li class="st-item">
+            <span class="num st-num">04</span>
+            <div class="st-body">
+              <p class="st-text">스펙 검사는 스펙이 맞아도 생기는 결함을 못 잡는다. … 전체 실시간 시청·청취를 검증 단계에 명시적으로 넣고, 하지 않았으면 하지 않았다고 기록한다.</p>
+              <p class="label st-src">규율 29 · 검증 방법론</p>
+            </div>
+          </li>
+          <li class="st-item">
+            <span class="num st-num">05</span>
+            <div class="st-body">
+              <p class="st-text">“보존” 로직도 결함을 만든다. 지키려는 규칙이 오분류와 결합하면 적극적으로 결함을 보존한다. 보존 대상도 판정 근거를 실측으로 남길 것.</p>
+              <p class="label st-src">규율 30 · 검증 방법론</p>
+            </div>
+          </li>
+          <li class="st-item">
+            <span class="num st-num">06</span>
+            <div class="st-body">
+              <p class="st-text">부하(서브에이전트) 보고는 산출물로 재검증한다. 메인은 보고서가 아니라 프레임·파형·전사·해시를 직접 확인한 뒤 사용자에게 전달한다.</p>
+              <p class="label st-src">규율 31 · 검증 방법론</p>
+            </div>
+          </li>
+          <li class="st-item">
+            <span class="num st-num">07</span>
+            <div class="st-body">
+              <p class="st-text">되돌림을 실패로 취급하지 않는다. 확정 847 대 되돌림 403이 이 작품의 실제 비율이었다. 롤백 대비 백업(이전 판 보존, 덮어쓰기 금지)을 기본으로.</p>
+              <p class="label st-src">규율 32 · 검증 방법론</p>
+            </div>
+          </li>
+          <li class="st-item">
+            <span class="num st-num">08</span>
+            <div class="st-body">
+              <p class="st-text">“일단 가능할 수도 있어”로 접근한다. 배우기 전에/포기하기 전에 최소 비용 시험 경로를 먼저 제시하고, 불가능 판정은 시험 결과로만 내린다.</p>
+              <p class="label st-src">규율 33 · 협업·프로세스</p>
+            </div>
+          </li>
+          <li class="st-item">
+            <span class="num st-num">09</span>
+            <div class="st-body">
+              <p class="st-text">외부 지적은 재현 실험으로 검증한다. 변수 하나만 바꾼 대조 생성(문어체 vs 구어체)이 논쟁보다 싸고 빠르다.</p>
+              <p class="label st-src">규율 34 · 협업·프로세스</p>
+            </div>
+          </li>
+          <li class="st-item">
+            <span class="num st-num">10</span>
+            <div class="st-body">
+              <p class="st-text">작업 기록은 무조건 한다 — 기록의 선별은 회고가 한다. 어떤 기록이 중요해질지는 적는 시점에 알 수 없다. …</p>
+              <p class="label st-src">규율 36 · 협업·프로세스</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 4. 전체 38개 안내 ============ -->
+    <section class="section rules-repo">
+      <div class="container repo-inner">
+        <p class="label" data-reveal>Full Set</p>
+        <h2 class="h-section repo-title" data-reveal data-delay="80">전체 38개 규율</h2>
+        <p class="body-lg muted repo-sub" data-reveal data-delay="140">
+          6개 절(기획·시나리오 / 이미지·영상 생성 / 오디오 처리 / ffmpeg 조립·편집 / 검증 방법론 / 협업·프로세스)로 정리돼 있고,
+          각 항목에는 근거가 된 사고와 작업 로그 위치가 붙어 있다. 프롬프트 구조와 함께 공개 저장소로 옮기는 중이다.
+        </p>
+        <!-- TODO: 규율 공개 저장소 URL -->
+        <a class="btn btn-arrow repo-btn" href="#" data-reveal data-delay="200">전체 38개 규율 · GitHub 저장소</a>
+        <p class="repo-note muted" data-reveal data-delay="240">저장소 공개 전에는 링크가 비어 있다.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="nav-wordmark">○○○</span>
+      <small>AI Filmmaker · Pipeline Builder · © 2026</small>
+    </div>
+  </footer>
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+/* ============================================================
+   home.css — 홈 `/` 전용
+   토큰은 main.css의 변수만 사용. 예외 1건: 인트로 오버레이 배경
+   (--ink가 아니라 순수 검정에 가깝게 — 지시서 (0)항 요구)
+   ============================================================ */
+
+:root {
+  --intro-bg: #050505;   /* 인트로 오버레이 전용 — 이 페이지 밖에서는 쓰지 않는다 */
+  --intro-fg: #ffffff;
+}
+
+/* 스크린리더 전용 */
+.vh {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================================
+   (0) 타이핑 인트로 — 전체화면 오버레이
+   ============================================================ */
+
+.intro {
+  display: none;                      /* JS가 <html class="intro-on">을 켤 때만 표시 */
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--intro-bg);
+  color: var(--intro-fg);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 260ms var(--ease);
+}
+.intro-on .intro { display: flex; }
+.intro-on body { overflow: hidden; }
+.intro.is-out { opacity: 0; pointer-events: none; }
+
+.intro-line {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 4.6vw, 46px);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--pad);
+  min-height: 1.4em;
+}
+
+.intro-text {
+  position: relative;
+  display: inline-block;
+  white-space: pre;                   /* 조합 중 공백 유지 */
+}
+/* 취소선 — 좌→우로 그어진다 */
+.intro-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 54%;
+  width: 100%;
+  height: 1.5px;
+  background: var(--intro-fg);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms var(--ease);
+}
+.intro-line.is-struck .intro-text::after { transform: scaleX(1); }
+
+/* 조합 중인 음절 (IME 밑줄) */
+.intro-composing {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .18em;
+  text-decoration-color: rgba(255, 255, 255, .55);
+}
+
+.intro-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.02em;
+  margin-left: .08em;
+  background: var(--intro-fg);
+  vertical-align: -.12em;
+  animation: introBlink .78s step-end infinite;
+}
+@keyframes introBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+.intro-skip {
+  position: absolute;
+  bottom: clamp(20px, 4vh, 44px);
+  font-family: var(--font-label);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .3);
+}
+
+/* ============================================================
+   (1) 히어로
+   ============================================================ */
+
+.hero { position: relative; }
+
+/* 풀블리드 다크 영역 — 본편 하이라이트 무음 루프 자리 */
+.hero-media {
+  position: relative;
+  width: 100%;
+  height: clamp(380px, 66vh, 74vh);
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* 아주 옅은 비네트 — 미디어가 들어와도 캡션과 분리되게 */
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, .35) 100%);
+  pointer-events: none;
+}
+.hero-media-note {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(242, 241, 236, .32);
+  text-align: center;
+  padding: 0 var(--pad);
+}
+/* 인트로가 걷힌 직후 히어로 미디어가 천천히 자리를 잡는다 */
+.intro-on .hero-media-note { opacity: 0; }
+.intro-done .hero-media-note {
+  opacity: 1;
+  transition: opacity 1.2s var(--ease) .12s;
+}
+
+/* 히어로 하단 캡션 바 */
+.hero-caption {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(24px, 5vw, 80px);
+  padding-top: clamp(28px, 3.6vw, 48px);
+  padding-bottom: clamp(28px, 3.6vw, 52px);
+}
+.hero-id { flex: 1 1 auto; min-width: 0; }
+.hero-role { margin-bottom: 14px; }
+.hero-name { margin: 0; }
+
+.hero-meta {
+  flex: 0 1 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, auto));
+  gap: clamp(24px, 3.4vw, 56px);
+  margin: 0;
+}
+.hero-meta-col { min-width: 0; }
+.hero-meta dt { margin-bottom: 8px; }
+.hero-meta dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .hero-caption {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(24px, 5vw, 36px);
+  }
+  .hero-meta {
+    width: 100%;
+    padding-top: clamp(20px, 4vw, 28px);
+    border-top: 1px solid var(--ink-12);
+    gap: 20px clamp(20px, 5vw, 40px);
+  }
+}
+@media (max-width: 520px) {
+  .hero-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ============================================================
+   (2) 지표 스트립
+   ============================================================ */
+
+.section-metrics { border-top: 1px solid var(--ink-12); }
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.metric {
+  padding: 4px clamp(14px, 2.4vw, 36px);
+  border-left: 1px solid var(--ink-12);
+}
+.metric:first-child { border-left: 0; padding-left: 0; }
+
+.metric-num {
+  font-size: clamp(38px, 6vw, 76px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.03em;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.metric-unit {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.4vw, 20px);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink-44);
+}
+.metric-label {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-66);
+}
+
+@media (max-width: 767px) {
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metric { padding: 0 16px; }
+  .metric:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .metric:nth-child(n + 3) {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink-12);
+  }
+}
+
+/* ============================================================
+   (3) 섹션 카드 4장
+   ============================================================ */
+
+.cards-heading { margin-top: 16px; max-width: 20ch; }
+.cards-lead { margin-top: 20px; max-width: 56ch; }
+
+.cards {
+  margin-top: clamp(40px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 1.6vw, 24px);
+}
+
+.card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(26px, 3vw, 44px);
+  border: 1px solid var(--ink-12);
+  transition: border-color .6s var(--ease);
+}
+/* 은은한 배경 반응 — main.css의 --ink-12만 사용 */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ink-12);
+  opacity: 0;
+  transition: opacity .6s var(--ease);
+}
+.card:hover, .card:focus-visible { border-color: var(--ink-44); }
+.card:hover::before, .card:focus-visible::before { opacity: .34; }
+
+.card-label { margin-bottom: 18px; }
+.card-title { margin: 0 0 16px; }
+.card-desc {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.78;
+  color: var(--ink-66);
+}
+
+.card-more {
+  margin-top: clamp(24px, 2.6vw, 36px);
+  font-family: var(--font-label);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-more::after {
+  content: "→";
+  font-family: var(--font-sans);
+  display: inline-block;
+  transition: transform .6s var(--ease);
+}
+.card:hover .card-more::after,
+.card:focus-visible .card-more::after { transform: translateX(7px); }
+
+@media (max-width: 767px) {
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .cards-heading { max-width: none; }
+}
+
+/* ============================================================
+   접근성 — 모션 축소
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .intro { display: none !important; }
+  .intro-caret { animation: none; }
+  .hero-media-note { opacity: 1 !important; transition: none; }
+  .card::before,
+  .card-more::after,
+  .intro-text::after { transition: none; }
+}

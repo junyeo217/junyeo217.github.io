@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Film · 너가 힘들지 않았으면 해 — AI Filmmaker Portfolio</title>
+  <meta name="description" content="AI로 만든 3분 14초 단편 「너가 힘들지 않았으면 해」 본편과 파생판 2종. 기획·시나리오, 이미지 217→44, 영상 41샷, 편집 v0~v8.7, 검증(ASR·SNR·독립 QA) 각 공정에서 무엇을 판단했고 근거가 무엇이었는지 적었다.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/film.css">
+</head>
+<body data-page="film">
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-wordmark" href="/">○○○</a>
+      <ul class="nav-links">
+        <li><a data-nav="film" href="/film/">Film</a></li>
+        <li><a data-nav="process" href="/process/">Process</a></li>
+        <li><a data-nav="rules" href="/rules/">Rules</a></li>
+        <li><a data-nav="experiment" href="/experiment/">Experiment</a></li>
+        <li><a data-nav="log" href="/log/">Log</a></li>
+        <li><a data-nav="about" href="/about/">About</a></li>
+      </ul>
+      <div class="nav-lang"><span class="on">KR</span><span class="off">|</span><span class="off">EN</span></div>
+      <button class="nav-burger" aria-label="메뉴" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu">
+    <a data-nav="film" href="/film/">Film</a>
+    <a data-nav="process" href="/process/">Process</a>
+    <a data-nav="rules" href="/rules/">Rules</a>
+    <a data-nav="experiment" href="/experiment/">Experiment</a>
+    <a data-nav="log" href="/log/">Log</a>
+    <a data-nav="about" href="/about/">About</a>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================
+         1. 본편 임베드
+         ============================================================ -->
+    <section class="section film-feature">
+      <div class="container">
+        <p class="label" data-reveal>Feature</p>
+
+        <!-- TODO: 포스터(정지 썸네일) 프레임 자산 선정 필요 — 현재는 플레이스홀더 -->
+        <div class="film-player" data-reveal data-delay="80">
+          <div class="media-ph r169" data-media="FINAL_master_v2.mp4">
+            <div class="ph-icon"></div>
+            <div class="ph-label">Video Placeholder</div>
+            <p class="ph-desc">본편 「너가 힘들지 않았으면 해」 3:14</p>
+          </div>
+          <p class="film-hint">정지 썸네일 + 재생 오버레이 · 클릭하면 재생 · 자동재생 없음</p>
+        </div>
+
+        <div class="film-titleline" data-reveal data-delay="160">
+          <h1 class="h-section film-title">「너가 힘들지 않았으면 해」</h1>
+          <p class="film-meta num">3:14 · 2026</p>
+        </div>
+
+        <p class="film-note muted" data-reveal data-delay="220">
+          본편과 파생판을 전부 사이트 안에서 재생한다. 외부 플랫폼 링크로 넘기면 감상 전에 이탈이 생긴다고 보고 임베드를 원칙으로 뒀고,
+          자동재생은 넣지 않았다 — 재생 시점은 보는 쪽이 정하는 편이 맞다고 판단했다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2. 로그라인 + 시놉시스
+         ============================================================ -->
+    <section class="section">
+      <div class="container">
+        <p class="label" data-reveal>Story</p>
+
+        <div class="film-story" data-reveal data-delay="80">
+          <div class="story-block">
+            <p class="label story-key">Logline</p>
+            <!-- TODO: 로그라인 사용자 확정 필요 — 아래는 대사 대조표(DIALOGUE_SPOKEN_v1)의 씬 흐름에서 역산한 임시 초안이다.
+                 소스 문서에 로그라인 전문이 없어 문장 자체는 확정본이 아니다. -->
+            <p class="body-lg story-text">
+              같이 살 집을 보러 가기로 한 전날 밤, 현은 선의 전화를 세 번 받지 않고 이별을 먼저 꺼낸다.
+              선이 묻는 것은 헤어지느냐가 아니라, 그 결정이 왜 혼자 내려졌느냐다.
+            </p>
+          </div>
+
+          <div class="story-block">
+            <p class="label story-key">Synopsis</p>
+            <!-- TODO: 시놉시스 사용자 확정 필요 — 아래는 대사 대조표(DIALOGUE_SPOKEN_v1)의 씬 순서
+                 (S02 현관 → S03 상자와 정산표 → S03X 논쟁 → S05 빗속 새벽 → S06B~S07 합의)에서
+                 추출한 임시 초안이다. 인물명(선·현)과 씬 구조만 문서에 근거한다. -->
+            <p class="story-text">
+              문을 열자 정리된 상자와 공동비용 정산표가 놓여 있다. 현은 가진 것이 없다는 이유를 들어 관계를 끝내려 하고,
+              선은 그 계산에서 자신이 통째로 빠져 있다는 점을 문제 삼는다.
+              빗속 새벽까지 이어진 대화가 도착하는 곳은 재결합도 이별도 아니라, 혼자 정해놓고 통보하지 않겠다는 원칙 하나다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. 공정별 역할 명세
+         ============================================================ -->
+    <section class="section">
+      <div class="container">
+        <p class="label" data-reveal>Roles</p>
+        <h2 class="h-section sec-title" data-reveal data-delay="80">공정별 역할 명세</h2>
+        <p class="body-lg muted sec-lead" data-reveal data-delay="140">
+          산출물 목록이 아니라 판단 목록이다. 다섯 공정 각각에서 무엇을 판단했고, 그 판단이 어떤 실측에 근거했는지만 적었다.
+        </p>
+
+        <table class="role-table" data-reveal data-delay="200">
+          <caption class="sr-only">공정별로 무엇을 판단했고 근거가 무엇이었는지 정리한 표</caption>
+          <thead>
+            <tr>
+              <th scope="col" class="label role-col-name">공정</th>
+              <th scope="col" class="label">무엇을 판단했나</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="role-col-name">
+                <span class="proc-name">기획 · 시나리오</span>
+                <span class="proc-scale num">Rule 1 · 3</span>
+              </th>
+              <td>
+                <p class="proc-judg">물량은 계획이 아니라 실측으로 확정하고, 씬 연결은 인상이 아니라 접속사로 검사했다.</p>
+                <p class="proc-basis">
+                  컷 하나를 실제로 뽑아본 뒤에 전체 물량을 정한다 — 87장을 뽑고 나서야 7초로 계획한 컷이 4초에 끝난다는 것을 알았고,
+                  그 비용이 이 규칙의 근거다(규율 1). 씬을 한 줄씩 나열하고 사이 접속사를 적어 “그리고”의 나열이면 실패,
+                  “그래서 / 그러나”면 통과로 봤다. 압축이 연결 조직을 잘라내기 때문에 시나리오에서 한 번,
+                  압축·편집 후 컷 단위로 한 번 더 검사했다(규율 3).
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row" class="role-col-name">
+                <span class="proc-name">이미지</span>
+                <span class="proc-scale num">217 → 44</span>
+              </th>
+              <td>
+                <p class="proc-judg">채택 기준을 이미지의 완성도가 아니라 “다음 공정을 구속하지 않는가”로 잡았다.</p>
+                <p class="proc-basis">
+                  컷 이미지는 시작 상태의 최소 조건만 담게 했다. 상세하게 그려진 첫 프레임은 이후 영상 연출을 구속하기 때문이다(규율 4).
+                  반복은 낭비로 세지 않았다 — 작품 전체 기준 확정 847 대 되돌림 403이 실제 비율이었고,
+                  그래서 덮어쓰기 대신 이전 판 보존을 기본값으로 뒀다(규율 32).
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row" class="role-col-name">
+                <span class="proc-name">영상</span>
+                <span class="proc-scale num">41 Shots</span>
+              </th>
+              <td>
+                <p class="proc-judg">엔진과 프롬프트 문법은 같은 씬으로 직접 붙여 실측으로 정했고, 조명은 지시가 아니라 기하로 검산했다.</p>
+                <p class="proc-basis">
+                  H3 2K와 Seedance 720p를 같은 씬 파일럿으로 비교했다. 프롬프트 문법 A/B에서는 샷 간 평균 휘도 차(톤 점프)를
+                  프레임 단위로 실측해 A판 Δ24.4, B판 Δ12를 얻었고, A판의 원인은 한 문장 안에 함께 있던 모순 지시
+                  (“lifted milky blacks, low contrast” vs “dense blacks with no milky haze”)였다.
+                  밤 씬인데 얼굴만 밝게 나온 컷은 지시를 무시한 것이 아니라, 모니터가 상자 옆 벽 너머에 있어
+                  아래를 향한 얼굴에는 물리적으로 닿을 수 없는 구도였다. 광원이 인물의 카메라 쪽 면에 닿는지 먼저 검산하도록
+                  바꾸자 톤 점프는 Δ6.5로 떨어졌다.
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row" class="role-col-name">
+                <span class="proc-name">편집</span>
+                <span class="proc-scale num">v0 → v8.7</span>
+              </th>
+              <td>
+                <p class="proc-judg">최종본 조립을 스트림 카피 concat에서 PCM 도메인 재조립으로 바꾸고, J/L컷은 대사를 건드리지 않는 레이어 방식으로 설계했다.</p>
+                <p class="proc-basis">
+                  스트림 카피는 AAC 프레임 경계와 세그먼트 경계가 어긋나 이음새마다 오디오가 겹치고 드리프트가 누적됐다(37이음새 816ms).
+                  최종본은 전 세그먼트 디코드 → 오디오를 각 세그먼트의 비디오 프레임수 ÷ 24로 트림 → PCM 도메인 concat → 단일 인코딩으로
+                  다시 만들었고, 스트림 카피는 작업 중간본에만 허용했다(규율 21). J/L컷은 영상을 늘이거나 줄이지 않고
+                  다음 컷 영상의 머리를 겹침량만큼 당겨 A/V 싱크를 유지했다 — 소모할 수 있는 것은 설계상 여유분뿐이고
+                  대사는 전 구간 보존한다(규율 23).
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row" class="role-col-name">
+                <span class="proc-name">검증</span>
+                <span class="proc-scale num">ASR · SNR · QA</span>
+              </th>
+              <td>
+                <p class="proc-judg">통과 기준을 레벨 측정에서 ASR 재전사로 옮기고, 자동 검사를 전부 통과한 뒤에도 전체를 실시간으로 보고 들었다.</p>
+                <p class="proc-basis">
+                  오디오 제거·대체는 완성본과 +15~18dB 증폭본을 전사해 대사 어휘 0을 증명하고, 같은 harness가 원본에서는 대사를 검출한다는
+                  양성 대조를 함께 제시해야 통과로 봤다(규율 16). 증폭 전에는 SNR을 먼저 실측했다 — 저레벨 소스를 30dB 증폭한 것이
+                  노이즈 버스트를 만든 사고가 있어, 기준을 정규화 후 노이즈 플로어 −46dBFS 이하로 잡았다(규율 11).
+                  자동 QA가 전부 통과한 뒤 사람이 결함 3건을 잡았기 때문에 전체 실시간 시청·청취를 검증 단계에 명시적으로 넣었고,
+                  서브에이전트 보고는 보고서가 아니라 프레임·파형·전사·해시로 재검증했다(규율 29·31).
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. 파생판 (탭)
+         ============================================================ -->
+    <section class="section">
+      <div class="container">
+        <p class="label" data-reveal>Versions</p>
+        <h2 class="h-section sec-title" data-reveal data-delay="80">파생판</h2>
+        <p class="body-lg muted sec-lead" data-reveal data-delay="140">
+          본편 외에 두 판을 유지한다. 보기 좋으라고 만든 변주가 아니라 각각 다른 쓰임이 있어서 남긴 판이고, 아래에 그 쓰임을 적었다.
+        </p>
+
+        <div class="film-tabs" data-reveal data-delay="200">
+          <div class="tablist" role="tablist" aria-label="파생판 선택" data-tabs>
+            <button class="tab" type="button" role="tab" id="tab-sub" aria-controls="panel-sub" aria-selected="true" tabindex="0">
+              <span class="tab-idx num">01</span>자막판
+            </button>
+            <button class="tab" type="button" role="tab" id="tab-nodial" aria-controls="panel-nodial" aria-selected="false" tabindex="-1">
+              <span class="tab-idx num">02</span>무대사판
+            </button>
+          </div>
+
+          <!-- TODO: 파생판 실제 파일명 확인 필요 — Drive 아카이브에서 회수 후 data-media 값 교체 -->
+          <div class="tabpanel" role="tabpanel" id="panel-sub" aria-labelledby="tab-sub" tabindex="0">
+            <div class="panel-grid">
+              <div class="media-ph r169" data-media="자막판.mp4">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">자막판 — 대사 자막 삽입본</p>
+              </div>
+              <div class="panel-text">
+                <p class="panel-why">대사 정보 전달을 보강하는 판이다.</p>
+                <p class="panel-basis">
+                  완성본을 본 외부 지적이 “대사 톤이 아쉽다, 차라리 자막 처리가 낫겠다”였다. 자막판은 그 지적 중 전달 쪽을 직접 해결한다.
+                  톤 자체는 자막으로 덮지 않고 원인을 따로 규명했다 — 배우(AI) 연기가 아니라 대본 문체가 원인이었고,
+                  전체 38개 대사를 재검토해 개정 20 / 유지 18 / 복원 2로 정리했다. 유지가 18개라는 점이 근거다.
+                  문어체 전반이 아니라 감정 정점 직전의 긴 문장만 문제였다는 뜻이기 때문이다.
+                  <a class="inline-link" href="/experiment/">대조 실험 기록 보기 →</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- TODO: 무대사판의 파생판으로서의 존재 이유(대조 실험 '전' 소스 외) 사용자 확인 필요 -->
+          <div class="tabpanel" role="tabpanel" id="panel-nodial" aria-labelledby="tab-nodial" tabindex="0" hidden>
+            <div class="panel-grid">
+              <div class="media-ph r169" data-media="무대사판.mp4">
+                <div class="ph-icon"></div>
+                <div class="ph-label">Video Placeholder</div>
+                <p class="ph-desc">무대사판 — 음성 제거본</p>
+              </div>
+              <div class="panel-text">
+                <p class="panel-why">대사 트랙을 제거한 판이자, 문체가 연기 톤을 만든다는 대조 실험의 “전” 소스다.</p>
+                <p class="panel-basis">
+                  자산 목록에서 이 판은 파생판이면서 동시에 그 사례의 비교 기준으로 지정돼 있다.
+                  음성이 지워졌는지는 레벨 측정으로 판정하지 않았다 — 완성본과 +15~18dB 증폭본을 전사해 대사 어휘 0을 증명하고,
+                  같은 harness가 원본에서는 대사를 검출한다는 양성 대조를 함께 뒀다(규율 16).
+                  뮤트 자리에는 디지털 무음을 쓰지 않고 같은 씬의 무대사 룸톤을 레벨·대역을 맞춰 채웠다(규율 17).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="nav-wordmark">○○○</span>
+      <small>AI Filmmaker · Pipeline Builder · © 2026</small>
+    </div>
+  </footer>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/film.js" defer></script>
+</body>
+</html>

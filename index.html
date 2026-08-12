@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>단편 1편과 제작 규율 38개 — AI Filmmaker Portfolio</title>
+  <meta name="description" content="AI로 만든 3분 14초 단편 「너가 힘들지 않았으면 해」를 18일에 완주하고, 그 과정에서 사고를 겪은 뒤에 세운 제작 규율 38개를 남겼다. 무엇을 만들었는지가 아니라 무엇을 판단했고 근거가 무엇인지를 기록한 포트폴리오.">
+  <meta name="author" content="○○○">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="AI Filmmaker Portfolio">
+  <meta property="og:title" content="단편 1편과 제작 규율 38개 — AI Filmmaker Portfolio">
+  <meta property="og:description" content="AI로 만든 3분 14초 단편을 18일에 완주하고, 작업 로그 334건과 제작 규율 38개를 남겼다. 판단과 근거를 기록한 포트폴리오.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <script>
+    /* 인트로 게이트: JS가 살아있고 reduced-motion이 아닐 때만 오버레이를 켠다.
+       (JS 비활성 시 오버레이가 페이지를 덮는 사고 방지 + 히어로 플래시 방지) */
+    (function () {
+      try {
+        if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          var r = document.documentElement;
+          r.className += ' intro-on';
+          /* 안전장치: home.js가 로드되지 않아도 오버레이가 페이지를 막지 않는다 */
+          setTimeout(function () {
+            if (r.className.indexOf('intro-done') === -1) {
+              r.className = r.className.replace(' intro-on', '') + ' intro-done';
+            }
+          }, 3600);
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body data-page="home">
+
+  <!-- (0) 타이핑 인트로 -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <p class="intro-line" id="introLine"><span class="intro-text" id="introText"></span><span class="intro-caret"></span></p>
+    <span class="intro-skip">클릭 또는 아무 키 — 건너뛰기</span>
+  </div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-wordmark" href="/">○○○</a>
+      <ul class="nav-links">
+        <li><a data-nav="film" href="/film/">Film</a></li>
+        <li><a data-nav="process" href="/process/">Process</a></li>
+        <li><a data-nav="rules" href="/rules/">Rules</a></li>
+        <li><a data-nav="experiment" href="/experiment/">Experiment</a></li>
+        <li><a data-nav="log" href="/log/">Log</a></li>
+        <li><a data-nav="about" href="/about/">About</a></li>
+      </ul>
+      <div class="nav-lang"><span class="on">KR</span><span class="off">|</span><span class="off">EN</span></div>
+      <button class="nav-burger" aria-label="메뉴" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu">
+    <a data-nav="film" href="/film/">Film</a>
+    <a data-nav="process" href="/process/">Process</a>
+    <a data-nav="rules" href="/rules/">Rules</a>
+    <a data-nav="experiment" href="/experiment/">Experiment</a>
+    <a data-nav="log" href="/log/">Log</a>
+    <a data-nav="about" href="/about/">About</a>
+  </nav>
+
+  <main>
+
+    <!-- (1) 히어로 -->
+    <section class="hero" aria-labelledby="heroName">
+      <div class="hero-media" data-media="highlight_loop.mp4">
+        <p class="hero-media-note">Highlight Loop 15–20s — 미디어 삽입 예정</p>
+      </div>
+
+      <div class="container hero-caption">
+        <div class="hero-id" data-reveal>
+          <p class="label hero-role">AI Filmmaker · Pipeline Builder</p>
+          <h1 class="h-display hero-name" id="heroName">○○○</h1>
+        </div>
+
+        <dl class="hero-meta">
+          <div class="hero-meta-col" data-reveal data-delay="80">
+            <dt class="label">Based in</dt>
+            <dd>Seoul</dd>
+          </div>
+          <div class="hero-meta-col" data-reveal data-delay="160">
+            <dt class="label">Working with</dt>
+            <dd>AI Film · Pipeline · Post</dd>
+          </div>
+          <div class="hero-meta-col" data-reveal data-delay="240">
+            <dt class="label">Status</dt>
+            <dd>지원 중</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- (2) 지표 스트립 -->
+    <section class="section section-metrics" aria-labelledby="metricsHeading">
+      <div class="container">
+        <h2 class="vh" id="metricsHeading">제작 지표</h2>
+        <div class="metrics">
+          <div class="metric" data-reveal>
+            <p class="num metric-num">1<span class="metric-unit">편</span></p>
+            <p class="metric-label">단편 · 3:14</p>
+          </div>
+          <div class="metric" data-reveal data-delay="80">
+            <p class="num metric-num">18<span class="metric-unit">일</span></p>
+            <p class="metric-label">완주</p>
+          </div>
+          <div class="metric" data-reveal data-delay="160">
+            <p class="num metric-num">334<span class="metric-unit">건</span></p>
+            <p class="metric-label">작업 로그</p>
+          </div>
+          <div class="metric" data-reveal data-delay="240">
+            <p class="num metric-num">38<span class="metric-unit">개</span></p>
+            <p class="metric-label">제작 규율</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- (3) 섹션 카드 4장 -->
+    <section class="section section-cards" aria-labelledby="overviewHeading">
+      <div class="container">
+        <p class="label" data-reveal>Overview</p>
+        <h2 class="h-section cards-heading" id="overviewHeading" data-reveal data-delay="80">
+          완주한 작품 하나, 그리고 그 작품이 알려준 것들
+        </h2>
+        <p class="body-lg muted cards-lead" data-reveal data-delay="160">
+          네 섹션은 각각 하나의 질문에 답한다 — 무엇을 만들었나가 아니라, 무엇을 판단했고 근거가 무엇인가.
+        </p>
+
+        <div class="cards">
+          <a class="card" href="/film/" data-reveal data-delay="80">
+            <p class="label card-label">Film</p>
+            <h3 class="h-item card-title">작품 보기</h3>
+            <p class="card-desc">
+              3분 14초 단편 「너가 힘들지 않았으면 해」를 18일에 완주했다. 기획·이미지·영상·편집·검증을 한 사람이 돌리면서 공정마다 무엇을 기준으로 채택하고 무엇을 버렸는지를 남겼다. 작품은 결과가 아니라 실험 장비였다.
+            </p>
+            <span class="card-more">More Detail</span>
+          </a>
+
+          <a class="card" href="/rules/" data-reveal data-delay="160">
+            <p class="label card-label">Rules</p>
+            <h3 class="h-item card-title">실패 → 규율</h3>
+            <p class="card-desc">
+              제작 규율 38개. 선언이 먼저 온 규칙은 하나도 없다 — 전부 사고 뒤에 붙었다. 각 카드는 실패한 출력, 실측으로 규명한 원인, 거기서 나온 규율, 적용 후 출력을 같은 자리에 놓는다.
+            </p>
+            <span class="card-more">More Detail</span>
+          </a>
+
+          <a class="card" href="/experiment/" data-reveal data-delay="240">
+            <p class="label card-label">Experiment</p>
+            <h3 class="h-item card-title">대조 실험</h3>
+            <p class="card-desc">
+              "대사 톤이 아쉽다"는 외부 지적을 연기 문제로 받으면 손댈 데가 없다. 목소리·모델·파라미터를 고정하고 대사 문체만 바꿔 대조 생성했다. 결론은 개정 20 / 유지 18 / 복원 2 — 유지가 18개라는 게 핵심이다.
+            </p>
+            <span class="card-more">More Detail</span>
+          </a>
+
+          <a class="card" href="/log/" data-reveal data-delay="320">
+            <p class="label card-label">Log</p>
+            <h3 class="h-item card-title">제작 로그</h3>
+            <p class="card-desc">
+              작업 로그 334건. 확정 847 대 되돌림 403이 이 작품의 실제 비율이었다. 되돌림을 실패로 세지 않기로 한 판단과, 그 판단이 파이프라인을 어떻게 바꿨는지를 시기순으로 정리한다.
+            </p>
+            <span class="card-more">More Detail</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="nav-wordmark">○○○</span>
+      <small>AI Filmmaker · Pipeline Builder · © 2026</small>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/home.js" defer></script>
+</body>
+</html>

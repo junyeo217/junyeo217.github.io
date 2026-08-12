@@ -1,0 +1,249 @@
+/* ============================================================
+   /film — 작품 페이지 전용
+   main.css의 토큰(--ink / --paper / --accent / --ink-66 / --ink-44 /
+   --ink-12 / --ease)만 사용한다. 새 색·새 이징 도입 없음.
+   ============================================================ */
+
+/* 스크린리더 전용 (main.css에 없어 여기서 정의) */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* ---- 섹션 공통 헤더 ---- */
+.sec-title { margin-top: 16px; }
+.sec-lead { margin-top: 20px; max-width: 68ch; }
+
+/* ============================================================
+   1. 본편 임베드
+   ============================================================ */
+.film-player { margin-top: 20px; }
+
+.film-hint {
+  margin-top: 12px;
+  font-family: var(--font-label);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-44);
+}
+
+.film-titleline {
+  margin-top: clamp(28px, 4vw, 48px);
+  padding-top: clamp(18px, 2.4vw, 28px);
+  border-top: 1px solid var(--ink-12);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+}
+.film-title { margin: 0; }
+.film-meta {
+  font-size: clamp(13px, 1.1vw, 15px);
+  letter-spacing: .14em;
+  color: var(--ink-66);
+  white-space: nowrap;
+}
+
+.film-note {
+  margin-top: clamp(18px, 2vw, 26px);
+  max-width: 64ch;
+  font-size: clamp(14px, 1.05vw, 16px);
+}
+
+/* ============================================================
+   2. 로그라인 + 시놉시스
+   ============================================================ */
+.film-story {
+  margin-top: clamp(24px, 3vw, 40px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 72px);
+}
+.story-key { margin-bottom: 14px; }
+.story-block + .story-block { position: relative; }
+.story-text { max-width: 52ch; }
+
+@media (max-width: 900px) {
+  .film-story { grid-template-columns: 1fr; gap: 32px; }
+  .story-block + .story-block {
+    padding-top: 32px;
+    border-top: 1px solid var(--ink-12);
+  }
+}
+
+/* ============================================================
+   3. 공정별 역할 명세 (표 → 767px 이하 카드 스택)
+   ============================================================ */
+.role-table {
+  width: 100%;
+  margin-top: clamp(26px, 3.2vw, 44px);
+  border-collapse: collapse;
+  text-align: left;
+}
+.role-table th,
+.role-table td {
+  vertical-align: top;
+  text-align: left;
+  font-weight: 400;
+  padding: clamp(20px, 2.2vw, 30px) 0;
+  border-top: 1px solid var(--ink-12);
+}
+.role-table thead th {
+  padding-top: 0;
+  padding-bottom: 12px;
+  border-top: 0;
+}
+.role-table tbody tr:last-child th,
+.role-table tbody tr:last-child td {
+  border-bottom: 1px solid var(--ink-12);
+}
+.role-col-name {
+  width: 26%;
+  min-width: 150px;
+  padding-right: clamp(20px, 3vw, 56px) !important;
+}
+
+.proc-name {
+  display: block;
+  font-size: clamp(16px, 1.35vw, 19px);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  line-height: 1.4;
+}
+.proc-scale {
+  display: block;
+  margin-top: 8px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.proc-judg {
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.7;
+  letter-spacing: -.005em;
+}
+.proc-basis {
+  margin-top: 12px;
+  max-width: 74ch;
+  font-size: clamp(13px, 1vw, 14.5px);
+  line-height: 1.85;
+  color: var(--ink-66);
+}
+
+@media (max-width: 767px) {
+  .role-table,
+  .role-table tbody,
+  .role-table tr,
+  .role-table th,
+  .role-table td { display: block; width: 100%; }
+
+  .role-table thead {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden; clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .role-table tr {
+    padding: 24px 0;
+    border-top: 1px solid var(--ink-12);
+  }
+  .role-table tbody tr:last-child { border-bottom: 1px solid var(--ink-12); }
+  .role-table th,
+  .role-table td {
+    padding: 0 !important;
+    border: 0;
+    min-width: 0;
+  }
+  .role-table tbody tr:last-child th,
+  .role-table tbody tr:last-child td { border-bottom: 0; }
+  .role-col-name { width: 100%; margin-bottom: 14px; }
+  .proc-scale { display: inline-block; margin-top: 6px; }
+}
+
+/* ============================================================
+   4. 파생판 탭
+   ============================================================ */
+.film-tabs { margin-top: clamp(26px, 3.2vw, 44px); }
+
+.tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(22px, 3vw, 44px);
+  border-bottom: 1px solid var(--ink-12);
+}
+.tab {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 0 0 14px;
+  margin-bottom: -1px;
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--ink-44);
+  border-bottom: 1px solid transparent;
+  transition: color .5s var(--ease), border-color .5s var(--ease);
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+.tab-idx {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: var(--ink-44);
+  transition: color .5s var(--ease);
+}
+.tab[aria-selected="true"] .tab-idx { color: var(--accent); }
+
+.tabpanel { padding-top: clamp(26px, 3.2vw, 44px); }
+.tabpanel[hidden] { display: none; }
+.tabpanel:focus-visible,
+.tab:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 6px;
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: clamp(24px, 3.4vw, 56px);
+  align-items: start;
+}
+.panel-why {
+  font-size: clamp(16px, 1.35vw, 20px);
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: -.01em;
+}
+.panel-basis {
+  margin-top: 14px;
+  font-size: clamp(13px, 1vw, 14.5px);
+  line-height: 1.85;
+  color: var(--ink-66);
+}
+.inline-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-12);
+  padding-bottom: 1px;
+  transition: border-color .5s var(--ease);
+}
+.inline-link:hover { border-bottom-color: var(--ink); }
+
+@media (max-width: 900px) {
+  .panel-grid { grid-template-columns: 1fr; }
+}
