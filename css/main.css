@@ -228,3 +228,98 @@ main { padding-top: 64px; }
   }
   html { scroll-behavior: auto; }
 }
+
+/* ---- 커스텀 커서 ----
+   마크업은 main.js가 body에 주입하고, 게이트를 통과했을 때만 <html>에 .has-cursor가 붙는다.
+   → JS가 죽으면 네이티브 커서가 그대로 남는다.
+   전체 블록이 (pointer: fine) 안에 있어 터치 기기에는 규칙 자체가 적용되지 않는다.
+   z-index 900 — 내비(100) 위, 인트로 오버레이(1000) 아래. */
+@media (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor * { cursor: none; }
+  /* 텍스트 입력·프레임 위에서는 네이티브 커서를 되돌린다 */
+  html.has-cursor input,
+  html.has-cursor textarea,
+  html.has-cursor select,
+  html.has-cursor iframe,
+  html.has-cursor [contenteditable="true"] { cursor: auto; }
+
+  .cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 900;
+    pointer-events: none;
+    will-change: transform;
+    /* 한 커서로 밝은 배경·어두운 배경(히어로)을 모두 대응한다 */
+    mix-blend-mode: difference;
+    opacity: 0;
+    transition: opacity .3s var(--ease);
+  }
+  .cursor.is-on { opacity: 1; }
+  .cursor.is-native { opacity: 0; }
+
+  .cursor-ring {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    transform: translate(-50%, -50%);   /* 크기가 바뀌어도 중심이 좌표에 고정된다 */
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width .45s var(--ease), height .45s var(--ease),
+                background-color .45s var(--ease), border-color .45s var(--ease);
+  }
+  .cursor.is-hover .cursor-ring {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border-color: var(--paper);
+  }
+  .cursor.is-view .cursor-ring {
+    width: 46px;
+    height: 46px;
+    background: transparent;
+    border-color: var(--paper);
+  }
+
+  .cursor-label {
+    font-family: var(--font-label);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0;
+    transition: opacity .3s var(--ease);
+  }
+  .cursor.is-view .cursor-label { opacity: 1; }
+
+  /* blend 미지원 폴백 — 반투명 테두리로 어느 배경에서도 윤곽이 남는다 */
+  @supports not (mix-blend-mode: difference) {
+    .cursor { mix-blend-mode: normal; }
+    .cursor-ring {
+      background: rgba(242, 241, 236, .82);
+      border-color: rgba(23, 21, 15, .38);
+    }
+    .cursor.is-hover .cursor-ring,
+    .cursor.is-view .cursor-ring {
+      background: rgba(23, 21, 15, .12);
+      border-color: rgba(242, 241, 236, .7);
+    }
+    .cursor-label { color: rgba(242, 241, 236, .92); }
+  }
+}
+
+/* 모션 축소면 JS가 애초에 붙지 않지만, 설정을 도중에 바꾼 경우까지 잠근다 */
+@media (prefers-reduced-motion: reduce) {
+  html.has-cursor,
+  html.has-cursor * { cursor: auto; }
+  .cursor { display: none; }
+}

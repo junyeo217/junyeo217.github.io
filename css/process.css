@@ -136,7 +136,9 @@
   border-top: 1px solid var(--ink-12);
 }
 .proc-thesis p { max-width: 72ch; }
-.proc-thesis-links {
+/* 인라인 링크 줄 — 인트로 논지 아래 / 각 단계 본문 아래 공용 */
+.proc-thesis-links,
+.stage-links {
   margin-top: 22px;
   display: flex;
   flex-wrap: wrap;
@@ -308,7 +310,8 @@
   }
   .tn-key { padding-top: 0; }
 
-  .proc-thesis-links { flex-direction: column; gap: 10px; }
+  .proc-thesis-links,
+  .stage-links { flex-direction: column; gap: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

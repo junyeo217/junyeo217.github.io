@@ -112,6 +112,16 @@
 /* 홈에서만 내비 높이만큼의 여백을 없애 히어로가 내비 뒤까지 찬다 */
 body[data-page="home"] main { padding-top: 0; }
 
+/* 지표 스트립 위 스테이트먼트 — 숫자가 '실험이 남긴 결과'로 읽히게 */
+.metrics-statement {
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  line-height: 1.5;
+  margin-bottom: clamp(36px, 5vw, 64px);
+  max-width: 30em;
+}
+
 .hero {
   position: relative;
   height: 100vh;      /* 폴백 */
@@ -185,7 +195,14 @@ body[data-page="home"] main { padding-top: 0; }
   margin-bottom: 14px;
   color: rgba(242, 241, 236, .65);
 }
-.hero-name { margin: 0; color: var(--paper); }
+.hero-name {
+  margin: 0;
+  color: var(--paper);
+  /* sehunchoi 부합 — h-display 기본값(600/1.12/-.03em)보다 가볍고 촘촘하게 */
+  font-weight: 500;
+  line-height: .92;
+  letter-spacing: -.035em;
+}
 
 .hero-meta {
   flex: 0 1 auto;
