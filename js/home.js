@@ -175,6 +175,12 @@
   if (!v) return;
   v.muted = true;
   v.playsInline = true;
+  /* 본편 도입부(검은 타이핑 카드)를 건너뛰고 시작 — 루프 복귀 시에는 자연 진행 */
+  var seekIntro = function () {
+    if (v.currentTime < 1) { try { v.currentTime = 8; } catch (e) {} }
+  };
+  if (v.readyState >= 1) seekIntro();
+  else v.addEventListener('loadedmetadata', seekIntro, { once: true });
   var p = v.play();
   if (p && p.catch) p.catch(function () {});
 })();
