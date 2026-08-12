@@ -448,6 +448,10 @@ body[data-page="home"] .nav.is-over-hero .nav-burger span { background-color: va
   .hero-video,
   .hero-media::before,
   .hero-media::after { opacity: 1 !important; transition: none; }
+  /* 패럴랙스·캡션 페이드 무효화 (JS는 애초에 붙지 않지만 설정을 도중에 바꾼 경우까지) */
+  .hero-video { transform: none !important; }
+  .hero-caption,
+  .hero-scroll { opacity: 1 !important; }
   .hero-scroll-line::after { animation: none; }
   .card::before,
   .card-more::after,

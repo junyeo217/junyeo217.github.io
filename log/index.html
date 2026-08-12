@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/log.css">
+  <!-- 리빌 폴백 — JS가 없으면 숨김 상태가 풀린 채로 남는다 -->
+  <noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
 </head>
 <body data-page="log">
   <header class="nav">
@@ -63,12 +65,12 @@
           <p class="label lq-src">규율 36 · 협업·프로세스</p>
         </blockquote>
 
-        <div class="log-meta" data-reveal data-delay="280">
-          <div class="lm-item"><span class="num lm-val">18일</span><span class="label">완주 · 7/24~8/10</span></div>
+        <div class="log-meta" data-reveal-group data-delay="280">
+          <div class="lm-item"><span class="num lm-val"><span data-count="18">18</span>일</span><span class="label">완주 · 7/24~8/10</span></div>
           <div class="lm-item"><span class="num lm-val">3:14</span><span class="label">최종 38샷 · 194.125s</span></div>
           <div class="lm-item"><span class="num lm-val">20.3%</span><span class="label">채택률</span></div>
           <div class="lm-item"><span class="num lm-val">847 / 403</span><span class="label">확정 / 되돌림</span></div>
-          <div class="lm-item"><span class="num lm-val">38개</span><span class="label">제작 규율</span></div>
+          <div class="lm-item"><span class="num lm-val"><span data-count="38">38</span>개</span><span class="label">제작 규율</span></div>
         </div>
       </div>
     </section>
@@ -412,7 +414,7 @@
           이 작업이 실제로 굴러간 방식이다.
         </p>
 
-        <div class="st-table-wrap" data-reveal data-delay="200">
+        <div class="st-table-wrap" data-reveal="wipe" data-delay="200">
           <table class="st-table">
             <caption class="sr-only">제작 전 기간 총계 지표</caption>
             <thead>

@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/home.css">
+  <!-- 리빌 폴백 — JS가 없으면 숨김 상태가 풀린 채로 남는다 -->
+  <noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
   <script>
     /* 인트로 게이트: JS가 살아있고 reduced-motion이 아닐 때만 오버레이를 켠다.
        (JS 비활성 시 오버레이가 페이지를 덮는 사고 방지 + 히어로 플래시 방지) */
@@ -119,19 +121,19 @@
         <h2 class="vh" id="metricsHeading">제작 지표</h2>
         <div class="metrics">
           <div class="metric" data-reveal>
-            <p class="num metric-num">1<span class="metric-unit">편</span></p>
+            <p class="num metric-num"><span data-count="1">1</span><span class="metric-unit">편</span></p>
             <p class="metric-label">단편 · 3:14</p>
           </div>
           <div class="metric" data-reveal data-delay="80">
-            <p class="num metric-num">18<span class="metric-unit">일</span></p>
+            <p class="num metric-num"><span data-count="18">18</span><span class="metric-unit">일</span></p>
             <p class="metric-label">완주</p>
           </div>
           <div class="metric" data-reveal data-delay="160">
-            <p class="num metric-num">334<span class="metric-unit">건</span></p>
+            <p class="num metric-num"><span data-count="334" data-count-dur="1100">334</span><span class="metric-unit">건</span></p>
             <p class="metric-label">작업 로그</p>
           </div>
           <div class="metric" data-reveal data-delay="240">
-            <p class="num metric-num">38<span class="metric-unit">개</span></p>
+            <p class="num metric-num"><span data-count="38">38</span><span class="metric-unit">개</span></p>
             <p class="metric-label">제작 규율</p>
           </div>
         </div>

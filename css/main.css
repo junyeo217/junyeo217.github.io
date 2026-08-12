@@ -192,15 +192,39 @@ main { padding-top: 64px; }
 }
 :focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
 
-/* ---- 스크롤 리빌 ---- */
-[data-reveal] {
+/* ---- 스크롤 리빌 ----
+   기본형: 페이드 + 30px 상승.
+   자동 스태거: 부모에 [data-reveal-group]이 있으면 직계 자식이 같은 규칙으로 리빌되고
+   지연은 JS가 순서대로 넣는다(자식에 data-reveal을 달지 않는다).
+   와이프: [data-reveal="wipe"] — 위에서 아래로 드러난다. 비디오·이미지·표 블록용. */
+[data-reveal],
+[data-reveal-group] > * {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1s var(--ease), transform 1s var(--ease);
+  transform: translateY(30px);
+  transition: opacity 1.1s var(--ease), transform 1.1s var(--ease);
 }
-[data-reveal].is-in { opacity: 1; transform: none; }
+[data-reveal].is-in,
+[data-reveal-group] > *.is-in { opacity: 1; transform: none; }
+
+/* 좌우·하단 -6px 여유는 clip-path가 포커스 링을 잘라내지 않게 하려는 것 */
+[data-reveal="wipe"] {
+  transform: scale(1.02);
+  clip-path: inset(0 -6px 100% -6px);
+  transition: opacity .9s var(--ease), transform 1.1s var(--ease), clip-path 1.1s var(--ease);
+}
+[data-reveal="wipe"].is-in {
+  transform: none;
+  clip-path: inset(0 -6px -6px -6px);
+}
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  [data-reveal],
+  [data-reveal="wipe"],
+  [data-reveal-group] > * {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
   html { scroll-behavior: auto; }
 }

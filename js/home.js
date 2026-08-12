@@ -191,6 +191,71 @@
   io.observe(sentinel);
 })();
 
+/* ============================================================
+   히어로 패럴랙스 + 캡션 페이드 — 홈 전용
+   비디오는 스크롤보다 느리게(0.18배) 밀려 깊이를 만들고,
+   캡션과 SCROLL 인디케이터는 뷰포트 높이의 55%를 지나면 완전히 사라진다.
+   rAF로 프레임당 1회만 계산하고, 히어로가 화면 밖으로 나가면 계산을 멈춘다.
+   reduced-motion이면 아예 붙지 않는다 (CSS도 같은 조건으로 잠근다).
+   ============================================================ */
+(function () {
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var video = hero.querySelector('.hero-video');
+  var caption = hero.querySelector('.hero-caption');
+  var indicator = hero.querySelector('.hero-scroll');
+  if (!video && !caption && !indicator) return;
+
+  var PARALLAX = 0.18;
+  var FADE_RATIO = 0.55;
+
+  var ticking = false;
+  var idle = false;     /* 히어로가 화면 밖 — 정리 후 계산 중단 */
+
+  function apply(y) {
+    if (video) video.style.transform = 'translate3d(0,' + (y * PARALLAX).toFixed(2) + 'px,0)';
+    var span = window.innerHeight * FADE_RATIO;
+    var o = span > 0 ? 1 - y / span : 0;
+    if (o < 0) o = 0; else if (o > 1) o = 1;
+    o = String(o);
+    if (caption) caption.style.opacity = o;
+    if (indicator) indicator.style.opacity = o;
+  }
+
+  function update() {
+    ticking = false;
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    if (y < 0) y = 0;
+    var h = hero.offsetHeight || window.innerHeight;
+    var out = y >= h;
+
+    /* will-change는 실제로 히어로가 움직이는 구간에서만 건다 (맨 위·화면 밖에서는 뗀다) */
+    if (video) {
+      var want = (!out && y > 0) ? 'transform' : '';
+      if (video.style.willChange !== want) video.style.willChange = want;
+    }
+
+    if (out) {
+      if (idle) return;   /* 히어로가 화면 밖 — 한 번 정리하고 계산을 멈춘다 */
+      idle = true;
+      apply(h);
+      return;
+    }
+    idle = false;
+    apply(y);
+  }
+
+  function onScroll() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+})();
+
 /* iOS Safari 자동재생 보장 — 속성만으로는 부족해 프로퍼티로도 세팅 */
 (function () {
   var v = document.querySelector('.hero-video');

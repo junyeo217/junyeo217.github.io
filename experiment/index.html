@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/experiment.css">
+  <!-- 리빌 폴백 — JS가 없으면 숨김 상태가 풀린 채로 남는다 -->
+  <noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
 </head>
 <body data-page="experiment">
   <header class="nav">
@@ -60,11 +62,11 @@
           아래 수치와 대사 인용은 전부 <span class="xp-src">DIALOGUE_SPOKEN v1</span> 원문 그대로다.
         </p>
 
-        <div class="xp-meta" data-reveal data-delay="220">
-          <div class="xp-mitem"><span class="num xp-mval">1개</span><span class="label">바꾼 변수</span></div>
-          <div class="xp-mitem"><span class="num xp-mval">38개</span><span class="label">전체 대사</span></div>
-          <div class="xp-mitem"><span class="num xp-mval">21건</span><span class="label">개정</span></div>
-          <div class="xp-mitem"><span class="num xp-mval">2건</span><span class="label">누락 복원</span></div>
+        <div class="xp-meta" data-reveal-group data-delay="220">
+          <div class="xp-mitem"><span class="num xp-mval"><span data-count="1">1</span>개</span><span class="label">바꾼 변수</span></div>
+          <div class="xp-mitem"><span class="num xp-mval"><span data-count="38">38</span>개</span><span class="label">전체 대사</span></div>
+          <div class="xp-mitem"><span class="num xp-mval"><span data-count="21">21</span>건</span><span class="label">개정</span></div>
+          <div class="xp-mitem"><span class="num xp-mval"><span data-count="2">2</span>건</span><span class="label">누락 복원</span></div>
         </div>
       </div>
     </section>
@@ -276,7 +278,7 @@
 
         <!-- 수치 정본: DIALOGUE_SPOKEN v1(2026-08-13 정정판) 요약표 = 개정 21 / 유지 17 / 복원 2.
              아래 대조표의 data-kind 집계와 일치한다("개정" 필터 = 38행 중 21행). -->
-        <div class="xp-figures" data-reveal data-delay="140">
+        <div class="xp-figures" data-reveal-group data-delay="140">
           <div class="xp-fig">
             <p class="num xp-fignum">38<span class="xp-figunit">개</span></p>
             <p class="xp-figlabel">전체 대사</p>
@@ -295,7 +297,7 @@
           </div>
         </div>
 
-        <ul class="xp-breakdown" data-reveal data-delay="180">
+        <ul class="xp-breakdown" data-reveal-group data-delay="180">
           <li><span class="num xp-bval">13</span><span class="label">이미 구어 · 짧은 정점</span></li>
           <li><span class="num xp-bval">3</span><span class="label">시그니처 · 대구</span></li>
           <li><span class="num xp-bval">1</span><span class="label">문서 인용</span></li>
@@ -367,7 +369,7 @@
         <p class="xp-scrollhint" data-reveal data-delay="180">표는 좌우로 밀어서 볼 수 있다.</p>
 
         <!-- ── S01 · S01B ── -->
-        <div class="xp-scene" data-xp-scene data-reveal>
+        <div class="xp-scene" data-xp-scene data-reveal="wipe">
           <h3 class="xp-scene-title"><span class="num xp-scene-code">S01 · S01B</span>속마음 VO</h3>
           <div class="xp-table-wrap">
             <table class="xp-table">
@@ -399,7 +401,7 @@
         </div>
 
         <!-- ── S02 ── -->
-        <div class="xp-scene" data-xp-scene data-reveal>
+        <div class="xp-scene" data-xp-scene data-reveal="wipe">
           <h3 class="xp-scene-title"><span class="num xp-scene-code">S02</span>현관</h3>
           <div class="xp-table-wrap">
             <table class="xp-table">
@@ -437,7 +439,7 @@
         </div>
 
         <!-- ── S03 ── -->
-        <div class="xp-scene" data-xp-scene data-reveal>
+        <div class="xp-scene" data-xp-scene data-reveal="wipe">
           <h3 class="xp-scene-title"><span class="num xp-scene-code">S03</span>상자와 정산표</h3>
           <div class="xp-table-wrap">
             <table class="xp-table">
@@ -481,7 +483,7 @@
         </div>
 
         <!-- ── S03X ── -->
-        <div class="xp-scene" data-xp-scene data-reveal>
+        <div class="xp-scene" data-xp-scene data-reveal="wipe">
           <h3 class="xp-scene-title"><span class="num xp-scene-code">S03X</span>논쟁 축</h3>
           <div class="xp-table-wrap">
             <table class="xp-table">
@@ -531,7 +533,7 @@
         </div>
 
         <!-- ── S04 ── -->
-        <div class="xp-scene" data-xp-scene data-reveal>
+        <div class="xp-scene" data-xp-scene data-reveal="wipe">
           <h3 class="xp-scene-title"><span class="num xp-scene-code">S04</span>제목 문장</h3>
           <div class="xp-table-wrap">
             <table class="xp-table">
@@ -575,7 +577,7 @@
         </div>
 
         <!-- ── S04C ── -->
-        <div class="xp-scene" data-xp-scene data-reveal>
+        <div class="xp-scene" data-xp-scene data-reveal="wipe">
           <h3 class="xp-scene-title"><span class="num xp-scene-code">S04C</span>제1클라이맥스</h3>
           <div class="xp-table-wrap">
             <table class="xp-table">
@@ -628,7 +630,7 @@
         </div>
 
         <!-- ── S05 ── -->
-        <div class="xp-scene" data-xp-scene data-reveal>
+        <div class="xp-scene" data-xp-scene data-reveal="wipe">
           <h3 class="xp-scene-title"><span class="num xp-scene-code">S05</span>빗속 새벽</h3>
           <div class="xp-table-wrap">
             <table class="xp-table">
@@ -684,7 +686,7 @@
         </div>
 
         <!-- ── S06B ── -->
-        <div class="xp-scene" data-xp-scene data-reveal>
+        <div class="xp-scene" data-xp-scene data-reveal="wipe">
           <h3 class="xp-scene-title"><span class="num xp-scene-code">S06B</span>제2클라이맥스</h3>
           <div class="xp-table-wrap">
             <table class="xp-table">
@@ -722,7 +724,7 @@
         </div>
 
         <!-- ── S07 ── -->
-        <div class="xp-scene" data-xp-scene data-reveal>
+        <div class="xp-scene" data-xp-scene data-reveal="wipe">
           <h3 class="xp-scene-title"><span class="num xp-scene-code">S07</span>버스 정류장 (VO)</h3>
           <div class="xp-table-wrap">
             <table class="xp-table">
@@ -769,7 +771,7 @@
         </div>
 
         <!-- ── S07B ── -->
-        <div class="xp-scene" data-xp-scene data-reveal>
+        <div class="xp-scene" data-xp-scene data-reveal="wipe">
           <h3 class="xp-scene-title"><span class="num xp-scene-code">S07B</span>엔딩 (VO)</h3>
           <div class="xp-table-wrap">
             <table class="xp-table">

@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/rules.css">
+  <!-- 리빌 폴백 — JS가 없으면 숨김 상태가 풀린 채로 남는다 -->
+  <noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
 </head>
 <body data-page="rules">
   <header class="nav">
@@ -59,7 +61,7 @@
           영상 대조는 한 씬을 두 번 만든 기록 하나로 모아 작품 페이지에 두었다 — 여기서는 수치가 근거를 댄다.
         </p>
 
-        <div class="rules-meta" data-reveal data-delay="220">
+        <div class="rules-meta" data-reveal-group data-delay="220">
           <div class="rm-item"><span class="num rm-val">1편 · 3:14</span><span class="label">단편</span></div>
           <div class="rm-item"><span class="num rm-val">18일</span><span class="label">완주</span></div>
           <div class="rm-item"><span class="num rm-val">334건</span><span class="label">작업 로그</span></div>
@@ -118,7 +120,7 @@
             <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
             <div class="rc-body">
               <p>샷 간 평균 휘도 차이(톤 점프)를 프레임 단위로 실측했다.</p>
-              <div class="table-wrap">
+              <div class="table-wrap" data-reveal="wipe">
                 <table class="metric-table">
                   <thead>
                     <tr><th>판</th><th>SHOT 1</th><th>SHOT 2</th><th>톤 점프</th></tr>
@@ -379,7 +381,7 @@
                 <strong>ASR이 5회 모두 “그때의 내가”를 “그때 내가”로 들은 것</strong>이 방증이었다.</p>
               <p>검증은 논쟁 대신 대조 생성으로 했다. 목소리·모델·파라미터를 전부 고정하고 <strong>대사 문체만</strong> 바꿔 뽑았다.
                 변수는 하나였다.</p>
-              <div class="table-wrap">
+              <div class="table-wrap" data-reveal="wipe">
                 <table class="metric-table">
                   <thead><tr><th>전체 대사 재검토 결과</th><th>수</th></tr></thead>
                   <tbody>
@@ -627,7 +629,7 @@
                 증폭 가능 여부가 사전에 나온다. SNR이 낮은 소스에 <strong class="num">30dB</strong>를 걸면 결과는 노이즈 버스트다.</p>
               <p>음량 블록만으로는 소스의 성격도 판정되지 않았다. 마찰·타건처럼 고역에 편중된 소스는
                 저역/고역 비를 보는 스펙트럼 대역 검사로 성격을 먼저 확인해야 진동음·핸들링 잡음과 구분된다.</p>
-              <div class="table-wrap">
+              <div class="table-wrap" data-reveal="wipe">
                 <table class="metric-table">
                   <thead><tr><th>판정 기준</th><th>값</th></tr></thead>
                   <tbody>
