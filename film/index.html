@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/css/main.css?v=20260813c">
-  <link rel="stylesheet" href="/css/film.css?v=20260813c">
+  <link rel="stylesheet" href="/css/film.css?v=20260813d">
   <!-- 리빌 폴백 — JS가 없으면 숨김 상태가 풀린 채로 남는다 -->
   <noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
 </head>
@@ -439,6 +439,73 @@
           음성 제거판은 통과 기준을 레벨 측정이 아니라 ASR 재전사로 옮긴 판이다: 완성본과 +15~18dB 증폭본을 전사해 대사 어휘 0을 증명하고,
           같은 harness가 원본에서는 대사를 검출한다는 양성 대조를 함께 둬야 제거로 인정했다(규율 16).
         </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. 정밀 해체 — 자체 계량 분석
+         ============================================================ -->
+    <section class="section film-teardown" id="teardown">
+      <div class="container">
+        <p class="label" data-reveal>Teardown · 자체 계량 해체</p>
+        <h2 class="h-section sec-title" data-reveal data-delay="80">시네마틱 정밀 해체</h2>
+        <p class="body-lg muted sec-lead" data-reveal data-delay="140">
+          완주 후 이 작품을 시네마틱 온톨로지의 정량 기준에 1:1로 대조해 축별로 판정했다.
+          인상 비평이 아니라 측정 → 기준 대조 → 판정 순서다.
+          결론은 "느리다"가 아니라 "정점에서 가장 느리고 여운에서 가장 빠르다 — 밀도 곡선이 뒤집혀 있다"였고,
+          처방 일곱은 전부 편집 단계에서 실행 가능한 것들이다.
+        </p>
+
+        <figure class="td-fig" data-reveal>
+          <img src="/assets/chart-01-density.png" loading="lazy"
+               alt="막별 컷 밀도 차트 — 30초당 컷 수가 Setup 5.1(기준 부합), Development 5.0(기준 미달), Climax 1.4(기준 정면 위배), Resolution 7.9(기준 반대). 정점이 최저 밀도, 여운이 최고 밀도로 규정된 방향과 정확히 반대다.">
+        </figure>
+        <figure class="td-fig" data-reveal>
+          <img src="/assets/chart-02-occupancy.png" loading="lazy"
+               alt="숏 점유 차트 — 숏 27개 중 상위 4개가 개수로는 14.8%지만 시간으로는 57.8%(112.1초/194.1초)를 차지한다. 최장 숏 #12는 68.1초로 전체의 35.1%.">
+        </figure>
+        <figure class="td-fig" data-reveal>
+          <img src="/assets/chart-10-rx.png" loading="lazy"
+               alt="일곱 처방 표 — 전부 편집실에서 끝나는 일이다. 1) 68초 숏 분할 2) 밀도 곡선 정상 방향 재배분 3) 이별 발화 직후 리액션 샷 1컷 4) 정점에 카메라 무브 최소 1회 5) 사운드 모티프 6) 오프닝 재구성 7) 엔딩 문구 축소. 1~3번만 적용해도 리듬 축은 3.5에서 6점대.">
+        </figure>
+
+        <p class="body-lg td-bridge" data-reveal>
+          처방 1(68초 숏을 분할한다)은 <a class="inline-link" href="#s04c">S04C 재제작</a>에서 이미 같은 방향으로 실행됐다 —
+          한 덩어리였던 대치를 3샷으로 갈랐다.
+        </p>
+
+        <h3 class="h-item td-subtitle" data-reveal>축별 판정</h3>
+        <div class="table-wrap" data-reveal>
+          <table class="td-table">
+            <caption class="sr-only">평가 축별 1차·최종 점수와 판정 근거</caption>
+            <thead>
+              <tr><th scope="col" class="label">평가 축</th><th scope="col" class="label">1차</th><th scope="col" class="label">최종</th><th scope="col" class="label">판정 근거</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">3막 구조·서사</th><td class="num">7.5</td><td class="num">7.0</td><td>4막이 완결됐고 전환점도 2회 명확하다. 다만 막 비중은 15.1/18.5/42.9/23.5로 정점에 편중돼 있다.</td></tr>
+              <tr><th scope="row">감정 설계</th><td class="num">7.0</td><td class="num">6.5</td><td>감정 전환 논리는 성립한다. 감정 온도와 컷 길이의 연동은 부재하다.</td></tr>
+              <tr><th scope="row">비트 맵·편집 리듬</th><td class="num">5.5</td><td class="num">3.5</td><td>5체크 중 1개만 통과했다. 밀도 곡선은 역전됐고, 정점 컷이 도입보다 3.55배 길다.</td></tr>
+              <tr><th scope="row">샷 문법·구도</th><td class="num">6.0</td><td class="num">5.0</td><td>사이즈 3종을 확보했다. 그러나 대화 씬 4단 문법이 핵심 구간에서 작동하지 않는다.</td></tr>
+              <tr><th scope="row">카메라·모션</th><td class="num">5.5</td><td class="num">3.0</td><td>확인된 카메라 무브는 0건이다. 숏리스트 표준은 무브를 필수 칼럼으로 규정한다.</td></tr>
+              <tr><th scope="row">사운드 설계</th><td class="num">5.5</td><td class="num">4.0</td><td>3계층 중 모티프는 0건이고, 컷–비트 동기화 근거도 없다. 침묵 활용 1건은 유효하다.</td></tr>
+              <tr><th scope="row">엔딩·여운</th><td class="num">6.5</td><td class="num">6.5</td><td>마지막 숏은 9.875초로 여운 밴드(5~10초)에 부합한다. 문구 과잉 설명은 유지된 감점이다.</td></tr>
+              <tr class="td-total"><th scope="row">종합 (가중 평균)</th><td class="num">6.2</td><td class="num">5.0</td><td>서사·감정은 중상위이고, 리듬·모션은 하위다. 편차가 큰 것이 이 작품의 성격이다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="td-note muted" data-reveal>
+          ① 1차→최종 하락은 결함 추가가 아니라 채점 기준의 계량화 때문이다.<br>
+          ② "서사·감정은 중상위, 리듬·모션은 하위 — 편차가 큰 것이 이 작품의 성격"(보고서 원문).
+        </p>
+        <p class="td-note muted" data-reveal>
+          ※ 이 보고서의 숏 27개는 완성본 화면에서 검출되는 숏 기준이다. 사이트의 38 Shots는 생성·조립 세그먼트 기준 —
+          브리지 컷과 L컷으로 이어 붙인 세그먼트가 화면에서는 한 숏으로 읽혀 수가 다르다.
+          두 수치는 같은 마스터(194.125s)를 다른 단위로 센 것이다.
+        </p>
+
+        <div class="td-actions" data-reveal>
+          <a class="btn btn-arrow" href="/assets/report_cinematic_teardown.pdf" download="report_cinematic_teardown.pdf">보고서 전문 PDF</a>
+        </div>
       </div>
     </section>
 

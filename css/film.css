@@ -427,3 +427,56 @@
   transition: border-color .5s var(--ease);
 }
 .inline-link:hover { border-bottom-color: var(--ink); }
+
+/* ============================================================
+   6. 정밀 해체 (Teardown)
+   ============================================================ */
+.film-teardown .sec-lead { max-width: 62em; }
+
+.td-fig {
+  max-width: 960px;
+  margin: 0 0 clamp(20px, 3vw, 32px);
+  border: 1px solid var(--ink-12);
+  background: #fff;
+}
+.td-fig img { width: 100%; display: block; }
+.td-fig:first-of-type { margin-top: clamp(28px, 4vw, 44px); }
+
+.td-bridge { margin: clamp(24px, 3.5vw, 40px) 0; max-width: 46em; }
+
+.td-subtitle { margin-bottom: 18px; }
+
+.table-wrap { overflow-x: auto; }
+.td-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: clamp(13.5px, 1vw, 15px);
+  line-height: 1.6;
+}
+.td-table thead th {
+  text-align: left;
+  padding: 10px 14px 10px 0;
+  border-bottom: 1px solid var(--ink);
+}
+.td-table tbody th,
+.td-table tbody td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 14px 12px 0;
+  border-bottom: 1px solid var(--ink-12);
+}
+.td-table tbody th { font-weight: 600; white-space: nowrap; }
+.td-table td.num { font-weight: 600; white-space: nowrap; }
+.td-table .td-total th,
+.td-table .td-total td { border-bottom: 0; border-top: 1px solid var(--ink); }
+.td-table .td-total td.num:last-of-type,
+.td-table .td-total td.num { color: var(--accent); }
+
+.td-note {
+  margin-top: 16px;
+  font-size: clamp(12.5px, .95vw, 14px);
+  line-height: 1.8;
+  max-width: 56em;
+}
+.td-actions { margin-top: clamp(28px, 4vw, 44px); }
