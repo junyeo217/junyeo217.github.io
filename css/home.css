@@ -106,29 +106,26 @@
 }
 
 /* ============================================================
-   (1) 히어로
+   (1) 히어로 — 풀스크린 비디오 + 오버레이 캡션
    ============================================================ */
 
-.hero { position: relative; }
+/* 홈에서만 내비 높이만큼의 여백을 없애 히어로가 내비 뒤까지 찬다 */
+body[data-page="home"] main { padding-top: 0; }
 
-/* 풀블리드 다크 영역 — 본편 하이라이트 무음 루프 자리 */
-.hero-media {
+.hero {
   position: relative;
-  width: 100%;
-  height: clamp(380px, 66vh, 74vh);
-  background: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;      /* 폴백 */
+  height: 100svh;
   overflow: hidden;
+  background: var(--ink);
 }
-/* 아주 옅은 비네트 — 미디어가 들어와도 캡션과 분리되게 */
-.hero-media::after {
-  content: "";
+
+/* 본편 무음 루프 — 뷰포트 전체 */
+.hero-media {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, .35) 100%);
-  pointer-events: none;
+  background: var(--ink);
+  overflow: hidden;
 }
 .hero-video {
   position: absolute;
@@ -137,25 +134,58 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* 스크림 (1) 상단 — 내비 가독성 */
+.hero-media::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .45) 0%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+/* 스크림 (2) 하단 — 캡션 가독성 (기존 비네트를 대체) */
+.hero-media::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 42%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .22) 46%, rgba(0, 0, 0, .58) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* 인트로가 걷힌 직후 히어로 미디어가 천천히 자리를 잡는다 */
-.intro-on .hero-video { opacity: 0; }
-.intro-done .hero-video {
+.intro-on .hero-video,
+.intro-on .hero-media::before,
+.intro-on .hero-media::after { opacity: 0; }
+.intro-done .hero-video,
+.intro-done .hero-media::before,
+.intro-done .hero-media::after {
   opacity: 1;
   transition: opacity 1.2s var(--ease) .12s;
 }
 
-/* 히어로 하단 캡션 바 */
+/* 히어로 하단 캡션 — 비디오 위 오버레이 */
 .hero-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: clamp(24px, 5vw, 80px);
   padding-top: clamp(28px, 3.6vw, 48px);
   padding-bottom: clamp(28px, 3.6vw, 52px);
+  color: var(--paper);
 }
 .hero-id { flex: 1 1 auto; min-width: 0; }
-.hero-role { margin-bottom: 14px; }
-.hero-name { margin: 0; }
+.hero-role {
+  margin-bottom: 14px;
+  color: rgba(242, 241, 236, .65);
+}
+.hero-name { margin: 0; color: var(--paper); }
 
 .hero-meta {
   flex: 0 1 auto;
@@ -165,30 +195,127 @@
   margin: 0;
 }
 .hero-meta-col { min-width: 0; }
-.hero-meta dt { margin-bottom: 8px; }
+.hero-meta dt {
+  margin-bottom: 8px;
+  color: rgba(242, 241, 236, .5);
+}
 .hero-meta dd {
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
-  color: var(--ink);
+  color: var(--paper);
+}
+
+/* 우측 중앙 스크롤 인디케이터 */
+.hero-scroll {
+  position: absolute;
+  right: var(--pad);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  pointer-events: none;
+}
+.hero-scroll-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: var(--font-label);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(242, 241, 236, .7);
+}
+.hero-scroll-line {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 76px;
+  background: rgba(242, 241, 236, .22);
+  overflow: hidden;
+}
+.hero-scroll-line::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0;
+  width: 1px;
+  height: 34%;
+  background: var(--paper);
+  animation: heroScrollLine 2.4s var(--ease) infinite;
+}
+@keyframes heroScrollLine {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(300%); }
+}
+
+/* 내비 전환 감시용 sentinel */
+.hero-sentinel {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  pointer-events: none;
 }
 
 @media (max-width: 900px) {
   .hero-caption {
     flex-direction: column;
     align-items: flex-start;
-    gap: clamp(24px, 5vw, 36px);
+    gap: clamp(20px, 4vw, 32px);
   }
+  /* 세로 스택 — 이름 위, 메타 아래(가로 wrap 허용) */
   .hero-meta {
     width: 100%;
-    padding-top: clamp(20px, 4vw, 28px);
-    border-top: 1px solid var(--ink-12);
-    gap: 20px clamp(20px, 5vw, 40px);
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: clamp(18px, 4vw, 26px);
+    border-top: 1px solid rgba(242, 241, 236, .18);
+    gap: 16px clamp(20px, 5vw, 40px);
   }
 }
-@media (max-width: 520px) {
-  .hero-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+@media (max-width: 767px) {
+  .hero-scroll { display: none; }
 }
+
+/* ============================================================
+   (1-b) 내비 투명 ↔ 종이 전환 — 홈 전용
+   기본값은 main.css의 종이 스타일. JS(IntersectionObserver)가
+   히어로 위를 감지했을 때만 .is-over-hero를 붙여 투명으로 바꾼다.
+   → JS가 죽으면 언제나 읽히는 종이 스타일이 남는다.
+   ============================================================ */
+
+body[data-page="home"] .nav {
+  transition: background-color .5s var(--ease), border-color .5s var(--ease);
+}
+body[data-page="home"] .nav .nav-wordmark,
+body[data-page="home"] .nav .nav-links a,
+body[data-page="home"] .nav .nav-lang .on,
+body[data-page="home"] .nav .nav-lang .off {
+  transition: color .5s var(--ease);
+}
+body[data-page="home"] .nav .nav-burger span {
+  transition: background-color .5s var(--ease), transform .4s var(--ease), opacity .4s;
+}
+
+body[data-page="home"] .nav.is-over-hero {
+  background-color: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+body[data-page="home"] .nav.is-over-hero .nav-wordmark,
+body[data-page="home"] .nav.is-over-hero .nav-lang .on { color: var(--paper); }
+body[data-page="home"] .nav.is-over-hero .nav-links a { color: rgba(242, 241, 236, .72); }
+body[data-page="home"] .nav.is-over-hero .nav-links a:hover { color: var(--paper); }
+body[data-page="home"] .nav.is-over-hero .nav-links a[aria-current="page"] {
+  color: var(--paper);
+  border-bottom-color: var(--paper);
+}
+body[data-page="home"] .nav.is-over-hero .nav-lang .off { color: rgba(242, 241, 236, .5); }
+body[data-page="home"] .nav.is-over-hero .nav-burger span { background-color: var(--paper); }
 
 /* ============================================================
    (2) 지표 스트립
@@ -318,7 +445,10 @@
 @media (prefers-reduced-motion: reduce) {
   .intro { display: none !important; }
   .intro-caret { animation: none; }
-  .hero-video { opacity: 1 !important; transition: none; }
+  .hero-video,
+  .hero-media::before,
+  .hero-media::after { opacity: 1 !important; transition: none; }
+  .hero-scroll-line::after { animation: none; }
   .card::before,
   .card-more::after,
   .intro-text::after { transition: none; }

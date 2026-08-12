@@ -169,6 +169,28 @@
   }
 })();
 
+/* ============================================================
+   내비 투명 ↔ 종이 전환 — 홈 전용
+   히어로 하단 sentinel을 IntersectionObserver로 감시한다.
+   rootMargin 상단 -64px = 내비 높이 → sentinel이 내비 아래에 있는 동안
+   (= 내비 띠가 히어로 위에 얹혀 있는 동안) .is-over-hero를 붙인다.
+   실패 시(구형 브라우저·마크업 부재) 클래스가 붙지 않아 종이 스타일로 남는다.
+   ============================================================ */
+(function () {
+  var nav = document.querySelector('.nav');
+  var sentinel = document.getElementById('heroSentinel');
+  if (!nav || !sentinel || !('IntersectionObserver' in window)) return;
+
+  var io = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) nav.classList.add('is-over-hero');
+      else nav.classList.remove('is-over-hero');
+    }
+  }, { rootMargin: '-64px 0px 0px 0px', threshold: 0 });
+
+  io.observe(sentinel);
+})();
+
 /* iOS Safari 자동재생 보장 — 속성만으로는 부족해 프로퍼티로도 세팅 */
 (function () {
   var v = document.querySelector('.hero-video');

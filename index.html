@@ -72,13 +72,19 @@
 
   <main>
 
-    <!-- (1) 히어로 -->
+    <!-- (1) 히어로 — 풀스크린 비디오 + 오버레이 캡션 -->
     <section class="hero" aria-labelledby="heroName">
       <div class="hero-media">
         <video class="hero-video" autoplay muted loop playsinline preload="metadata"
                poster="/assets/poster_film.jpg" aria-label="본편 「너가 힘들지 않았으면 해」 무음 루프">
           <source src="/assets/FILM_master_web.mp4" type="video/mp4">
         </video>
+      </div>
+
+      <!-- 우측 중앙 스크롤 인디케이터 -->
+      <div class="hero-scroll" aria-hidden="true">
+        <span class="hero-scroll-label">Scroll</span>
+        <span class="hero-scroll-line"></span>
       </div>
 
       <div class="container hero-caption">
@@ -102,6 +108,9 @@
           </div>
         </dl>
       </div>
+
+      <!-- 내비 전환 감시용 sentinel (히어로 하단 1px) -->
+      <div class="hero-sentinel" id="heroSentinel" aria-hidden="true"></div>
     </section>
 
     <!-- (2) 지표 스트립 -->
