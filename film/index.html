@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="/css/main.css?v=20260813b">
-  <link rel="stylesheet" href="/css/film.css?v=20260813b">
+  <link rel="stylesheet" href="/css/main.css?v=20260813c">
+  <link rel="stylesheet" href="/css/film.css?v=20260813c">
   <!-- 리빌 폴백 — JS가 없으면 숨김 상태가 풀린 채로 남는다 -->
   <noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
 </head>
@@ -49,7 +49,7 @@
       <div class="container">
         <p class="label" data-reveal>Feature</p>
 
-        <div class="film-player" data-reveal="wipe" data-delay="80">
+        <div class="film-player" data-reveal data-delay="80">
           <video class="film-video" controls preload="none" poster="/assets/poster_film.jpg" playsinline>
             <source src="/assets/FILM_master_web.mp4" type="video/mp4">
             <p>이 브라우저에서는 영상을 재생할 수 없다. <a href="/assets/FILM_master_web.mp4">파일 직접 열기</a></p>
@@ -114,7 +114,7 @@
 
         <!-- ---- 2-2. 전 / 후 영상 ---- -->
         <div class="ab-grid">
-          <figure class="ab-item" data-reveal="wipe">
+          <figure class="ab-item" data-reveal>
             <video class="ab-video" controls preload="none" poster="/assets/poster_s04c_before.jpg" playsinline>
               <source src="/assets/S04C_before_original.mp4" type="video/mp4">
               <p>이 브라우저에서는 영상을 재생할 수 없다. <a href="/assets/S04C_before_original.mp4">파일 직접 열기</a></p>
@@ -126,7 +126,7 @@
             </figcaption>
           </figure>
 
-          <figure class="ab-item" data-reveal="wipe" data-delay="120">
+          <figure class="ab-item" data-reveal data-delay="120">
             <video class="ab-video" controls preload="none" poster="/assets/poster_s04c_after.jpg" playsinline>
               <source src="/assets/S04C_after_CONFIRMED.mp4" type="video/mp4">
               <p>이 브라우저에서는 영상을 재생할 수 없다. <a href="/assets/S04C_after_CONFIRMED.mp4">파일 직접 열기</a></p>
@@ -450,7 +450,7 @@
       <small>AI Filmmaker · Pipeline Builder · © 2026</small>
     </div>
   </footer>
-  <script src="/js/main.js?v=20260813b" defer></script>
-  <script src="/js/film.js?v=20260813b" defer></script>
+  <script src="/js/main.js?v=20260813c" defer></script>
+  <script src="/js/film.js?v=20260813c" defer></script>
 </body>
 </html>

@@ -208,12 +208,11 @@ main { padding-top: 64px; }
 
 /* 좌우·하단 -6px 여유는 clip-path가 포커스 링을 잘라내지 않게 하려는 것 */
 [data-reveal="wipe"] {
-  transform: scale(1.02);
+  transform: none; /* scale 리샘플링은 리페인트 비용이 커서 제거 — 와이프는 clip만 */
   clip-path: inset(0 -6px 100% -6px);
-  transition: opacity .9s var(--ease), transform 1.1s var(--ease), clip-path 1.1s var(--ease);
+  transition: opacity .9s var(--ease), clip-path 1.1s var(--ease);
 }
 [data-reveal="wipe"].is-in {
-  transform: none;
   clip-path: inset(0 -6px -6px -6px);
 }
 

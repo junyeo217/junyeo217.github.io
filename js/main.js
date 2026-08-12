@@ -154,6 +154,12 @@
   }
   window.addEventListener('load', function () { window.setTimeout(sweep, 1800); });
   window.addEventListener('pageshow', function () { window.setTimeout(sweep, 600); });
+  /* 스크롤 중 발화가 누락된 요소도 잡는다 — 스크롤이 멎고 400ms 뒤 1회 (남은 대상이 없어질수록 공짜) */
+  var sweepTimer = 0;
+  window.addEventListener('scroll', function () {
+    if (sweepTimer) window.clearTimeout(sweepTimer);
+    sweepTimer = window.setTimeout(sweep, 400);
+  }, { passive: true });
 
   /* 다른 스크립트에서 쓸 수 있게 최소한만 노출 (검증·수동 트리거용) */
   window.__reveal = { reveal: reveal, countUp: countUp };
