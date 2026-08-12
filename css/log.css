@@ -1,0 +1,285 @@
+/* ============================================================
+   /log — 제작 로그 아카이브 (Pinned + 시기 필터 + Release Note)
+   main.css의 토큰만 사용 (paper / ink / accent / ink-66,44,12 / ease)
+   ============================================================ */
+
+/* ---------- 1. 인트로 ---------- */
+.log-intro .log-lede {
+  margin-top: 18px;
+  max-width: 14ch;
+}
+.log-intro .log-sub {
+  margin-top: clamp(24px, 3vw, 36px);
+  max-width: 68ch;
+  color: var(--ink-66);
+}
+.lg-mark {
+  color: var(--ink);
+  white-space: nowrap;
+}
+.lg-src-name {
+  font-family: var(--font-label);
+  font-size: .9em;
+  letter-spacing: .02em;
+  color: var(--accent);
+}
+
+/* 규율 원문 인용 (rules.css의 .rule-quote 패턴) */
+.log-quote {
+  margin-top: clamp(28px, 3.4vw, 44px);
+  border-left: 2px solid var(--accent);
+  padding: 2px 0 2px clamp(16px, 2vw, 24px);
+  max-width: 62ch;
+}
+.log-quote p {
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.75;
+}
+.log-quote .lq-src { margin-top: 12px; }
+
+/* 지표 스트립 (home.css의 .metrics 패턴 축약형) */
+.log-meta {
+  margin-top: clamp(36px, 5vw, 60px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  border-top: 1px solid var(--ink-12);
+  border-bottom: 1px solid var(--ink-12);
+}
+.lm-item {
+  padding: 22px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.lm-val {
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+/* ---------- 2. Pinned + 시기 필터 ---------- */
+.pin-heading { margin-top: 16px; max-width: 20ch; }
+.pin-lead {
+  margin-top: 20px;
+  max-width: 64ch;
+}
+
+.log-filter {
+  margin-top: clamp(36px, 4.5vw, 60px);
+  padding-top: clamp(22px, 2.6vw, 32px);
+  border-top: 1px solid var(--ink-12);
+}
+.filter-title { display: block; }
+
+.filter-btns {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.fbtn {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid var(--ink-12);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--ink-66);
+  transition: color .5s var(--ease), border-color .5s var(--ease), background-color .5s var(--ease);
+}
+.fbtn:hover { color: var(--ink); border-color: var(--ink-44); }
+.fbtn-n {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: var(--ink-44);
+  transition: color .5s var(--ease);
+}
+.fbtn[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.fbtn[aria-pressed="true"] .fbtn-n { color: rgba(242, 241, 236, .55); }
+
+.filter-note {
+  margin-top: 18px;
+  max-width: 72ch;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ink-44);
+}
+.filter-status {
+  margin-top: 10px;
+  font-family: var(--font-label);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* 핀 카드 그리드 */
+.pin-grid {
+  margin-top: clamp(28px, 3.4vw, 44px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 1.6vw, 24px);
+}
+
+.pin-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 2.8vw, 40px);
+  border: 1px solid var(--ink-12);
+  transition: border-color .6s var(--ease);
+}
+.pin-card:hover { border-color: var(--ink-44); }
+.pin-card[hidden] { display: none; }
+
+.pc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.pc-idx {
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: var(--ink-12);
+}
+.pc-title { margin: 0; max-width: 22ch; }
+.pc-sum {
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.82;
+  color: var(--ink-66);
+  max-width: 60ch;
+}
+
+.pc-src {
+  margin-top: auto;
+  padding-top: clamp(20px, 2.4vw, 30px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-44);
+  transition: color .5s var(--ease);
+}
+a.pc-src::after {
+  content: "→";
+  font-family: var(--font-sans);
+  display: inline-block;
+  transition: transform .6s var(--ease);
+}
+a.pc-src:hover { color: var(--accent); }
+a.pc-src:hover::after { transform: translateX(6px); }
+
+/* 상세 미보유 카드 */
+.pin-card.is-pending { border-style: dashed; }
+.pc-src-none { color: var(--accent); }
+
+/* ---------- 3. Release Note 연재 ---------- */
+.rn-heading { margin-top: 16px; max-width: 18ch; }
+.rn-lead {
+  margin-top: 20px;
+  max-width: 64ch;
+}
+
+.rn-list {
+  margin-top: clamp(36px, 4.5vw, 60px);
+  border-top: 1px solid var(--ink-12);
+}
+.rn-item {
+  display: grid;
+  grid-template-columns: clamp(200px, 24vw, 320px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 56px);
+  padding: clamp(26px, 3.2vw, 44px) 0;
+  border-bottom: 1px solid var(--ink-12);
+}
+
+.rn-head {
+  display: grid;
+  grid-template-columns: clamp(38px, 4vw, 58px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+.rn-idx {
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--ink-12);
+}
+.rn-title { margin: 0; }
+.rn-range { margin-top: 8px; }
+
+.rn-format {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink);
+  max-width: 62ch;
+}
+
+.rn-pending {
+  margin-top: 20px;
+  padding: clamp(18px, 2vw, 26px);
+  border: 1px dashed var(--ink-12);
+}
+.rn-pending .label { color: var(--accent); margin-bottom: 10px; }
+.rn-pending p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink-66);
+  max-width: 60ch;
+}
+
+/* 현재 상태 블록 */
+.log-state {
+  margin-top: clamp(40px, 5vw, 72px);
+  padding-top: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--ink-12);
+}
+.ls-text {
+  margin-top: 14px;
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.8;
+  color: var(--ink-66);
+  max-width: 66ch;
+}
+.ls-btn { margin-top: clamp(24px, 2.6vw, 32px); }
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 1023px) {
+  .pin-grid { grid-template-columns: minmax(0, 1fr); }
+  .rn-item { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+}
+
+@media (max-width: 767px) {
+  .log-intro .log-lede { max-width: none; }
+  .pin-heading, .rn-heading { max-width: none; }
+
+  .log-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lm-item { padding: 18px 0; }
+  .lm-item:nth-child(-n+2) { border-bottom: 1px solid var(--ink-12); }
+
+  .filter-btns { gap: 8px; }
+  .fbtn { padding: 8px 13px; font-size: 13.5px; }
+
+  .pc-title { max-width: none; }
+  .rn-head { grid-template-columns: 34px minmax(0, 1fr); gap: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pin-card,
+  .fbtn,
+  a.pc-src,
+  a.pc-src::after { transition: none; }
+}

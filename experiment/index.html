@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Experiment — AI Filmmaker Portfolio</title>
-  <meta name="description" content="대조 실험 — 준비 중">
+  <title>Experiment · 대조 실험 — AI Filmmaker Portfolio</title>
+  <meta name="description" content="“대사 톤이 아쉽다”는 외부 지적을 논쟁 대신 재현 실험으로 검증한 기록. 목소리·모델·파라미터를 고정하고 대사 문체 하나만 바꿔 대조 생성했고, 전체 38개 대사를 개정 20 / 유지 18 / 복원 2로 정리했다. 전체 대조표를 그대로 싣는다.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/experiment.css">
 </head>
 <body data-page="experiment">
   <header class="nav">
@@ -35,15 +37,827 @@
     <a data-nav="log" href="/log/">Log</a>
     <a data-nav="about" href="/about/">About</a>
   </nav>
+
   <main>
-    <section class="section">
+
+    <!-- ============================================================
+         1. 인트로
+         ============================================================ -->
+    <section class="section xp-intro">
       <div class="container">
-        <p class="label" data-reveal>Experiment</p>
-        <h1 class="h-section" data-reveal data-delay="80" style="margin-top:16px">대조 실험</h1>
-        <p class="muted body-lg" data-reveal data-delay="160" style="margin-top:24px">이 섹션은 준비 중입니다.</p>
+        <p class="label" data-reveal>Experiment · 대조 실험</p>
+
+        <h1 class="h-display xp-lede" data-reveal data-delay="80">
+          지적을 반박하지 않고<br>변수 하나만 바꿔<br>다시 만들었다.
+        </h1>
+
+        <p class="body-lg xp-sub" data-reveal data-delay="160">
+          완성본을 본 외부 지적이 <span class="mark">“대사 톤이 아쉽다, 차라리 자막 처리가 낫겠다”</span>였다(<span class="xp-date">2026-08-11</span>).
+          이 페이지는 그 지적을 받아들이거나 반박하는 대신, <span class="mark">원인을 다시 규명한 기록</span>이다.
+          목소리·모델·파라미터를 전부 고정하고 대사 문체 하나만 바꿔 같은 대사를 다시 생성했다 —
+          변수 하나짜리 대조 생성이 논쟁보다 싸고 빠르다는 것이 판단의 근거였고, 그 판단은 나중에
+          <span class="xp-src">PRODUCTION_RULES v1</span> 규율 34로 남았다.
+          아래 수치와 대사 인용은 전부 <span class="xp-src">DIALOGUE_SPOKEN v1</span> 원문 그대로다.
+        </p>
+
+        <div class="xp-meta" data-reveal data-delay="220">
+          <div class="xp-mitem"><span class="num xp-mval">1개</span><span class="label">바꾼 변수</span></div>
+          <div class="xp-mitem"><span class="num xp-mval">38개</span><span class="label">전체 대사</span></div>
+          <div class="xp-mitem"><span class="num xp-mval">20건</span><span class="label">개정</span></div>
+          <div class="xp-mitem"><span class="num xp-mval">2건</span><span class="label">누락 복원</span></div>
+        </div>
       </div>
     </section>
+
+    <!-- ============================================================
+         2. 서사 5단 — 피드백 → 가설 → 설계 → 결과 → 규율화
+         ============================================================ -->
+    <section class="section xp-arc">
+      <div class="container">
+        <p class="label" data-reveal>Narrative · 다섯 단계</p>
+        <h2 class="h-section xp-arc-title" data-reveal data-delay="80">
+          연기 문제로 보면 손댈 데가 없었다
+        </h2>
+        <p class="body-lg xp-arc-sub muted" data-reveal data-delay="160">
+          지적 → 가설 → 설계 → 결과 → 규율화. 다섯 단계 전부 같은 자리를 다르게 본 기록이고,
+          마지막 단계에서만 규칙이 나온다.
+        </p>
+
+        <ol class="xp-steps">
+
+          <!-- ── 01 피드백 ── -->
+          <li class="xp-step" id="step-01" data-reveal>
+            <div class="xp-key">
+              <span class="num xp-stepnum">01</span>
+              <span class="label">피드백</span>
+            </div>
+            <div class="xp-body">
+              <h3 class="h-item xp-steptitle">배우가 원인이면 고칠 방법이 없다</h3>
+
+              <div class="xp-quote">
+                <p>“대사 톤이 아쉽다, 차라리 자막 처리가 낫겠다.”</p>
+                <p class="label xp-qsrc">외부 지적 · 2026-08-11</p>
+              </div>
+
+              <p>
+                지적 자체는 정확했다. 문제는 원인 지목이었다.
+                원인을 배우(AI) 연기로 보면 <strong>손댈 데가 없다</strong> — 음성 모델을 바꾸거나, 톤을 포기하고 자막으로 덮는 선택지밖에 남지 않는다.
+                자막은 전달을 보강하지만 톤 자체를 고치지는 않는다. 막다른 골목이었다.
+              </p>
+              <p class="xp-cap">
+                자막판은 그 지적 중 전달 쪽을 실제로 해결하는 판으로 따로 만들어 뒀다. 톤은 여기서 따로 규명했다.
+                <a class="xp-link" href="/film/">파생판 보기 →</a>
+              </p>
+            </div>
+          </li>
+
+          <!-- ── 02 가설 ── -->
+          <li class="xp-step" id="step-02" data-reveal>
+            <div class="xp-key">
+              <span class="num xp-stepnum">02</span>
+              <span class="label">가설</span>
+            </div>
+            <div class="xp-body">
+              <h3 class="h-item xp-steptitle">원인은 음성이 아니라 대본의 문체다</h3>
+
+              <p>
+                대본을 다시 읽으니 문어체였다. 문법적으로 완결된 문장은 사람이 말해도 딱딱하고,
+                AI 음성은 그걸 <strong>그대로 낭독조로 읽는다</strong>. 글로는 읽히지만 입으로는 나오지 않는 문장들이 감정 정점 직전에 몰려 있었다.
+              </p>
+              <p>
+                표본 둘: <span class="xp-said">그건 그때의 내가 판단할 일이야</span> ·
+                <span class="xp-said">아플 때 도망가지 않는 게 더 중요할 때도 있어</span>.
+              </p>
+              <p>
+                방증도 있었다. 완성본을 전사한 <strong>ASR이 5회 모두 “그때의 내가”를 “그때 내가”로 들었다.</strong>
+                기계가 반복해서 놓치는 조사라면, 그 자리는 사람 귀에도 실제 발화로 들리지 않는 자리다.
+              </p>
+            </div>
+          </li>
+
+          <!-- ── 03 설계 ── -->
+          <li class="xp-step" id="step-03" data-reveal>
+            <div class="xp-key">
+              <span class="num xp-stepnum">03</span>
+              <span class="label">설계</span>
+            </div>
+            <div class="xp-body">
+              <h3 class="h-item xp-steptitle">변수를 하나만 남겼다</h3>
+
+              <p>
+                가설이 맞는지 말로 다투는 대신 같은 대사를 두 번 생성했다.
+                <strong>목소리·모델·파라미터를 전부 고정하고, 바꾼 것은 대사 문체 하나</strong>다.
+                결과가 달라지면 원인은 문체일 수밖에 없다.
+              </p>
+
+              <ul class="xp-fixed">
+                <li><span class="label xp-fkey">고정</span><span class="xp-ftext">목소리</span></li>
+                <li><span class="label xp-fkey">고정</span><span class="xp-ftext">생성 모델</span></li>
+                <li><span class="label xp-fkey">고정</span><span class="xp-ftext">파라미터</span></li>
+                <li class="is-var"><span class="label xp-fkey">변수</span><span class="xp-ftext">대사 문체 — 문어체 vs 구어체</span></li>
+              </ul>
+
+              <p class="xp-cap">개정에 쓴 조작은 여섯 가지로 고정했다. 감이 아니라 같은 규칙을 38개 대사 전부에 적용했다.</p>
+
+              <ol class="xp-principles">
+                <li><span class="xp-pnum">①</span><span>주어 생략</span></li>
+                <li><span class="xp-pnum">②</span><span>조사 탈락</span></li>
+                <li><span class="xp-pnum">③</span><span>한 문장을 조각으로 쪼개기</span></li>
+                <li><span class="xp-pnum">④</span><span>앞 절 생략하고 대명사로 받기</span></li>
+                <li><span class="xp-pnum">⑤</span><span>종결어미 구어화(-잖아 · -거든 · -는데)</span></li>
+                <li><span class="xp-pnum">⑥</span><span>“것→거”, “-한테는→한텐” 등 축약</span></li>
+              </ol>
+
+              <div class="xp-quote">
+                <p>외부 지적은 재현 실험으로 검증한다. 변수 하나만 바꾼 대조 생성(문어체 vs 구어체)이 논쟁보다 싸고 빠르다.</p>
+                <p class="label xp-qsrc">PRODUCTION_RULES v1 · 규율 34</p>
+              </div>
+            </div>
+          </li>
+
+          <!-- ── 04 결과 ── -->
+          <li class="xp-step" id="step-04" data-reveal>
+            <div class="xp-key">
+              <span class="num xp-stepnum">04</span>
+              <span class="label">결과</span>
+            </div>
+            <div class="xp-body">
+              <h3 class="h-item xp-steptitle">같은 목소리, 다른 문체 — 나란히 듣는다</h3>
+
+              <!--
+                TODO: 대조 생성 2판의 실제 파일명 확인 필요.
+                  · 문어체 판 — SITE_PLAN v1 §2-4·§5가 "문어체 멀티샷"을 드라이브 아카이브 회수 대상으로 적고 있다. 회수 후 data-media 교체.
+                  · 구어체 판 — SITE_PLAN v1 §5 "이미 있는 것"에 "대조 실험 구어체판"으로 올라 있으나 파일명이 문서에 없다.
+                  · 주의: WEB_HANDOFF v1 §3의 확정 자산 S04C_before_original.mp4 / S04C_after_CONFIRMED.mp4 는
+                    문체 외에 샷 분할·광원 기하·프롬프트 문법까지 함께 바뀐 씬 재제작본이므로 "변수 1개 대조"의 A/B로 쓸 수 없다.
+                    둘 중 어느 것을 이 자리에 놓을지 사용자 확인 필요.
+              -->
+              <div class="xp-ab">
+                <div class="media-ph bar" data-media="[회수 필요] 문어체 판 대조 생성본">
+                  <div class="ph-icon"></div>
+                  <div class="ph-body">
+                    <div class="ph-label">Audio A · 문어체 판</div>
+                    <p class="ph-desc">원본 대사 그대로 낭독</p>
+                  </div>
+                </div>
+                <div class="media-ph bar" data-media="[확인 필요] 구어체 판 대조 생성본">
+                  <div class="ph-icon"></div>
+                  <div class="ph-body">
+                    <div class="ph-label">Audio B · 구어체 판</div>
+                    <p class="ph-desc">개정 대사 · 목소리·모델·파라미터 동일</p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="xp-cap">두 트랙의 차이는 문장 하나뿐이다. 대표 대사는 아래와 같다.</p>
+
+              <div class="xp-line">
+                <div class="xp-cell before">
+                  <span class="label">Before · 문어체</span>
+                  <p>“그건 그때의 내가 판단할 일이야.”</p>
+                </div>
+                <div class="xp-cell after">
+                  <span class="label">After · 구어체</span>
+                  <p>“그건… 그때 가서 내가 정해.”</p>
+                </div>
+              </div>
+
+              <p>
+                판단 근거는 <strong>“그때의 내가”가 문어의 표본</strong>이라는 것이었다.
+                관형격 “의”로 시제와 인칭을 한 덩어리로 묶는 구성은 문서의 문법이고, 말에서는 “그때 가서”처럼 시간이 앞으로 나온다.
+                ASR이 5회 모두 “의”를 떨어뜨려 들은 자리가 정확히 여기다.
+              </p>
+            </div>
+          </li>
+
+          <!-- ── 05 규율화 ── -->
+          <li class="xp-step" id="step-05" data-reveal>
+            <div class="xp-key">
+              <span class="num xp-stepnum">05</span>
+              <span class="label">규율화</span>
+            </div>
+            <div class="xp-body">
+              <h3 class="h-item xp-steptitle">대사 확정 전에 TTS 낭독 게이트를 걸었다</h3>
+
+              <p>
+                실험 결과는 한 번 쓰고 버리지 않고 절차로 굳혔다. 대사는 확정되기 전에 반드시 한 번 기계에게 읽힌다.
+                문어체는 그 자리에서 즉시 드러나고, 비용은 거의 들지 않는다.
+              </p>
+
+              <div class="xp-quote">
+                <p>
+                  대사는 구어체로 쓴다. 문법적으로 완결된 문어체 대사는 사람이 말해도 딱딱하고, AI 음성은 그대로 낭독조로 읽는다.
+                  주어 생략·조사 탈락·문장 조각화·앞 절 생략 후 대명사 수용(“…그게 왜 날 위하는 건데?”)을 쓴다.
+                  대사 확정 전 TTS로 한 번 낭독시켜 검사한다(문어체는 즉시 드러남, 비용 미미).
+                  검수 항목은 “의미가 전달되는가”가 아니라 <strong>“입에 붙는가”</strong>.
+                </p>
+                <p class="label xp-qsrc">PRODUCTION_RULES v1 · 규율 2</p>
+              </div>
+
+              <p>
+                검수 항목이 바뀐 것이 이 규율의 핵심이다. “의미가 전달되는가”는 문어체 대사도 전부 통과시킨다.
+                통과 기준을 <strong>입에 붙는가</strong>로 옮기고 나서야 걸러야 할 문장이 걸러졌다.
+              </p>
+              <p class="xp-cap">
+                이 규율이 붙게 된 사고와 근거는 규율 갤러리 04번 카드에 같은 서식으로 정리해 뒀다.
+                <a class="xp-link" href="/rules/#rule-04">규율 04 — 대사 문체가 연기 톤을 만든다 →</a>
+              </p>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. 개정 결과 요약
+         ============================================================ -->
+    <section class="section xp-result">
+      <div class="container">
+        <p class="label" data-reveal>Result · 개정 결과</p>
+        <h2 class="h-section xp-result-title" data-reveal data-delay="80">
+          개정하지 않은 것이 절반이다
+        </h2>
+
+        <!--
+          TODO: 확인 필요 — DIALOGUE_SPOKEN v1의 요약표는 개정 20 / 유지 18로 적고 있으나,
+          같은 문서의 씬별 표를 행 단위로 세면 개정 21 / 유지 17이다(경계 후보: #27 "그때는→그땐" 축약만).
+          아래 지표는 요약표(및 WEB_HANDOFF v1 §2-2)의 정본 수치를 그대로 실었다. 사용자 확인 후 어느 쪽이든 통일할 것.
+          ※ 아래 대조표의 필터가 이 차이를 화면에 노출한다 — "개정" 필터를 누르면 "38행 중 21행 표시"로 뜬다.
+            표의 data-kind 값은 개정 열에 실제로 바뀐 문장이 있는지로만 판정했다.
+        -->
+        <div class="xp-figures" data-reveal data-delay="140">
+          <div class="xp-fig">
+            <p class="num xp-fignum">38<span class="xp-figunit">개</span></p>
+            <p class="xp-figlabel">전체 대사</p>
+          </div>
+          <div class="xp-fig is-hi">
+            <p class="num xp-fignum">20<span class="xp-figunit">건</span></p>
+            <p class="xp-figlabel">개정</p>
+          </div>
+          <div class="xp-fig">
+            <p class="num xp-fignum">18<span class="xp-figunit">건</span></p>
+            <p class="xp-figlabel">유지</p>
+          </div>
+          <div class="xp-fig is-hi">
+            <p class="num xp-fignum">2<span class="xp-figunit">건</span></p>
+            <p class="xp-figlabel">복원 — 최종본 누락분</p>
+          </div>
+        </div>
+
+        <ul class="xp-breakdown" data-reveal data-delay="180">
+          <li><span class="num xp-bval">12</span><span class="label">이미 구어</span></li>
+          <li><span class="num xp-bval">4</span><span class="label">시그니처 · 대구</span></li>
+          <li><span class="num xp-bval">1</span><span class="label">문서 인용</span></li>
+          <li><span class="num xp-bval">1</span><span class="label">최단 발화</span></li>
+        </ul>
+
+        <p class="body-lg xp-claim" data-reveal data-delay="220">
+          <strong>개정하지 않은 것이 절반이라는 점이 중요하다.</strong>
+          이 작품 대사의 문제는 전면적 문어체가 아니라, <strong>감정 정점 직전의 긴 문장들이 정연했다는 것</strong>이었다.
+          짧은 대사(“안 괜찮아”, “나도”, “숨기지 마”)는 처음부터 옳았다.
+        </p>
+        <p class="xp-claim muted" data-reveal data-delay="260">
+          유지 원칙도 함께 고정했다 — 이미 구어체인 대사, 시그니처 대사(제목 문장·대구 구조), 짧고 강한 정점 대사는 손대지 않는다.
+          <strong>개정은 목적이 아니라 수단이다.</strong>
+        </p>
+
+        <div class="xp-restored" data-reveal data-delay="300">
+          <p class="label">복원 2건 — 최종본에서 빠져 있던 문장</p>
+          <ul>
+            <li>
+              <span class="num xp-rno">#22</span>
+              <span>
+                “내 현실에 너도 있어.”
+                <span class="xp-rnote">짧고 강함. 최종본에서 누락됐던 문장 — 리메이크에서 복원.</span>
+              </span>
+            </li>
+            <li>
+              <span class="num xp-rno">#34</span>
+              <span>
+                “헤어질지 말지가 아니라, 우리가 감당할 수 있는 현실부터.” → “헤어질지 말지 말고… / 우리가 감당할 수 있는 것부터.”
+                <span class="xp-rnote">“~가 아니라”는 문어 접속. 최종본에서 누락됐던 문장 — 복원.</span>
+              </span>
+            </li>
+          </ul>
+          <p class="xp-ap-note" style="margin-top:16px">
+            두 문장은 개정 작업이 아니라 대조 과정에서 드러났다. 대본과 최종본을 나란히 놓지 않았으면 빠진 줄도 몰랐을 문장이고,
+            그래서 이 2건은 문체 실험의 결과가 아니라 <strong>검증 체계가 작동했다는 증거</strong>로 따로 적는다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. 전체 대조표 38행
+         ============================================================ -->
+    <section class="section xp-tables">
+      <div class="container">
+        <p class="label" data-reveal>Full Table · 전체 대조표</p>
+        <h2 class="h-section xp-tabletitle" data-reveal data-delay="80">대사 38개 전부, 판단까지</h2>
+        <p class="body-lg xp-tablesub muted" data-reveal data-delay="140">
+          씬 순서 그대로 옮겼다. 원본·개정·판단 세 열이며, 판단은 왜 그렇게 고쳤는지 혹은 왜 두었는지를 적은 것이다.
+          손대지 않은 항목도 빼지 않았다 — 무엇을 고치지 않기로 했는지가 같은 무게의 판단이기 때문이다.
+        </p>
+
+        <div class="xp-filter" role="group" aria-label="대조표 필터" data-xp-filter hidden>
+          <button class="xp-fbtn" type="button" data-filter="all" aria-pressed="true">전체</button>
+          <button class="xp-fbtn" type="button" data-filter="revise" aria-pressed="false">개정</button>
+          <button class="xp-fbtn" type="button" data-filter="keep" aria-pressed="false">유지</button>
+          <button class="xp-fbtn" type="button" data-filter="restored" aria-pressed="false">복원</button>
+          <span class="xp-fcount" role="status" aria-live="polite" data-xp-count></span>
+        </div>
+
+        <p class="xp-scrollhint" data-reveal data-delay="180">표는 좌우로 밀어서 볼 수 있다.</p>
+
+        <!-- ── S01 · S01B ── -->
+        <div class="xp-scene" data-xp-scene data-reveal>
+          <h3 class="xp-scene-title"><span class="num xp-scene-code">S01 · S01B</span>속마음 VO</h3>
+          <div class="xp-table-wrap">
+            <table class="xp-table">
+              <caption class="vh">S01 · S01B 속마음 VO — 대사 원본 · 개정 · 판단 대조</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="c-id">#</th>
+                  <th scope="col" class="c-src">원본</th>
+                  <th scope="col" class="c-rev">개정</th>
+                  <th scope="col" class="c-why">판단</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">1</span><span class="xp-who">선 VO-01</span></th>
+                  <td class="c-src">내일 11시. 같이 살 집. 네 책상은 창가에 놔 줘야지.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">이미 조각 구조 + 구어. 최종본 실측 발화가 대본 시트보다 나았던 사례</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">2</span><span class="xp-who">현 VO-02</span></th>
+                  <td class="c-src">내일 집 보러 가지 말자. 할 말이 있어.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">이미 구어</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── S02 ── -->
+        <div class="xp-scene" data-xp-scene data-reveal>
+          <h3 class="xp-scene-title"><span class="num xp-scene-code">S02</span>현관</h3>
+          <div class="xp-table-wrap">
+            <table class="xp-table">
+              <caption class="vh">S02 현관 — 대사 원본 · 개정 · 판단 대조</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="c-id">#</th>
+                  <th scope="col" class="c-src">원본</th>
+                  <th scope="col" class="c-rev">개정</th>
+                  <th scope="col" class="c-why">판단</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">3</span><span class="xp-who">선 O.S.</span></th>
+                  <td class="c-src">현아. 문 열어.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">최단 명령형, 손댈 것 없음</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">4</span><span class="xp-who">현</span></th>
+                  <td class="c-src">내일 얘기하자.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">이미 구어</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">5</span><span class="xp-who">선 O.S.</span></th>
+                  <td class="c-src">전화를 세 번 안 받은 사람이 무슨 얘기를 내일 해.</td>
+                  <td class="c-rev">세 번 안 받았잖아. / 근데 무슨 내일이야.</td>
+                  <td class="c-why">관계절(“~한 사람이”)이 문어의 핵심. 두 조각으로 쪼개고 “-잖아”로</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── S03 ── -->
+        <div class="xp-scene" data-xp-scene data-reveal>
+          <h3 class="xp-scene-title"><span class="num xp-scene-code">S03</span>상자와 정산표</h3>
+          <div class="xp-table-wrap">
+            <table class="xp-table">
+              <caption class="vh">S03 상자와 정산표 — 대사 원본 · 개정 · 판단 대조</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="c-id">#</th>
+                  <th scope="col" class="c-src">원본</th>
+                  <th scope="col" class="c-rev">개정</th>
+                  <th scope="col" class="c-why">판단</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">6</span><span class="xp-who">선</span></th>
+                  <td class="c-src">내 물건을 왜 네가 정리했어?</td>
+                  <td class="c-rev">내 물건은 왜?</td>
+                  <td class="c-why">외부 지적이 직접 예시로 든 문장. 서술어 통째 생략이 실제 말의 리듬</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">7</span><span class="xp-who">선</span></th>
+                  <td class="c-src">공동비용 정산. 그다음은?</td>
+                  <td class="c-rev">…정산은 뭐야. / 그다음은?</td>
+                  <td class="c-why">명사구 나열(“공동비용 정산”)은 문서 문법. 자문하듯</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">8</span><span class="xp-who">선 O.S.</span></th>
+                  <td class="c-src">헤어지자고?</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">이미 구어</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">9</span><span class="xp-who">현</span></th>
+                  <td class="c-src">…우리 이제 그만하는 게 맞는 것 같아.</td>
+                  <td class="c-rev">…우리… / 그만하는 게 맞는 거 같아.</td>
+                  <td class="c-why">“것→거”. “이제” 제거하고 그 자리를 쉼으로 — 말문 막힘이 부사보다 강함</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── S03X ── -->
+        <div class="xp-scene" data-xp-scene data-reveal>
+          <h3 class="xp-scene-title"><span class="num xp-scene-code">S03X</span>논쟁 축</h3>
+          <div class="xp-table-wrap">
+            <table class="xp-table">
+              <caption class="vh">S03X 논쟁 축 — 대사 원본 · 개정 · 판단 대조</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="c-id">#</th>
+                  <th scope="col" class="c-src">원본</th>
+                  <th scope="col" class="c-rev">개정</th>
+                  <th scope="col" class="c-why">판단</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">10</span><span class="xp-who">현</span></th>
+                  <td class="c-src">나는 가진 게 없어.</td>
+                  <td class="c-rev">나 가진 게 없잖아.</td>
+                  <td class="c-why">주격조사 탈락 + “-잖아”(상대도 아는 사실을 확인하는 어미)</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">11</span><span class="xp-who">현</span></th>
+                  <td class="c-src">직업도, 돈도, 언제 자리 잡을지도 몰라.</td>
+                  <td class="c-rev">직업도 없고, 돈도 없고… / 언제 자리 잡을지도 모르고.</td>
+                  <td class="c-why">정연한 나열 → 반복 서술어로 늘어뜨림. 말이 무너지는 리듬</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">12</span><span class="xp-who">현</span></th>
+                  <td class="c-src">그걸 다 아는데 어떻게 괜찮아?</td>
+                  <td class="c-rev">그걸 다 아는데. / 어떻게 괜찮아?</td>
+                  <td class="c-why">조각화만</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">13</span><span class="xp-who">선</span></th>
+                  <td class="c-src">안 괜찮아.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">작품 최고의 구어. 기준점</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">14</span><span class="xp-who">선</span></th>
+                  <td class="c-src">누가 잡혀 있었는데?</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">“-는데” 이미 구어</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── S04 ── -->
+        <div class="xp-scene" data-xp-scene data-reveal>
+          <h3 class="xp-scene-title"><span class="num xp-scene-code">S04</span>제목 문장</h3>
+          <div class="xp-table-wrap">
+            <table class="xp-table">
+              <caption class="vh">S04 제목 문장 — 대사 원본 · 개정 · 판단 대조</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="c-id">#</th>
+                  <th scope="col" class="c-src">원본</th>
+                  <th scope="col" class="c-rev">개정</th>
+                  <th scope="col" class="c-why">판단</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">15</span><span class="xp-who">현</span></th>
+                  <td class="c-src">너가 힘들지 않았으면 해.</td>
+                  <td class="c-rev"><span class="xp-badge is-must">유지(필수)</span></td>
+                  <td class="c-why">제목·시그니처. 3회 등장 구조의 축</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">16</span><span class="xp-who">현</span></th>
+                  <td class="c-src">네가 괜찮다고 할 때마다 무서워.</td>
+                  <td class="c-rev">…괜찮다고 할 때마다 무서워.</td>
+                  <td class="c-why">주어 생략</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">17</span><span class="xp-who">현</span></th>
+                  <td class="c-src">네 친구들은 집 사고 결혼할 텐데, 그때도 나 때문에 작은 방에서—</td>
+                  <td class="c-rev">네 친구들 집 사고 결혼할 텐데. / 그때도 나 때문에 작은 방에서—</td>
+                  <td class="c-why">보조사 “은” 탈락 + 문장 분리. 중단 처리는 유지</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">18</span><span class="xp-who">선</span></th>
+                  <td class="c-src">그건 그때의 내가 판단할 일이야.</td>
+                  <td class="c-rev">그건… 그때 가서 내가 정해.</td>
+                  <td class="c-why">“그때의 내가”가 문어의 표본. <strong>ASR이 5회 모두 “그때 내가”로 들은 것이 방증</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── S04C ── -->
+        <div class="xp-scene" data-xp-scene data-reveal>
+          <h3 class="xp-scene-title"><span class="num xp-scene-code">S04C</span>제1클라이맥스</h3>
+          <div class="xp-table-wrap">
+            <table class="xp-table">
+              <caption class="vh">S04C 제1클라이맥스 — 대사 원본 · 개정 · 판단 대조</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="c-id">#</th>
+                  <th scope="col" class="c-src">원본</th>
+                  <th scope="col" class="c-rev">개정</th>
+                  <th scope="col" class="c-why">판단</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">19</span><span class="xp-who">선</span></th>
+                  <td class="c-src">…견디기 싫은 거야? …네가 먼저 끝내고 싶은 거 아니야?</td>
+                  <td class="c-rev">…아니면 네가 못 견디겠는 거야? / …먼저 끝내고 싶은 거잖아.</td>
+                  <td class="c-why">뒷문장을 의문에서 확인(“-잖아”)으로. 고발이 질문보다 세다</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">20</span><span class="xp-who">선</span></th>
+                  <td class="c-src">너 혼자 계산하고, 혼자 결론 내고, 나한테는 결과만 주잖아.</td>
+                  <td class="c-rev">너 혼자 계산하고, 혼자 결론 내고. / 나한텐 결과만 주잖아.</td>
+                  <td class="c-why">축약 + 분리. “-잖아”는 이미 좋음</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">21</span><span class="xp-who">현</span></th>
+                  <td class="c-src">너를 나 때문에 낮추게 하고 싶지 않았어.</td>
+                  <td class="c-rev">너… 나 때문에 낮아지는 거 보기 싫었어.</td>
+                  <td class="c-why">사동(“낮추게 하고”)이 문어의 핵심. 자동사로 풀고 “보기 싫었어”로</td>
+                </tr>
+                <tr data-kind="keep" data-restored="true">
+                  <th scope="row" class="c-id">
+                    <span class="num xp-no">22</span><span class="xp-who">선</span>
+                    <span class="xp-badge is-restored">복원</span>
+                  </th>
+                  <td class="c-src">내 현실에 너도 있어.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">짧고 강함. <strong>최종본에서 누락됐던 문장 — 리메이크에서 복원</strong></td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">23</span><span class="xp-who">선</span></th>
+                  <td class="c-src">너를 빼는 게 왜 내 현실을 지켜주는 거야?</td>
+                  <td class="c-rev">근데 널 빼는 게 왜 날 지키는 건데?</td>
+                  <td class="c-why">“내 현실을 지켜주는”의 관념성 제거. 앞 문장이 있으니 “날”로 받음</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── S05 ── -->
+        <div class="xp-scene" data-xp-scene data-reveal>
+          <h3 class="xp-scene-title"><span class="num xp-scene-code">S05</span>빗속 새벽</h3>
+          <div class="xp-table-wrap">
+            <table class="xp-table">
+              <caption class="vh">S05 빗속 새벽 — 대사 원본 · 개정 · 판단 대조</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="c-id">#</th>
+                  <th scope="col" class="c-src">원본</th>
+                  <th scope="col" class="c-rev">개정</th>
+                  <th scope="col" class="c-why">판단</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">24</span><span class="xp-who">현</span></th>
+                  <td class="c-src">나는 진짜 네가 행복했으면 좋겠어.</td>
+                  <td class="c-rev">…행복했으면 좋겠어. / 진짜로.</td>
+                  <td class="c-why">외부 지적이 “장수원 된다”고 든 바로 그 문장. 주어 둘 다 생략, 부사를 뒤로 던짐</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">25</span><span class="xp-who">선 O.S.</span></th>
+                  <td class="c-src">나도.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">두 글자로 성립</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">26</span><span class="xp-who">현</span></th>
+                  <td class="c-src">…나 없이도?</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">필수 보존 대사</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">27</span><span class="xp-who">현</span></th>
+                  <td class="c-src">그때는 내가 너무—</td>
+                  <td class="c-rev">그땐 내가 너무—</td>
+                  <td class="c-why">축약만. 중단 유지</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">28</span><span class="xp-who">선</span></th>
+                  <td class="c-src">아플까 봐? 그건 네가 감당해야지.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">이미 구어</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">29</span><span class="xp-who">선</span></th>
+                  <td class="c-src">아플 때 도망가지 않는 게 더 중요할 때도 있어.</td>
+                  <td class="c-rev">아파도 안 도망가는 거. / 그게 더 중요할 때도 있어.</td>
+                  <td class="c-why">긴 관형절을 조각+지시대명사로. 대조 실험에서 검증된 개정</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── S06B ── -->
+        <div class="xp-scene" data-xp-scene data-reveal>
+          <h3 class="xp-scene-title"><span class="num xp-scene-code">S06B</span>제2클라이맥스</h3>
+          <div class="xp-table-wrap">
+            <table class="xp-table">
+              <caption class="vh">S06B 제2클라이맥스 — 대사 원본 · 개정 · 판단 대조</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="c-id">#</th>
+                  <th scope="col" class="c-src">원본</th>
+                  <th scope="col" class="c-rev">개정</th>
+                  <th scope="col" class="c-why">판단</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">30</span><span class="xp-who">선</span></th>
+                  <td class="c-src">못난 것도, 무서운 것도, 계획대로 안 된 것도. 그걸 계속 숨길 거면, 우리 진짜 끝내는 게 맞아.</td>
+                  <td class="c-rev">못난 것도, 무서운 것도, 계획대로 안 된 것도. / 계속 숨길 거면… / 우리 진짜 끝내는 게 맞아.</td>
+                  <td class="c-why">앞 나열은 리듬이라 유지. “그걸” 제거하고 3조각으로</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">31</span><span class="xp-who">현</span></th>
+                  <td class="c-src">너가 힘들지—</td>
+                  <td class="c-rev"><span class="xp-badge is-must">유지(필수)</span></td>
+                  <td class="c-why">시그니처 중단</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">32</span><span class="xp-who">현</span></th>
+                  <td class="c-src">…나랑 같이 판단해줬으면 해.</td>
+                  <td class="c-rev"><span class="xp-badge is-must">유지(필수)</span></td>
+                  <td class="c-why">“~했으면 해” 형식이 제목 문장과의 <strong>대구</strong>. 구어화하면 설계가 깨짐</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── S07 ── -->
+        <div class="xp-scene" data-xp-scene data-reveal>
+          <h3 class="xp-scene-title"><span class="num xp-scene-code">S07</span>버스 정류장 (VO)</h3>
+          <div class="xp-table-wrap">
+            <table class="xp-table">
+              <caption class="vh">S07 버스 정류장 VO — 대사 원본 · 개정 · 판단 대조</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="c-id">#</th>
+                  <th scope="col" class="c-src">원본</th>
+                  <th scope="col" class="c-rev">개정</th>
+                  <th scope="col" class="c-why">판단</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">33</span><span class="xp-who">현 VO</span></th>
+                  <td class="c-src">오늘 저녁에 다시 얘기하자.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">이미 구어</td>
+                </tr>
+                <tr data-kind="revise" data-restored="true">
+                  <th scope="row" class="c-id">
+                    <span class="num xp-no">34</span><span class="xp-who">현 VO</span>
+                    <span class="xp-badge is-restored">복원</span>
+                  </th>
+                  <td class="c-src">헤어질지 말지가 아니라, 우리가 감당할 수 있는 현실부터.</td>
+                  <td class="c-rev">헤어질지 말지 말고… / 우리가 감당할 수 있는 것부터.</td>
+                  <td class="c-why">“~가 아니라”는 문어 접속. <strong>최종본에서 누락됐던 문장 — 복원</strong></td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">35</span><span class="xp-who">현 VO</span></th>
+                  <td class="c-src">내가 정해놓고 통보하지 않을게.</td>
+                  <td class="c-rev">혼자 정해놓고 통보 안 할게.</td>
+                  <td class="c-why">“내가”→“혼자”(고발당한 단어를 자기 입으로 받음), 부정형 축약</td>
+                </tr>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">36</span><span class="xp-who">선 VO</span></th>
+                  <td class="c-src">숨기지 마.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">세 글자 조건문. 완성형</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── S07B ── -->
+        <div class="xp-scene" data-xp-scene data-reveal>
+          <h3 class="xp-scene-title"><span class="num xp-scene-code">S07B</span>엔딩 (VO)</h3>
+          <div class="xp-table-wrap">
+            <table class="xp-table">
+              <caption class="vh">S07B 엔딩 VO — 대사 원본 · 개정 · 판단 대조</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="c-id">#</th>
+                  <th scope="col" class="c-src">원본</th>
+                  <th scope="col" class="c-rev">개정</th>
+                  <th scope="col" class="c-why">판단</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="keep">
+                  <th scope="row" class="c-id"><span class="num xp-no">37</span><span class="xp-who">현 VO</span></th>
+                  <td class="c-src">우리의 현실.</td>
+                  <td class="c-rev"><span class="xp-badge">유지</span></td>
+                  <td class="c-why">문서 제목을 읽는 것이므로 문어가 정상</td>
+                </tr>
+                <tr data-kind="revise">
+                  <th scope="row" class="c-id"><span class="num xp-no">38</span><span class="xp-who">현 VO</span></th>
+                  <td class="c-src">실패한 내가 보일까 봐 무섭다.</td>
+                  <td class="c-rev">…실패한 내가 보일까 봐. / 그게 무서워.</td>
+                  <td class="c-why">종결 “무섭다”(문어체 종결)를 “무서워”로. 조각화로 여백</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. 부록 — 같은 방법의 다른 사례
+         ============================================================ -->
+    <section class="section xp-appendix-sec">
+      <div class="container">
+        <p class="label" data-reveal>Appendix · 같은 방법의 다른 사례</p>
+        <h2 class="h-section xp-appendix-title" data-reveal data-delay="80">감으로 정하지 않은 것들</h2>
+
+        <ul class="xp-appendix">
+          <li data-reveal data-delay="140">
+            <span class="label">음성 선정</span>
+            <div>
+              <p>
+                목소리도 같은 방식으로 정했다. TTS 후보 <strong>13종</strong>을 같은 대사로 뽑아 나란히 듣고 <strong>C6</strong>을 채택했다.
+              </p>
+              <p class="xp-ap-note">
+                채택 근거와 나머지 12종의 탈락 사유는 아직 이 자리에 옮기지 못했다. 비교 기록을 확인해 같은 서식으로 채운다.
+              </p>
+              <!-- TODO: TTS 후보 13종 비교 상세 확인 — 후보 목록·평가 항목·C6 채택 근거·탈락 사유가 인수인계 문서에 없다. voice_test/ 원본 확인 필요 -->
+            </div>
+          </li>
+          <li data-reveal data-delay="180">
+            <span class="label">방법의 조건</span>
+            <div>
+              <p>
+                두 사례의 공통 조건은 하나다. <strong>비교 대상이 같은 입력을 받았는가.</strong>
+                같은 대사·같은 파라미터로 뽑아 놓아야 차이가 판단 재료가 되고, 그렇지 않으면 취향 진술이 된다.
+              </p>
+              <p class="xp-ap-note">
+                이 조건을 지키면 비교 비용은 생성 몇 번으로 끝난다. 실제로 문체 대조는 그 비용으로 원인을 특정했다.
+              </p>
+            </div>
+          </li>
+          <!--
+            TODO: 확인 필요 — 남성(현) 감정톤 테스트 영상.
+            SITE_PLAN v1 §2-4는 이 섹션의 소스로 "seedance 멀티샷 2종 + voice_test/"를 지정하고 있으나,
+            남성(현) 감정톤 테스트 영상이 생성 목록에서 확인되지 않는다.
+            ※ 근거로 지시받은 WEB_HANDOFF v1 §3-2는 현재 파일에 존재하지 않는다 —
+              F:\web_project\web_portfolio_handoff\WEB_HANDOFF_v1.md 가 §3 본문 중간
+              ("각 영상을 500~600px "에서 10,298바이트)에서 잘려 있다. 원본 재수급 후 이 항목과 §3의 "주의 두 가지" 나머지를 확인할 것.
+          -->
+        </ul>
+
+        <div class="xp-next" data-reveal data-delay="220">
+          <a class="btn btn-arrow" href="/rules/">실패 → 규율 갤러리 보기</a>
+        </div>
+      </div>
+    </section>
+
   </main>
+
   <footer class="footer">
     <div class="container footer-inner">
       <span class="nav-wordmark">○○○</span>
@@ -51,5 +865,6 @@
     </div>
   </footer>
   <script src="/js/main.js" defer></script>
+  <script src="/js/experiment.js" defer></script>
 </body>
 </html>

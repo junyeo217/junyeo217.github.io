@@ -1,0 +1,183 @@
+/* ============================================================
+   /about — Who Am I? · Archive · Contact
+   main.css의 토큰만 사용 (paper / ink / accent / ink-66,44,12 / ease)
+   ============================================================ */
+
+/* ---------- 1. Who Am I? ---------- */
+.about-tagline {
+  margin-top: 18px;
+  font-family: var(--font-label);
+  font-size: clamp(30px, 5.2vw, 76px);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+.about-tagline .at-line { display: block; }
+.about-tagline .at-line + .at-line { color: var(--accent); }
+
+.about-sub {
+  margin-top: clamp(22px, 3vw, 34px);
+  max-width: 60ch;
+}
+
+.about-meta {
+  margin-top: clamp(36px, 5vw, 60px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border-top: 1px solid var(--ink-12);
+  border-bottom: 1px solid var(--ink-12);
+}
+.am-col {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.am-col dd {
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.am-col .am-todo { color: var(--ink-44); font-weight: 400; letter-spacing: .1em; }
+
+.about-statement {
+  margin-top: clamp(40px, 5vw, 68px);
+  max-width: 64ch;
+}
+.about-statement p + p { margin-top: 20px; }
+.about-statement .mark { font-weight: 600; white-space: nowrap; }
+
+/* ---------- 2. ARCHIVE ---------- */
+.arc-heading { margin-top: 16px; }
+.arc-lead {
+  margin-top: 20px;
+  max-width: 62ch;
+}
+
+.arc {
+  margin-top: clamp(36px, 5vw, 60px);
+  list-style: none;
+  border-top: 1px solid var(--ink-12);
+}
+.arc-item {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 44px);
+  padding: clamp(26px, 3.2vw, 44px) 0;
+  border-bottom: 1px solid var(--ink-12);
+}
+.arc-year {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: var(--ink-44);
+  line-height: 1.9;
+}
+.arc-body .tag { margin-bottom: 14px; }
+.arc-title {
+  max-width: 26ch;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+}
+.arc-state {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 3px 9px;
+  line-height: 1.4;
+}
+.arc-desc {
+  margin-top: 14px;
+  max-width: 66ch;
+  color: var(--ink-66);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.8;
+}
+.arc-desc .num { font-size: .95em; letter-spacing: .01em; color: var(--ink); }
+
+.arc-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-family: var(--font-label);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-44);
+  border-bottom: 1px solid var(--ink-12);
+  padding-bottom: 4px;
+  transition: color .4s var(--ease), border-color .4s var(--ease);
+}
+.arc-more::after { content: "→"; font-family: var(--font-sans); }
+.arc-more:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- 3. 연락처 ---------- */
+.ct-heading { margin-top: 16px; }
+
+.ct-list {
+  margin-top: clamp(30px, 4vw, 48px);
+  border-top: 1px solid var(--ink-12);
+  max-width: 720px;
+}
+.ct-row {
+  display: grid;
+  grid-template-columns: clamp(96px, 12vw, 140px) minmax(0, 1fr);
+  align-items: baseline;
+  gap: clamp(12px, 2vw, 24px);
+  padding: 18px 0;
+  border-bottom: 1px solid var(--ink-12);
+}
+.ct-value {
+  font-size: clamp(16px, 1.4vw, 19px);
+  letter-spacing: -.01em;
+}
+.ct-state { color: var(--ink-44); letter-spacing: 0; }
+
+.ct-actions {
+  margin-top: clamp(30px, 4vw, 44px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.btn.is-off {
+  color: var(--ink-44);
+  border-color: var(--ink-12);
+  cursor: default;
+}
+.btn.is-off:hover { background: none; color: var(--ink-44); }
+
+.ct-note {
+  margin-top: clamp(24px, 3vw, 36px);
+  max-width: 62ch;
+  font-size: 14.5px;
+  line-height: 1.8;
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 767px) {
+  .about-sub { max-width: none; }
+
+  .about-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .am-col { padding: 16px 0; }
+  .am-col:nth-child(-n+2) { border-bottom: 1px solid var(--ink-12); }
+
+  .arc-item { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .arc-year { line-height: 1.5; }
+  .arc-title { max-width: none; }
+  .arc-desc { max-width: none; }
+
+  .ct-row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .ct-actions { flex-direction: column; align-items: flex-start; }
+  .ct-btn { width: 100%; justify-content: center; }
+}

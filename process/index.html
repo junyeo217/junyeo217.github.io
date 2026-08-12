@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Process — AI Filmmaker Portfolio</title>
-  <meta name="description" content="제작 공정 — 준비 중">
+  <title>Process · 제작 공정 — AI Filmmaker Portfolio</title>
+  <meta name="description" content="선형 파이프라인이 아니었다. 기획→생성→검증→편집이 앞으로 흐르는 동안 사고→규명→규율이 되돌아왔다. 5단계 각각이 어떻게 루프를 돌았는지와 대표 판단, 도구 스택의 선택 근거·미검증 항목을 적었다.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/process.css">
 </head>
 <body data-page="process">
   <header class="nav">
@@ -35,15 +37,654 @@
     <a data-nav="log" href="/log/">Log</a>
     <a data-nav="about" href="/about/">About</a>
   </nav>
+
   <main>
-    <section class="section">
+
+    <!-- ============================================================
+         1. 인트로 + 루프 도식
+         ============================================================ -->
+    <section class="section proc-intro">
       <div class="container">
-        <p class="label" data-reveal>Process</p>
-        <h1 class="h-section" data-reveal data-delay="80" style="margin-top:16px">제작 공정</h1>
-        <p class="muted body-lg" data-reveal data-delay="160" style="margin-top:24px">이 섹션은 준비 중입니다.</p>
+        <p class="label" data-reveal>Process · 제작 공정</p>
+
+        <h1 class="h-display proc-lede" data-reveal data-delay="80">
+          공정은<br>앞으로만<br>흐르지 않았다.
+        </h1>
+
+        <p class="body-lg proc-sub" data-reveal data-delay="160">
+          기획 → 생성 → 검증 → 편집은 앞으로 흐른다. 그런데 실제로 이 작업의 방향을 정한 것은 반대쪽이었다 —
+          뒤 단계에서 난 사고가 원인 규명을 거쳐 규율이 되고, 그 규율이 앞 단계의 입력으로 되돌아왔다.
+          아래 도식의 아랫줄이 그 되돌아옴이고, 이어지는 다섯 단계는 각 공정이 그 루프를 어떻게 돌았는지의 기록이다.
+        </p>
+
+        <figure class="loop-figure" data-reveal data-delay="220">
+          <div class="loop-canvas" tabindex="0" role="group" aria-label="제작 공정 루프 도식 (가로로 스크롤할 수 있습니다)">
+
+            <!-- 데스크톱: 가로형 -->
+            <svg class="loop-svg loop-h" viewBox="0 0 1120 320" role="img"
+                 aria-labelledby="loopTitleH loopDescH" focusable="false">
+              <title id="loopTitleH">제작 공정 루프 도식 — 가로형</title>
+              <desc id="loopDescH">기획, 생성, 검증, 편집이 왼쪽에서 오른쪽으로 이어진다. 편집 끝에서 아래로 내려온 경로가 사고, 규명, 규율을 차례로 지나 왼쪽으로 되돌아와 기획으로 다시 들어간다.</desc>
+              <defs>
+                <marker id="ahInkH" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                  <path class="mk mk-ink" d="M0,0 L10,5 L0,10 Z"/>
+                </marker>
+                <marker id="ahAccH" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                  <path class="mk mk-acc" d="M0,0 L10,5 L0,10 Z"/>
+                </marker>
+              </defs>
+
+              <text class="loop-cap" x="50" y="26">앞으로 흐르는 공정</text>
+
+              <!-- 정방향 노드 4 -->
+              <g class="loop-node">
+                <rect x="50" y="48" width="210" height="86" rx="2"/>
+                <text class="loop-idx" x="68" y="74">01</text>
+                <text class="loop-name" x="68" y="100">기획</text>
+                <text class="loop-sub" x="68" y="120">시나리오 · 물량</text>
+              </g>
+              <g class="loop-node">
+                <rect x="320" y="48" width="210" height="86" rx="2"/>
+                <text class="loop-idx" x="338" y="74">02</text>
+                <text class="loop-name" x="338" y="100">생성</text>
+                <text class="loop-sub" x="338" y="120">이미지 · 영상 · 음성</text>
+              </g>
+              <g class="loop-node">
+                <rect x="590" y="48" width="210" height="86" rx="2"/>
+                <text class="loop-idx" x="608" y="74">03</text>
+                <text class="loop-name" x="608" y="100">검증</text>
+                <text class="loop-sub" x="608" y="120">ASR · SNR · 시청</text>
+              </g>
+              <g class="loop-node">
+                <rect x="860" y="48" width="210" height="86" rx="2"/>
+                <text class="loop-idx" x="878" y="74">04</text>
+                <text class="loop-name" x="878" y="100">편집</text>
+                <text class="loop-sub" x="878" y="120">조립 · 믹스 · 마스터</text>
+              </g>
+
+              <!-- 정방향 화살표 -->
+              <path class="loop-flow" d="M260,91 L314,91" marker-end="url(#ahInkH)"/>
+              <path class="loop-flow" d="M530,91 L584,91" marker-end="url(#ahInkH)"/>
+              <path class="loop-flow" d="M800,91 L854,91" marker-end="url(#ahInkH)"/>
+
+              <!-- 되돌아오는 루프 -->
+              <path class="loop-back" d="M965,134 L965,238 Q965,250 953,250 L894,250" marker-end="url(#ahAccH)"/>
+              <path class="loop-back" d="M752,250 L634,250" marker-end="url(#ahAccH)"/>
+              <path class="loop-back" d="M492,250 L374,250" marker-end="url(#ahAccH)"/>
+              <path class="loop-back" d="M232,250 L167,250 Q155,250 155,238 L155,140" marker-end="url(#ahAccH)"/>
+
+              <g class="loop-pill">
+                <rect x="752" y="228" width="136" height="44" rx="22"/>
+                <text x="820" y="255">사고</text>
+              </g>
+              <g class="loop-pill">
+                <rect x="492" y="228" width="136" height="44" rx="22"/>
+                <text x="560" y="255">규명</text>
+              </g>
+              <g class="loop-pill">
+                <rect x="232" y="228" width="136" height="44" rx="22"/>
+                <text x="300" y="255">규율</text>
+              </g>
+
+              <text class="loop-cap is-acc" x="50" y="300">되돌아오는 루프 — 사고 · 규명 · 규율</text>
+            </svg>
+
+            <!-- 모바일: 세로형 -->
+            <svg class="loop-svg loop-v" viewBox="0 0 340 640" role="img"
+                 aria-labelledby="loopTitleV loopDescV" focusable="false">
+              <title id="loopTitleV">제작 공정 루프 도식 — 세로형</title>
+              <desc id="loopDescV">기획, 생성, 검증, 편집이 위에서 아래로 이어진다. 편집 끝에서 왼쪽 레일로 빠진 경로가 사고, 규명, 규율을 차례로 지나 위로 올라가 기획으로 다시 들어간다.</desc>
+              <defs>
+                <marker id="ahInkV" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                  <path class="mk mk-ink" d="M0,0 L10,5 L0,10 Z"/>
+                </marker>
+                <marker id="ahAccV" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                  <path class="mk mk-acc" d="M0,0 L10,5 L0,10 Z"/>
+                </marker>
+              </defs>
+
+              <g class="loop-node">
+                <rect x="100" y="20" width="224" height="76" rx="2"/>
+                <text class="loop-idx" x="118" y="46">01</text>
+                <text class="loop-name" x="118" y="68">기획</text>
+                <text class="loop-sub" x="118" y="86">시나리오 · 물량</text>
+              </g>
+              <g class="loop-node">
+                <rect x="100" y="172" width="224" height="76" rx="2"/>
+                <text class="loop-idx" x="118" y="198">02</text>
+                <text class="loop-name" x="118" y="220">생성</text>
+                <text class="loop-sub" x="118" y="238">이미지 · 영상 · 음성</text>
+              </g>
+              <g class="loop-node">
+                <rect x="100" y="324" width="224" height="76" rx="2"/>
+                <text class="loop-idx" x="118" y="350">03</text>
+                <text class="loop-name" x="118" y="372">검증</text>
+                <text class="loop-sub" x="118" y="390">ASR · SNR · 시청</text>
+              </g>
+              <g class="loop-node">
+                <rect x="100" y="476" width="224" height="76" rx="2"/>
+                <text class="loop-idx" x="118" y="502">04</text>
+                <text class="loop-name" x="118" y="524">편집</text>
+                <text class="loop-sub" x="118" y="542">조립 · 믹스 · 마스터</text>
+              </g>
+
+              <path class="loop-flow" d="M212,96 L212,166" marker-end="url(#ahInkV)"/>
+              <path class="loop-flow" d="M212,248 L212,318" marker-end="url(#ahInkV)"/>
+              <path class="loop-flow" d="M212,400 L212,470" marker-end="url(#ahInkV)"/>
+
+              <path class="loop-back" d="M212,552 L212,584 Q212,596 200,596 L52,596 Q40,596 40,584 L40,521" marker-end="url(#ahAccV)"/>
+              <path class="loop-back" d="M40,485 L40,351" marker-end="url(#ahAccV)"/>
+              <path class="loop-back" d="M40,315 L40,181" marker-end="url(#ahAccV)"/>
+              <path class="loop-back" d="M40,145 L40,70 Q40,58 52,58 L94,58" marker-end="url(#ahAccV)"/>
+
+              <g class="loop-pill">
+                <rect x="9" y="485" width="62" height="30" rx="15"/>
+                <text x="40" y="505">사고</text>
+              </g>
+              <g class="loop-pill">
+                <rect x="9" y="315" width="62" height="30" rx="15"/>
+                <text x="40" y="335">규명</text>
+              </g>
+              <g class="loop-pill">
+                <rect x="9" y="145" width="62" height="30" rx="15"/>
+                <text x="40" y="165">규율</text>
+              </g>
+
+              <text class="loop-cap is-acc" x="9" y="628">되돌아오는 루프</text>
+            </svg>
+          </div>
+
+          <figcaption class="loop-note" data-reveal data-delay="60">
+            윗줄은 산출물이 흐르는 방향이고, 아랫줄은 판단이 흐르는 방향이다. 두 방향이 같은 그림 안에 있어야 하는 이유가 이 사이트의 논지다.
+          </figcaption>
+        </figure>
+
+        <div class="proc-thesis" data-reveal data-delay="60">
+          <p class="body-lg">
+            작품은 결과가 아니라 실험 장비였다. 3분 14초짜리 단편 한 편을 18일에 완주하는 동안 실제로 축적된 것은 러닝타임이 아니라
+            사고 목록이었고, 사고마다 원인을 규명한 뒤에야 규칙이 하나씩 붙었다 — 그렇게 모인 것이 제작 규율 38개다.
+            선언이 먼저 온 규칙은 하나도 없다. 교훈은 사고 직후 작업 로그에 적고, 재사용 가치가 확정된 것만 규율 문서로 승격시켰다(규율 35).
+            그래서 이 페이지의 다섯 단계는 공정 소개가 아니라, 각 단계가 무엇에 걸려 넘어졌고 그 넘어짐이 어느 단계로 되돌아갔는지의 서술이다.
+          </p>
+          <p class="proc-thesis-links">
+            <a class="p-link" href="/rules/">사고 → 규율 8건 전체 보기 →</a>
+            <a class="p-link" href="/film/">공정별 판단 결과 목록 →</a>
+          </p>
+        </div>
       </div>
     </section>
+
+    <!-- ============================================================
+         2. 5단계 서술
+         ============================================================ -->
+    <section class="section proc-stages">
+      <div class="container">
+        <p class="label" data-reveal>Five Stages</p>
+        <h2 class="h-section sec-title" data-reveal data-delay="80">다섯 단계가 각각 돈 루프</h2>
+        <p class="body-lg muted sec-lead" data-reveal data-delay="140">
+          단계별 산출물 소개가 아니다. 각 단계에서 어떤 사고가 났고, 그 원인을 어떻게 규명했으며, 규명 결과가 어떤 규율로 승격돼
+          어느 단계의 입력으로 되돌아갔는지를 적었다. 각 단계는 <span class="mark">여기서 내린 대표 판단</span> 한 줄로 닫는다.
+        </p>
+
+        <!-- ── 01 기획 · 시나리오 ── -->
+        <article class="stage" id="stage-planning">
+          <div class="stage-key" data-reveal>
+            <span class="num stage-num">01</span>
+            <h3 class="h-item stage-name">기획 · 시나리오</h3>
+            <p class="label stage-tag">Rule 1 · 3</p>
+          </div>
+          <div class="stage-body">
+            <p class="stage-sum" data-reveal>
+              이 단계의 산출물은 두 번 다시 열렸다. 한 번은 생성이, 한 번은 편집이 되돌려 보냈다.
+            </p>
+            <p data-reveal>
+              처음 물량표는 계획 초 기준으로 짰다. 87장을 실제로 뽑고 나서야 7초로 계획한 컷이 4초에 끝난다는 것을 알았다.
+              사고의 겉모습은 “장수를 잘못 셌다”였지만 규명 결과는 달랐다 — <strong>계획 초는 구조적으로 과대추정된다.</strong>
+              그래서 규칙은 “추정을 더 정확히 한다”가 되지 않았다. 추정의 정밀도를 올리는 대신 추정 자체를 실측으로 바꿨다.
+              컷 하나를 먼저 뽑아본 뒤에 전체 물량을 확정한다(규율 1). 생성 단계에서 나온 실측값이 이미 닫혔다고 생각한 기획 단계로
+              되돌아온 첫 사례이고, 이 페이지 도식의 아랫줄이 처음 생긴 지점이다.
+            </p>
+            <p data-reveal>
+              두 번째 되돌아옴은 편집에서 왔다. 씬을 한 줄씩 나열하고 사이 접속사를 적는 But/Therefore 검사 —
+              “그리고”의 나열이면 실패, “그래서 / 그러나”면 통과 — 는 시나리오 단계에서 한 번 통과했다.
+              그런데 압축은 연결 조직을 잘라낸다. 시나리오가 통과했다고 편집본이 통과한다는 보장이 없었다.
+              검사는 한 번 하는 관문이 아니라 <strong>시나리오에서 한 번, 압축·편집 후 컷 단위로 한 번 더</strong> 도는
+              항목으로 승격됐다(규율 3).
+            </p>
+            <p data-reveal>
+              대사도 이 단계에서 끝나지 않았다. 문체 문제는 완성본을 본 외부 지적으로 다시 열렸고, 변수 하나만 바꾼 대조 생성으로
+              원인을 재규명했다(규율 34). 그 기록은 별도 페이지에 있다 —
+              <a class="p-link" href="/experiment/">문어체 → 구어체 대조 실험 →</a>
+            </p>
+            <div class="stage-verdict" data-reveal>
+              <p class="vd-line">
+                <span class="vd-key">여기서 내린 대표 판단:</span>
+                물량은 계획이 아니라 실측 한 컷으로 확정한다 — 87장을 뽑고 나서야 7초 계획 컷이 4초에 끝난다는 것을 알게 된 비용이 근거다.
+              </p>
+              <p class="label vd-src">Production Rules v1 · 규율 1 · 3</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 02 이미지 ── -->
+        <article class="stage" id="stage-image">
+          <div class="stage-key" data-reveal>
+            <span class="num stage-num">02</span>
+            <h3 class="h-item stage-name">이미지</h3>
+            <p class="label stage-tag">Rule 4 · 6 · 32</p>
+          </div>
+          <div class="stage-body">
+            <p class="stage-sum" data-reveal>
+              좋은 이미지를 고르는 문제인 줄 알았는데, 다음 공정에서 원인이 드러나자 채택 기준 자체가 바뀌었다.
+            </p>
+            <p data-reveal>
+              초기에는 첫 프레임을 정성껏 그릴수록 좋다고 봤다. 그 판단이 뒤집힌 자리는 이미지 단계가 아니라 영상 단계였다 —
+              상세하게 그려진 첫 프레임이 이후 영상 연출을 구속했다. 사고의 형태는 “이미지는 좋은데 영상이 안 나온다”였고,
+              규명 결과 원인은 이미지의 품질이 아니라 <strong>이미지가 담고 있는 정보량</strong>이었다.
+              규율은 첫 프레임 최소주의로 정리됐다 — 컷 이미지는 시작 상태의 최소 조건만 담는다(규율 4).
+              채택 기준도 같이 이동했다. 이미지 자체의 완성도가 아니라 “다음 공정을 구속하지 않는가”가 기준이 됐고,
+              217장 중 44장이 남았다.
+            </p>
+            <p data-reveal>
+              되돌림이 잦은 단계였지만 그것을 실패로 세지 않았다. 작품 전체 기준 확정 847 대 되돌림 403이 실제 비율이었고,
+              이 비율을 인정한 결과가 작업 규칙이 됐다 — 덮어쓰기를 금지하고 이전 판을 보존하는 롤백 대비 백업을 기본값으로 뒀다(규율 32).
+            </p>
+            <p data-reveal>
+              가장 멀리 되돌아간 사고는 작은 한글이었다. 배너·UI 같은 소형 텍스트에서 생성 결함이 났고,
+              후반 패치를 정적 → 트래킹 → 프레임 단위 → 도너까지 4단으로 올려도 “뜨는 느낌”이 남았다.
+              여기서 규명이 멈췄다면 다음 규율은 “패치를 더 정교하게”가 됐을 것이다. 실제 결론은 후반이 아니라 설계였다 —
+              <strong>정보를 행동으로 대체한다.</strong> 부재중 3건을 글자로 표시하는 대신 수신 중인 화면을 뒤집는 연출로 바꿨다(규율 6).
+              후반 공정의 실패가 기획 단계의 설계로 되돌아간 사례다.
+            </p>
+            <div class="stage-verdict" data-reveal>
+              <p class="vd-line">
+                <span class="vd-key">여기서 내린 대표 판단:</span>
+                컷 이미지는 시작 상태의 최소 조건만 담는다 — 상세한 첫 프레임은 뒤따르는 영상 연출을 구속한다.
+              </p>
+              <p class="label vd-src">Production Rules v1 · 규율 4 (· 6 · 32)</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 03 영상 ── -->
+        <article class="stage" id="stage-video">
+          <div class="stage-key" data-reveal>
+            <span class="num stage-num">03</span>
+            <h3 class="h-item stage-name">영상</h3>
+            <p class="label stage-tag">Rule 8 · 38</p>
+          </div>
+          <div class="stage-body">
+            <p class="stage-sum" data-reveal>
+              생성 단위가 컷에서 씬으로 바뀌었고, 조명 지시는 문장이 아니라 기하 검산의 문제로 재정의됐다.
+            </p>
+            <p data-reveal>
+              Seedance 2.5에서 <span class="code">[00:00-00:03.5]</span> 형태의 대괄호 타임스탬프가 하드컷 지시로 작동한다는 것을 확인한 뒤
+              작업 단위가 바뀌었다. 한 생성 안에 여러 비트를 배치할 수 있게 되자 샷 간 룩을 맞추는 일이 편집이 아니라 생성의 과제가 됐고,
+              고정 기술 블록(카메라 · 렌즈 · 스톡)으로 룩을 잠그는 방식이 규율이 됐다(규율 8).
+              재제작한 씬의 샷 분할은 4.0s / 7.0s로, 설계 위치와 일치했다.
+            </p>
+            <p data-reveal>
+              가장 값비싼 사고는 조명이었다. 밤 씬인데 인물 얼굴만 과하게 밝게 나왔고, 프롬프트에는 “모니터가 유일한 광원”이라고 분명히 적혀 있었다.
+              규명을 “지시가 약했다”에서 끝냈다면 다음 규율은 “더 강하게 쓴다”가 됐을 것이다.
+              실제 원인은 구도였다 — 그 컷은 카메라가 상자 바닥에 있고 인물이 위에서 내려다보는 구도였는데, 모니터는 상자 옆 벽 너머에 있어
+              <strong>아래를 향한 얼굴에는 물리적으로 닿을 수 없었다.</strong> 모델은 인물을 보여줘야 하니 없는 광원을 만들어냈다.
+              그래서 규칙은 프롬프트 문장이 아니라 절차가 됐다. 쓰기 전에 광원 기하를 먼저 검산한다 —
+              선은 서 있고 모니터는 책상 위이므로 빛이 아래에서 올라오는 게 맞고, 바닥에 앉은 현은 어두운 게 맞다.
+              대사 직전 고개를 드는 동작을 넣어 그때 빛이 얼굴에 닿게 했다. 샷 간 톤 점프가 Δ24.4에서 Δ6.5로 떨어졌다.
+            </p>
+            <p data-reveal>
+              프롬프트 문법도 감으로 정하지 않고 같은 씬으로 직접 붙였다. 자체 템플릿 A판 Δ24.4, 외부 배포 스킬 문법 B판 Δ12,
+              B판에 광원 기하 검산을 더한 판 Δ6.5. A판의 원인은 한 문장 안에 함께 있던 모순 지시였다 —
+              <span class="code">lifted milky blacks, low contrast</span>와 <span class="code">dense blacks with no milky haze</span>가 같이 들어가 있었다.
+            </p>
+            <p data-reveal>
+              이 비교 도중 두 프롬프트가 섞여 전송된 사고가 있었다. 생성 로그에 남은 실제 전송 문자열을 대조해 발견했고,
+              길이가 7,062자 + 3,700자 = 10,811자로 정확히 합산됐다. <strong>결과물만 보고 판단했으면 잘못된 결론을 냈을 사고다.</strong>
+              이후 생성마다 전송 프롬프트를 대조하는 절차가 검증에서 생성 쪽으로 옮겨 붙었다.
+            </p>
+            <p data-reveal>
+              샷 설계도 되돌아왔다. 처음에는 2샷(투샷 → 선 클로즈업)이었고 대사는 전부 나왔지만, 현의 방어가 투샷 안에서 처리돼 얼굴이 멀었다.
+              소리는 들리는데 연기가 보이지 않았다. 투샷 → 현 → 선 3샷으로 나누고 두 단독 샷의 앵글을 서로의 눈높이로 교차시켰다 —
+              현은 선이 서 있는 높이에서, 선은 현이 앉은 바닥 높이에서. 앉은 자와 선 자의 관계가 대사가 아니라 카메라로 드러난다.
+              끝처리도 생성이 흡수했다. 멀티샷 클립은 대사로 끝내지 않고 마지막 발화 뒤에 1~2초의 무대사 여백을 확보하도록 프롬프트에 명시했다(규율 38).
+              재제작 씬의 마지막 여백은 14.0~15.0s 구간의 1.5초 무음으로 실측됐다.
+            </p>
+            <div class="stage-verdict" data-reveal>
+              <p class="vd-line">
+                <span class="vd-key">여기서 내린 대표 판단:</span>
+                한 생성 안에 여러 비트를 넣을 때는 대괄호 타임스탬프를 하드컷 지시로 쓰고 고정 기술 블록으로 룩을 잠근다.
+                그리고 조명은 문장으로 지시하기 전에 기하로 검산한다 — 불가능한 조명은 무시되지 않고 임의로 대체된다(Δ24.4 → Δ6.5).
+              </p>
+              <p class="label vd-src">Production Rules v1 · 규율 8 · 38 / 광원 기하 검산 사례</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 04 편집 ── -->
+        <article class="stage" id="stage-edit">
+          <div class="stage-key" data-reveal>
+            <span class="num stage-num">04</span>
+            <h3 class="h-item stage-name">편집</h3>
+            <p class="label stage-tag">Rule 20~24 · 27</p>
+          </div>
+          <div class="stage-body">
+            <p class="stage-sum" data-reveal>
+              이음새 하나의 오차가 37번 누적되고 나서야, 조립을 “붙이기”가 아니라 “다시 만들기”로 재정의했다.
+            </p>
+            <p data-reveal>
+              최종본을 스트림 카피 concat으로 만들었더니 이음새마다 오디오가 겹치고 드리프트가 쌓였다. 실측은 37이음새 816ms.
+              원인은 AAC 프레임 경계와 세그먼트 경계가 어긋난다는 것이었다. 규율은 조립 방식을 통째로 교체했다 —
+              <strong>전 세그먼트 디코드 → 오디오를 각 세그먼트의 비디오 프레임수 ÷ 24로 트림 → PCM 도메인 concat → 단일 인코딩.</strong>
+              스트림 카피는 작업 중간본에만 허용한다(규율 21).
+            </p>
+            <p data-reveal>
+              길이를 어디서 읽느냐도 같이 걸렸다. 컨테이너 길이에는 오디오 패딩이 포함돼 있어 프레임 수·시각 계산이 한 프레임씩 어긋났고,
+              블러 램프 2프레임이 누락됐다. 이후 프레임 계산은 컨테이너가 아니라 비디오 스트림 실측(<span class="code">-count_frames</span>)으로 하고,
+              프레임 단위 필터는 시간 창 대신 프레임 번호 enable(<span class="code">eq(n,N)</span>)을 쓴다(규율 22).
+            </p>
+            <p data-reveal>
+              같은 종류의 사고가 페이드에서도 났다. 트림과 필터를 함께 쓸 때 출력측 시킹을 하면 필터가 원본 타임라인 기준으로 작동해
+              페이드가 조기 발동한다 — 세그먼트 8개의 오디오가 소거됐다. 트림+필터 조합은 반드시 입력측 시킹
+              (<span class="code">-ss … -i</span>)으로 고정했다(규율 20).
+              J/L컷은 영상을 늘이거나 줄이지 않는 레이어 방식으로 설계했다. 다음 컷 영상의 머리를 겹침량만큼 당겨 A/V 싱크를 유지하고,
+              소모할 수 있는 것은 설계상 여유분뿐이며 대사는 전 구간 보존한다(규율 23).
+            </p>
+            <p data-reveal>
+              이 단계의 루프는 “수정은 국소적인데 검사는 전역”이라는 형태로 굳었다. 바뀐 세그먼트만 재인코딩하되 경계 음량 스캔은
+              전수로 다시 돌리는 회귀 검사를 상시로 뒀다(규율 27). 그리고 기록되지 않은 믹스 하나(빗베드 −3dB)를 잔차 대조로
+              역산해 재구성해야 했던 뒤로, filter_complex 병합 명령은 예외 없이 로그에 남긴다(규율 24).
+            </p>
+            <div class="stage-verdict" data-reveal>
+              <p class="vd-line">
+                <span class="vd-key">여기서 내린 대표 판단:</span>
+                최종본은 스트림 카피 concat으로 만들지 않는다 — 전 세그먼트를 디코드해 오디오를 프레임수 ÷ 24로 트림하고
+                PCM 도메인에서 이어 붙인 뒤 한 번에 인코딩한다. 37이음새 816ms 드리프트가 근거다.
+              </p>
+              <p class="label vd-src">Production Rules v1 · 규율 21 (· 20 · 22 · 23 · 24 · 27)</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 05 검증 ── -->
+        <article class="stage" id="stage-qa">
+          <div class="stage-key" data-reveal>
+            <span class="num stage-num">05</span>
+            <h3 class="h-item stage-name">검증</h3>
+            <p class="label stage-tag">Rule 16 · 28~31</p>
+          </div>
+          <div class="stage-body">
+            <p class="stage-sum" data-reveal>
+              검증은 공정의 끝이 아니라 앞 단계를 다시 여는 장치였다. 규율이 만들어지는 자리도 대부분 여기였다.
+            </p>
+            <p data-reveal>
+              먼저 통과 기준을 옮겼다. 오디오 제거·대체가 됐는지는 레벨 측정으로 판정하지 않는다.
+              완성본 전체와 +15~18dB 증폭본을 전사해 <strong>대사 어휘 0</strong>을 증명하고,
+              같은 harness가 원본에서는 대사를 검출한다는 양성 대조를 함께 제시해야 통과다(규율 16).
+              전사기가 만들어내는 환각(“감사합니다”, “MBC 뉴스…”)은 창 이동 안정성으로 걸러냈다.
+            </p>
+            <p data-reveal>
+              자동 검사만으로는 닫히지 않는다는 것도 실측으로 알았다. 자동 QA를 전부 통과한 뒤 사람이 결함 3건을 잡았다.
+              <strong>스펙 검사는 스펙이 맞아도 생기는 결함을 못 잡는다.</strong> 그래서 전체 실시간 시청·청취를 검증 단계에 명시적으로 넣고,
+              하지 않았으면 하지 않았다고 기록하는 것까지 규칙에 포함시켰다(규율 29).
+            </p>
+            <p data-reveal>
+              규명이 가장 뒤집혔던 사고는 “지키려던 규칙이 결함을 지킨” 경우였다. 비언어(들숨 · 한숨 · 흐느낌)는 연기의 일부라 보존하기로 했는데,
+              그 보존 로직이 오분류와 결합하자 파찰음 파열(~0.1s)을 숨소리로 오분류해 대사 꼬리를 적극적으로 보존해 버렸다.
+              길이(≥0.2s)와 무성 여부로 언어 꼬리와 구분하도록 고쳤고(규율 15), 보존 대상도 판정 근거를 실측으로 남기는 규칙이 붙었다(규율 30).
+            </p>
+            <p data-reveal>
+              대조 기준을 잘못 잡아 오보가 난 적도 있다. 최종본 대사를 시나리오 원문과 대조해 “누락 27건”이라는 결론을 냈는데,
+              최종본의 직속 정본은 압축 병합 계획이었다. 대조 기준은 항상 그 산출물의 직속 정본이고, 상위 원문은 표기·문안 확인용으로만 쓴다(규율 28).
+              서브에이전트 보고도 그대로 받지 않는다 — 보고서가 아니라 프레임 · 파형 · 전사 · 해시를 직접 확인한 뒤에 전달한다(규율 31).
+            </p>
+            <p data-reveal>
+              그리고 이 단계의 진짜 산출물은 완성본이 아니라 다음 규율이었다. 사고 직후 작업 로그에 적고, 재사용 가치가 확정되면 규율 문서로 승격한다(규율 35).
+              도식 아랫줄의 화살표가 기획으로 되돌아가는 지점이 여기다.
+            </p>
+            <div class="stage-verdict" data-reveal>
+              <p class="vd-line">
+                <span class="vd-key">여기서 내린 대표 판단:</span>
+                통과 기준은 레벨 측정이 아니라 ASR 재전사이고, 자동 검사를 전부 통과해도 전체를 실시간으로 보고 듣는다 —
+                자동 QA 통과 뒤 사람이 결함 3건을 잡았기 때문이다.
+              </p>
+              <p class="label vd-src">Production Rules v1 · 규율 16 · 29 (· 28 · 30 · 31)</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. 도구 스택
+         ============================================================ -->
+    <section class="section proc-tools">
+      <div class="container">
+        <p class="label" data-reveal>Tool Stack</p>
+        <h2 class="h-section sec-title" data-reveal data-delay="80">도구 스택 — 근거와 미검증</h2>
+        <p class="body-lg muted sec-lead" data-reveal data-delay="140">
+          제작 문서에서 실제로 확인되는 도구만 적었다. 각 항목은 <span class="mark">역할</span> ·
+          <span class="mark">선택과 사용의 근거</span> · <span class="mark">미검증</span> 세 칸으로 같다.
+          근거는 제작 중 실측 사례로만 대고, 문서에 근거가 없는 부분은 비워두지 않고 미검증으로 적는다 —
+          쓴 도구와 검증한 도구는 다른 목록이기 때문이다.
+        </p>
+
+        <div class="tools">
+
+          <!-- 이미지 생성 -->
+          <!-- TODO: 이미지 생성 도구명 확인 -->
+          <article class="tool" data-reveal>
+            <div class="tool-key">
+              <h3 class="h-item tool-name">
+                <span class="tool-unknown">도구명 미확인</span>
+              </h3>
+              <p class="label tool-role">이미지 생성</p>
+            </div>
+            <div class="tool-body">
+              <p class="tool-lede">컷 이미지 생성. 217장을 뽑아 44장을 채택했다.</p>
+              <div class="tool-note">
+                <p class="label tn-key">선택 · 사용의 근거</p>
+                <p>
+                  채택 기준은 이미지의 완성도가 아니라 다음 공정을 구속하지 않는가였다. 컷 이미지가 시작 상태의 최소 조건만 담도록
+                  프롬프트를 줄이는 방향으로 사용했다(규율 4). 소형 한글(배너 · UI)은 이 도구에 맡기지 않기로 했고,
+                  후반 패치 4단으로도 남는 “뜨는 느낌”이 그 판단의 근거다(규율 6).
+                </p>
+              </div>
+              <div class="tool-note is-open">
+                <p class="label tn-key">미검증</p>
+                <p>
+                  <strong>도구명 자체가 문서에서 확인되지 않는다.</strong> 인수인계 문서와 규율 문서에는 이미지 생성 단계의 판단 기준과
+                  물량(217 → 44)만 남아 있고 엔진·모델명 기록이 없다. 다른 엔진과의 비교 근거도 없으므로,
+                  “이 도구를 골랐다”가 아니라 “이 기준으로 썼다”까지만 사실이다.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Seedance 2.5 -->
+          <article class="tool" data-reveal>
+            <div class="tool-key">
+              <h3 class="h-item tool-name">Seedance 2.5</h3>
+              <p class="label tool-role">영상 생성 · 멀티샷</p>
+            </div>
+            <div class="tool-body">
+              <p class="tool-lede">한 생성 안에 여러 샷을 배치하는 단위로 썼다. 720p 파일럿으로 씬을 재제작했다.</p>
+              <div class="tool-note">
+                <p class="label tn-key">선택 · 사용의 근거</p>
+                <p>
+                  <span class="code">[00:00-00:03.5]</span> 형식의 대괄호 타임스탬프가 하드컷 지시로 작동한다 —
+                  이것이 컷 단위 생성 대신 씬 단위 생성을 가능하게 한 이유이고, 규율로 남은 사용법이다(규율 8).
+                  샷 간 룩은 고정 기술 블록(카메라 · 렌즈 · 스톡)으로 잠갔다. 실측 결과 재제작 씬의 샷 분할은 4.0s / 7.0s로 설계 위치와 일치했고,
+                  마지막 발화 뒤 1.5초 무대사 여백(14.0~15.0s)도 생성 단계에서 확보됐다(규율 38).
+                </p>
+              </div>
+              <div class="tool-note is-open">
+                <p class="label tn-key">미검증</p>
+                <p>
+                  출력 해상도 상한이 720p라 대조의 “전”(본편 발췌 1080p)과 해상도가 다르다.
+                  두 판을 나란히 놓을 때 해상도 차가 비교 인상에 얼마나 개입하는지는 <strong>측정하지 않았다</strong> —
+                  자산 문서에는 표시 폭을 맞추라는 지침만 있고 측정치가 없다.
+                  타임스탬프 하드컷의 명중률(지시한 분할 지점과 실제 컷 지점의 오차 분포)도 재제작 씬 1건의 일치 확인이 전부다.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- H3 -->
+          <article class="tool" data-reveal>
+            <div class="tool-key">
+              <h3 class="h-item tool-name">H3</h3>
+              <p class="label tool-role">영상 생성 · 비교 대상</p>
+            </div>
+            <div class="tool-body">
+              <p class="tool-lede">번외 실험에서 비교 대상으로 올린 엔진.</p>
+              <div class="tool-note">
+                <p class="label tn-key">선택 · 사용의 근거</p>
+                <p>
+                  엔진 선택을 감으로 정하지 않는다는 원칙(규율 33 · 34)에 따라 비교 대상으로 세웠고,
+                  구성안의 번외 실험 목록에 “H3 비교”가 기록돼 있다.
+                </p>
+              </div>
+              <!-- TODO: H3 파일럿의 해상도 · 비교 조건 · 판정 결과 확인 필요 (현재 문서에 근거 없음) -->
+              <div class="tool-note is-open">
+                <p class="label tn-key">미검증</p>
+                <p>
+                  <strong>비교 조건과 결과가 문서에 남아 있지 않다.</strong> 확인되는 것은 그런 비교가 있었다는 사실뿐이고,
+                  파일럿 해상도 · 동일 프롬프트 여부 · 판정 지표 · 결론은 근거가 없다.
+                  게다가 이 번외 실험을 싣기로 했던 페이지는 이후 폐지됐다(사이트 영상 3개 확정).
+                  따라서 여기서는 “비교했다”까지만 적고, 어느 쪽이 나았다는 서술은 하지 않는다.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- ElevenLabs -->
+          <article class="tool" data-reveal>
+            <div class="tool-key">
+              <h3 class="h-item tool-name">ElevenLabs</h3>
+              <p class="label tool-role">음성 · TTS 낭독 검사</p>
+            </div>
+            <div class="tool-body">
+              <p class="tool-lede">대사 음성 생성 및 대사 확정 전 낭독 검사 게이트.</p>
+              <div class="tool-note">
+                <p class="label tn-key">선택 · 사용의 근거</p>
+                <p>
+                  규율 2는 대사 확정 전에 TTS로 한 번 낭독시켜 검사하도록 요구한다 — 문어체는 낭독에서 즉시 드러나고 비용이 미미하기 때문이다.
+                  검수 항목은 “의미가 전달되는가”가 아니라 “입에 붙는가”다. 대사 개정 대조표는 그 게이트를
+                  개정 20건 중 대표 5~6개를 <span class="code">voiceId 68</span>(현 / 선 후보)로 뽑아 원본과 A/B 하는 절차로 지정했다.
+                </p>
+              </div>
+              <div class="tool-note is-open">
+                <p class="label tn-key">미검증</p>
+                <p>
+                  대조표에서 이 A/B는 <strong>“다음 게이트”로 남아 있다</strong> — 개정 20 / 유지 18 / 복원 2의 분류는 문서 판단이고,
+                  낭독 검사 결과표는 문서에 없다. 별도로 기록된 “TTS 후보 13종 비교 → C6 채택” 경위가 같은 엔진의 보이스인지도 확인되지 않는다.
+                  <!-- TODO: TTS 후보 13종 비교의 엔진 · C6 식별자와 voiceId 68의 관계 확인 필요 -->
+                  ASR이 “그때의 내가”를 5회 모두 “그때 내가”로 들은 것은 문체 판정의 방증이지 음성 엔진 성능의 측정치가 아니다.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- whisper-cli -->
+          <article class="tool" data-reveal>
+            <div class="tool-key">
+              <h3 class="h-item tool-name">whisper-cli</h3>
+              <p class="label tool-role">ASR · 검증</p>
+            </div>
+            <div class="tool-body">
+              <p class="tool-lede">오디오 제거·대체의 통과 판정과 대사 실측에 쓴 전사기.</p>
+              <div class="tool-note">
+                <p class="label tn-key">선택 · 사용의 근거</p>
+                <p>
+                  레벨 측정으로는 “들리지 않는다”만 말할 수 있고 “대사가 없다”를 증명할 수 없다.
+                  그래서 통과 기준을 재전사로 옮겼다 — 완성본 전체와 +15~18dB 증폭본에서 대사 어휘 0을 보이고,
+                  같은 harness가 원본에서는 대사를 검출한다는 양성 대조를 함께 제시한다(규율 16).
+                  실행 조건도 사고로 확정됐다. 이 M1 환경에서는 <span class="code">--no-gpu</span>가 필수다 —
+                  Metal 경로에서 <span class="code">exit 139</span>가 났다(규율 19).
+                </p>
+              </div>
+              <div class="tool-note is-open">
+                <p class="label tn-key">미검증</p>
+                <p>
+                  환각 출력(“감사합니다”, “MBC 뉴스…”)은 창 이동 안정성으로 배제한다는 절차만 있고,
+                  <strong>오검출률·누락률 수치는 문서에 없다.</strong> 모델 크기·언어 설정 같은 실행 파라미터도 기록돼 있지 않아
+                  같은 조건의 재현은 보장되지 않는다.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- ffmpeg -->
+          <article class="tool" data-reveal>
+            <div class="tool-key">
+              <h3 class="h-item tool-name">ffmpeg</h3>
+              <p class="label tool-role">조립 · 편집 · 실측</p>
+            </div>
+            <div class="tool-body">
+              <p class="tool-lede">세그먼트 조립, 오디오 처리, 프레임·음량 실측까지 후반 전체의 실행 도구.</p>
+              <div class="tool-note">
+                <p class="label tn-key">선택 · 사용의 근거</p>
+                <p>
+                  후반 규율 8개(20~27)가 전부 이 도구의 실패에서 나왔다 — 근거가 가장 두껍게 쌓인 자리다.
+                  스트림 카피 concat의 37이음새 816ms 드리프트가 PCM 도메인 재조립으로 바뀐 근거이고(규율 21),
+                  출력측 시킹의 조기 페이드가 입력측 시킹 고정의 근거이며(규율 20),
+                  컨테이너 길이의 오디오 패딩이 <span class="code">-count_frames</span> 실측의 근거다(규율 22).
+                  <span class="code">amix</span>는 기본 정규화가 음량을 절반으로 깎아 <span class="code">normalize=0</span>을 명시하고(규율 13),
+                  <span class="code">afftdn</span>은 실측 지연 +25ms를 보정한다(규율 18).
+                </p>
+              </div>
+              <div class="tool-note is-open">
+                <p class="label tn-key">미검증</p>
+                <p>
+                  한계 판정 하나는 실측이 아니라 경험칙이다 — 움직이는 생성 푸티지 위의 유기적 합성(트래킹 + 질감 정합)은
+                  스크립트의 한계 영역으로 봤고, 정지 캔버스 위 그리기는 스크립트가 이긴다고 정리했다(규율 7).
+                  이 경계선을 어디까지 밀 수 있는지는 시험하지 않았다.
+                  배너 후반 패치 4단이 남긴 “뜨는 느낌”도 <strong>육안 판정이고 정량 지표가 없다.</strong>
+                  버전 · 빌드 옵션도 문서에 기록돼 있지 않다.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- bash 스크립트 -->
+          <article class="tool" data-reveal>
+            <div class="tool-key">
+              <h3 class="h-item tool-name">bash 스크립트</h3>
+              <p class="label tool-role">실행 · 재현 · 로깅</p>
+            </div>
+            <div class="tool-body">
+              <p class="tool-lede">인코딩 옵션과 반복 실행을 담는 그릇. 셸 선택 자체가 사고에서 나온 규율이다.</p>
+              <div class="tool-note">
+                <p class="label tn-key">선택 · 사용의 근거</p>
+                <p>
+                  zsh는 비인용 변수를 워드 스플리팅하지 않는다. ffmpeg 옵션을 문자열 변수로 넘기다 같은 사고가 2회 재발했고,
+                  그래서 옵션은 bash 스크립트 + 배열(<span class="code">ENC=(…)</span>)로 고정했다(규율 25).
+                  루프 안에서 인터랙티브 CLI를 부를 때는 <span class="code">&lt; /dev/null</span>을 붙인다 — stdin이 소진돼 무한 대기한 사고가 근거다(규율 26).
+                  <span class="code">filter_complex</span> 병합 명령을 로그에 남기는 규칙도 미기록 믹스를 잔차 대조로 역산해야 했던 사건에서 나왔다(규율 24).
+                </p>
+              </div>
+              <div class="tool-note is-open">
+                <p class="label tn-key">미검증</p>
+                <p>
+                  스크립트화 이후 같은 유형의 사고가 실제로 0이 됐는지는 <strong>집계된 적이 없다.</strong>
+                  규율 25는 “2회 재발”이라는 사고 횟수까지만 근거를 갖는다.
+                </p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="tools-foot" data-reveal>
+          도구 목록이 아니라 근거 목록으로 읽히길 의도했다. 위 항목 중 절반은 “왜 골랐나”가 아니라 “어떻게 쓰다가 무엇에 걸렸나”로만
+          근거가 서 있고, 그 사실 자체를 미검증 칸에 적어 뒀다.
+          <a class="p-link" href="/rules/">규율 원문과 실패 사례 →</a>
+        </p>
+      </div>
+    </section>
+
   </main>
+
   <footer class="footer">
     <div class="container footer-inner">
       <span class="nav-wordmark">○○○</span>

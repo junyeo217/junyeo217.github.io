@@ -1,0 +1,316 @@
+/* ============================================================
+   /process — 제작 공정 (루프 도식 + 5단계 + 도구 스택)
+   main.css의 토큰만 사용 (paper / ink / accent / ink-66,44,12 / ease)
+   새 색·새 이징 도입 없음.
+   ============================================================ */
+
+/* ---- 섹션 공통 헤더 ---- */
+.sec-title { margin-top: 16px; }
+.sec-lead { margin-top: 20px; max-width: 68ch; }
+.mark { color: var(--ink); white-space: nowrap; }
+
+/* 인라인 링크 */
+.p-link {
+  display: inline-block;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-12);
+  padding-bottom: 1px;
+  transition: border-color .5s var(--ease);
+}
+.p-link:hover { border-bottom-color: var(--ink); }
+
+/* 명령·프롬프트 조각 */
+.code {
+  font-family: var(--font-label);
+  font-size: .9em;
+  letter-spacing: .01em;
+  background: var(--ink-12);
+  padding: 2px 7px;
+  border-radius: 2px;
+  word-break: break-word;
+}
+
+/* ============================================================
+   1. 인트로 + 루프 도식
+   ============================================================ */
+.proc-intro .proc-lede {
+  margin-top: 18px;
+  max-width: 14ch;
+}
+.proc-intro .proc-sub {
+  margin-top: clamp(24px, 3vw, 36px);
+  max-width: 70ch;
+  color: var(--ink-66);
+}
+
+.loop-figure {
+  margin: clamp(40px, 5.5vw, 76px) 0 0;
+}
+.loop-canvas {
+  border: 1px solid var(--ink-12);
+  padding: clamp(18px, 2.6vw, 40px);
+  overflow-x: auto;          /* 좁은 뷰포트에서 도식이 뭉개지지 않게 */
+  overscroll-behavior-x: contain;
+}
+.loop-canvas:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
+
+.loop-svg { width: 100%; height: auto; display: block; }
+.loop-h { min-width: 860px; }   /* 이 아래로는 글자가 읽히지 않는다 — 가로 스크롤로 넘긴다 */
+.loop-v { display: none; }
+
+/* 도식 — 정방향 노드 */
+.loop-node rect {
+  fill: none;
+  stroke: var(--ink-12);
+  stroke-width: 1;
+}
+.loop-idx {
+  font-family: var(--font-label);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  fill: var(--accent);
+}
+.loop-name {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  fill: var(--ink);
+}
+.loop-sub {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  fill: var(--ink-44);
+}
+
+/* 도식 — 흐름선 */
+.loop-flow {
+  fill: none;
+  stroke: var(--ink-44);
+  stroke-width: 1;
+}
+.loop-back {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+}
+.mk-ink { fill: var(--ink-44); }
+.mk-acc { fill: var(--accent); }
+
+/* 도식 — 루프 노드(알약) */
+.loop-pill rect {
+  fill: var(--paper);
+  stroke: var(--accent);
+  stroke-width: 1;
+}
+.loop-pill text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  fill: var(--accent);
+  text-anchor: middle;
+}
+
+.loop-cap {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  fill: var(--ink-44);
+}
+.loop-cap.is-acc { fill: var(--accent); }
+
+.loop-note {
+  margin-top: 18px;
+  max-width: 62ch;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink-66);
+}
+
+.proc-thesis {
+  margin-top: clamp(36px, 4.5vw, 64px);
+  padding-top: clamp(28px, 3.2vw, 44px);
+  border-top: 1px solid var(--ink-12);
+}
+.proc-thesis p { max-width: 72ch; }
+.proc-thesis-links {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  font-size: 14px;
+}
+
+/* ============================================================
+   2. 5단계 서술
+   ============================================================ */
+.stage {
+  display: grid;
+  grid-template-columns: clamp(150px, 17vw, 240px) minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 56px);
+  padding: clamp(34px, 4.2vw, 60px) 0;
+  border-top: 1px solid var(--ink-12);
+}
+.stage:first-of-type { margin-top: clamp(30px, 4vw, 56px); }
+.stage:last-of-type { border-bottom: 1px solid var(--ink-12); }
+
+.stage-key {
+  position: sticky;
+  top: 88px;
+  align-self: start;
+}
+.stage-num {
+  display: block;
+  font-size: clamp(28px, 3.6vw, 46px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: var(--ink-12);
+}
+.stage-name { margin-top: 12px; }
+.stage-tag { margin-top: 10px; color: var(--accent); }
+
+.stage-body > * + * { margin-top: 18px; }
+.stage-body p { max-width: 70ch; }
+.stage-body strong { font-weight: 600; }
+
+.stage-sum {
+  font-size: clamp(16px, 1.35vw, 20px);
+  font-weight: 600;
+  line-height: 1.65;
+  letter-spacing: -.01em;
+}
+.stage-body > p:not(.stage-sum) {
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.9;
+  color: var(--ink-66);
+}
+.stage-body > p:not(.stage-sum) strong { color: var(--ink); }
+
+/* 대표 판단 블록 — 시각적으로 분리 */
+.stage-verdict {
+  margin-top: clamp(24px, 3vw, 34px) !important;
+  background: var(--ink-12);
+  border-left: 2px solid var(--accent);
+  padding: clamp(18px, 2.2vw, 26px) clamp(18px, 2.4vw, 30px);
+}
+.vd-line {
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.75;
+  max-width: 62ch;
+}
+.vd-key {
+  font-weight: 700;
+  color: var(--accent);
+  margin-right: 4px;
+}
+.vd-src { margin-top: 14px; }
+
+/* ============================================================
+   3. 도구 스택
+   ============================================================ */
+.tools {
+  margin-top: clamp(30px, 4vw, 56px);
+  border-top: 1px solid var(--ink-12);
+}
+.tool {
+  display: grid;
+  grid-template-columns: clamp(150px, 17vw, 240px) minmax(0, 1fr);
+  gap: clamp(14px, 3vw, 56px);
+  padding: clamp(26px, 3.2vw, 44px) 0;
+  border-bottom: 1px solid var(--ink-12);
+}
+.tool-name { margin: 0; }
+.tool-unknown {
+  color: var(--ink-44);
+  border-bottom: 1px dashed var(--ink-44);
+  padding-bottom: 2px;
+}
+.tool-role { margin-top: 10px; color: var(--accent); }
+
+.tool-lede {
+  font-size: clamp(15px, 1.2vw, 17.5px);
+  line-height: 1.7;
+  max-width: 62ch;
+}
+
+.tool-note {
+  margin-top: clamp(16px, 1.8vw, 22px);
+  display: grid;
+  grid-template-columns: clamp(110px, 11vw, 150px) minmax(0, 1fr);
+  gap: clamp(10px, 2vw, 28px);
+  padding-top: 16px;
+  border-top: 1px solid var(--ink-12);
+}
+.tn-key { padding-top: 3px; }
+.tool-note p:last-child {
+  font-size: clamp(13.5px, 1vw, 15px);
+  line-height: 1.85;
+  color: var(--ink-66);
+  max-width: 66ch;
+}
+.tool-note strong { font-weight: 600; color: var(--ink); }
+/* 미검증 칸 — 근거 칸과 시각적으로 구분되게 점선 */
+.tool-note.is-open { border-top-style: dashed; }
+.tool-note.is-open .tn-key { color: var(--accent); }
+
+.tools-foot {
+  margin-top: clamp(28px, 3.2vw, 44px);
+  max-width: 66ch;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--ink-66);
+}
+.tools-foot .p-link { margin-left: 6px; }
+
+/* ============================================================
+   반응형
+   ============================================================ */
+@media (max-width: 1023px) {
+  .stage,
+  .tool {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .stage-key {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+  .stage-num { font-size: 26px; }
+  .stage-name { margin-top: 0; }
+  .stage-tag { margin-top: 0; }
+  .tool-key {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 16px;
+  }
+  .tool-role { margin-top: 0; }
+}
+
+@media (max-width: 767px) {
+  .proc-intro .proc-lede { max-width: none; }
+
+  /* 도식: 가로형 → 세로형 (스크롤 불필요) */
+  .loop-h { display: none; }
+  .loop-v { display: block; max-width: 340px; margin: 0 auto; }
+  .loop-canvas { overflow-x: visible; }
+
+  .tool-note {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .tn-key { padding-top: 0; }
+
+  .proc-thesis-links { flex-direction: column; gap: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p-link { transition: none; }
+}

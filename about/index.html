@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About — AI Filmmaker Portfolio</title>
-  <meta name="description" content="소개와 연락처 — 준비 중">
+  <title>About · 소개와 아카이브 — AI Filmmaker Portfolio</title>
+  <meta name="description" content="AI 단편 「너가 힘들지 않았으면 해」를 18일에 완주하고 제작 규율 38개를 남긴 사람의 자기 규정, 2026년 아카이브(출품·완성·대조 실험·규율), 연락처.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/about.css">
 </head>
 <body data-page="about">
   <header class="nav">
@@ -35,15 +37,168 @@
     <a data-nav="log" href="/log/">Log</a>
     <a data-nav="about" href="/about/">About</a>
   </nav>
+
   <main>
-    <section class="section">
+
+    <!-- ============ 1. Who Am I? ============ -->
+    <section class="section about-intro" aria-labelledby="whoHeading">
       <div class="container">
         <p class="label" data-reveal>About</p>
-        <h1 class="h-section" data-reveal data-delay="80" style="margin-top:16px">소개와 연락처</h1>
-        <p class="muted body-lg" data-reveal data-delay="160" style="margin-top:24px">이 섹션은 준비 중입니다.</p>
+
+        <!-- TODO: 태그라인 사용자 확정 (아래는 SITE_PLAN §2-0/§2-7의 축 `AI FILMMAKER · PIPELINE BUILDER`를 그대로 쓴 초안) -->
+        <h1 class="about-tagline" id="whoHeading" data-reveal data-delay="80">
+          <span class="at-line">AI Filmmaker</span>
+          <span class="at-line">Pipeline Builder</span>
+        </h1>
+
+        <p class="body-lg about-sub" data-reveal data-delay="140">
+          두 이름 사이에 선을 긋지 않는다. 컷을 정하는 판단과 그 컷을 만드는 공정은 한 사람이 쥐어야
+          재생성이 취향이 아니라 근거로 굴러간다 — 그래서 기획부터 마스터링까지 나누지 않고 돌린다.
+        </p>
+
+        <!-- 이름·직군은 미확정: 플레이스홀더 유지 -->
+        <dl class="about-meta">
+          <div class="am-col" data-reveal data-delay="180">
+            <dt class="label">Name</dt>
+            <!-- TODO: 실명 확정 -->
+            <dd>○○○</dd>
+          </div>
+          <div class="am-col" data-reveal data-delay="240">
+            <dt class="label">Based in</dt>
+            <dd>Seoul</dd>
+          </div>
+          <div class="am-col" data-reveal data-delay="300">
+            <dt class="label">Target role</dt>
+            <!-- TODO: 지원 직군 확정 (WEB_HANDOFF §5 — 미확정) -->
+            <dd class="am-todo">———</dd>
+          </div>
+        </dl>
+
+        <!-- TODO: 자기 규정 문단 사용자 확정 (근거 수치는 전부 소스 문서 실측값) -->
+        <div class="about-statement">
+          <p class="body-lg" data-reveal data-delay="120">
+            잘 설계된 프로세스가 명석함보다 문제를 잘 푼다고 생각한다. 이 사이트가 그 주장의 증거다.
+            제작 규율 <span class="mark">38개</span> 중 선언이 먼저 온 것은 하나도 없다 — 전부 사고를 겪은 뒤에 붙었고,
+            각 규율에는 그것을 만든 실패한 출력과 실측 근거가 같이 달려 있다.
+          </p>
+          <p class="body-lg" data-reveal data-delay="180">
+            18일 동안의 실제 비율은 <span class="mark">확정 847 대 되돌림 403</span>이었다.
+            되돌림을 실패로 세지 않기로 한 것도 같은 이유다 — 되돌림은 개인의 흠이 아니라 공정에 아직 규율이 없다는 신호이고,
+            신호를 세는 쪽이 자책하는 쪽보다 다음 컷을 빨리 만든다.
+            그래서 여기 있는 모든 섹션은 무엇을 만들었나가 아니라 무엇을 판단했고 근거가 무엇인가로 끝난다.
+          </p>
+        </div>
       </div>
     </section>
+
+    <!-- ============ 2. ARCHIVE ============ -->
+    <section class="section about-archive" aria-labelledby="archiveHeading">
+      <div class="container">
+        <p class="label" data-reveal>Archive</p>
+        <h2 class="h-section arc-heading" id="archiveHeading" data-reveal data-delay="80">기록</h2>
+        <p class="body-lg muted arc-lead" data-reveal data-delay="140">
+          출품·완성·실험·규율을 시기순으로 둔다. 끝난 것과 진행 중인 것을 섞지 않고, 진행 중인 항목은 상태를 그대로 적는다.
+        </p>
+
+        <ol class="arc">
+          <li class="arc-item" data-reveal>
+            <p class="num arc-year">2026</p>
+            <div class="arc-body">
+              <span class="tag">Film</span>
+              <h3 class="h-item arc-title">
+                부산국제AI영화제 출품 <span class="arc-state">예정</span>
+              </h3>
+              <p class="arc-desc">
+                접수 마감 9월 11일. 출품작은 「너가 힘들지 않았으면 해」 3:14.
+                아직 접수 전이라 결과가 아니라 일정만 적는다.
+              </p>
+              <!-- TODO: 출품 완료 후 갱신 (접수일·출품 번호 등 확정 사실로 교체) -->
+            </div>
+          </li>
+
+          <li class="arc-item" data-reveal data-delay="80">
+            <p class="num arc-year">2026</p>
+            <div class="arc-body">
+              <span class="tag">Film</span>
+              <h3 class="h-item arc-title">「너가 힘들지 않았으면 해」 3:14 완성</h3>
+              <p class="arc-desc">
+                <span class="num">2026-07-24</span> 시작, <span class="num">2026-08-11</span> 마스터링 — 18일 완주. 첫 완주작이다.
+                기획·이미지·영상·편집·검증을 나누지 않고 한 사람이 돌렸고, 공정마다 채택 기준을 남겼다.
+              </p>
+              <a class="arc-more" href="/film/">작품 보기</a>
+            </div>
+          </li>
+
+          <li class="arc-item" data-reveal data-delay="160">
+            <p class="num arc-year">2026</p>
+            <div class="arc-body">
+              <span class="tag">Experiment</span>
+              <h3 class="h-item arc-title">문어체 → 구어체 대조 실험</h3>
+              <p class="arc-desc">
+                "대사 톤이 아쉽다"는 외부 지적을 연기 문제로 받으면 손댈 데가 없다.
+                목소리·모델·파라미터를 전부 고정하고 문체 하나만 바꿔 대조 생성했다 — 결과는 개정 20 / 유지 18 / 복원 2.
+                외부 입력을 변수 하나짜리 대조로 검증할 수 있다는 것이 이 실험의 결론이다.
+              </p>
+              <a class="arc-more" href="/experiment/">실험 보기</a>
+            </div>
+          </li>
+
+          <li class="arc-item" data-reveal data-delay="240">
+            <p class="num arc-year">2026</p>
+            <div class="arc-body">
+              <span class="tag">Rule</span>
+              <h3 class="h-item arc-title">제작 규율 38개 정리</h3>
+              <p class="arc-desc">
+                기획·시나리오 / 이미지·영상 생성 / 오디오 처리 / ffmpeg 조립·편집 / 검증 방법론 / 협업·프로세스 6개 절로 묶었다.
+                각 항목에 근거가 된 사고와 작업 로그 위치를 붙여, 규칙이 아니라 사후 기록으로 읽히게 했다.
+                프롬프트 구조와 함께 공개 저장소로 옮기는 중이다.
+              </p>
+              <!-- TODO: 규율 공개 저장소 URL 확정 후 링크 추가 -->
+              <a class="arc-more" href="/rules/">규율 보기</a>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 3. 연락처 ============ -->
+    <section class="section about-contact" aria-labelledby="contactHeading">
+      <div class="container">
+        <p class="label" data-reveal>Contact</p>
+        <h2 class="h-section ct-heading" id="contactHeading" data-reveal data-delay="80">연락과 자료</h2>
+
+        <dl class="ct-list" data-reveal data-delay="140">
+          <div class="ct-row">
+            <dt class="label">Email</dt>
+            <!-- TODO: 이메일 확정 (확정 전까지 mailto 링크를 걸지 않는다) -->
+            <dd class="ct-value">contact@ <span class="ct-state">— 준비 중</span></dd>
+          </div>
+          <div class="ct-row">
+            <dt class="label">Based in</dt>
+            <dd class="ct-value">Seoul</dd>
+          </div>
+          <div class="ct-row">
+            <dt class="label">Status</dt>
+            <dd class="ct-value">지원 중</dd>
+          </div>
+        </dl>
+
+        <div class="ct-actions" data-reveal data-delay="200">
+          <!-- TODO: 이력서 URL 확정 후 <a class="btn btn-arrow">로 교체 -->
+          <button type="button" class="btn ct-btn is-off" disabled aria-disabled="true">이력서 — 준비 중</button>
+          <!-- TODO: PDF 덱(SITE_PLAN §3) 제작 완료 후 다운로드 링크로 교체 -->
+          <button type="button" class="btn ct-btn is-off" disabled aria-disabled="true">PDF 덱 다운로드 — 준비 중</button>
+        </div>
+
+        <p class="ct-note muted" data-reveal data-delay="260">
+          정본은 둘이다 — 국내 채용 관행에 맞춘 PDF 덱과, 링크 한 줄로 건넬 수 있는 이 사이트.
+          내용은 같고 그릇만 다르다고 판단해 폼 대신 두 경로만 둔다.
+        </p>
+      </div>
+    </section>
+
   </main>
+
   <footer class="footer">
     <div class="container footer-inner">
       <span class="nav-wordmark">○○○</span>
