@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/css/main.css?v=20260813c">
-  <link rel="stylesheet" href="/css/rules.css?v=20260813c">
+  <link rel="stylesheet" href="/css/rules.css?v=20260813d">
   <!-- 리빌 폴백 — JS가 없으면 숨김 상태가 풀린 채로 남는다 -->
   <noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
 </head>
@@ -56,7 +56,7 @@
           각 카드는 같은 서식으로 읽힌다 — <span class="mark">① 실패한 출력</span> ·
           <span class="mark">② 원인 규명</span> · <span class="mark">③ 도출한 규율</span> ·
           <span class="mark">④ 적용 후 출력</span>.
-          규율 문장은 <span class="src-name">PRODUCTION_RULES v1</span> 원문 그대로 인용했고,
+          규율은 <span class="src-name">PRODUCTION_RULES v1</span>의 요지를 실측 근거와 함께 정리한 것이고,
           수치는 전부 제작 중 실측값이다.
           영상 대조는 한 씬을 두 번 만든 기록 하나로 모아 작품 페이지에 두었다 — 여기서는 수치가 근거를 댄다.
         </p>
@@ -132,11 +132,9 @@
                   </tbody>
                 </table>
               </div>
-              <p>원인은 프롬프트 안의 모순된 지시였다. 한 문장 안에 다음 둘이 함께 있었다.</p>
-              <ul class="conflict">
-                <li><span class="label">외부 문법</span><code class="prompt">lifted milky blacks, low contrast</code></li>
-                <li><span class="label">자체 규율</span><code class="prompt">dense blacks with no milky haze</code></li>
-              </ul>
+              <p>원인은 프롬프트 안의 모순된 지시였다. 외부 문법이 요구한 톤과 자체 규율이 금지한 톤이
+                <strong>한 문장 안에 상반된 블랙 지시로 함께 들어가 있었다</strong> — 한쪽은 블랙을 들어올리라 하고,
+                다른 한쪽은 들뜬 블랙을 금지했다. 모델은 그 사이에서 샷마다 다른 쪽을 택했다.</p>
               <div class="note-box">
                 <p class="label">부수 발견 — 프롬프트 혼입</p>
                 <p>비교 도중 프롬프트가 섞여 들어간 사고가 있었다. 생성 로그에서 실제 전송된 문자열을 대조해
@@ -150,7 +148,7 @@
             <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
             <div class="rc-body">
               <blockquote class="rule-quote">
-                <p>멀티샷 타임스탬프 활용: Seedance 2.5는 <code class="prompt">[00:00-00:03.5]</code> 대괄호 타임스탬프가 하드컷 지시로 작동 — 한 생성에 여러 비트를 배치할 수 있다. 고정 기술 블록(카메라·렌즈·스톡)으로 샷 간 룩을 잠근다.</p>
+                <p>한 번의 생성 안에 여러 비트를 배치할 때는 타임스탬프로 하드컷을 지시하고, 고정된 기술 블록(카메라·렌즈·스톡)으로 샷 간 룩을 잠근다.</p>
                 <p class="label rq-src">규율 8 · 이미지·영상 생성</p>
               </blockquote>
               <blockquote class="rule-quote">
@@ -278,11 +276,9 @@
             <div class="rc-key"><span class="rc-mark">①</span><span class="label">실패한 출력</span></div>
             <div class="rc-body">
               <div class="state">
-                <p>보낸 지시는 아래 한 줄이었다. 나온 화면은 상자를 <strong>바깥에서</strong> 바라본 구도였다 —
+                <p>보낸 지시는 <strong>시점 명사 한 줄</strong>이었다 — 상자 안에서 올려다보는 구도라고만 적었다.
+                  나온 화면은 상자를 <strong>바깥에서</strong> 바라본 구도였다 —
                   상자 형태와 내부가 통째로 화면에 보였다. 의도한 건 상자 안에 들어가 있는 카메라였다.</p>
-                <ul class="conflict">
-                  <li><span class="label">보낸 지시</span><code class="prompt">Worm's-eye view from inside the open box</code></li>
-                </ul>
                 <ul class="fact-strip">
                   <li><span class="fact-val">시점 명사만</span><span class="label fact-key">지시에 적힌 것</span></li>
                   <li><span class="fact-val">렌즈 좌표 없음</span><span class="label fact-key">빠진 것</span></li>
@@ -296,7 +292,7 @@
             <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
             <div class="rc-body">
               <p>“어디서 보는지”만 쓰고 <strong>“카메라가 물리적으로 어디에 놓여 있는지”</strong>를 쓰지 않았다.
-                시점 명사(<code class="prompt">worm's-eye view</code>)는 렌즈의 좌표를 지정하지 않는다 —
+                올려다보는 각도를 뜻하는 시점 명사는 렌즈의 좌표를 지정하지 않는다 —
                 모델은 그 이름이 붙은 익숙한 화면을 그린다.</p>
               <p>덧붙여, 카메라가 사물 안에 있다는 사실만으로는 “그 사물이 화면에 보이지 않는다”가 따라오지 않는다.
                 그 배제 조건도 문장으로 써야 한다.</p>
@@ -310,11 +306,8 @@
                 <p>카메라가 사물 안에 있으면 그 사물이 화면에 보이지 않는다는 것까지 명시한다.</p>
                 <p class="label rq-src">개선 사례 4 · 규율화 문안 (번호 미부여 — 승격 대기)</p>
               </blockquote>
-              <p class="rc-cap">교체한 프롬프트는 다음과 같다.</p>
-              <ul class="conflict">
-                <li><span class="label">교체 · 위치</span><code class="prompt">The camera is lying flat on the bottom of the open box, lens pointing straight up</code></li>
-                <li><span class="label">교체 · 배제</span><code class="prompt">The box itself is never seen from outside</code></li>
-              </ul>
+              <p class="rc-cap">교체는 시점 명사를 지우고, 카메라를 <strong>물리적 위치와 향한 방향</strong>으로 서술하는 문법으로 바꾼 것이었다.
+                여기에 “그 사물은 바깥에서 보이지 않는다”는 배제 조건을 한 줄 덧붙였다. 문장 두 줄이 전부였다.</p>
             </div>
           </div>
 
@@ -402,9 +395,7 @@
             <div class="rc-body">
               <blockquote class="rule-quote">
                 <p>대사는 구어체로 쓴다. 문법적으로 완결된 문어체 대사는 사람이 말해도 딱딱하고, AI 음성은 그대로 낭독조로 읽는다.
-                  주어 생략·조사 탈락·문장 조각화·앞 절 생략 후 대명사 수용(“…그게 왜 날 위하는 건데?”)을 쓴다.
-                  <strong>대사 확정 전 TTS로 한 번 낭독시켜 검사한다</strong>(문어체는 즉시 드러남, 비용 미미).
-                  검수 항목은 “의미가 전달되는가”가 아니라 <strong>“입에 붙는가”</strong>.</p>
+                  <strong>대사는 확정 전에 한 번 소리로 들어보고 판정한다</strong> — 검수 항목은 “의미가 전달되는가”가 아니라 <strong>“입에 붙는가”</strong>.</p>
                 <p class="label rq-src">규율 2 · 기획·시나리오</p>
               </blockquote>
               <p class="rc-cap">TTS 낭독은 취향 토론을 대체하는 게이트다. 통과하지 못한 문장은 대본에 남지 않는다.</p>
@@ -489,7 +480,7 @@
           <div class="rc-step" data-reveal>
             <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
             <div class="rc-body">
-              <p>출력측 시킹(<code class="prompt">-i ... -ss</code>)을 쓰면 필터 그래프가 <strong>원본 타임라인 기준</strong>으로 작동한다.
+              <p>잘라내기를 <strong>디코딩 뒤에</strong> 거는 방식(출력측 시킹)을 쓰면 필터 그래프가 <strong>원본 타임라인 기준</strong>으로 작동한다.
                 페이드는 잘라낸 구간이 아니라 원본 0초 기준으로 발동하므로, 세그먼트가 시작될 때는 이미 감쇠가 끝나 있다.
                 레벨 로그만 보면 “페이드가 걸렸다”로 읽혀 정상처럼 보인다 — 그래서 8개가 누적될 때까지 발견되지 않았다.</p>
             </div>
@@ -499,7 +490,7 @@
             <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
             <div class="rc-body">
               <blockquote class="rule-quote">
-                <p>트림+필터 조합은 반드시 입력측 시킹(<code class="prompt">-ss ... -i</code>). 출력측 시킹은 필터가 원본 타임라인 기준으로 작동해 페이드가 조기 발동한다(8개 세그먼트 오디오 소거 사고).</p>
+                <p>트림과 필터를 함께 쓸 때는 시킹을 입력측에 둔다. 출력측에 두면 필터가 원본 타임라인 기준으로 작동해 페이드가 조기 발동한다(8개 세그먼트 오디오 소거 사고).</p>
                 <p class="label rq-src">규율 20 · ffmpeg 조립·편집</p>
               </blockquote>
             </div>
@@ -509,7 +500,7 @@
             <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
             <div class="rc-body">
               <div class="state is-after">
-                <p>입력측 시킹(<code class="prompt">-ss ... -i</code>)으로 전 세그먼트를 재조립해 소거된 대사를 되살렸다.</p>
+                <p>시킹 방식을 입력측으로 바꿔 전 세그먼트를 재조립해 소거된 대사를 되살렸다.</p>
                 <p>재발 방지는 명령 수정에서 끝나지 않았다 — 수정 후 바뀐 세그먼트만 재인코딩하되,
                   경계 음량 스캔은 전수 재검하는 회귀 검사를 상시화했다(규율 27).</p>
                 <ul class="fact-strip">
@@ -559,7 +550,7 @@
               <p>AAC 프레임 경계와 세그먼트 경계가 어긋난다. 이음새마다 오디오가 조금씩 겹치고, 그 오차가 누적된다.
                 실측 결과 <strong class="num">37이음새에서 816ms</strong>가 밀렸다.</p>
               <p>길이 계산을 컨테이너에서 읽은 것도 같은 계열의 오류였다 — 컨테이너 길이에는 오디오 패딩이 포함되어 있어,
-                프레임 수는 비디오 스트림 실측(<code class="prompt">-count_frames</code>)으로 세야 한다(규율 22).</p>
+                길이 기준을 <strong>컨테이너 값이 아니라 비디오 스트림의 프레임 단위 실측</strong>으로 바꿨다(규율 22).</p>
             </div>
           </div>
 
@@ -567,7 +558,7 @@
             <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
             <div class="rc-body">
               <blockquote class="rule-quote">
-                <p>최종본을 스트림 카피 concat으로 만들지 않는다. AAC 프레임 경계와 세그먼트 경계가 어긋나 이음새마다 오디오가 겹치고 누적 드리프트가 생긴다(37이음새 816ms). 최종본은 <strong>전 세그먼트 디코드 → 오디오를 각 세그먼트의 비디오 프레임수/24로 트림 → PCM 도메인 concat → 단일 인코딩</strong>. 작업 중간본에만 스트림 카피 허용.</p>
+                <p>최종본을 스트림 카피 concat으로 만들지 않는다. 오디오 프레임 경계와 세그먼트 경계가 어긋나 이음새마다 겹침이 생기고 누적된다(37이음새 816ms). 최종본은 <strong>전부 다시 디코드해 압축 이전 단계에서 이어 붙이고 한 번에 인코딩</strong>한다. 스트림 카피는 작업 중간본에만 쓴다.</p>
                 <p class="label rq-src">규율 21 · ffmpeg 조립·편집</p>
               </blockquote>
             </div>
@@ -577,12 +568,12 @@
             <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
             <div class="rc-body">
               <div class="state is-after">
-                <p>전 세그먼트를 디코드하고, 오디오를 각 세그먼트의 비디오 프레임수 ÷ 24로 트림한 뒤
-                  PCM 도메인에서 이어 붙여 한 번에 인코딩했다. 이음새마다 겹치던 AAC 프레임 경계 문제가 조립 방식 자체에서 사라진다.</p>
+                <p>전 세그먼트를 다시 디코드하고, 각 세그먼트의 오디오를 비디오 실측 길이에 맞춘 뒤
+                  압축 이전 단계에서 이어 붙여 한 번에 인코딩했다. 이음새마다 겹치던 프레임 경계 문제가 조립 방식 자체에서 사라진다.</p>
                 <p>그 결과가 지금 사이트에 올라간 본편 마스터다. 스트림 카피는 작업 중간본에만 남겼다.</p>
                 <ul class="fact-strip">
                   <li><span class="num fact-val">3:14</span><span class="label fact-key">단일 인코딩 마스터</span></li>
-                  <li><span class="fact-val">PCM 도메인 concat</span><span class="label fact-key">조립 방식</span></li>
+                  <li><span class="fact-val">압축 전 단계 결합</span><span class="label fact-key">조립 방식</span></li>
                   <li><span class="fact-val">중간본 한정</span><span class="label fact-key">스트림 카피 허용 범위</span></li>
                 </ul>
               </div>
@@ -611,10 +602,10 @@
             <div class="rc-key"><span class="rc-mark">①</span><span class="label">실패한 출력</span></div>
             <div class="rc-body">
               <div class="state">
-                <p>타건음이 작아서 정규화로 <strong class="num">30dB</strong>를 끌어올렸다. 올라온 것은 타건음이 아니라 룸톤이었다 —
+                <p>타건음이 작아서 정규화로 크게 끌어올렸다. 올라온 것은 타건음이 아니라 룸톤이었다 —
                   키보드 소리가 커진 게 아니라, 그 자리에 “지지직” 노이즈 버스트가 생겼다.</p>
                 <ul class="fact-strip">
-                  <li><span class="num fact-val">30dB</span><span class="label fact-key">사고 당시 증폭량</span></li>
+                  <li><span class="fact-val">대폭 증폭</span><span class="label fact-key">사고 당시 처치</span></li>
                   <li><span class="fact-val">노이즈 버스트</span><span class="label fact-key">실제 결과</span></li>
                 </ul>
               </div>
@@ -625,19 +616,12 @@
           <div class="rc-step" data-reveal>
             <div class="rc-key"><span class="rc-mark">②</span><span class="label">원인 규명</span></div>
             <div class="rc-body">
-              <p>증폭은 신호와 잡음을 구분하지 않는다. SNR을 먼저 실측했어야 했다 — 타건 피크와 그 전후 룸톤을 비교하면
-                증폭 가능 여부가 사전에 나온다. SNR이 낮은 소스에 <strong class="num">30dB</strong>를 걸면 결과는 노이즈 버스트다.</p>
-              <p>음량 블록만으로는 소스의 성격도 판정되지 않았다. 마찰·타건처럼 고역에 편중된 소스는
-                저역/고역 비를 보는 스펙트럼 대역 검사로 성격을 먼저 확인해야 진동음·핸들링 잡음과 구분된다.</p>
-              <div class="table-wrap" data-reveal="wipe">
-                <table class="metric-table">
-                  <thead><tr><th>판정 기준</th><th>값</th></tr></thead>
-                  <tbody>
-                    <tr><td>정규화 후 노이즈 플로어</td><td class="num hi">-46dBFS 이하</td></tr>
-                    <tr><td>사고 당시 증폭량</td><td class="num">30dB</td></tr>
-                  </tbody>
-                </table>
-              </div>
+              <p>증폭은 신호와 잡음을 구분하지 않는다. <strong>증폭 전에 신호 대 잡음비를 먼저 실측했어야 했다</strong> —
+                타건 피크와 그 전후 룸톤을 비교하면 증폭 가능 여부가 사전에 나온다.
+                저레벨 소스를 크게 증폭한 것이 노이즈 버스트를 만들었다.</p>
+              <p>음량만으로는 소스의 성격도 판정되지 않았다. 마찰·타건처럼 고역에 편중된 소스는
+                주파수 성격을 먼저 확인해야 진동음·핸들링 잡음과 구분된다.
+                그래서 증폭 여부를 판정하는 기준을 세워, 저신호 소스는 아예 통과시키지 않기로 했다.</p>
             </div>
           </div>
 
@@ -645,11 +629,11 @@
             <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
             <div class="rc-body">
               <blockquote class="rule-quote">
-                <p>저레벨 소스를 정규화 증폭하지 않는다. SNR을 먼저 실측한다(타건 피크 vs 전후 룸톤). SNR 낮은 소스의 30dB 증폭 = 노이즈 버스트(“지지직” 사고). 기준: 정규화 후 노이즈 플로어 -46dBFS 이하.</p>
+                <p>저레벨 소스를 정규화 증폭으로 살리지 않는다. 증폭 전에 신호 대 잡음비를 먼저 실측하고, 그 기준에 못 미치는 소스는 통과시키지 않는다(“지지직” 노이즈 버스트 사고).</p>
                 <p class="label rq-src">규율 11 · 오디오 처리</p>
               </blockquote>
               <blockquote class="rule-quote">
-                <p>SFX 소스는 이식 전 스펙트럼 대역 검사(저역/고역 비)로 성격을 확인한다. 음량 블록만으로는 진동/핸들링 잡음을 구분 못 한다. 고역 편중 성격(마찰·타건)은 대역 한정 SNR로 스캔한다.</p>
+                <p>SFX 소스는 이식 전에 음량이 아니라 주파수 성격으로 판별한다. 음량만 보면 진동·핸들링 잡음과 구분되지 않는다.</p>
                 <p class="label rq-src">규율 12 · 오디오 처리</p>
               </blockquote>
             </div>
@@ -659,17 +643,17 @@
             <div class="rc-key"><span class="rc-mark">④</span><span class="label">적용 후 출력</span></div>
             <div class="rc-body">
               <div class="state is-after">
-                <p>증폭으로 풀지 않고 소스를 교체했다. 판정은 귀가 아니라 SNR 실측과 스펙트럼 대역 검사가 했고,
-                  정규화 후 노이즈 플로어가 <strong class="num">-46dBFS</strong> 이하인 소스만 통과시켰다.</p>
+                <p>증폭으로 풀지 않고 소스를 교체했다. 판정은 귀가 아니라 신호 대 잡음비 실측과 주파수 성격 검사가 했고,
+                  <strong>정규화 후 잔류 잡음이 기준 아래인 소스만</strong> 통과시켰다.</p>
                 <ul class="fact-strip">
-                  <li><span class="num fact-val">-46dBFS 이하</span><span class="label fact-key">통과 기준 · 정규화 후 노이즈 플로어</span></li>
+                  <li><span class="fact-val">잔류 잡음 기준</span><span class="label fact-key">저신호 소스를 거르는 통과 조건</span></li>
                   <li><span class="fact-val">소스 교체</span><span class="label fact-key">해결 경로</span></li>
-                  <li><span class="fact-val">대역 한정 SNR</span><span class="label fact-key">고역 편중 소스 검사</span></li>
+                  <li><span class="fact-val">주파수 성격 검사</span><span class="label fact-key">고역 편중 소스 판별</span></li>
                 </ul>
               </div>
               <p class="rc-cap">
                 <span class="ba">before</span> 증폭으로 해결 시도 <span class="arrow">→</span>
-                <span class="ba">after</span> 소스 교체로 해결. 증폭 여부는 취향이 아니라 SNR 실측이 결정한다.
+                <span class="ba">after</span> 소스 교체로 해결. 증폭 여부는 취향이 아니라 신호 대 잡음비 실측이 결정한다.
               </p>
             </div>
           </div>
@@ -720,11 +704,11 @@
             <div class="rc-key"><span class="rc-mark">③</span><span class="label">도출한 규율</span></div>
             <div class="rc-body">
               <blockquote class="rule-quote">
-                <p>생성 모델에 작은 한글을 맡기지 않는다. 소형 텍스트(배너·UI)는 생성 결함이 나며, 후반 패치(정적→트래킹→프레임단위→도너 4단)로도 “뜨는 느낌”이 남는다. 근본 해법은 <strong>정보를 행동으로 대체하는 설계 전환</strong>(부재중 3건 표시 → 수신 중 뒤집기).</p>
+                <p>생성 모델에 작은 한글을 맡기지 않는다. 후반 패치를 아무리 정교하게 해도 “뜨는 느낌”이 남는다. 근본 해법은 <strong>정보를 행동으로 대체하는 설계 전환</strong>이다.</p>
                 <p class="label rq-src">규율 6 · 이미지·영상 생성</p>
               </blockquote>
               <blockquote class="rule-quote">
-                <p>움직이는 생성 푸티지 위 유기적 합성(트래킹+질감 정합)은 스크립트의 한계 영역. 정지 캔버스 위 그리기(텍스트·카드·오버레이·전환·소리)는 스크립트가 이긴다. 경계를 헷갈리지 말 것.</p>
+                <p>움직이는 생성 푸티지 위의 유기적 합성은 스크립트의 한계 영역이고, 정지 캔버스 위의 그리기는 스크립트가 이긴다. 그 경계를 헷갈리지 말 것.</p>
                 <p class="label rq-src">규율 7 · 이미지·영상 생성</p>
               </blockquote>
             </div>
@@ -760,7 +744,7 @@
         <h2 class="h-section steady-title" data-reveal data-delay="80">재사용 Top 10</h2>
         <p class="body-lg muted steady-sub" data-reveal data-delay="140">
           38개 중 이 열 개는 도구·환경에 묶여 있지 않다. ffmpeg도 생성 모델도 없는 작업에 그대로 옮겨 쓴 것들만 골랐다.
-          문장은 <span class="src-name">PRODUCTION_RULES v1</span> 원문이며, 근거 경위 서술은 줄임표로 생략했다.
+          <span class="src-name">PRODUCTION_RULES v1</span>의 각 항목을 한 줄 요지로 추렸다. 원문 번호는 그대로 뒀다.
         </p>
 
         <ol class="steady" data-reveal data-delay="200">
@@ -774,21 +758,21 @@
           <li class="st-item">
             <span class="num st-num">02</span>
             <div class="st-body">
-              <p class="st-text">But/Therefore 검사: 씬을 한 줄씩 나열하고 사이 접속사를 적는다. “그리고”의 나열이면 실패, “그래서/그러나”면 통과.</p>
+              <p class="st-text">씬과 씬을 잇는 접속사로 구조를 검사한다. 단순 나열이면 실패, 인과나 역접이면 통과.</p>
               <p class="label st-src">규율 3 · 기획·시나리오</p>
             </div>
           </li>
           <li class="st-item">
             <span class="num st-num">03</span>
             <div class="st-body">
-              <p class="st-text">대조 기준은 항상 그 산출물의 직속 정본이다. … 상위 원문은 표기·문안 확인용으로만.</p>
+              <p class="st-text">대조 기준은 항상 그 산출물의 직속 정본이다. 상위 원문은 표기·문안 확인용으로만 쓴다.</p>
               <p class="label st-src">규율 28 · 검증 방법론</p>
             </div>
           </li>
           <li class="st-item">
             <span class="num st-num">04</span>
             <div class="st-body">
-              <p class="st-text">스펙 검사는 스펙이 맞아도 생기는 결함을 못 잡는다. … 전체 실시간 시청·청취를 검증 단계에 명시적으로 넣고, 하지 않았으면 하지 않았다고 기록한다.</p>
+              <p class="st-text">스펙 검사는 스펙이 맞아도 생기는 결함을 못 잡는다. 전체를 실시간으로 보고 듣는 단계를 검증에 넣고, 하지 않았으면 하지 않았다고 기록한다.</p>
               <p class="label st-src">규율 29 · 검증 방법론</p>
             </div>
           </li>
@@ -830,7 +814,7 @@
           <li class="st-item">
             <span class="num st-num">10</span>
             <div class="st-body">
-              <p class="st-text">작업 기록은 무조건 한다 — 기록의 선별은 회고가 한다. 어떤 기록이 중요해질지는 적는 시점에 알 수 없다. …</p>
+              <p class="st-text">작업 기록은 무조건 한다 — 기록의 선별은 회고가 한다. 어떤 기록이 중요해질지는 적는 시점에 알 수 없다.</p>
               <p class="label st-src">규율 36 · 협업·프로세스</p>
             </div>
           </li>

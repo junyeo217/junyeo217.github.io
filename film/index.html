@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="/css/main.css?v=20260813c">
-  <link rel="stylesheet" href="/css/film.css?v=20260813d">
+  <link rel="stylesheet" href="/css/film.css?v=20260813e">
   <!-- 리빌 폴백 — JS가 없으면 숨김 상태가 풀린 채로 남는다 -->
   <noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
 </head>
@@ -284,7 +284,7 @@
 
         <p class="rb-links" data-reveal>
           <a class="inline-link" href="/experiment/">대사 문체 대조 실험 기록 →</a>
-          <a class="inline-link" href="/rules/">제작 규율 38개 원문 →</a>
+          <a class="inline-link" href="/rules/">실패 → 규율 사례 →</a>
         </p>
       </div>
     </section>
@@ -426,23 +426,6 @@
     </section>
 
     <!-- ============================================================
-         5. 파생판 — 보관 중, 게재 미정
-         ============================================================ -->
-    <section class="section">
-      <div class="container">
-        <p class="label" data-reveal>Versions</p>
-        <h2 class="h-section sec-title" data-reveal data-delay="80">파생판</h2>
-        <!-- TODO: 파생판 게재 여부 사용자 판단 -->
-        <p class="body-lg film-derived" data-reveal data-delay="140">
-          자막판과 음성 제거판 두 판을 아카이브에 보관하고 있다. 게재는 지면을 보고 판단하기로 했다 — 이 페이지가 증명해야 하는 것은
-          S04C 한 씬의 전/후 대조 하나이고, 판을 늘리면 그 대조가 흐려진다고 봤다.
-          음성 제거판은 통과 기준을 레벨 측정이 아니라 ASR 재전사로 옮긴 판이다: 완성본과 +15~18dB 증폭본을 전사해 대사 어휘 0을 증명하고,
-          같은 harness가 원본에서는 대사를 검출한다는 양성 대조를 함께 둬야 제거로 인정했다(규율 16).
-        </p>
-      </div>
-    </section>
-
-    <!-- ============================================================
          6. 정밀 해체 — 자체 계량 분석
          ============================================================ -->
     <section class="section film-teardown" id="teardown">
@@ -473,6 +456,55 @@
           처방 1(68초 숏을 분할한다)은 <a class="inline-link" href="#s04c">S04C 재제작</a>에서 이미 같은 방향으로 실행됐다 —
           한 덩어리였던 대치를 3샷으로 갈랐다.
         </p>
+
+        <h3 class="h-item td-subtitle" data-reveal>어떻게 측정했나</h3>
+        <div class="td-method" data-reveal>
+          <p class="body-lg">
+            영상 한 편을 받아, 모든 판단에 타임코드 근거가 붙은 분석 기록으로 바꾸는 시스템이다.
+            영상에서 확인되지 않은 제작 의도, 광고 효과, 시청자 반응은 임의로 적지 않는다.
+            결과를 작성하는 역할과 검수하는 역할은 분리된다.
+            세 번째 결과도 기준을 통과하지 못하면 완료 처리하지 않고 사람의 판단을 기다린다.
+          </p>
+
+          <details class="td-method-full">
+            <summary>시스템 설명 전문 펼쳐보기</summary>
+            <div class="td-method-body">
+              <p class="td-method-title">영상 한 편을 분석 기록으로 바꾸는 과정</p>
+              <p>
+                이 시스템은 영상을 한두 문장으로 요약하는 데서 끝나지 않습니다. 영상이 무엇을 말하는지, 어떤 순서와 장면으로 전달하는지,
+                그 판단이 실제 어느 구간에서 나왔는지까지 기록합니다.
+              </p>
+              <p>
+                먼저 컴퓨터에 저장된 영상이나 인터넷 주소를 받아 길이, 해상도, 화면비, 소리 유무를 확인합니다.
+                장면이 바뀌는 지점을 나누고, 영상 시작부터 0.3초 간격으로 화면을 추출해 인물, 제품, 자막, 구도, 움직임의 변화를
+                시간순으로 살핍니다. 소리 분석은 보조 단계로 두고 음악의 흐름, 에너지 변화, 무음 구간, 발화 시점 등을 정리합니다.
+                이 자료가 없어도 전체 분석은 계속됩니다.
+              </p>
+              <p>
+                그다음 영상 목적에 맞는 기준을 고릅니다. 광고는 초반 주목 요소, 설득 방식, 핵심 메시지, 행동 유도를 봅니다.
+                브랜드 영상은 세계관과 감정 흐름, 브랜드 노출과 분위기를 살핍니다. 드라마와 숏필름은 인물, 사건 전개, 감정 변화,
+                연출과 결말 전략을 정리합니다. 뮤직비디오는 곡의 구간, 반복 이미지, 퍼포먼스, 편집 리듬과 화면·음악의 맞물림을 분석합니다.
+              </p>
+              <p>
+                분석 결과는 '영상 문법'으로 구조화합니다. 훅, 장면, 메시지, 감정 전환처럼 해석이 들어가는 항목마다
+                실제 영상의 시작·종료 시점을 붙입니다. 그래서 어떤 결론이 어느 장면에서 나왔는지 다시 확인할 수 있습니다.
+                영상에서 확인되지 않은 제작 의도, 광고 효과, 시청자 반응은 임의로 적지 않습니다.
+              </p>
+              <p>
+                결과를 작성하는 역할과 검수하는 역할은 분리됩니다. 검수자는 장면, 컷, 추출 화면, 소리 자료를 원본과 다시 대조해
+                근거 누락, 형식 오류, 과장된 해석을 찾습니다. 첫 결과가 반려되면 지적 내용을 반영해 최대 두 차례 다시 만들고 검수합니다.
+                세 번째 결과도 기준을 통과하지 못하면 완료 처리하지 않고 사람의 판단을 기다립니다.
+              </p>
+              <p>
+                마지막에는 분석 내용, 타임코드 근거, 검수 결과, 저장 기록이 서로 맞는지 다시 확인합니다.
+                모든 조건을 통과한 뒤에만 임시 원본을 삭제하고, 실제로 삭제됐는지 확인한 후 완료합니다.
+                장면 정보, 추출 화면, 분석 결과, 검수 내용, 검증 기록은 남겨 이후 기획과 레퍼런스 비교에 활용합니다.
+              </p>
+            </div>
+          </details>
+
+          <p class="td-method-close">이 시스템을 본편에 적용한 결과가 위의 판정이다.</p>
+        </div>
 
         <h3 class="h-item td-subtitle" data-reveal>축별 판정</h3>
         <div class="table-wrap" data-reveal>

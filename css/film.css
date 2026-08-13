@@ -480,3 +480,36 @@
   max-width: 56em;
 }
 .td-actions { margin-top: clamp(28px, 4vw, 44px); }
+
+/* ---- 어떻게 측정했나 (Teardown method) ---- */
+.td-method { margin: 0 0 clamp(32px, 5vw, 56px); max-width: 62em; }
+.td-method > .body-lg { margin-bottom: 20px; }
+
+.td-method-full {
+  border: 1px solid var(--ink-12);
+  background: rgba(23, 21, 15, .025);
+}
+.td-method-full summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-66);
+  list-style: none;
+  transition: color .4s var(--ease);
+}
+.td-method-full summary::-webkit-details-marker { display: none; }
+.td-method-full summary::before { content: "+ "; }
+.td-method-full[open] summary::before { content: "− "; }
+.td-method-full summary:hover { color: var(--ink); }
+.td-method-body {
+  padding: 4px 18px 20px;
+  border-top: 1px solid var(--ink-12);
+}
+.td-method-body p { margin-top: 14px; font-size: clamp(13.5px, 1vw, 15px); line-height: 1.8; color: var(--ink-66); }
+.td-method-title { font-weight: 600; color: var(--ink) !important; }
+
+.td-method-close { margin-top: 20px; font-weight: 600; }
