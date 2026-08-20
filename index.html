@@ -3,207 +3,211 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>단편 1편과 제작 규율 38개 — AI Filmmaker Portfolio</title>
-  <meta name="description" content="AI로 만든 3분 14초 단편 「너가 힘들지 않았으면 해」를 18일에 완주하고, 그 과정에서 사고를 겪은 뒤에 세운 제작 규율 38개를 남겼다. 무엇을 만들었는지가 아니라 무엇을 판단했고 근거가 무엇인지를 기록한 포트폴리오.">
+  <title>조중현 | AI Filmmaker Portfolio</title>
+  <meta name="description" content="생성형 AI로 장면을 설계하고 이야기로 완성하는 조중현의 영상 포트폴리오. 단편 「부재중」과 「너가 힘들지 않았으면 해」를 소개합니다.">
   <meta name="author" content="조중현">
+  <meta name="theme-color" content="#17150f">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
-  <meta property="og:site_name" content="AI Filmmaker Portfolio">
-  <meta property="og:title" content="단편 1편과 제작 규율 38개 — AI Filmmaker Portfolio">
-  <meta property="og:description" content="AI로 만든 3분 14초 단편을 18일에 완주하고, 작업 로그 334건과 제작 규율 38개를 남겼다. 판단과 근거를 기록한 포트폴리오.">
+  <meta property="og:site_name" content="조중현 포트폴리오">
+  <meta property="og:title" content="조중현 | AI Filmmaker Portfolio">
+  <meta property="og:description" content="AI로 장면을 만들고, 이야기로 완성합니다.">
+  <meta property="og:image" content="https://junyeo217.github.io/assets/poster_missed_call.jpg">
+  <meta property="og:url" content="https://junyeo217.github.io/">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://junyeo217.github.io/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="/css/main.css?v=20260813c">
-  <link rel="stylesheet" href="/css/home.css?v=20260813c">
-  <!-- 리빌 폴백 — JS가 없으면 숨김 상태가 풀린 채로 남는다 -->
-  <noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
   <script>
-    /* 인트로 게이트: JS가 살아있고 reduced-motion이 아닐 때만 오버레이를 켠다.
-       (JS 비활성 시 오버레이가 페이지를 덮는 사고 방지 + 히어로 플래시 방지) */
-    (function () {
-      try {
-        if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          var r = document.documentElement;
-          r.className += ' intro-on';
-          /* 안전장치: home.js가 로드되지 않아도 오버레이가 페이지를 막지 않는다 */
-          setTimeout(function () {
-            if (r.className.indexOf('intro-done') === -1) {
-              r.className = r.className.replace(' intro-on', '') + ' intro-done';
-            }
-          }, 3600);
-        }
-      } catch (e) {}
-    })();
+    document.documentElement.classList.add('has-js');
+    try {
+      if (!location.hash && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('intro-pending');
+        window.setTimeout(function () {
+          document.documentElement.classList.remove('intro-pending');
+        }, 3800);
+      }
+    } catch (e) {}
   </script>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="/css/home.css?v=20260820c">
+  <noscript>
+    <style>
+      body { overflow: auto !important; }
+      .view { position: relative !important; min-height: 100vh; }
+      .view[hidden] { display: block !important; }
+    </style>
+  </noscript>
 </head>
-<body data-page="home">
+<body data-active-view="home">
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
-  <!-- (0) 타이핑 인트로 -->
   <div class="intro" id="intro" aria-hidden="true">
-    <p class="intro-line" id="introLine"><span class="intro-text" id="introText"></span><span class="intro-caret"></span></p>
-    <span class="intro-skip">클릭 또는 아무 키 — 건너뛰기</span>
+    <p class="intro-copy">
+      <span class="intro-typed-line" data-intro-text="AI로 장면을 만들고,">
+        <span class="intro-measure">AI로 장면을 만들고,</span>
+        <span class="intro-runtime"><span class="intro-text"></span><span class="intro-caret"></span></span>
+      </span>
+      <span class="intro-typed-line" data-intro-text="이야기로 완성합니다.">
+        <span class="intro-measure">이야기로 완성합니다.</span>
+        <span class="intro-runtime"><span class="intro-text"></span><span class="intro-caret"></span></span>
+      </span>
+    </p>
+    <span class="intro-hint">Click or press any key to skip</span>
   </div>
 
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="nav-wordmark" href="/">조중현</a>
-      <ul class="nav-links">
-        <li><a data-nav="film" href="/film/">Film</a></li>
-        <li><a data-nav="process" href="/process/">Process</a></li>
-        <li><a data-nav="rules" href="/rules/">Rules</a></li>
-        <li><a data-nav="experiment" href="/experiment/">Experiment</a></li>
-        <li><a data-nav="log" href="/log/">Log</a></li>
-        <li><a data-nav="about" href="/about/">About</a></li>
-      </ul>
-      <div class="nav-lang"><span class="on">KR</span><span class="off">|</span><span class="off">EN</span></div>
-      <button class="nav-burger" aria-label="메뉴" aria-expanded="false"><span></span><span></span></button>
-    </div>
+  <header class="site-header">
+    <a class="wordmark" href="#home" data-view-link="home" aria-label="조중현 포트폴리오 홈">조중현</a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <a href="#works" data-view-link="works">Works</a>
+      <a href="#about" data-view-link="about">About</a>
+      <a href="#contact" data-view-link="contact">Contact</a>
+    </nav>
   </header>
-  <nav class="mobile-menu">
-    <a data-nav="film" href="/film/">Film</a>
-    <a data-nav="process" href="/process/">Process</a>
-    <a data-nav="rules" href="/rules/">Rules</a>
-    <a data-nav="experiment" href="/experiment/">Experiment</a>
-    <a data-nav="log" href="/log/">Log</a>
-    <a data-nav="about" href="/about/">About</a>
-  </nav>
 
-  <main>
-
-    <!-- (1) 히어로 — 풀스크린 비디오 + 오버레이 캡션 -->
-    <section class="hero" aria-labelledby="heroName">
-      <div class="hero-media">
+  <main id="main" tabindex="-1">
+    <section class="view view-home is-active" id="home" data-view="home" aria-labelledby="homeTitle">
+      <div class="hero-media" aria-hidden="true">
         <video class="hero-video" autoplay muted loop playsinline preload="metadata"
-               poster="/assets/poster_film.jpg" aria-label="본편 「너가 힘들지 않았으면 해」 무음 루프">
-          <source src="/assets/FILM_master_web.mp4" type="video/mp4">
+               poster="/assets/poster_missed_call.jpg" tabindex="-1">
+          <source src="/assets/hero_missed_call.mp4" type="video/mp4">
         </video>
       </div>
+      <div class="hero-shade" aria-hidden="true"></div>
 
-      <!-- 우측 중앙 스크롤 인디케이터 -->
-      <div class="hero-scroll" aria-hidden="true">
-        <span class="hero-scroll-label">Scroll</span>
-        <span class="hero-scroll-line"></span>
+      <div class="hero-copy">
+        <p class="sr-only">AI로 장면을 만들고, 이야기로 완성합니다.</p>
+        <p class="eyebrow">AI Filmmaker · Video Creator</p>
+        <h1 id="homeTitle">조중현</h1>
       </div>
 
-      <div class="container hero-caption">
-        <div class="hero-id" data-reveal>
-          <p class="label hero-role">AI Filmmaker · Pipeline Builder</p>
-          <h1 class="h-display hero-name" id="heroName">조중현</h1>
-        </div>
-
+      <div class="hero-bottom">
         <dl class="hero-meta">
-          <div class="hero-meta-col" data-reveal data-delay="80">
-            <dt class="label">Based in</dt>
-            <dd>Anyang, Korea</dd>
-          </div>
-          <div class="hero-meta-col" data-reveal data-delay="160">
-            <dt class="label">Working with</dt>
-            <dd>AI Film · Pipeline</dd>
-          </div>
-          <div class="hero-meta-col" data-reveal data-delay="240">
-            <dt class="label">Status</dt>
-            <dd>지원 중</dd>
-          </div>
+          <div><dt>Based in</dt><dd>Anyang, Korea</dd></div>
+          <div><dt>Working with</dt><dd>AI Film · Short-form</dd></div>
+          <div><dt>Status</dt><dd>Open to Work</dd></div>
         </dl>
+        <a class="featured-link" href="#works" data-view-link="works">
+          <span>Featured Work</span>
+          <strong>부재중 · 2026</strong>
+        </a>
       </div>
-
-      <!-- 내비 전환 감시용 sentinel (히어로 하단 1px) -->
-      <div class="hero-sentinel" id="heroSentinel" aria-hidden="true"></div>
     </section>
 
-    <!-- (2) 지표 스트립 -->
-    <section class="section section-metrics" aria-labelledby="metricsHeading">
-      <div class="container">
-        <h2 class="vh" id="metricsHeading">제작 지표</h2>
-        <p class="metrics-statement" data-reveal>
-          작품은 결과가 아니라 실험 장비였다 — 남은 것을 세면 이렇다.
-        </p>
-        <div class="metrics">
-          <div class="metric" data-reveal>
-            <p class="num metric-num"><span data-count="1">1</span><span class="metric-unit">편</span></p>
-            <p class="metric-label">단편 · 3:14</p>
+    <section class="view view-paper view-works" id="works" data-view="works" aria-labelledby="worksTitle">
+      <div class="view-scroll">
+        <div class="view-inner works-layout">
+          <div class="view-heading">
+            <p class="section-index">01 / Selected Works</p>
+            <h2 id="worksTitle">Works</h2>
           </div>
-          <div class="metric" data-reveal data-delay="80">
-            <p class="num metric-num"><span data-count="18">18</span><span class="metric-unit">일</span></p>
-            <p class="metric-label">완주</p>
+
+          <div class="works-grid">
+            <article class="project" aria-labelledby="hopeTitle">
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/poster_film.jpg"
+                       aria-label="단편 너가 힘들지 않았으면 해 전체 영상">
+                  <source src="/assets/FILM_master_web.mp4" type="video/mp4">
+                  <track kind="captions" src="/assets/captions_hope_ko.vtt" srclang="ko" label="한국어">
+                  <p>이 브라우저에서는 영상을 재생할 수 없습니다. <a href="/assets/FILM_master_web.mp4">영상 파일 열기</a></p>
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <p class="project-number">01</p>
+                  <h3 id="hopeTitle">너가 힘들지 않았으면 해</h3>
+                  <p class="project-format">AI Short Film · 3:14 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p>서로를 위해 대신 결정을 내려온 연인 현과 선. 이별의 밤을 지나, 두 사람은 혼자 결정하지 않는 방식으로 관계를 다시 바라본다.</p>
+                  <dl class="project-details">
+                    <div><dt>Role</dt><dd>1인 제작</dd></div>
+                    <div><dt>Tools</dt><dd>Seedance 2.5 · GPT Image 2 · Topaz AI · Higgsfield · Magnific</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </article>
+
+            <article class="project" aria-labelledby="missedCallTitle">
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/poster_missed_call.jpg"
+                       aria-label="단편 부재중 전체 영상">
+                  <source src="/assets/film_missed_call.mp4" type="video/mp4">
+                  <track kind="captions" src="/assets/captions_missed_call_ko.vtt" srclang="ko" label="한국어">
+                  <p>이 브라우저에서는 영상을 재생할 수 없습니다. <a href="/assets/film_missed_call.mp4">영상 파일 열기</a></p>
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <p class="project-number">02</p>
+                  <h3 id="missedCallTitle">부재중</h3>
+                  <p class="project-format">AI Short Film · 1:45 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p>바쁘다는 이유로 엄마의 전화를 미룬 꽃집 사장 지우. 마지막 음성메시지를 들은 밤, 그녀는 끝내 받지 않을 전화를 건다.</p>
+                  <dl class="project-details">
+                    <div><dt>Role</dt><dd>1인 제작</dd></div>
+                    <div><dt>Tools</dt><dd>Seedance 2.5 · GPT Image 2 · Topaz AI · Higgsfield · Magnific</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="metric" data-reveal data-delay="160">
-            <p class="num metric-num"><span data-count="334" data-count-dur="1100">334</span><span class="metric-unit">건</span></p>
-            <p class="metric-label">작업 로그</p>
-          </div>
-          <div class="metric" data-reveal data-delay="240">
-            <p class="num metric-num"><span data-count="38">38</span><span class="metric-unit">개</span></p>
-            <p class="metric-label">제작 규율</p>
+          <div class="footer-line">
+            <span>조중현</span>
+            <span>AI Filmmaker Portfolio · © 2026</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- (3) 섹션 카드 4장 -->
-    <section class="section section-cards" aria-labelledby="overviewHeading">
-      <div class="container">
-        <p class="label" data-reveal>Overview</p>
-        <h2 class="h-section cards-heading" id="overviewHeading" data-reveal data-delay="80">
-          완주한 작품 하나, 그리고 그 작품이 알려준 것들
-        </h2>
-        <p class="body-lg muted cards-lead" data-reveal data-delay="160">
-          네 섹션은 각각 하나의 질문에 답한다 — 무엇을 만들었나가 아니라, 무엇을 판단했고 근거가 무엇인가.
-        </p>
-
-        <div class="cards">
-          <a class="card" href="/film/" data-reveal data-delay="80">
-            <p class="label card-label">Film</p>
-            <h3 class="h-item card-title">작품 보기</h3>
-            <p class="card-desc">
-              3분 14초 단편 「너가 힘들지 않았으면 해」를 18일에 완주했다. 기획·이미지·영상·편집·검증을 한 사람이 돌리면서 공정마다 무엇을 기준으로 채택하고 무엇을 버렸는지를 남겼다. 작품은 결과가 아니라 실험 장비였다.
-            </p>
-            <span class="card-more">More Detail</span>
-          </a>
-
-          <a class="card" href="/rules/" data-reveal data-delay="160">
-            <p class="label card-label">Rules</p>
-            <h3 class="h-item card-title">실패 → 규율</h3>
-            <p class="card-desc">
-              제작 규율 38개. 선언이 먼저 온 규칙은 하나도 없다 — 전부 사고 뒤에 붙었다. 각 카드는 실패한 출력, 실측으로 규명한 원인, 거기서 나온 규율, 적용 후 출력을 같은 자리에 놓는다.
-            </p>
-            <span class="card-more">More Detail</span>
-          </a>
-
-          <a class="card" href="/experiment/" data-reveal data-delay="240">
-            <p class="label card-label">Experiment</p>
-            <h3 class="h-item card-title">대조 실험</h3>
-            <p class="card-desc">
-              "대사 톤이 아쉽다"는 외부 지적을 연기 문제로 받으면 손댈 데가 없다. 목소리·모델·파라미터를 고정하고 대사 문체만 바꿔 대조 생성했다. 결론은 개정 21 / 유지 17 / 복원 2 — 유지가 17개라는 게 핵심이다.
-            </p>
-            <span class="card-more">More Detail</span>
-          </a>
-
-          <a class="card" href="/log/" data-reveal data-delay="320">
-            <p class="label card-label">Log</p>
-            <h3 class="h-item card-title">제작 로그</h3>
-            <p class="card-desc">
-              작업 로그 334건. 확정 847 대 되돌림 403이 이 작품의 실제 비율이었다. 되돌림을 실패로 세지 않기로 한 판단과, 그 판단이 파이프라인을 어떻게 바꿨는지를 시기순으로 정리한다.
-            </p>
-            <span class="card-more">More Detail</span>
-          </a>
+    <section class="view view-paper view-about" id="about" data-view="about" aria-labelledby="aboutTitle">
+      <div class="view-scroll">
+        <div class="view-inner about-layout">
+          <div class="view-heading">
+            <p class="section-index">02 / About</p>
+            <h2 id="aboutTitle">About</h2>
+          </div>
+          <div class="about-content">
+            <p class="about-lead">서사를 기획하고, 생성형 AI로 장면을 설계하며, 편집과 검증을 거쳐 최종본까지 완주합니다.</p>
+            <p class="about-note">기술 시연보다 인물과 감정이 남는 영상을 지향합니다. 기획한 이야기를 장면으로 만들고, 끝까지 완성된 결과물로 전달합니다.</p>
+            <dl class="about-meta">
+              <div><dt>Focus</dt><dd>AI Film · Video Content</dd></div>
+              <div><dt>Based in</dt><dd>Anyang, Korea</dd></div>
+              <div><dt>Status</dt><dd>Open to Work</dd></div>
+            </dl>
+          </div>
+          <div class="footer-line">
+            <span>조중현</span>
+            <span>AI Filmmaker Portfolio · © 2026</span>
+          </div>
         </div>
       </div>
     </section>
 
+    <section class="view view-paper view-contact" id="contact" data-view="contact" aria-labelledby="contactTitle">
+      <div class="view-scroll">
+        <div class="view-inner contact-layout">
+          <div class="view-heading">
+            <p class="section-index">03 / Contact</p>
+            <h2 id="contactTitle">Contact</h2>
+          </div>
+          <div class="contact-content">
+            <p class="contact-copy">함께 만들 이야기가 있다면,<br>편하게 연락해 주세요.</p>
+            <div class="contact-channels" aria-label="연락처">
+              <p class="contact-mail">junyeo.ai@gmail.com</p>
+              <p class="contact-handle">@junyeo.ai</p>
+            </div>
+          </div>
+          <div class="footer-line">
+            <span>조중현</span>
+            <span>AI Filmmaker Portfolio · © 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span class="nav-wordmark">조중현</span>
-      <small>AI Filmmaker · Pipeline Builder · © 2026</small>
-    </div>
-  </footer>
-
-  <script src="/js/main.js?v=20260813c" defer></script>
-  <script src="/js/home.js?v=20260813c" defer></script>
+  <script src="/js/home.js?v=20260820c" defer></script>
 </body>
 </html>
