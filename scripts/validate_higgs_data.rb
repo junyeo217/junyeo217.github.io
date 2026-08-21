@@ -1,10 +1,22 @@
 require "digest"
+require "fileutils"
 require "json"
 require "nokogiri"
+require "optparse"
+require "time"
 
 repo_root = File.expand_path("..", __dir__)
-target = ARGV[0] || File.join(repo_root, "higgs-data", "index.html")
+options = { report: nil }
+OptionParser.new do |parser|
+  parser.on("--report PATH") { |path| options[:report] = File.expand_path(path, repo_root) }
+end.parse!(ARGV)
+
+target = ARGV.shift || File.join(repo_root, "higgs-data", "index.html")
 errors = []
+
+def normalized_text_length(node)
+  node.text.gsub(/\s+/, " ").strip.length
+end
 
 unless File.file?(target)
   warn "HIGGS_DATA_INVALID missing_file=#{target}"
@@ -48,6 +60,83 @@ panels.each do |panel|
   label = label_id && document.at_css("##{label_id}")
   errors << "panel #{panel['id']} has missing label #{label_id}" unless label
   errors << "panel #{panel['id']} must contain exactly one h1" unless panel.css("h1").length == 1
+end
+
+content_panel_ids = %w[
+  panel-overview panel-adiliada panel-cully panel-hell
+  panel-kok panel-oneiric panel-zephyr
+]
+project_panel_ids = content_panel_ids.drop(1)
+content_audit = {}
+
+content_panel_ids.each do |panel_id|
+  panel = document.at_css("##{panel_id}")
+  next unless panel
+
+  content_audit[panel_id] = {
+    text_chars: normalized_text_length(panel),
+    section_navs: panel.css("[data-section-nav]").length,
+    charts: panel.css("[data-chart]").length,
+    prompt_quotes: panel.css("[data-prompt-quote]").length,
+    techniques: panel.css("[data-technique]").length,
+    cases: panel.css("[data-case]").length,
+    derived_insights: panel.css("[data-derived-insight]").length,
+    zero_findings: panel.css("[data-zero-finding]").length,
+    evidence_claims: panel.css("[data-claim][data-evidence-grade]").length
+  }
+
+  errors << "#{panel_id} text_chars must be at least 8000" if content_audit[panel_id][:text_chars] < 8_000
+  errors << "#{panel_id} must contain exactly one section navigator" unless content_audit[panel_id][:section_navs] == 1
+end
+
+overview_audit = content_audit["panel-overview"]
+if overview_audit
+  errors << "overview must contain at least 3 charts" if overview_audit[:charts] < 3
+  errors << "overview must contain a technique matrix" unless document.at_css("#panel-overview [data-technique-matrix]")
+  errors << "overview must contain contradictory practices" unless document.at_css("#panel-overview [data-conflict-set]")
+  errors << "overview must contain a correction record" unless document.at_css("#panel-overview [data-correction-record]")
+end
+
+project_panel_ids.each do |panel_id|
+  audit = content_audit[panel_id]
+  next unless audit
+
+  errors << "#{panel_id} must contain at least 2 charts" if audit[:charts] < 2
+  errors << "#{panel_id} must contain at least 6 prompt quotes" if audit[:prompt_quotes] < 6
+  errors << "#{panel_id} techniques must be 4..6" unless (4..6).cover?(audit[:techniques])
+  errors << "#{panel_id} cases must be 2..3" unless (2..3).cover?(audit[:cases])
+  errors << "#{panel_id} must contain a derived insight" if audit[:derived_insights] < 1
+  errors << "#{panel_id} must contain a measured zero finding or D-grade corpus limitation" if audit[:zero_findings] < 1
+
+  document.css("##{panel_id} [data-prompt-quote]").each_with_index do |quote, index|
+    errors << "#{panel_id} quote #{index + 1} must contain details" unless quote.at_css("details")
+    errors << "#{panel_id} quote #{index + 1} must contain pre > code" unless quote.at_css("pre > code")
+    errors << "#{panel_id} quote #{index + 1} missing source key" if quote["data-source-key"].to_s.empty?
+    errors << "#{panel_id} quote #{index + 1} missing explanation" unless quote.at_css("[data-quote-explanation]")
+  end
+
+  document.css("##{panel_id} [data-case]").each_with_index do |item, index|
+    media_states = item.css("[data-media-verified], [data-media-unavailable]")
+    errors << "#{panel_id} case #{index + 1} must have exactly one media state" unless media_states.length == 1
+  end
+end
+
+valid_grades = %w[A B C D]
+document.css("[data-claim]").each_with_index do |claim, index|
+  grade = claim["data-evidence-grade"]
+  errors << "claim #{index + 1} has invalid evidence grade #{grade.inspect}" unless valid_grades.include?(grade)
+end
+
+document.css("[data-chart], [data-prompt-quote], [data-derived-insight], [data-zero-finding]").each_with_index do |node, index|
+  errors << "evidence-bearing node #{index + 1} missing source key" if node["data-source-key"].to_s.empty?
+end
+
+document.css("video").each_with_index do |video, index|
+  %w[muted loop playsinline].each do |attribute|
+    errors << "video #{index + 1} missing #{attribute}" unless video.key?(attribute)
+  end
+  errors << "video #{index + 1} preload must be none" unless video["preload"] == "none"
+  errors << "video #{index + 1} missing poster" if video["poster"].to_s.empty?
 end
 
 document.css("[aria-labelledby]").each do |node|
@@ -121,10 +210,33 @@ baseline_hashes.each do |path, expected|
   errors << "baseline changed #{path}: #{actual}" unless actual == expected
 end
 
+if options[:report]
+  report = {
+    schema_version: 1,
+    generated_at: Time.now.utc.iso8601,
+    target: target,
+    document: {
+      text_chars: normalized_text_length(document.at_css("body")),
+      tables: document.css("table").length,
+      svgs: document.css("svg").length,
+      canvases: document.css("canvas").length,
+      pre: document.css("pre").length,
+      code: document.css("code").length,
+      images: document.css("img").length,
+      videos: document.css("video").length,
+      details: document.css("details").length
+    },
+    panels: content_audit,
+    errors: errors
+  }
+  FileUtils.mkdir_p(File.dirname(options[:report]))
+  File.write(options[:report], JSON.pretty_generate(report) + "\n")
+end
+
 if errors.any?
   warn "HIGGS_DATA_INVALID count=#{errors.length}"
   errors.each { |error| warn "- #{error}" }
   exit 1
 end
 
-puts "HIGGS_DATA_VALID panels=8 projects=6 evidence_labels=4 contacts=4 unique_ids=#{ids.length}"
+puts "HIGGS_DATA_VALID panels=8 projects=6 evidence_labels=4 contacts=4 unique_ids=#{ids.length} deep_panels=#{content_audit.length}"
