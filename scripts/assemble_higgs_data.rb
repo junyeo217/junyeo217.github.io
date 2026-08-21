@@ -74,7 +74,7 @@ def validate_safe_fragment!(root, filename)
 
     node.attribute_nodes.each do |attribute|
       name = attribute.name.downcase
-      attribute_error = HiggsHtmlSafety.attribute_error(name, attribute.value)
+      attribute_error = HiggsHtmlSafety.attribute_error(tag, name, attribute.value)
       abort("ASSEMBLE_FAIL #{attribute_error} in #{filename}") if attribute_error
     end
   end

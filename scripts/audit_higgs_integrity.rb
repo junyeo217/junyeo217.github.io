@@ -130,7 +130,7 @@ errors << "unsafe executable/embed elements present" unless document.css("iframe
 document.css("*").each do |node|
   node.attribute_nodes.each do |attribute|
     name = attribute.name.downcase
-    attribute_error = HiggsHtmlSafety.attribute_error(name, attribute.value)
+    attribute_error = HiggsHtmlSafety.attribute_error(node.name, name, attribute.value)
     errors << "#{attribute_error} on #{node.name}" if attribute_error
   end
 end
