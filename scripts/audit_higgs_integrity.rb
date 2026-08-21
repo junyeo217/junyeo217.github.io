@@ -5,6 +5,7 @@ require "nokogiri"
 require "optparse"
 require "pathname"
 require "time"
+require_relative "higgs_html_safety"
 
 PROJECT_KEYS = %w[
   ADILIADA Cully_Hill_Boys Hell_Grind KOK_BORY ONEIRIC ZEPHYR_Special
@@ -129,15 +130,8 @@ errors << "unsafe executable/embed elements present" unless document.css("iframe
 document.css("*").each do |node|
   node.attribute_nodes.each do |attribute|
     name = attribute.name.downcase
-    value = attribute.value.to_s.strip
-    errors << "inline event attribute #{name} on #{node.name}" if name.start_with?("on")
-    errors << "srcdoc attribute on #{node.name}" if name == "srcdoc"
-    if %w[href src srcset formaction action].include?(name) && value.match?(/\A(?:javascript|vbscript|data:text\/html)/i)
-      errors << "executable URL on #{node.name}"
-    end
-    if name == "style" && value.match?(/(?:expression\s*\(|javascript\s*:|url\s*\()/i)
-      errors << "unsafe inline style on #{node.name}"
-    end
+    attribute_error = HiggsHtmlSafety.attribute_error(name, attribute.value)
+    errors << "#{attribute_error} on #{node.name}" if attribute_error
   end
 end
 document.css("script").each do |script|

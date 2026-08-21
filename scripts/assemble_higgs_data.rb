@@ -4,6 +4,7 @@ require "json"
 require "nokogiri"
 require "optparse"
 require "tempfile"
+require_relative "higgs_html_safety"
 
 def canonical_target_path(path)
   expanded = File.expand_path(path)
@@ -66,24 +67,15 @@ def case_metadata_display(field, value)
 end
 
 def validate_safe_fragment!(root, filename)
-  forbidden_tags = %w[script iframe object embed foreignobject form base link meta].freeze
-  url_attributes = %w[href src srcset formaction action].freeze
-
   ([root] + root.css("*").to_a).each do |node|
     tag = node.name.downcase
-    abort("ASSEMBLE_FAIL unsafe element #{tag} in #{filename}") if forbidden_tags.include?(tag)
+    element_error = HiggsHtmlSafety.fragment_element_error(tag)
+    abort("ASSEMBLE_FAIL #{element_error} in #{filename}") if element_error
 
     node.attribute_nodes.each do |attribute|
       name = attribute.name.downcase
-      value = attribute.value.to_s.strip
-      abort("ASSEMBLE_FAIL event attribute #{name} in #{filename}") if name.start_with?("on")
-      abort("ASSEMBLE_FAIL srcdoc attribute in #{filename}") if name == "srcdoc"
-      if url_attributes.include?(name) && value.match?(/\A(?:javascript|vbscript|data:text\/html)/i)
-        abort("ASSEMBLE_FAIL executable URL in #{filename}")
-      end
-      if name == "style" && value.match?(/(?:expression\s*\(|javascript\s*:|url\s*\()/i)
-        abort("ASSEMBLE_FAIL unsafe inline style in #{filename}")
-      end
+      attribute_error = HiggsHtmlSafety.attribute_error(name, attribute.value)
+      abort("ASSEMBLE_FAIL #{attribute_error} in #{filename}") if attribute_error
     end
   end
 
