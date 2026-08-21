@@ -37,10 +37,15 @@ module HiggsHtmlSafety
       errors << element_error if element_error
 
       node.attribute_nodes.each do |attribute|
-        attribute_error = attribute_error(node.name, attribute.name, attribute.value)
+        attribute_error = attribute_error(node.name, qualified_attribute_name(attribute), attribute.value)
         errors << attribute_error if attribute_error
       end
     end
+  end
+
+  def qualified_attribute_name(attribute)
+    prefix = attribute.namespace&.prefix
+    prefix ? "#{prefix}:#{attribute.name}" : attribute.name
   end
 
   def trusted_final_element?(node)
@@ -82,7 +87,7 @@ module HiggsHtmlSafety
       end
 
       node.attribute_nodes.each do |attribute|
-        attribute_error = attribute_error(node.name, attribute.name, attribute.value)
+        attribute_error = attribute_error(node.name, qualified_attribute_name(attribute), attribute.value)
         errors << "#{attribute_error} on #{node.name}" if attribute_error
       end
     end
@@ -134,7 +139,9 @@ module HiggsHtmlSafety
     normalized_name = name.to_s.downcase
     return "event attribute #{normalized_name}" if normalized_name.start_with?("on")
     return "srcdoc attribute" if normalized_name == "srcdoc"
-    return "unsupported resource attribute #{normalized_name}" if %w[attributionsrc dynsrc imagesrcset lowsrc ping].include?(normalized_name)
+    if %w[attributionsrc datasrc dynsrc imagesrcset lowsrc manifest ping usemap xml:base].include?(normalized_name)
+      return "unsupported resource attribute #{normalized_name}"
+    end
 
     url_error = url_attribute_error(normalized_name, value)
     return url_error if url_error

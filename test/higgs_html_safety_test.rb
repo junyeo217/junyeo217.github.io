@@ -40,6 +40,7 @@ class HiggsHtmlSafetyTest < Minitest::Test
     assert_equal "unsupported resource attribute ping", HiggsHtmlSafety.attribute_error("a", "ping", "https://attacker.invalid/ping")
     assert_equal "unsupported resource attribute lowsrc", HiggsHtmlSafety.attribute_error("img", "lowsrc", "https://attacker.invalid/preview.png")
     assert_equal "unsupported resource attribute attributionsrc", HiggsHtmlSafety.attribute_error("img", "attributionsrc", "https://attacker.invalid/register")
+    assert_equal "unsupported resource attribute xml:base", HiggsHtmlSafety.attribute_error("svg", "xml:base", "https://attacker.invalid/")
   end
 
   def test_rejects_external_resource_loads_beyond_img_src
@@ -71,6 +72,12 @@ class HiggsHtmlSafetyTest < Minitest::Test
 
     errors = HiggsHtmlSafety.fragment_errors(fragment.element_children.first)
     assert_equal ["external resource IRI", "external resource IRI", "external resource IRI"], errors
+  end
+
+  def test_fragment_traversal_rejects_external_xml_base
+    fragment = Nokogiri::HTML5.fragment('<svg xml:base="https://attacker.invalid/"><use href="#symbol"></use></svg>')
+
+    assert_includes HiggsHtmlSafety.fragment_errors(fragment.element_children.first), "unsupported resource attribute xml:base"
   end
 
   def test_svg_presentation_iris_allow_only_plain_values_and_local_fragments
