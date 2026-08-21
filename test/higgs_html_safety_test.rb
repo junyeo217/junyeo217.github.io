@@ -1,5 +1,8 @@
 require "minitest/autorun"
 require "nokogiri"
+require "open3"
+require "rbconfig"
+require "tempfile"
 require_relative "../scripts/higgs_html_safety"
 
 class HiggsHtmlSafetyTest < Minitest::Test
@@ -36,6 +39,7 @@ class HiggsHtmlSafetyTest < Minitest::Test
     assert_equal "unsafe inline style", HiggsHtmlSafety.attribute_error("section", "style", 'background-image:image-set("https://attacker.invalid/a.png" 2x)')
     assert_equal "unsupported resource attribute ping", HiggsHtmlSafety.attribute_error("a", "ping", "https://attacker.invalid/ping")
     assert_equal "unsupported resource attribute lowsrc", HiggsHtmlSafety.attribute_error("img", "lowsrc", "https://attacker.invalid/preview.png")
+    assert_equal "unsupported resource attribute attributionsrc", HiggsHtmlSafety.attribute_error("img", "attributionsrc", "https://attacker.invalid/register")
   end
 
   def test_rejects_external_resource_loads_beyond_img_src
@@ -88,5 +92,47 @@ class HiggsHtmlSafetyTest < Minitest::Test
     assert_nil HiggsHtmlSafety.fragment_element_error("section")
     assert_nil HiggsHtmlSafety.attribute_error("section", "class", "study-card")
     assert_nil HiggsHtmlSafety.attribute_error("span", "style", "--hd-chart-value: 42.125%")
+  end
+
+  def test_current_public_document_passes_shared_final_policy
+    document = Nokogiri::HTML5.parse(File.read(File.expand_path("../higgs-data/index.html", __dir__), encoding: "UTF-8"))
+
+    assert_empty HiggsHtmlSafety.final_document_errors(document)
+  end
+
+  def test_shared_final_policy_rejects_untrusted_elements_and_registration_urls
+    document = Nokogiri::HTML5.parse(<<~HTML)
+      <!doctype html><html><head><style>@import url("https://attacker.invalid/a.css");</style></head>
+      <body><applet code="https://attacker.invalid/a.class"></applet>
+      <img src="/higgs-data/media/poster.jpg" attributionsrc="https://attacker.invalid/register"></body></html>
+    HTML
+
+    errors = HiggsHtmlSafety.final_document_errors(document)
+    assert_includes errors, "unsafe final element style"
+    assert_includes errors, "unsafe final element applet"
+    assert_includes errors, "unsupported resource attribute attributionsrc on img"
+  end
+
+  def test_actual_validator_rejects_hostile_final_html
+    source = File.read(File.expand_path("../higgs-data/index.html", __dir__), encoding: "UTF-8")
+    hostile = source.sub("</head>", '<style>@import url("https://attacker.invalid/a.css");</style></head>')
+      .sub("</body>", '<applet code="https://attacker.invalid/a.class"></applet></body>')
+
+    Tempfile.create(["higgs-hostile-final", ".html"]) do |file|
+      file.write(hostile)
+      file.flush
+      validator = File.expand_path("../scripts/validate_higgs_data.rb", __dir__)
+      stdout, stderr, status = Open3.capture3(RbConfig.ruby, validator, file.path)
+      refute status.success?
+      assert_match(/unsafe final element (?:style|applet)/, stdout + stderr)
+    end
+  end
+
+  def test_public_output_path_is_direct_html_only
+    site_root = "/tmp/example/higgs-data"
+    assert HiggsHtmlSafety.public_html_output?("#{site_root}/index.html", site_root)
+    refute HiggsHtmlSafety.public_html_output?("#{site_root}/_data/analysis.json", site_root)
+    refute HiggsHtmlSafety.public_html_output?("#{site_root}/media/poster.html", site_root)
+    refute HiggsHtmlSafety.public_html_output?("#{site_root}/higgs-data.js", site_root)
   end
 end

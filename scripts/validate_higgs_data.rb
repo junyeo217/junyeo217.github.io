@@ -54,23 +54,7 @@ panels = document.css('[role="tabpanel"]')
 ids = document.css("[id]").map { |node| node["id"] }
 id_set = ids.to_h { |id| [id, true] }
 
-forbidden_elements = document.css("iframe, object, embed, foreignObject, foreignobject, form, base")
-errors << "unsafe executable/embed elements present" unless forbidden_elements.empty?
-document.css("*").each do |node|
-  node.attribute_nodes.each do |attribute|
-    name = attribute.name.downcase
-    attribute_error = HiggsHtmlSafety.attribute_error(node.name, name, attribute.value)
-    errors << "#{attribute_error} on #{node.name}" if attribute_error
-  end
-end
-document.css("script").each do |script|
-  safe_json = script["type"] == "application/ld+json" && script["src"].nil?
-  safe_local = script["src"].to_s.start_with?("/higgs-data/higgs-data.js?") && script.text.strip.empty?
-  errors << "unsafe script element" unless safe_json || safe_local
-end
-document.css('link[rel~="stylesheet"]').each do |link|
-  errors << "non-local stylesheet" unless link["href"].to_s.start_with?("/higgs-data/")
-end
+errors.concat(HiggsHtmlSafety.final_document_errors(document))
 document.css("img[src]").each do |image|
   errors << "non-local public image" unless image["src"].to_s.start_with?("/higgs-data/media/")
 end

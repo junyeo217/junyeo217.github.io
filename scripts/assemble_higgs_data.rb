@@ -100,7 +100,9 @@ options[:output] = canonical_target_path(options[:output])
 abort("ASSEMBLE_FAIL site input must stay under #{site_root}") unless path_within?(options[:site], site_root)
 abort("ASSEMBLE_FAIL analysis input must stay under #{private_root}") unless path_within?(options[:analysis], private_root)
 abort("ASSEMBLE_FAIL fragment input must stay under #{private_root}") unless path_within?(options[:fragments], private_root)
-abort("ASSEMBLE_FAIL output must stay under #{site_root}") unless path_within?(options[:output], site_root)
+unless HiggsHtmlSafety.public_html_output?(options[:output], site_root)
+  abort("ASSEMBLE_FAIL output must be a direct HTML child of #{site_root}")
+end
 
 panel_contracts = {
   "panel-overview" => ["overview.html", nil, nil],
