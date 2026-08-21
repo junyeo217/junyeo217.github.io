@@ -851,6 +851,56 @@
               <p>프롬프트 해시 불일치가 <span data-source-key="projects.ADILIADA.zero_patterns.prompt_sha_mismatch" data-source-value="0">0</span>건이라는 측정값은, 선택된 텍스트가 같은 텍스트인지 확인하는 데 도움이 된다. 그러나 해시가 맞아도 이미지가 의도대로 나왔는지, 인물이 연속되는지, 동작과 오디오가 실제 재생에서 자연스러운지는 별도 미디어 검수 없이는 알 수 없다.</p>
             </article>
           </div>
+          <div class="hd-card-grid" data-claim="" data-evidence-grade="C">
+            <article class="hd-card" data-claim="" data-evidence-grade="C">
+              <p class="hd-overline">재현 연습 <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <h3 class="hd-card__title">정체성과 가변 상태를 두 문장으로 분리한다</h3>
+              <p class="hd-card__copy">ADILIADA를 연습 재료로 삼을 때 먼저 “누구인가”와 “지금 어떤 상태인가”를 따로 적는다. 정체성 문장에는 얼굴의 인식 단서, 연령감, 헤어의 기본 실루엣, 체형처럼 세계가 바뀌어도 이어져야 하는 정보만 남긴다. 상태 문장에는 시대의 흔적, 의상, 부상, 표정, 소품, 먼지와 젖음처럼 이번 장면에서만 변하는 정보를 넣는다. 같은 인물인지 판단하는 문장과 이번 컷의 분위기를 만드는 문장이 섞이면 실패 원인을 어느 층에서 찾아야 할지 흐려진다.</p>
+              <p class="hd-card__note">연습 질문: 상태를 지워도 같은 인물로 알아볼 수 있는가? 그렇지 않다면 상태 지시가 정체성보다 앞서지 않았는지 되돌아본다.</p>
+            </article>
+            <article class="hd-card" data-claim="" data-evidence-grade="C">
+              <p class="hd-overline">참조 계약 <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <h3 class="hd-card__title">각 참조 입력이 책임질 속성을 한정한다</h3>
+              <p class="hd-card__copy">캐릭터 참조는 얼굴·나이·헤어·체형의 연속성을 맡고, 의상 참조는 디자인·원단·색·착용 구조를 맡는다. 배경 참조는 문, 창, 벽, 계단처럼 공간의 고정 관계를 맡으며, 소품 참조는 형태와 재질과 식별 디테일을 맡는다. 이 계약은 참조 이미지의 모든 픽셀을 복사하라는 뜻이 아니다. 포즈, 시선, 손동작, 렌즈, 크롭, 시간대는 장면 지시가 담당한다고 적어야 입력끼리 서로의 역할을 침범하지 않는다.</p>
+              <p class="hd-card__note">계약이 모호할 때의 신호: 의상 참조를 연결한 뒤 얼굴이나 배경까지 달라진다. 먼저 참조의 책임 범위를 줄이고, 유지할 속성과 바꿀 속성을 같은 줄에 나란히 적는다.</p>
+            </article>
+            <article class="hd-card" data-claim="" data-evidence-grade="C">
+              <p class="hd-overline">국소 편집 <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <h3 class="hd-card__title">한 번에 한 상태 층만 바꿔 원인을 남긴다</h3>
+              <p class="hd-card__copy">새 시대의 의상을 시험하면서 동시에 얼굴, 장소, 조명, 카메라를 모두 바꾸면 결과가 달라진 이유를 설명할 수 없다. ADILIADA의 변형을 재사용할 때는 변경 대상이 의상인지, 피부 표면인지, 소품인지, 배경의 시간감인지 먼저 선언한다. 나머지는 현재 기준을 유지한다고 적고, 결과를 본 뒤 변경층만 통과했는지 확인한다. 원하는 변화가 부족해도 전체 프롬프트를 다시 쓰기보다 해당 층의 표현만 조정하면 다음 시도가 비교 가능한 기록으로 남는다.</p>
+              <p class="hd-card__note">국소 편집은 결과를 좋게 만든다는 보장이 아니라 진단 가능성을 높이는 기록 방식이다. 보존된 층까지 함께 흔들렸다면 변경 범위를 더 작게 쪼갠다.</p>
+            </article>
+            <article class="hd-card" data-claim="" data-evidence-grade="C">
+              <p class="hd-overline">샷 검증 <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <h3 class="hd-card__title">장면 단위의 판정을 재생과 정지 화면으로 나눈다</h3>
+              <p class="hd-card__copy">정지 화면에서는 얼굴 특징, 의상 재질, 배경의 상대 위치, 프레임 가장자리의 문자와 손가락 같은 판독 항목을 본다. 실제 재생에서는 시선이 향하는 곳, 카메라가 이동하는 방향, 동작의 시작과 끝, 장면 전환 때 축이 유지되는지 확인한다. 오디오가 있는 경우에는 대사·현장음·침묵의 위치도 별도 항목으로 기록한다. 어느 한 표면만 통과한 후보를 확정본으로 부르지 않고, 확인하지 못한 항목은 보류로 남긴다.</p>
+              <p class="hd-card__note">검증 기록에는 “무엇을 보았는가”와 “무엇은 확인할 수 없었는가”를 함께 쓴다. 프롬프트가 충실해 보여도 실제 재생에서 생기는 시간적 오류는 텍스트만으로 판정할 수 없다.</p>
+            </article>
+            <article class="hd-card" data-claim="" data-evidence-grade="D">
+              <p class="hd-overline">실패 진단 <span class="hd-evidence hd-evidence--limit">검증 한계 · D등급</span></p>
+              <h3 class="hd-card__title">증상과 원인 후보를 같은 것으로 단정하지 않는다</h3>
+              <p class="hd-card__copy">얼굴이 달라졌다는 증상은 캐릭터 참조가 약했기 때문일 수도 있고, 상태 문장이 얼굴 형태까지 침범했기 때문일 수도 있으며, 카메라 크롭이 인식 단서를 가렸기 때문일 수도 있다. 공간이 낯설어졌다는 증상도 배경 참조의 문제, 축·시점 선언의 문제, 프레임 변화의 문제를 구분해야 한다. 먼저 실패가 나타난 표면과 시점을 적고, 정체성·상태·참조·카메라·재생 중 어느 계약이 어긋났는지 후보를 세운다. 하나의 수정만 적용한 뒤 다시 비교해야 원인 후보가 줄어든다.</p>
+              <p class="hd-card__note">이 절차는 원인을 자동으로 증명하지 않는다. 결과 미디어가 없거나 재생할 수 없으면 진단은 가설 수준에 머물며, 원문 기록만으로 성공을 선언할 수 없다.</p>
+            </article>
+          </div>
+          <article class="hd-callout" data-claim="" data-evidence-grade="C">
+            <p class="hd-label">재사용 실습 <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+            <h3>빈 장면에서 시작해 상태를 하나씩 올린다</h3>
+            <p>실습자는 먼저 인물이 없는 공간의 축과 광원을 적고, 그 공간에 캐릭터 참조를 연결한다. 이 단계에서는 의상과 부상을 설명하지 않고 얼굴·비율·기본 헤어가 공간 안에서 읽히는지만 표시한다. 다음에는 의상 참조를 추가하되 카메라와 배경의 상대 위치는 유지한다고 선언한다. 그 뒤에 시대감이나 표면 손상을 하나만 겹치고, 각 시도마다 보존 항목과 변경 항목을 나란히 기록한다. 마지막으로 같은 인물이 다른 상태로 읽히는지, 장면의 시점과 이동 방향이 유지되는지, 읽히면 안 되는 문자나 기형적인 손이 생겼는지를 정지 화면과 재생 화면에서 따로 확인한다.</p>
+            <ol class="hd-prompt-steps" data-claim="" data-evidence-grade="C">
+              <li class="hd-prompt-step"><strong>계약 작성</strong><span>이번 장면에서 유지할 정체성, 바꿀 상태, 각 참조의 담당 속성을 짧게 적는다.</span></li>
+              <li class="hd-prompt-step"><strong>국소 시도</strong><span>변경층 하나만 수정하고 나머지 지시는 유지해 비교 가능한 후보를 만든다.</span></li>
+              <li class="hd-prompt-step"><strong>샷 확인</strong><span>정지 화면의 형태와 재생 중 시간 흐름을 서로 다른 기록으로 남긴다.</span></li>
+              <li class="hd-prompt-step"><strong>보류 표시</strong><span>미디어가 없거나 확인하지 못한 항목은 통과로 바꾸지 않고 다음 검증 게이트로 넘긴다.</span></li>
+            </ol>
+            <p class="hd-card__note">이 연습의 산출물은 특정 작품을 복제한 이미지가 아니라, 참조 역할·변경 범위·검수 결과·남은 불확실성을 함께 기록하는 재현 가능한 노트다.</p>
+          </article>
+          <article class="hd-callout hd-callout--limit" data-claim="" data-evidence-grade="D">
+            <p class="hd-label">재사용 체크리스트 <span class="hd-evidence hd-evidence--limit">검증 한계 · D등급</span></p>
+            <h3>다음 장면에 넘길 기록과 넘기지 않을 추정을 구분한다</h3>
+            <p>다음 작업자는 정체성 원본의 담당 속성, 이번 샷에서 허용한 상태 변화, 공간의 고정 관계, 카메라와 렌즈 지시, 확인한 실패 신호를 읽을 수 있어야 한다. 반대로 생성 행의 존재, 해시 일치, 프롬프트 길이, 대표 표지의 존재만으로 실제 결과의 품질이나 연속성을 추정해서는 안 된다. 검수자가 재생하지 못한 동작과 듣지 못한 음향은 빈칸이 아니라 확인 대기 상태로 남긴다. 이렇게 기록하면 ADILIADA에서 얻은 문장 구조를 다른 인물과 세계에 적용할 때도 작품 고유의 외형이나 세계관을 끌고 오지 않으면서, 무엇을 확인했고 무엇이 아직 한계인지 전달할 수 있다.</p>
+            <p class="hd-card__note">체크를 마친 뒤에도 확정 상태는 사용자 승인과 실제 미디어 검증에 달려 있다. 이 패널의 설명은 작업 순서를 제안할 뿐 결과 수락을 대신하지 않는다.</p>
+          </article>
         </section>
       </div>
     </div>
@@ -1262,6 +1312,97 @@ Two segments, one continuous shot each, cut only at the 4.0s HARD CUT; the camer
             <li class="hd-list__item"><strong class="hd-list__term">보류</strong><p class="hd-list__desc">이 아카이브만으로 장편 완성도, 승인 수, 비용, 성공률, 도구 우열을 주장하지 않는다.</p></li>
             <li class="hd-list__item"><strong class="hd-list__term">추적</strong><p class="hd-list__desc">원문 슬롯은 해시 앞부분과 메타데이터로만 식별하며, 계정 식별자·로컬 소스 경로는 공개하지 않는다.</p></li>
           </ul>
+
+          <article class="hd-case" data-claim="" data-evidence-grade="C">
+            <div class="hd-section__head">
+              <p class="hd-overline">Practice frame <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <div>
+                <h3 class="hd-section__title">인벤토리의 크기와 창작 증거를 같은 칸에 넣지 않기</h3>
+                <p class="hd-section__intro" data-claim="" data-evidence-grade="C">THE CULLY HILL BOYS의 기록을 연습 재료로 쓸 때 첫 질문은 “얼마나 많이 남았는가”와 “무엇이 실제 화면에서 확인됐는가”를 분리하는 것이다. 생성·출력·폴더·문서 카운터는 탐색의 흔적을 설명할 수 있지만, 그 안의 어느 선택이 채택되었는지나 어느 장면이 의도대로 재생되었는지까지 대신 말해 주지는 않는다. 학습자는 수치를 발견했을 때 곧바로 품질의 근거로 옮기지 않고, 그 수치가 세는 단위·기록 범위·누락 가능성을 먼저 적는다.</p>
+              </div>
+            </div>
+            <p data-claim="" data-evidence-grade="D">창작 증거는 별도 칸에 둔다. 해당 칸에는 재생 가능한 매체, 확인한 프레임 또는 시간 구간, 검수자가 관찰한 행동, 그리고 그 관찰이 뒷받침하는 범위만 기록한다. 원문이 존재한다는 사실은 원문 칸에, 공개 포스터가 존재한다는 사실은 공개 표면 칸에, 움직임·연기·연속성이 확인되었다는 사실은 실제 재생 검수 칸에 남긴다. 서로 다른 칸의 근거를 합쳐서 빈 칸을 메우지 않는 것이 이 패널의 한계 표기와 맞는 사용법이다.</p>
+            <p data-claim="" data-evidence-grade="C">이 분리는 기록을 작게 보려는 태도가 아니다. 오히려 대규모 인벤토리가 무엇을 알려 주고 무엇을 알려 주지 않는지 정확히 유지하게 한다. 예를 들어 긴 원문을 발견했을 때는 세부 지시의 존재를 확인할 수 있으나, 그 지시가 어느 결과에서 유지됐는지는 연결된 관찰물이 있어야 검토할 수 있다. 반대로 짧은 원문이라도 매체 검수와 선택 이유가 남아 있다면, 그 장면에 대해 말할 수 있는 범위는 더 분명해질 수 있다.</p>
+          </article>
+
+          <article class="hd-case" data-claim="" data-evidence-grade="C">
+            <div class="hd-section__head">
+              <p class="hd-overline">Reference contract <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <div>
+                <h3 class="hd-section__title">참조는 이미지 묶음이 아니라 역할 표로 읽기</h3>
+                <p class="hd-section__intro" data-claim="" data-evidence-grade="C">원문 슬롯에서 참조가 언급되면 “참조를 썼다”로 끝내지 않는다. 각 참조가 책임지는 속성을 역할 표로 옮긴다. 인물 참조는 얼굴의 식별 특징, 연령감, 헤어, 체형처럼 연속성에 필요한 범위를 맡을 수 있다. 의상 참조는 실루엣·원단·색의 범위를, 공간 참조는 고정 구조와 물체의 상대 위치를, 소품 참조는 형태·재질·구별 가능한 디테일을 맡을 수 있다. 현재 컷의 행동·표정·시선·카메라·크롭·시간대는 참조의 상태가 아니라 현재 지시가 책임진다고 표시한다.</p>
+              </div>
+            </div>
+            <p data-claim="" data-evidence-grade="D">역할을 정하지 않은 참조는 검수 단계에서 모호해진다. 인물의 얼굴이 유지돼야 하는지, 공간의 출입구 관계가 유지돼야 하는지, 소품의 표면만 유지하면 되는지를 판정할 기준이 없기 때문이다. 따라서 학습자는 각 참조 옆에 “유지할 속성”, “이번 컷에서 바꿀 속성”, “판정하지 않을 속성”을 따로 적는다. 참조 파일이 많아도 역할표가 없으면, 무엇이 달라졌을 때 실패인지 선명하게 말할 수 없다.</p>
+            <p data-claim="" data-evidence-grade="C">이 역할표는 프롬프트를 길게 만들기 위한 장치가 아니라 변경 권한을 분리하는 장치다. 공간 참조가 있다고 해서 기존 프레임의 카메라 높이나 빛의 방향을 자동으로 보존하라는 뜻은 아니다. 소품 참조가 있다고 해서 손의 위치와 접촉 순서까지 고정되는 것도 아니다. 보존해야 할 속성만 계약처럼 적고, 새 장면이 요구하는 상태 변화는 현재 장면의 문장으로 분명하게 쓴다. 이 구분을 하면 후속 비교에서 어느 참조 계약이 지켜졌고 어느 항목이 의도적으로 바뀌었는지 설명할 수 있다.</p>
+          </article>
+
+          <article class="hd-case" data-claim="" data-evidence-grade="C">
+            <div class="hd-section__head">
+              <p class="hd-overline">Spatial blocking <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <div>
+                <h3 class="hd-section__title">카메라 지시보다 먼저 인물과 물체의 관계를 고정하기</h3>
+                <p class="hd-section__intro" data-claim="" data-evidence-grade="C">공간 블로킹은 렌즈 이름이나 분위기 단어보다 먼저 읽는다. 누가 화면의 어느 쪽에서 시작하는지, 시선은 누구 또는 무엇을 향하는지, 손이 닿는 물체는 어디에 있는지, 인물이 어느 방향으로 이동하는지, 카메라는 그 관계를 어떤 거리와 높이에서 보는지를 분리해 적는다. 이 목록은 장면의 지리와 촬영법을 한 문장에 뒤섞지 않게 하며, 프레임 안의 사건을 재현 가능한 관계로 바꾼다.</p>
+              </div>
+            </div>
+            <p data-claim="" data-evidence-grade="C">학습자는 시작 상태와 끝 상태를 각각 짧게 스케치하거나 문장으로 적을 수 있다. 시작 상태에는 인물·주요 소품·통로·시선 축을 적고, 끝 상태에는 실제로 변해야 하는 관계만 갱신한다. 카메라가 이동한다면 이동 자체를 장식처럼 적지 말고, 무엇을 드러내거나 가리기 위해 이동하는지와 이동 중에도 유지돼야 하는 화면 방향을 연결한다. 같은 공간이라도 세로 크롭과 가로 크롭은 다른 배치 판정이 될 수 있으므로, 프레임 비율과 인물의 출입 방향을 함께 검토한다.</p>
+            <p data-claim="" data-evidence-grade="D">검수할 수 없는 공간 관계는 보류로 남긴다. 예를 들어 한 장의 정지 이미지로 문 뒤편의 동선, 이동 중 반대 축 전환, 화면 밖 물체의 위치까지 확정할 수는 없다. 보이는 프레임에서 확인한 좌우·앞뒤·접촉 관계만 기록하고, 보이지 않는 방 구조를 추정으로 채우지 않는다. 이 절제는 장면 설명을 빈약하게 만드는 대신, 다음 시도에서 무엇을 다시 확인해야 하는지 정확한 질문으로 남긴다.</p>
+          </article>
+
+          <article class="hd-case" data-claim="" data-evidence-grade="C">
+            <div class="hd-section__head">
+              <p class="hd-overline">Observable beats <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <div>
+                <h3 class="hd-section__title">감정어를 화면에서 확인 가능한 행동으로 번역하기</h3>
+                <p class="hd-section__intro" data-claim="" data-evidence-grade="C">“불안하다”, “위협적이다”, “망설인다” 같은 말은 연출 의도를 설명하지만 그 자체로는 프레임에서 통과·실패를 판정하기 어렵다. 이 패널을 읽는 학습자는 감정어 옆에 관찰 가능한 비트를 붙인다. 시선이 특정 물체에 멈춘다, 손이 표면에 닿았다가 멈춘다, 몸이 통로 쪽으로 기울어진다, 물체가 프레임 안에서 가려진다처럼 누가 보아도 확인할 수 있는 변화가 그 비트가 된다. 감정은 삭제하지 않고, 행동이 감정을 전달하는 경로로 둔다.</p>
+              </div>
+            </div>
+            <p data-claim="" data-evidence-grade="C">좋은 비트 기록은 시간의 순서도 보존한다. 한 장면에 여러 행동이 있다면 동시에 일어난다고 뭉뚱그리지 않고, 무엇이 먼저 보이고 무엇이 다음에 일어나며 무엇이 끝에 남는지 적는다. 각 비트에는 주체, 동작, 대상, 화면상 변화, 확인 방법을 붙인다. 이 다섯 항목은 결과물을 미학적으로 판정하는 표가 아니라, 지시한 사건이 실제 재생에서 관찰됐는지 확인하는 표다. 비트가 보이지 않았다면 그 장면이 나쁘다고 선언하기보다 해당 비트의 증거가 없다고 표시한다.</p>
+            <p data-claim="" data-evidence-grade="D">관찰 가능한 비트도 모든 것을 증명하지는 않는다. 눈길의 방향이 보였다고 해서 인물의 내면이 단정되는 것은 아니며, 손이 물체에 닿았다고 해서 그 소품의 서사적 의미가 검증되는 것도 아니다. 행동의 발생과 해석의 강도를 분리해 기록한다. 이런 분리는 원문의 표현을 존중하면서도, 학습자가 결과에 보이지 않는 감정과 의도를 사실처럼 제출하지 않게 한다.</p>
+          </article>
+
+          <article class="hd-case" data-claim="" data-evidence-grade="C">
+            <div class="hd-section__head">
+              <p class="hd-overline">Failure signals <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <div>
+                <h3 class="hd-section__title">네거티브 제약을 금지 목록이 아니라 실패 신호로 만들기</h3>
+                <p class="hd-section__intro" data-claim="" data-evidence-grade="C">제외 문구는 많이 적는다고 자동으로 정밀해지지 않는다. 학습자는 각 제약에 대응하는 실패 신호를 붙인다. 반사가 문제라면 어떤 표면에서 어떤 방향의 반사가 나타났을 때 실패인지, 인물 위치가 문제라면 어느 화면 가장자리·축·거리의 변화가 실패인지, 소품 형태가 문제라면 어떤 실루엣·재질·비율의 변화가 실패인지 적는다. 제약의 문장은 결과를 볼 때 찾아낼 수 있는 조건이어야 한다.</p>
+              </div>
+            </div>
+            <p data-claim="" data-evidence-grade="C">실패 신호는 우선순위도 필요로 한다. 현재 장면의 핵심 계약과 직접 충돌하는 신호를 먼저 두고, 취향의 미세 조정과 구분한다. 예를 들어 참조 역할에서 정체성만 맡겼다면 얼굴 식별 특징의 변화는 계약 문제로 기록할 수 있지만, 새 컷에서 의도적으로 바꾸기로 한 표정은 단순 불일치로 처리하지 않는다. 제약이 무엇을 보호하는지 알면, 새 변형을 막아 버리는 과도한 금지문을 줄일 수 있다.</p>
+            <p data-claim="" data-evidence-grade="D">실패 신호는 여전히 판정 기준이지 결과 품질의 증명은 아니다. 특정 신호가 보이지 않았다는 확인은 그 한 항목에만 적용되며, 다른 연기·공간·움직임 문제까지 자동으로 통과시키지 않는다. 반대로 신호가 한 번 보였다고 해서 원인을 단정하지 않는다. 입력 참조, 장면 지시, 카메라 관계, 생성 변동 가운데 무엇이 영향을 줬는지는 통제된 비교가 있어야 좁혀 볼 수 있다.</p>
+          </article>
+
+          <article class="hd-case" data-claim="" data-evidence-grade="C">
+            <div class="hd-section__head">
+              <p class="hd-overline">Controlled iteration <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <div>
+                <h3 class="hd-section__title">A/B 비교는 한 번에 하나의 질문만 바꾸기</h3>
+                <p class="hd-section__intro" data-claim="" data-evidence-grade="C">반복 생성 기록을 볼 때 “더 나아졌다”는 넓은 결론 대신 비교 질문을 작게 만든다. A안과 B안에 공통으로 유지한 참조 역할, 장면의 행동 비트, 프레임 비율, 관찰할 실패 신호를 먼저 적고, 바꾼 항목을 한 가지 범주로 제한한다. 예를 들어 공간 참조의 역할만 조정하거나, 카메라의 시작 거리만 조정하거나, 특정 실패 신호를 겨냥한 제약만 조정한다. 여러 범주가 한꺼번에 바뀌면 관찰된 차이를 어느 변경에 연결할지 알 수 없다.</p>
+              </div>
+            </div>
+            <p data-claim="" data-evidence-grade="D">A/B 표에는 “판정 불가” 칸을 반드시 둔다. 재생 가능한 결과가 없거나, 비교 대상의 참조·비율·행동 계약이 달라졌거나, 핵심 프레임을 확인하지 못했다면 승패를 적지 않는다. 단일 이미지 미리보기는 정지 상태에 관한 관찰로만 기록하고, 시간 순서·카메라 이동·오디오 동기 같은 항목의 증거로 확장하지 않는다. 이 보류 칸은 반복을 중단시키는 표시가 아니라, 다음 비교에 필요한 통제를 드러내는 기록이다.</p>
+            <p data-claim="" data-evidence-grade="C">비교가 끝나면 결론도 좁게 쓴다. “이 변경은 이 장면의 이 실패 신호를 줄였는가”, “이 참조 역할이 이 식별 특징을 더 안정적으로 보존했는가”처럼 관찰 범위에 맞춘다. 결론 옆에는 확인한 매체 또는 프레임, 남은 실패 신호, 다음에 유지할 항목과 다시 시험할 항목을 붙인다. 이렇게 남긴 메모는 다른 장면에 그대로 복사하는 규칙이 아니라, 조건이 달라질 때 다시 검증해야 하는 가설 목록이 된다.</p>
+          </article>
+
+          <article class="hd-case" data-claim="" data-evidence-grade="C">
+            <div class="hd-section__head">
+              <p class="hd-overline">Learner worksheet <span class="hd-evidence hd-evidence--synthesis">교차 해석 · C등급</span></p>
+              <div>
+                <h3 class="hd-section__title">완전한 학습 워크시트</h3>
+                <p class="hd-section__intro" data-claim="" data-evidence-grade="C">아래 항목을 장면마다 복사해 채운다. 답을 길게 쓰는 것보다, 어떤 칸이 관찰이고 어떤 칸이 해석이며 어떤 칸이 보류인지 구별하는 것이 목적이다.</p>
+              </div>
+            </div>
+            <ul class="hd-list" data-claim="" data-evidence-grade="C">
+              <li class="hd-list__item" data-claim="" data-evidence-grade="C"><strong class="hd-list__term">장면 계약</strong><p class="hd-list__desc">장면이 보여야 하는 사건을 한 문장으로 적고, 프레임 비율·재생 여부·검수하려는 구간을 적는다. 감정 목표가 있다면 그 감정을 화면에서 확인할 행동 비트와 나란히 둔다.</p></li>
+              <li class="hd-list__item" data-claim="" data-evidence-grade="C"><strong class="hd-list__term">증거 분류</strong><p class="hd-list__desc">인벤토리 카운터, 원문 텍스트, 공개 표면, 실제 재생 검수 자료를 구분해 적는다. 각 자료가 뒷받침하는 문장과 뒷받침하지 못하는 문장을 함께 쓴다.</p></li>
+              <li class="hd-list__item" data-claim="" data-evidence-grade="C"><strong class="hd-list__term">참조 역할표</strong><p class="hd-list__desc">인물·의상·공간·소품·조명·스타일 참조별로 유지 속성, 변경 속성, 판정 제외 속성을 적는다. 현재 장면의 카메라와 행동이 어느 참조의 상태에 끌려가지 않아야 하는지도 표시한다.</p></li>
+              <li class="hd-list__item" data-claim="" data-evidence-grade="C"><strong class="hd-list__term">공간과 비트</strong><p class="hd-list__desc">시작 상태와 끝 상태의 인물·물체·통로·시선 축을 적고, 행동 비트마다 주체·동작·대상·화면상 변화·확인 방법을 적는다. 화면 밖 구조는 관찰하지 못했다면 추정하지 않는다.</p></li>
+              <li class="hd-list__item" data-claim="" data-evidence-grade="C"><strong class="hd-list__term">실패 신호</strong><p class="hd-list__desc">막고 싶은 반사, 위치 변화, 형태 변화, 연속성 붕괴를 결과에서 찾을 수 있는 말로 쓴다. 각 신호가 핵심 계약인지 미세 조정인지 구분하고, 보이지 않았다는 확인의 적용 범위를 한정한다.</p></li>
+              <li class="hd-list__item" data-claim="" data-evidence-grade="C"><strong class="hd-list__term">통제된 비교</strong><p class="hd-list__desc">A안과 B안에서 유지한 조건, 바꾼 조건, 공통 검수 항목, 판정 불가 사유를 적는다. 차이가 관찰돼도 원인을 단정하지 않고, 다음 비교에서 고정할 조건과 다시 시험할 조건을 남긴다.</p></li>
+              <li class="hd-list__item" data-claim="" data-evidence-grade="D"><strong class="hd-list__term">제출 문장</strong><p class="hd-list__desc">마지막에는 관찰 사실, 그 사실에 근거한 좁은 해석, 확인하지 못해 보류한 내용으로 문장을 나눈다. 장면의 성과·비용·도구 우열·승인 여부처럼 이 워크시트의 근거가 닿지 않는 결론은 제출하지 않는다.</p></li>
+            </ul>
+          </article>
         </section>
       </div>
     </div>
@@ -1664,6 +1805,44 @@ AUDIO: ambient SFX only. NO music. NO subtitles.
             <h3 class="hd-card__title">프로젝트 서술과 관찰된 프롬프트를 섞지 않는다</h3>
             <p class="hd-card__copy">브리프에 적힌 제작 기간·예산·상영·완성 길이는 팀 보고다. 이 페이지는 그 주장들을 반복해 성과 지표로 만들지 않고, 검증 가능한 아카이브 수치와 텍스트 표본만 학습 근거로 사용한다.</p>
           </article>
+          <article class="hd-card" data-claim="" data-evidence-grade="C">
+            <div class="hd-card__index"><span class="hd-overline">Rehearsal protocol</span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span></div>
+            <h3 class="hd-card__title">HELL GRIND식 재현 연습은 ‘결과 복제’가 아니라 책임 분리부터 시작한다</h3>
+            <p class="hd-card__copy">위 표본에서 카메라·조명·오디오·제약·행동 표지가 따로 관찰된다는 점을, 재현 가능한 연습 순서로 번역할 수 있다. 다만 이 순서는 원본 제작팀의 실제 워크플로를 증명하지 않으며, 같은 문장을 쓰면 같은 장면이 나온다는 보증도 아니다. 연습의 단위는 한 번의 생성 요청이 아니라 한 샷의 검토 가능한 계약이다. 계약에는 프레임 안에 있어야 하는 것, 보일 수 있지만 수를 세지 않는 배경 요소, 카메라가 확인할 행동, 장면 안에서 동기를 얻는 빛과 소리, 그리고 허용하지 않을 현상을 따로 적는다.</p>
+            <p class="hd-card__copy">먼저 앙상블 수를 서사상의 ‘주연 수’가 아니라 화면 판정 항목으로 적는다. 등장 인물, 얼굴이 보이는 엑스트라, 실루엣, 반사에 잡힌 사람, 먼 배경의 통행자를 같은 목록에서 구분하고, 각 항목이 인원 잠금에 포함되는지 결정한다. 그 뒤 샷별로 ‘이 프레임에서 보이는 인원’과 ‘화면 밖에는 존재하지만 보이면 안 되는 인원’을 분리한다. 이렇게 하면 인원이 달라졌을 때 의상이나 표정까지 한꺼번에 다시 지시하는 대신, 우선 인원 계약만 수정해 원인을 좁힐 수 있다. 이는 인물 수를 고정하는 표본의 문장을 실무용 체크 항목으로 읽는 방법이며, 인원 잠금 자체가 오류를 제거한다는 성능 주장은 아니다.</p>
+          </article>
+          <div class="hd-card-grid">
+            <article class="hd-card" data-claim="" data-evidence-grade="C">
+              <div class="hd-card__index"><span class="hd-overline">Location authority</span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span></div>
+              <h3 class="hd-card__title">다중 시점 장소 참조는 분위기 이미지가 아니라 권한표로 다룬다</h3>
+              <p class="hd-card__copy">장소를 여러 각도에서 다룰 때는 각 보기에 하나의 책임만 준다. 전체 보기에는 방의 윤곽, 출입구와 창의 상대 위치, 주요 가구의 큰 배치를 맡긴다. 주 시점에는 카메라가 향한 벽과 전경·중경·후경의 순서를 맡기고, 역 시점에는 인물이 바라보는 방향과 반대편 배경을 맡긴다. 세 보기가 서로 다른 세트처럼 보일 때에는 새 디테일을 더하기 전에 어느 보기가 구조의 정본인지 적는다. 그 다음 컷은 해당 정본에서 확인 가능한 관계만 요구하고, 확인되지 않는 면·문·창·통로는 ‘추정’으로 남긴다.</p>
+              <p class="hd-card__copy">연습용 검수에서는 프레임을 보고 세 가지를 따로 묻는다. 인물이 이동한 뒤에도 좌우 축이 이전 컷과 맞는가, 카메라가 본 방향에서 실제로 보일 배경만 등장하는가, 공간을 넓혀 보이게 하려다 새 출입구나 가구가 생기지 않았는가. 하나라도 어긋나면 ‘장소 전체를 더 자세히’라고 재지시하지 않는다. 전체 지도, 현재 시점, 역 시점 중 어긋난 권한만 고쳐 다음 시도를 비교한다. 이 절차는 공간 연속성의 판정 기준을 남기기 위한 제안이며, 아카이브만으로 특정 공간이 정확히 재현됐다고 결론내리지 않는다.</p>
+            </article>
+            <article class="hd-card" data-claim="" data-evidence-grade="D">
+              <div class="hd-card__index"><span class="hd-overline">Practical light and sound</span><span class="hd-evidence hd-evidence--limit">검증 한계 · D</span></div>
+              <h3 class="hd-card__title">빛과 소리는 각각의 동기와 제외 목록을 가져야 한다</h3>
+              <p class="hd-card__copy">실용 광원 중심의 연습에서는 ‘어둡고 영화적으로’ 같은 결과 형용사보다, 화면 안에서 확인 가능한 광원을 먼저 적는다. 예를 들어 창, 전등, 간판, 손전등처럼 장면에 보이거나 바로 인접한 출처를 적고, 어느 면을 비추는지와 카메라가 그 출처를 볼 수 있는지를 연결한다. 빛의 색감이나 강도는 그 출처에서 파생된 것으로만 설명하고, 그 논리로 설명되지 않는 림라이트·스튜디오 키·창밖의 정체불명 빛은 제외 항목으로 분리한다. 제외는 이미지를 ‘좋게’ 만들기 위한 주문이 아니라, 결과를 볼 때 무엇이 계약 밖인지 판별하는 경계다.</p>
+              <p class="hd-card__copy">오디오도 같은 방식으로 분리한다. 필요한 소리는 행동 또는 공간의 물리와 연결한다. 발걸음, 옷 마찰, 문, 기계, 차량, 바람처럼 프레임의 사건이나 장소에서 근거를 찾고, 말·음악·해설·과장된 효과처럼 이번 샷의 계약 밖인 소리는 명시적으로 제외한다. 조명 제외와 오디오 제외를 한 문장으로 뭉치면 무엇이 화면 문제이고 무엇이 청각 문제인지 판별하기 어렵다. 따라서 검토표에는 ‘빛의 출처/금지 광원’과 ‘들리는 원인/금지 음원’을 별도 칸으로 둔다. 이 구분은 표본에 보이는 독립 블록을 실습에 적용한 제한적 해석이며, 실제 산출물의 음향 품질을 확인한 근거는 아니다.</p>
+            </article>
+            <article class="hd-card" data-claim="" data-evidence-grade="C">
+              <div class="hd-card__index"><span class="hd-overline">Action to lens</span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span></div>
+              <h3 class="hd-card__title">행동은 감정 문장이 아니라 렌즈가 확인할 변화로 쓴다</h3>
+              <p class="hd-card__copy">한 샷의 행동 지시는 시작 상태, 변화, 끝 상태를 갖는다. 시작에는 누가 어느 위치에 있고 무엇을 보고 있는지, 변화에는 손·몸·소품·시선 중 무엇이 어느 방향으로 움직이는지, 끝에는 카메라가 컷을 멈출 수 있는 상태를 적는다. 그 뒤에야 샷 크기와 렌즈 역할을 붙인다. 넓은 프레임이면 인물 간 거리와 이동 경로가 보이는지, 가까운 프레임이면 손의 접촉이나 시선 전환이 실제로 판독되는지 확인한다. 카메라 움직임도 ‘긴장감 있게’가 아니라 행동을 따라가거나, 행동을 드러내기 위해 멈추거나, 다음 상태를 위해 시선을 옮기는 이유를 갖는다.</p>
+              <p class="hd-card__copy">이 결합의 검수 질문은 단순하다. 렌즈를 바꾸지 않고도 행동의 시작과 끝을 구분할 수 있는가, 행동을 빼도 카메라 이동이 남는가, 반대로 카메라를 고정해도 사건이 성립하는가. 첫 질문이 아니면 행동이 너무 모호하고, 둘째 질문이 맞으면 카메라 이동의 동기가 약하며, 셋째 질문이 아니면 사건이 카메라에 과도하게 의존한다. 이 진단은 실패의 위치를 행동·구도·카메라 중 하나로 좁히기 위한 연습 도구다. 표본의 컷 문법이 어떤 결과를 보장했는지는 대응 영상 검수가 없으므로 판단하지 않는다.</p>
+            </article>
+            <article class="hd-card" data-claim="" data-evidence-grade="D">
+              <div class="hd-card__index"><span class="hd-overline">Shot-by-shot review</span><span class="hd-evidence hd-evidence--limit">검증 한계 · D</span></div>
+              <h3 class="hd-card__title">프롬프트가 아니라 재생 가능한 결과를 샷마다 판정한다</h3>
+              <p class="hd-card__copy">샷별 검토는 요청문을 다시 읽는 일로 끝나지 않는다. 결과를 처음부터 끝까지 재생한 뒤, 정지 프레임과 연속 움직임을 나누어 본다. 정지 프레임에서는 인원, 공간 축, 소품, 광원 출처를 확인한다. 재생에서는 인물의 이동 방향, 손과 소품의 접촉, 카메라가 행동을 따라가는 시점, 빛의 변화와 소리의 발생 시점이 이어지는지 본다. 어느 항목도 프롬프트에 적혀 있다는 이유만으로 통과시키지 않으며, 대응 미디어가 없으면 ‘미검증’으로 남긴다.</p>
+              <p class="hd-card__copy">불일치가 보이면 다음 시도에서 모든 문장을 강화하지 않는다. 인원이 넘치거나 줄면 인원 잠금과 배경 인물 정의를 본다. 공간 축이 뒤집히면 장소 권한표와 현재 시점의 카메라 방향을 본다. 빛이 장면 밖에서 생기면 실용 광원과 금지 광원 칸을 본다. 동작이 끊기면 시작·변화·끝 상태와 렌즈가 그 변화를 볼 수 있는지 본다. 원인이 여러 개처럼 보여도 한 번의 재시도에는 하나의 가설만 바꾸고, 이전 결과와 나란히 비교한다. 이 분류는 재생 결과를 근거로 수정 범위를 좁히는 일반적 연습법이며, 이 아카이브에서 각 실패가 실제로 이렇게 해결됐다는 기록은 아니다.</p>
+            </article>
+          </div>
+          <article class="hd-card hd-card--inverse" data-claim="" data-evidence-grade="C">
+            <div class="hd-card__index"><span class="hd-overline">Reusable worksheet</span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span></div>
+            <h3 class="hd-card__title">한 샷씩 복사해 쓰는 리허설 워크시트</h3>
+            <p class="hd-card__copy"><strong>샷 식별:</strong> 장면 안의 역할과 직전·직후 컷의 관계를 적는다. <strong>인원 계약:</strong> 화면에 보여야 하는 인물, 인원에 포함하지 않는 배경 요소, 화면 밖에 남아야 하는 인물을 각각 적는다. <strong>장소 권한:</strong> 전체 지도·현재 시점·역 시점 중 이번 샷이 의존하는 보기를 표시하고, 확인되지 않은 구조는 추정으로 표기한다. <strong>행동과 렌즈:</strong> 시작 상태 / 변화 / 끝 상태, 샷 크기, 렌즈의 관찰 대상, 카메라 이동의 동기를 한 줄씩 분리한다.</p>
+            <p class="hd-card__copy"><strong>빛과 소리:</strong> 보이는 또는 인접한 광원, 비추는 방향, 금지 광원, 들려야 하는 원인, 금지 음원을 나눈다. <strong>검토:</strong> 정지 프레임에서 확인할 항목과 재생 중 확인할 항목을 따로 체크한다. <strong>판정:</strong> 통과 / 불일치 / 미검증 중 하나를 적고, 불일치라면 인원·공간·빛·행동·렌즈·소리 중 우선 가설 하나만 고른다. <strong>다음 시도:</strong> 바꿀 문장 또는 참조 권한 하나, 바꾸지 않을 계약, 비교할 이전 결과를 기록한다. 이 양식은 원본 프롬프트를 복사하는 템플릿이 아니라, 생성 전의 요구와 생성 후의 관찰을 같은 단위로 남기는 연습용 기록지다.</p>
+          </article>
         </section>
       </div>
     </div>
@@ -2064,6 +2243,33 @@ Constraints: stop-motion stepped cadence on twos at 12fps with painterly boil, A
             <div class="hd-callout" data-claim="" data-evidence-grade="C"><p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 가져갈 것</p><p>참조의 역할을 나누고, 인물·환경의 시간축을 나누며, 관계와 사건 순서를 검수 가능한 동사로 쓰는 방식은 다른 작업에도 시험할 수 있다. 다만 다른 프로젝트에서는 모델·참조·장르·목표 화면비가 달라지므로 같은 문장이 같은 효과를 낸다고 보장하지 않는다.</p></div>
             <div class="hd-callout hd-callout--limit" data-claim="" data-evidence-grade="D"><p class="hd-label"><span class="hd-evidence hd-evidence--limit">검증 한계 · D</span> 가져가지 말 것</p><p>12fps/on-twos, 거친 붓질, 손에 든 카메라, 무음 음악 제한은 KOK_BORY 표본에서 관찰된 특정 선택이다. 이것들을 실사·포토리얼·대화 중심 생성에 기본값처럼 적용하지 말고, 현재 컷의 매체·행동·오디오 목표를 먼저 시험해야 한다.</p></div>
           </div>
+          <div class="hd-callout" data-claim="" data-evidence-grade="C">
+            <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 재현 실습의 단위</p>
+            <p>이 표본을 연습에 옮길 때는 “손그림처럼”이라는 결과 형용사부터 복사하지 않는다. 먼저 생물의 포즈 타이밍과 대기의 움직임을 다른 제어면으로 적는다. 기수·말·늑대처럼 형태를 읽어야 하는 대상은 계단식 포즈 변화로 두고, 눈발·안개·구름처럼 장면의 온도를 만드는 층은 부드러운 흐름으로 분리한다. 이렇게 쓰면 회화적 표면과 시간 리듬을 같은 명령으로 뭉개지 않고, 어느 층의 변화를 보려는지 비교 가능한 실험 문장으로 남길 수 있다. 실습자는 시작 상태와 다음 상태 사이에서 포즈가 어떻게 달라지는지, 환경은 그 사이에 어떤 방향으로 계속 흐르는지를 따로 메모한다. 이 메모는 매끄러운 보간을 억지로 금지하기 위한 문구가 아니라, 의도한 계단감이 생물의 동작에만 적용되고 대기의 흐름까지 멈춰 보이지 않는지 점검할 기준이 된다. 질감의 단어는 이 시간축 지시와 나란히 두되, 어느 장면에서도 같은 붓터치가 그대로 반복돼야 한다는 요구로 읽지 않는다.</p>
+          </div>
+          <div class="hd-split">
+            <div class="hd-callout" data-claim="" data-evidence-grade="C">
+              <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 관계와 컷의 판독법</p>
+              <p>여러 기수와 말이 등장하는 연습에서는 인물의 외형 설명과 말의 외형 설명만 나열하지 말고, 누구와 누구의 짝이 유지되어야 하는지를 독립 문장으로 둔다. 이어지는 장면은 행동을 길게 연결하기보다, 에너지가 낮은 관찰에서 긴장과 충돌로 어떻게 넘어갈지를 컷별 동사와 하드 컷 지시로 나눈다. 이는 특정 장면이 잘 나온다는 처방이 아니라, 관계 혼동과 편집 리듬을 같은 오류로 취급하지 않기 위한 읽기 틀이다.</p>
+            </div>
+            <div class="hd-callout hd-callout--limit" data-claim="" data-evidence-grade="D">
+              <p class="hd-label"><span class="hd-evidence hd-evidence--limit">검증 한계 · D</span> 오디오 경계는 별도 확인</p>
+              <p>“음악 없음”은 분위기가 없다는 뜻이 아니라, 현장성 있는 소리와 음악이 맡는 자리를 분리하는 제한으로 읽어야 한다. 따라서 연습 문장에는 바람, 발굽, 의복, 호흡처럼 필요한 소리의 성격과 음악·자막처럼 제외할 요소를 함께 적을 수 있다. 그러나 문장에 금지어가 있었다는 사실만으로 실제 출력에서 음악이나 원치 않는 소리가 없었다고 판정할 수는 없다. 청취 가능한 결과가 있을 때에만 이 경계가 지켜졌는지 따로 검수한다.</p>
+            </div>
+          </div>
+          <div class="hd-callout" data-claim="" data-evidence-grade="C">
+            <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 회화 질감의 연속성 진단</p>
+            <p>붓질·종이결·색 번짐 같은 표면 언어는 장면의 사건 설명과 분리해 계속 적을 수 있지만, 그것만으로 질감 연속성이 확인되는 것은 아니다. 진단할 때는 인물의 윤곽, 말의 갈기, 눈보라의 입자, 먼 산의 붓터치가 장면 안에서 서로 다른 재질로 갈라지는지 읽고, 문제가 보이면 표면 지시·시간축 지시·관계 지시 가운데 하나만 바꾼다. 동시에 여러 규칙을 바꾸면 무엇이 달라졌는지 추적하기 어려워진다. 다음 비교를 준비할 때는 유지한 문장과 바꾼 문장을 나란히 남기고, 관찰 항목도 표면·움직임·관계·소리로 분리한다. 그래야 한 장면의 인상 변화가 붓질 지시의 영향인지, 대기의 움직임이나 개체 귀속이 바뀐 결과인지 섣불리 합쳐 해석하지 않을 수 있다. 이 절차는 결과를 보장하는 공식이 아니라, 다음 비교에서 원인을 좁히기 위한 기록 방식이다.</p>
+          </div>
+          <div class="hd-callout hd-callout--limit" data-claim="" data-evidence-grade="D">
+            <p class="hd-label"><span class="hd-evidence hd-evidence--limit">검증 한계 · D</span> 학습자 워크시트</p>
+            <ul class="hd-list" aria-label="KOK_BORY 재현 실습 점검표">
+              <li class="hd-list__item" data-claim="" data-evidence-grade="C"><strong class="hd-list__term"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 시간축 메모</strong><p class="hd-list__desc">계단식으로 움직일 대상과 부드럽게 흐를 환경층을 각각 적고, 둘을 같은 동사로 설명한 부분이 남아 있는지 표시한다.</p></li>
+              <li class="hd-list__item" data-claim="" data-evidence-grade="C"><strong class="hd-list__term"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 관계 메모</strong><p class="hd-list__desc">기수와 말의 귀속, 다른 개체와의 거리, 바뀌면 안 되는 짝을 문장으로 적는다. 이름이나 외형이 아니라 관계 자체가 확인 대상이다.</p></li>
+              <li class="hd-list__item" data-claim="" data-evidence-grade="C"><strong class="hd-list__term"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 컷·소리 메모</strong><p class="hd-list__desc">각 컷의 에너지 변화와 전환 동사를 적고, 필요한 현장 소리와 제외할 음악·자막을 분리한다. 텍스트 점검과 재생·청취 점검은 같은 칸에 합치지 않는다.</p></li>
+              <li class="hd-list__item" data-claim="" data-evidence-grade="D"><strong class="hd-list__term"><span class="hd-evidence hd-evidence--limit">검증 한계 · D</span> 진단 기록</strong><p class="hd-list__desc">비교 뒤에는 관찰한 변화, 바꾼 제어면, 아직 확인하지 못한 항목을 나누어 적는다. 이 워크시트는 프롬프트 구조를 학습시키는 도구이며, 결과의 완성도나 채택 여부를 대신 판정하지 않는다.</p></li>
+            </ul>
+          </div>
           <p class="hd-section__intro" data-claim="" data-evidence-grade="A"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span> 수치·0건 검사·원문 표본은 각각 별도 키로 추적된다. 이 분리는 “프롬프트가 길다” 같은 인상비평 대신 무엇이 측정됐고 무엇이 아직 결과로 확인되지 않았는지 함께 읽게 하는 최소 장치다.</p>
         </section>
       </div>
@@ -2226,6 +2432,23 @@ SFX only: slow measured blaster shots, extremely slow warm tracers humming past,
         <section class="hd-section" id="oneiric-implications" aria-labelledby="oneiric-implications-title">
           <div class="hd-section__head"><p class="hd-overline">09 / Implications + limits</p><div><h2 class="hd-section__title" id="oneiric-implications-title">다음 반복에서 지킬 단위는 긴 문장이 아니라 확인 가능한 경계다</h2><p class="hd-section__intro" data-claim="" data-evidence-grade="C"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 학습 가치는 장문의 프롬프트를 복제하는 데 있지 않다. 정체성, 깊이, 대사, 음성, 환경 변화, 카메라, 도식 역할 중 무엇이 실패했는지 나누고 통과한 블록은 보존하는 데 있다.</p></div></div>
           <div class="hd-split"><article class="hd-callout" data-claim="" data-evidence-grade="C"><p class="hd-label">재사용 순서</p><p>첫째, 화면 좌우가 아니라 공간 좌표와 아이 라인을 적는다. 둘째, 한 화자·한 행동·한 음향 상태를 시간 순서로 쓴다. 셋째, 참조가 제공할 속성과 제공하지 않을 속성을 분리한다. 넷째, 실패한 블록만 바꿔 다음 시도의 차이를 기록한다.</p></article><article class="hd-callout hd-callout--limit" data-claim="" data-evidence-grade="D"><p class="hd-label">끝까지 남는 한계</p><p>프롬프트와 기록 수는 실제 재생 검수가 아니다. 립싱크, 음성 정체성, 장면 간 연속성, 초저각 동선의 설득력은 재생 가능한 결과를 직접 본 뒤에만 판정할 수 있다.</p></article></div>
+          <div class="hd-split">
+            <article class="hd-callout" data-claim="" data-evidence-grade="C"><p class="hd-label">대화 좌표와 아이 라인</p><p>대화 블록에는 인물을 화면 왼쪽·오른쪽으로만 부르지 말고, 방 안의 기준점과 카메라 축을 함께 적는다. 누가 창가에 있고 누가 테이블 가까이에 있는지, 두 사람이 서로 어느 방향으로 몸을 열고 있는지, 카메라가 그 축의 어느 쪽에 서 있는지를 분리해 쓴다. 그래야 화면 좌우가 바뀌어도 인물의 실제 관계와 이동 방향을 다시 추적할 수 있다.</p><p>아이 라인은 상대의 눈, 손에 든 물체, 문밖의 소리처럼 시선이 향하는 대상을 이름 붙인 좌표다. 시선의 시작점·목표·전환 시점을 행동 문장에 넣고, 상대가 프레임 밖에 있다면 그 부재도 명시한다. 시선이 카메라를 향하는지 상대를 향하는지, 두 인물이 같은 높이에 있는지까지 확인하면 대사가 맞는데도 서로를 보지 않는 실패를 별도 항목으로 진단할 수 있다.</p></article>
+            <article class="hd-callout" data-claim="" data-evidence-grade="C"><p class="hd-label">화자와 청자의 공간 계약</p><p>화자 이름만 나열하는 대본은 누가 듣고 있는지, 반응을 언제 보여 줄지, 시선이 어디서 끊기는지를 결정하지 못한다. 각 발화에 화자의 위치, 청자의 위치, 청자가 바라보는 목표, 다음 행동의 방향을 덧붙인다. 청자가 고개를 돌리거나 손을 멈추는 순간은 대사 자체와 분리된 반응 비트로 적어, 한 인물의 말이 다른 인물의 행동을 실제로 바꾸는지 확인한다.</p><p>카메라 이동을 시선의 원인으로 착각하지 않도록 주의한다. 인물이 먼저 대상을 보고 카메라가 그 시선을 따라가는지, 카메라가 먼저 이동해 인물이 뒤늦게 발견하는지의 순서를 명시한다. 이 구분은 대화 장면의 긴장과 꿈 장면의 발견을 같은 움직임으로 뭉개지 않게 하는 학습용 좌표다.</p></article>
+          </div>
+          <div class="hd-split">
+            <article class="hd-callout" data-claim="" data-evidence-grade="C"><p class="hd-label">Identity plate와 action prompt</p><p>Identity plate는 얼굴·나이감·헤어·체형·피부나 의상의 식별 재질처럼 인물이 누구인지 판단하는 기준만 맡긴다. 그 이미지에서 나온 포즈, 표정, 시선, 렌즈, 크롭을 다음 장면의 의무로 자동 승격하지 않는다. 반대로 action prompt는 현재 컷에서 인물이 무엇을 하며 어디를 보고 어떻게 멈추는지를 맡긴다. 두 블록을 분리하면 장면의 동작을 고칠 때 인물 정체성까지 다시 흔드는지 알 수 있다.</p><p>실습할 때는 정체성 문장과 행동 문장을 나란히 놓고, 각각의 문장이 담당하는 속성을 한 단어로 표시한다. 정체성 쪽에 감정·동작이 섞였거나 행동 쪽에 새로운 얼굴 특징이 들어갔다면 해당 문장을 옮기거나 삭제한다. 결과를 읽을 때도 정체성 보존과 행동 수행을 한 점수로 합치지 말고, 어느 계약이 깨졌는지 별도 메모로 남긴다.</p></article>
+            <article class="hd-callout" data-claim="" data-evidence-grade="C"><p class="hd-label">전경·중경·배경 계약</p><p>전경에는 손이 닿거나 화면을 가리는 물체, 중경에는 주된 인물과 상호작용, 배경에는 공간의 고정 구조와 빛의 근원을 배치한다. 각 층마다 선명도, 움직임, 가림 여부, 인물이 접촉할 수 있는지의 경계를 적어야 한다. 전경 소품이 단지 분위기인지 실제 행동의 대상인지도 구분한다. 그래야 카메라가 가까워질 때 배경 가구가 갑자기 행동 소품으로 변하거나, 중경 인물이 배경 장식처럼 사라지는 역할 누출을 찾을 수 있다.</p><p>깊이 계약은 오디오 원인과도 맞물린다. 전경의 스위치를 누르는 손에는 그 조작에서 비롯된 클릭이 붙고, 배경의 먼 소리는 그 위치와 거리에 맞는 상태로 남는다. 화면에 보이지 않는 소리를 넣을 때는 어떤 층의 사건인지 먼저 표시한다. 깊이·초점·손의 도달 범위·소리의 원인을 같은 행에서 대조하면 시각과 청각이 각자 그럴듯하지만 함께 놓였을 때 모순되는 경우를 빠르게 분리할 수 있다.</p></article>
+          </div>
+          <div class="hd-split">
+            <article class="hd-callout" data-claim="" data-evidence-grade="C"><p class="hd-label">Join-point bridge</p><p>접합 브리지는 두 클립 전체를 새로 해석하는 프롬프트가 아니라, 앞 클립의 마지막 상태와 뒤 클립의 첫 상태 사이에 남은 운동을 설명하는 계약이다. outgoing 프레임의 피사체 위치·진행 방향·속도·초점과 incoming 프레임의 동일한 항목을 먼저 적고, 브리지에서 바뀌어도 되는 속성과 반드시 이어져야 하는 속성을 나눈다. 빈 구간을 멋진 새 장면으로 채우지 말고, 손의 이동이나 시선의 전진처럼 두 상태를 실제로 잇는 동작만 남긴다.</p><p>검수에서는 시작 프레임, 연결 중간, 끝 프레임을 순서대로 보며 방향이 뒤집히는지, 카메라 속도가 갑자기 변하는지, 색·입자·노출이 새 장면처럼 리셋되는지를 기록한다. 접합부 하나만 실패했다면 원본 클립의 다른 구간을 다시 고치지 말고 bridge 계약만 수정한다. 그렇게 해야 재생에서 확인된 변화와 프롬프트의 변화가 서로 대응한다.</p></article>
+            <article class="hd-callout" data-claim="" data-evidence-grade="C"><p class="hd-label">Task-led performance</p><p>연기 지시는 ‘불안해한다’처럼 감정의 이름으로 끝내지 않고, 상대에게 이루려는 과업으로 번역한다. 목표, 가로막는 정보나 물체, 선택한 전술, 실패했을 때의 다음 전술, 그 과정에서 보는 대상을 순서로 적는다. 같은 대사라도 숨기기·떠보기·멈춰 세우기처럼 과업이 달라지면 손의 속도와 호흡, 상대를 보는 시간이 달라진다. 과업이 바뀌는 지점을 대사의 감정 변화로 추상화하지 말고 행동 전환으로 표시한다.</p><p>무대 위에서 눈에 보이는 증거가 무엇인지도 함께 적는다. 손이 문고리에서 멈추는지, 청자가 한 걸음 물러나는지, 시선이 제삼의 물체로 샌 뒤 돌아오는지처럼 재생 화면에서 찾을 수 있는 흔적이어야 한다. 이 방식은 음성이 없는 장면에도 적용되며, ‘감정을 전달했다’는 인상 대신 과업의 시작·저항·변경·종료가 실제로 보였는지를 확인하게 한다.</p></article>
+          </div>
+          <div class="hd-split">
+            <article class="hd-callout" data-claim="" data-evidence-grade="C"><p class="hd-label">침묵과 오디오 상태</p><p>무음은 오디오 지시의 부재가 아니라 하나의 상태다. 대사 없음, 음악 없음, 현장음만 유지, 방의 톤만 유지, 특정 조작음만 허용처럼 상태를 문장으로 쓴다. 소리가 들어오는 순간에는 소스와 위치, 화면 사건과의 시간 관계를 적고, 소리가 끊기는 순간에는 무엇이 사라지는지 표시한다. 그래야 ‘조용한 장면’이라는 모호한 표현이 임의의 음악·효과음·새 목소리를 허용하는 구멍이 되지 않는다.</p><p>검수 순서는 화면을 보며 오디오를 듣는 경우와 오디오를 가리고 화면만 보는 경우를 나눠 기록한다. 화면에 보이지 않는 사건의 소리가 앞서거나, 입 모양과 음성의 시작점이 어긋나거나, 무음 상태에 공간음이 새로 생기면 대사 문제인지 상태 문제인지 구분한다. 이 패널은 실제 재생 파일을 제공하지 않으므로, 여기서의 오디오 계약은 검사 설계이며 동기화 성공을 뜻하지 않는다.</p></article>
+            <article class="hd-callout hd-callout--limit" data-claim="" data-evidence-grade="D"><p class="hd-label">진단적 반복</p><p>다음 시도에서 바꿀 것은 한 번에 하나의 실패 원인으로 한정한다. 아이 라인이 틀렸다면 시선 목표와 카메라 축만, 접합이 끊겼다면 outgoing·incoming 상태와 이동 속도만, 무음이 무너지면 허용 오디오 상태만 수정한다. 여러 층을 동시에 고치면 개선처럼 보이는 변화가 어떤 문장 때문인지 재현할 수 없다. 통과한 블록은 그대로 보존하고 바뀐 블록과 관찰된 차이를 나란히 기록한다.</p><p>프롬프트 제출, 생성 큐, 미리보기 타일, 파일 메타데이터는 재생 검수의 대체물이 아니다. 실제로 재생 가능한 표면에서 시작·중간·끝의 동선, 시선, 음성, 공간 연속성을 확인할 수 있을 때만 해당 진단을 완료한다. 결과를 볼 수 없는 경우에는 ‘확인 필요’로 남기고, 문서가 정교하다는 이유로 통과 처리하지 않는다.</p></article>
+          </div>
+          <article class="hd-callout" data-claim="" data-evidence-grade="C"><p class="hd-label">학습자 체크리스트 · 제출 전 읽기</p><ul class="hd-list"><li class="hd-list__item"><strong class="hd-list__term">좌표</strong><p class="hd-list__desc">화면 좌우 대신 인물·기준점·카메라 축을 적었고, 각 화자의 아이 라인 목표와 전환 순서를 확인했는가.</p></li><li class="hd-list__item"><strong class="hd-list__term">역할</strong><p class="hd-list__desc">Identity plate에는 정체성만, action prompt에는 현재 행동·시선·카메라만 남겨 서로의 권위를 섞지 않았는가.</p></li><li class="hd-list__item"><strong class="hd-list__term">깊이</strong><p class="hd-list__desc">전경·중경·배경의 고정 요소와 움직이는 요소, 초점·가림·접촉 범위를 각각 설명했는가.</p></li><li class="hd-list__item"><strong class="hd-list__term">접합</strong><p class="hd-list__desc">앞뒤 클립의 마지막·첫 상태와 브리지에서 허용되는 변화가 대응하며, 새 장면을 몰래 추가하지 않았는가.</p></li><li class="hd-list__item"><strong class="hd-list__term">연기</strong><p class="hd-list__desc">감정 형용사 대신 상대에게 하는 과업, 장애물, 전술, 화면에서 볼 수 있는 반응 흔적을 적었는가.</p></li><li class="hd-list__item"><strong class="hd-list__term">소리와 진단</strong><p class="hd-list__desc">대사·현장음·방의 톤·무음 상태와 허용 범위를 적었고, 재생에서 확인할 실패 원인을 하나씩 고를 수 있는가.</p></li></ul><p>체크가 끝나도 이는 생성 승인이나 품질 보증이 아니다. 학습자는 문서의 경계와 실제 재생에서 확인할 관찰 항목을 함께 보관하고, 확인하지 못한 항목은 보류로 표시한다.</p></article>
           <p class="hd-source-note" data-claim="" data-evidence-grade="A"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span> 이 패널의 숫자는 <span>projects.ONEIRIC.*</span> 집계 키와 값을 함께 두고, 원문 인용은 SHA-256 앞 16자리 키와 조립 단계의 바이트 대조로 확인한다.</p>
         </section>
       </div>
@@ -2668,6 +2891,79 @@ ACTION TIMING
               <li data-claim="" data-evidence-grade="D"><span class="hd-source-path">검증 한계 · D — 미디어 미확보 사례는 텍스트 분석으로 제한</span><span class="hd-source-kind">LIMIT</span></li>
             </ul>
           </div>
+
+          <div class="hd-section__head" data-claim="" data-evidence-grade="C">
+            <p class="hd-overline">Practice / Reproducibility</p>
+            <div>
+              <h3 class="hd-section__title">ZEPHYR Special을 재현 가능하게 읽는 실습</h3>
+              <p class="hd-section__intro"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 여기서의 재현은 같은 문장을 다시 넣어 같은 결과를 약속하는 뜻이 아니다. 원문이 분리해 둔 통제 항목을 작은 실습 단위로 옮기고, 무엇을 바꾸었는지와 무엇을 관찰했는지를 다음 시도에도 읽을 수 있게 남기는 작업이다.</p>
+            </div>
+          </div>
+
+          <div class="hd-split" data-claim="" data-evidence-grade="C">
+            <div class="hd-callout" data-claim="" data-evidence-grade="C">
+              <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 축 고정 회전: 회전과 동작을 분리해 적기</p>
+              <p>상공 회전 연습에서는 먼저 카메라 축을 어떤 기준면에 고정할지 적고, 그 다음 회전 방향·속도의 변화 여부·프레임 중심을 별도 문장으로 둔다. 인물의 팔, 몸통, 시선이 움직이는 지시는 카메라 축의 지시와 섞지 않는다. 그러면 회전 중 어긋남을 볼 때에도 피사체 동작, 카메라의 축, 프레이밍 중 어느 층을 다시 확인해야 하는지가 흐려지지 않는다.</p>
+              <p>실습 기록에는 시작과 끝의 기준만 남기지 말고, 중간 구간에서 화면의 위·아래 또는 좌·우 관계가 어떤 규칙을 따라야 하는지 적는다. ‘계속 회전’은 관찰 항목이 되기 어렵지만, 기준면·중심점·이탈 금지 조건을 분리하면 검토자가 같은 질문으로 장면을 읽을 수 있다. 이 방법은 원문에 보이는 축 잠금 문법을 해석한 학습 절차이며, 특정 카메라 문구의 결과를 보장하지 않는다.</p>
+            </div>
+            <div class="hd-callout" data-claim="" data-evidence-grade="C">
+              <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 근접 프레임 밀도: 거리와 정보량을 따로 확인</p>
+              <p>근접 추적 장면에서는 ‘가까이’라는 말 하나로 거리, 피사체 크기, 배경의 점유량, 카메라가 따라가는 방식까지 묶지 않는다. 프레임 안에서 계속 보여야 하는 신체 부위 또는 사물의 범위를 정하고, 배경이 넓어져도 되는 구간과 안 되는 구간을 구분한다. 인물이 크게 움직이는 경우에도 프레임 밀도는 동작의 크기가 아니라 화면에서 유지할 관찰 단위로 적는다.</p>
+              <p>검토할 때는 장면이 넓어졌는지만 보지 말고, 근접성이 필요한 디테일이 계속 읽히는지와 카메라가 피사체를 따라가는 방식이 처음 선언과 같은지를 나란히 적는다. 넓어진 배경이 문제인지, 중심 피사체가 작아진 것이 문제인지, 추적의 방향이 바뀐 것인지 구분해 기록하면 다음 A/B 진단에서 수정 대상이 하나의 층으로 남는다.</p>
+            </div>
+          </div>
+
+          <div class="hd-split" data-claim="" data-evidence-grade="C">
+            <div class="hd-callout" data-claim="" data-evidence-grade="C">
+              <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 참조 역할 분리: 참조마다 맡길 속성 선언</p>
+              <p>인물 참조는 얼굴·헤어·체형처럼 정체성 확인에 필요한 범위만 맡기고, 공간 참조는 구조와 고정 물체의 상대 위치, 조명 참조는 광원의 방향과 색감, 소품 참조는 형태와 재질처럼 역할을 나눈다. 한 참조가 모든 시각 속성을 결정한다고 쓰면, 새 컷에서 바꾸려는 포즈·시선·카메라·시간대까지 의도치 않게 고정할 수 있다. 역할표에는 각 참조에서 가져오지 않을 항목도 함께 적어 충돌을 드러낸다.</p>
+              <p>이 분리는 참조의 우열을 정하는 절차가 아니다. 장면 지시가 현재 컷의 행동과 구도를 결정하고, 참조는 그 장면에서 필요한 특정 속성을 확인하는 보조 권한이라는 점을 문서에서 분명히 하는 방식이다. 참조를 추가하거나 빼는 A/B 비교에서도 나머지 역할표를 그대로 두면 무엇이 달라졌는지 추적할 수 있다.</p>
+            </div>
+            <div class="hd-callout" data-claim="" data-evidence-grade="C">
+              <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 배치도 권한: 행동보다 먼저 공간 계약 세우기</p>
+              <p>다중 인물 장면의 배치도는 장식용 요약이 아니라, 각 샷이 먼저 따라야 할 공간 계약으로 다룬다. 화면 기준의 좌·중·우, 전·후 관계, 출입 방향, 소품의 기준 위치를 지도에 적고, 프롬프트의 행동 문장은 그 지도를 바꾸지 않는 범위에서 작성한다. 새로운 행동이 배치도와 충돌하면 행동을 더 길게 덧붙이기보다 지도와 행동 중 무엇을 우선할지 다시 결정한다.</p>
+              <p>카메라가 반대편으로 넘어가는 샷은 같은 위치표를 단순히 복사하지 않는다. 카메라가 바뀌어도 유지해야 할 인물 사이의 관계와, 화면 좌우가 역전될 수 있는 요소를 따로 기록한다. 이렇게 하면 ‘왼쪽에 있다’와 ‘상대 인물의 왼편에 있다’처럼 기준이 다른 문장을 분리할 수 있으며, 다음 컷의 블로킹 수정이 인물 정체성 또는 소품 지시를 불필요하게 흔들지 않는다.</p>
+            </div>
+          </div>
+
+          <div class="hd-split" data-claim="" data-evidence-grade="C">
+            <div class="hd-callout" data-claim="" data-evidence-grade="C">
+              <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 물성 우선 인서트: 이야기보다 먼저 보일 표면을 정하기</p>
+              <p>악기나 손처럼 작은 대상의 인서트는 분위기·서사·풍경을 먼저 길게 설명하기보다, 화면에서 판독해야 할 재질과 접촉을 먼저 적는다. 표면의 마모, 광택의 위치, 줄이나 부품의 미세한 움직임, 손이 닿는 지점처럼 관찰 가능한 항목을 고르고, 그 뒤에 배경과 공기의 정서를 보완한다. 그러면 인서트가 넓은 장면의 축소판으로 변하는 대신, 왜 이 가까운 컷이 필요한지 문서에서 설명할 수 있다.</p>
+              <p>인서트의 조명도 인물 장면의 감성 지시를 그대로 옮기지 않고, 반사·윤곽·표면 판독 중 무엇을 우선할지 명시한다. 촬영된 결과가 아니라 프롬프트의 구조를 검토할 때에는 재질 항목이 실제로 구획됐는지까지만 확인한다. 재질 지시가 화면에서 충실히 구현됐는지, 다른 문구보다 효과적이었는지는 별도의 미디어 검토가 있어야 판단할 수 있다.</p>
+            </div>
+            <div class="hd-callout" data-claim="" data-evidence-grade="C">
+              <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 다중 인물 연속성: 위치와 시선을 한 줄로 묶지 않기</p>
+              <p>여러 인물의 연속성은 이름이나 의상만 같게 적는 것으로 끝나지 않는다. 각 인물마다 기준 위치, 몸의 방향, 바라보는 상대 또는 목표, 앞선 인물과의 거리 관계를 따로 적는다. 시선은 화면 가장자리인지 다른 인물인지, 카메라 쪽인지처럼 대상과 방향을 구분한다. 위치 변화가 허용되는 인물은 이동의 시작점과 끝점, 다른 인물은 그 이동에 대해 유지할 기준을 남긴다.</p>
+              <p>다음 샷의 검토표에는 인물별 위치와 시선을 같은 줄에 압축하지 않는다. 위치는 배치도와 대조하고, 시선은 상대 위치와 대조하며, 몸의 방향은 카메라 전환 이후에도 이해되는지 별도로 확인한다. 이 분리는 한 인물이 자리를 바꿨을 때 다른 인물의 시선까지 자동으로 바뀌었다고 가정하는 오류를 줄이기 위한 문서화 절차다.</p>
+            </div>
+          </div>
+
+          <div class="hd-callout" data-claim="" data-evidence-grade="C">
+            <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 진단형 A/B 반복: 한 번에 하나의 통제 층만 바꾸기</p>
+            <p>A/B 반복은 두 결과 중 더 좋은 것을 선언하는 장치가 아니라, 질문을 분리하는 진단 기록이다. 먼저 축, 참조 역할, 배치도, 프레임 밀도, 물성, 시선 연속성 중 현재 확인할 층 하나를 고른다. A에는 그 층의 기준 문장을 적고, B에는 같은 층에서 비교할 변경만 적는다. 나머지 장면 지시·참조 역할·블로킹 지도는 변경 목록에 없으면 그대로 둔다.</p>
+            <p>비교 메모에는 ‘무엇을 바꾸었나’, ‘어느 프레임 또는 구간을 보았나’, ‘어떤 기준으로 관찰했나’, ‘다음에는 무엇을 고정할 것인가’를 분리해 적는다. 관찰 결과가 불명확하면 결론을 늘리기보다 다음 비교에서 제거할 변수를 표시한다. 이 방식은 같은 입력이 같은 출력을 낸다는 재현성 주장이 아니라, 이후의 학습자가 수정 범위와 관찰 범위를 되짚을 수 있게 하는 기록 형식이다.</p>
+          </div>
+
+          <div class="hd-callout" data-claim="" data-evidence-grade="C">
+            <p class="hd-label"><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 재사용 학습자 워크시트</p>
+            <ol class="hd-prompt-steps" data-claim="" data-evidence-grade="C">
+              <li class="hd-prompt-step" data-claim="" data-evidence-grade="C"><strong>장면 질문</strong><span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 이번 비교에서 화면으로 확인하려는 하나의 질문을 적는다. 질문은 ‘좋아 보이는가’가 아니라 축, 배치, 물성, 거리, 시선처럼 관찰 가능한 층으로 한정한다.</span></li>
+              <li class="hd-prompt-step" data-claim="" data-evidence-grade="C"><strong>권한표</strong><span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 인물·공간·조명·소품·카메라·오디오 중 각 참조 또는 문장이 맡는 속성과 맡지 않는 속성을 적는다.</span></li>
+              <li class="hd-prompt-step" data-claim="" data-evidence-grade="C"><strong>배치 기준</strong><span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 화면 기준과 인물 관계 기준을 나누어 위치, 몸 방향, 출입 방향, 소품 기준점을 기록한다.</span></li>
+              <li class="hd-prompt-step" data-claim="" data-evidence-grade="C"><strong>프레임 계약</strong><span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 가까운 프레임에서 계속 읽혀야 할 대상, 배경이 넓어져도 되는 조건, 카메라가 따라갈 대상과 방향을 적는다.</span></li>
+              <li class="hd-prompt-step" data-claim="" data-evidence-grade="C"><strong>물성 목록</strong><span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 인서트라면 표면, 접촉, 미세 움직임, 빛의 판독 조건 중 이번 컷에서 확인할 항목만 골라 적는다.</span></li>
+              <li class="hd-prompt-step" data-claim="" data-evidence-grade="C"><strong>인물별 시선표</strong><span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 각 인물의 위치, 시선의 대상과 방향, 이동 허용 여부를 분리해 적고, 카메라 전환 뒤에도 같은 관계인지 확인한다.</span></li>
+              <li class="hd-prompt-step" data-claim="" data-evidence-grade="C"><strong>A/B 변경선</strong><span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> B에서 바꿀 문장과 그대로 둘 문장을 나란히 적어, 비교 뒤 원인을 넓게 추정하지 않도록 한다.</span></li>
+              <li class="hd-prompt-step" data-claim="" data-evidence-grade="C"><strong>관찰 메모</strong><span><span class="hd-evidence hd-evidence--synthesis">교차 해석 · C</span> 확인한 구간, 기준 충족 여부가 아니라 보인 관계, 불명확한 부분, 다음에 고정할 변수를 기록한다.</span></li>
+              <li class="hd-prompt-step" data-claim="" data-evidence-grade="D"><strong>판정 보류</strong><span><span class="hd-evidence hd-evidence--limit">검증 한계 · D</span> 원문 구조의 비교와 실제 결과의 평가는 분리한다. 미디어·재생·선택 근거가 없으면 효과나 순위를 기록하지 않는다.</span></li>
+            </ol>
+          </div>
+
+          <div class="hd-callout hd-callout--limit" data-claim="" data-evidence-grade="D">
+            <p class="hd-label"><span class="hd-evidence hd-evidence--limit">검증 한계 · D</span> 이 실습이 말하지 않는 것</p>
+            <p>이 보충 절은 ZEPHYR Special 원문에서 읽은 통제 문법을 학습용으로 재구성한 것이다. 특정 엔진, 설정, 참조 조합, 반복 횟수가 결과를 재현하거나 개선한다는 주장은 하지 않는다. 실제 출력의 연속성이나 물성, 카메라 동작을 판정하려면 해당 미디어의 재생·프레임 확인과 비교 조건의 기록이 별도로 필요하다.</p>
+          </div>
         </section>
       </div>
     </div>
@@ -2770,6 +3066,7 @@ ACTION TIMING
     </footer>
   </div>
   <script src="/higgs-data/higgs-data.js?v=20260822b" defer=""></script>
+
 
 
 

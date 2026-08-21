@@ -18,6 +18,12 @@ def normalized_text_length(node)
   node.text.gsub(/\s+/, " ").strip.length
 end
 
+def explanatory_text_length(node)
+  copy = Nokogiri::HTML5.fragment(node.inner_html)
+  copy.css("pre, code").remove
+  normalized_text_length(copy)
+end
+
 unless File.file?(target)
   warn "HIGGS_DATA_INVALID missing_file=#{target}"
   exit 1
@@ -75,6 +81,7 @@ content_panel_ids.each do |panel_id|
 
   content_audit[panel_id] = {
     text_chars: normalized_text_length(panel),
+    explanatory_text_chars: explanatory_text_length(panel),
     section_navs: panel.css("[data-section-nav]").length,
     charts: panel.css("[data-chart]").length,
     prompt_quotes: panel.css("[data-prompt-quote]").length,
@@ -86,6 +93,9 @@ content_panel_ids.each do |panel_id|
   }
 
   errors << "#{panel_id} text_chars must be at least 8000" if content_audit[panel_id][:text_chars] < 8_000
+  if content_audit[panel_id][:explanatory_text_chars] < 8_000
+    errors << "#{panel_id} explanatory_text_chars excluding pre/code must be at least 8000"
+  end
   errors << "#{panel_id} must contain exactly one section navigator" unless content_audit[panel_id][:section_navs] == 1
 end
 
