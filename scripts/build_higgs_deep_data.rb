@@ -4,6 +4,7 @@ require "fileutils"
 require "json"
 require "optparse"
 require "pathname"
+require "tempfile"
 require "time"
 
 PROJECT_NAMES = {
@@ -46,6 +47,43 @@ ZERO_PATTERN_KEYS = %w[
   missing_aspect missing_utc_time missing_folder_path prompt_sha_mismatch
   prompt_character_count_mismatch missing_prompt_text
 ].freeze
+
+def canonical_target_path(path)
+  expanded = File.expand_path(path)
+  abort "output path must not be a symlink: #{expanded}" if File.symlink?(expanded)
+  return File.realpath(expanded) if File.exist?(expanded)
+
+  ancestor = File.dirname(expanded)
+  suffix = [File.basename(expanded)]
+  until File.exist?(ancestor) || File.symlink?(ancestor)
+    parent = File.dirname(ancestor)
+    abort "cannot resolve output path: #{expanded}" if parent == ancestor
+
+    suffix.unshift(File.basename(ancestor))
+    ancestor = parent
+  end
+  File.expand_path(File.join(File.realpath(ancestor), *suffix))
+end
+
+def path_within?(path, root)
+  path == root || path.start_with?(root + File::SEPARATOR)
+end
+
+def atomic_write(path, payload)
+  FileUtils.mkdir_p(File.dirname(path))
+  temporary = Tempfile.new([".#{File.basename(path)}.", ".tmp"], File.dirname(path))
+  begin
+    temporary.binmode
+    temporary.chmod(0o600)
+    temporary.write(payload)
+    temporary.flush
+    temporary.fsync
+    temporary.close
+    File.rename(temporary.path, path)
+  ensure
+    temporary.close! if temporary
+  end
+end
 
 def increment(hash, key, amount = 1)
   hash[key.to_s] = hash.fetch(key.to_s, 0) + amount
@@ -530,18 +568,25 @@ class ProjectAccumulator
   end
 end
 
+repo_root = File.expand_path("..", __dir__)
+allowed_output_root = File.realpath(File.join(repo_root, "higgs-data", "_data"))
 options = {}
 OptionParser.new do |parser|
   parser.banner = "Usage: build_higgs_deep_data.rb --source PATH --output PATH"
   parser.on("--source PATH", "Higgsfield analysis source root") { |value| options[:source] = File.expand_path(value) }
-  parser.on("--output PATH", "Destination JSON file") { |value| options[:output] = File.expand_path(value) }
+  parser.on("--output PATH", "Destination JSON file under higgs-data/_data") { |value| options[:output] = File.expand_path(value, repo_root) }
 end.parse!(ARGV)
 
 abort "missing required --source PATH" unless options[:source]
 abort "missing required --output PATH" unless options[:output]
 abort "source directory does not exist: #{options[:source]}" unless Dir.exist?(options[:source])
 
-source_root = options[:source]
+source_root = File.realpath(options[:source])
+output_path = canonical_target_path(options[:output])
+abort "output must stay under #{allowed_output_root}" unless path_within?(output_path, allowed_output_root)
+abort "output must not be inside the read-only source tree" if path_within?(output_path, source_root)
+options[:source] = source_root
+options[:output] = output_path
 projects = {}
 all_manifest_entries = []
 
@@ -628,9 +673,6 @@ result = {
 display_json = JSON.generate(projects.transform_values { |project| project.reject { |key, _| key == "private" }.merge("representative_candidates" => project["representative_candidates"].map { |candidate| candidate.fetch("display") }) })
 abort "raw user ID leaked into display fields" if display_json.match?(/user_[A-Za-z0-9]+/)
 
-FileUtils.mkdir_p(File.dirname(options[:output]))
-temporary = "#{options[:output]}.tmp-#{Process.pid}"
-File.open(temporary, "wb") { |file| file.write(JSON.pretty_generate(result)); file.write("\n") }
-File.rename(temporary, options[:output])
+atomic_write(options[:output], JSON.pretty_generate(result) + "\n")
 
 warn "HIGGS_DEEP_DATA_OK projects=#{projects.length} documents=#{global_corpus['prompt_documents']} groups=#{global_corpus['prompt_groups']} evidence=#{evidence.length} manifest=#{result['source_manifest_sha256']}"

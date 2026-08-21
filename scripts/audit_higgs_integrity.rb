@@ -3,7 +3,37 @@ require "fileutils"
 require "json"
 require "nokogiri"
 require "optparse"
+require "pathname"
 require "time"
+
+PROJECT_KEYS = %w[
+  ADILIADA Cully_Hill_Boys Hell_Grind KOK_BORY ONEIRIC ZEPHYR_Special
+].freeze
+
+def source_manifest_files(source_root)
+  files = []
+  PROJECT_KEYS.each do |project_key|
+    project_root = File.join(source_root, project_key)
+    next unless Dir.exist?(project_root)
+
+    prompts = Dir.glob(File.join(project_root, "**", "{prompts.md,prompts_part_*.md}"), File::FNM_EXTGLOB)
+      .select { |path| path.include?("#{File::SEPARATOR}owners#{File::SEPARATOR}") }
+    prompts.each { |path| files << [path, "prompt_archive"] }
+    Dir.glob(File.join(project_root, "ULW_Research_Log", "*record-summary.json"))
+      .each { |path| files << [path, "record_summary"] }
+  end
+  inventory = File.join(source_root, "Cully_Hill_Boys", "Cully_Hill_Boys_FOLDER_INVENTORY.md")
+  files << [inventory, "folder_inventory"] if File.file?(inventory)
+  files.sort_by(&:first)
+end
+
+def manifest_entry_id(path)
+  Digest::SHA256.hexdigest(path)[0, 12]
+end
+
+def path_within?(path, root)
+  path == root || path.start_with?(root + File::SEPARATOR)
+end
 
 repo_root = File.expand_path("..", __dir__)
 options = {
@@ -111,6 +141,52 @@ else
   errors << "missing analysis #{options[:analysis]}"
 end
 
+source_manifest = { count: 0, sha256: nil }
+source_manifest_paths = []
+if analysis.is_a?(Hash) && options[:source] && Dir.exist?(options[:source])
+  source_root = File.realpath(options[:source])
+  analysis_projects = analysis.fetch("projects", {}).keys.sort
+  errors << "analysis project set mismatch" unless analysis_projects == PROJECT_KEYS.sort
+
+  stored_entries = analysis.fetch("projects", {}).values.flat_map do |project|
+    project.dig("private", "source_files").to_a
+  end
+  stored_paths = stored_entries.map { |entry| entry["path"].to_s }
+  errors << "analysis source manifest has duplicate paths" unless stored_paths.uniq.length == stored_paths.length
+
+  actual_entries = source_manifest_files(source_root).map do |path, kind|
+    relative = Pathname.new(path).relative_path_from(Pathname.new(source_root)).to_s
+    {
+      "path" => relative,
+      "sha256" => Digest::SHA256.file(path).hexdigest,
+      "bytes" => File.size(path),
+      "kind" => kind
+    }
+  end
+  actual_paths = actual_entries.map { |entry| entry.fetch("path") }
+  source_manifest_paths = actual_paths
+  errors << "analysis source manifest file set mismatch" unless stored_paths.sort == actual_paths.sort
+
+  stored_by_path = stored_entries.to_h { |entry| [entry["path"].to_s, entry] }
+  actual_entries.each do |entry|
+    stored = stored_by_path[entry.fetch("path")]
+    next unless stored
+
+    %w[sha256 bytes kind].each do |field|
+      unless stored[field] == entry[field]
+        errors << "source manifest entry #{manifest_entry_id(entry.fetch('path'))} #{field} mismatch"
+      end
+    end
+  end
+
+  manifest_payload = actual_entries.sort_by { |entry| entry.fetch("path") }.map do |entry|
+    [entry.fetch("path"), entry.fetch("sha256"), entry.fetch("bytes"), entry.fetch("kind")].join("\0")
+  end.join("\n")
+  actual_manifest_sha = Digest::SHA256.hexdigest(manifest_payload)
+  errors << "analysis source manifest sha mismatch" unless analysis["source_manifest_sha256"] == actual_manifest_sha
+  source_manifest = { count: actual_entries.length, sha256: actual_manifest_sha }
+end
+
 evidence = analysis.is_a?(Hash) ? analysis.fetch("evidence", {}) : {}
 verified_quotes = []
 
@@ -154,7 +230,20 @@ quotes.each_with_index do |quote, index|
   prompt_sha = Digest::SHA256.hexdigest(expected_text)
   errors << "quote #{key} prompt sha mismatch" unless prompt_sha == record["prompt_sha256"]
 
-  source_path = record["source_path"].to_s
+  source_relative_path = record["source_relative_path"].to_s
+  source_path = ""
+  if options[:source] && !source_relative_path.empty?
+    candidate_path = File.expand_path(source_relative_path, options[:source])
+    if File.file?(candidate_path)
+      resolved_source_root = File.realpath(options[:source])
+      resolved_candidate = File.realpath(candidate_path)
+      if path_within?(resolved_candidate, resolved_source_root) && source_manifest_paths.include?(source_relative_path)
+        source_path = resolved_candidate
+      else
+        errors << "quote #{key} source path is outside the verified manifest"
+      end
+    end
+  end
   if File.file?(source_path)
     source_sha = Digest::SHA256.file(source_path).hexdigest
     errors << "quote #{key} source file sha mismatch" unless source_sha == record["source_file_sha256"]
@@ -166,7 +255,7 @@ quotes.each_with_index do |quote, index|
     key: key,
     prompt_sha256: prompt_sha,
     source_file_sha256: record["source_file_sha256"],
-    source_path: source_path
+    source_path: source_relative_path
   }
 end
 
@@ -190,6 +279,7 @@ checks << { name: "verified_media", count: verified_media.length }
 checks << { name: "unavailable_media", count: unavailable_media.length }
 checks << { name: "media_manifest", count: media_items.length }
 checks << { name: "machine_checked_numeric_leaves", count: numeric_leaf_nodes.length }
+checks << { name: "source_manifest", count: source_manifest[:count], sha256: source_manifest[:sha256] }
 
 report = {
   schema_version: 1,
