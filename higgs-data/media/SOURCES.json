@@ -1,0 +1,60 @@
+{
+  "verified_at": "2026-08-22",
+  "policy": "Official public project poster only. No direct playable video URL was present in the official project-page HTML at verification time.",
+  "items": [
+    {
+      "project": "ADILIADA",
+      "file": "adiliada.jpg",
+      "width": 1000,
+      "height": 525,
+      "sha256": "f062d09153f91a066d0639fab941370d47cac0c669a9c729853459c2ec3cb445",
+      "source": "https://static.higgsfield.ai/og/project/bbe6a216-bdde-46eb-a56a-a6b182521ba4-16ewbsz.jpg",
+      "project_page": "https://higgsfield.ai/@higgsfield.studio/projects/adiliada"
+    },
+    {
+      "project": "THE CULLY HILL BOYS",
+      "file": "cully-hill-boys.jpg",
+      "width": 1000,
+      "height": 525,
+      "sha256": "581a0284cc21f11538e477d374d1dad96ec894282b735b5ab0c4f27e7252472c",
+      "source": "https://static.higgsfield.ai/og/project/0efa70c1-07ec-410a-813b-8629502a7de3-spqjy3.jpg",
+      "project_page": "https://higgsfield.ai/@higgsfield.studio/projects/cully-hill-boys"
+    },
+    {
+      "project": "HELL GRIND",
+      "file": "hell-grind.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4d005671451649937dc1c6047e4d238c17c8f33c6b8f173ca4e46e97fac40a3b",
+      "source": "https://higgsfield.ai/og-hell-grind.jpg",
+      "project_page": "https://higgsfield.ai/@higgsfield.studio/projects/hell-grind"
+    },
+    {
+      "project": "KOK_BORY",
+      "file": "kok-bory.jpg",
+      "width": 1000,
+      "height": 525,
+      "sha256": "e882c0df87bace0beebf97fe814b8794d16b86c43bb9a9e4be0e36e22f8dd0d8",
+      "source": "https://static.higgsfield.ai/og/project/2d64daf4-97e8-468e-947b-20bcf6bf5da1-mtmvaq.jpg",
+      "project_page": "https://higgsfield.ai/@higgsfield.studio/projects/kok-boru-film"
+    },
+    {
+      "project": "ONEIRIC",
+      "file": "oneiric.jpg",
+      "width": 1000,
+      "height": 525,
+      "sha256": "0ba14f8a70252d5f330d19eaf9a35d1182d42a6c35681f432b8534fb006c5e2f",
+      "source": "https://static.higgsfield.ai/og/project/dfa3c067-3f17-47cc-bc0d-65cc82fb11f0-1alfhpi.jpg",
+      "project_page": "https://higgsfield.ai/@higgsfield.studio/projects/oneiric"
+    },
+    {
+      "project": "ZEPHYR Special",
+      "file": "zephyr-special.jpg",
+      "width": 1000,
+      "height": 525,
+      "sha256": "d1aea7c78d57062747b8d9a76a9f9620feca9d968e6876a9a83e6a86301c8612",
+      "source": "https://static.higgsfield.ai/og/project/cee8c1f3-75a0-4722-970d-c78bd1d23bff-2yx6xp.jpg",
+      "project_page": "https://higgsfield.ai/@higgsfield.studio/projects/zephyr-special"
+    }
+  ]
+}
