@@ -1,8 +1,50 @@
+require "digest"
+require "fileutils"
 require "json"
 require "nokogiri"
 require "optparse"
+require "tempfile"
+
+def canonical_target_path(path)
+  expanded = File.expand_path(path)
+  abort "output path must not be a symlink: #{expanded}" if File.symlink?(expanded)
+  return File.realpath(expanded) if File.exist?(expanded)
+
+  ancestor = File.dirname(expanded)
+  suffix = [File.basename(expanded)]
+  until File.exist?(ancestor) || File.symlink?(ancestor)
+    parent = File.dirname(ancestor)
+    abort "cannot resolve output path: #{expanded}" if parent == ancestor
+
+    suffix.unshift(File.basename(ancestor))
+    ancestor = parent
+  end
+  File.expand_path(File.join(File.realpath(ancestor), *suffix))
+end
+
+def path_within?(path, root)
+  path == root || path.start_with?(root + File::SEPARATOR)
+end
+
+def atomic_write(path, payload)
+  temporary = Tempfile.new([".#{File.basename(path)}.", ".tmp"], File.dirname(path))
+  begin
+    temporary.binmode
+    temporary.chmod(0o600)
+    temporary.write(payload)
+    temporary.flush
+    temporary.fsync
+    temporary.chmod(0o644)
+    temporary.close
+    File.rename(temporary.path, path)
+  ensure
+    temporary.close! if temporary
+  end
+end
 
 repo_root = File.expand_path("..", __dir__)
+site_root = File.realpath(File.join(repo_root, "higgs-data"))
+private_root = File.realpath(File.join(site_root, "_data"))
 options = {
   site: File.join(repo_root, "higgs-data", "index.html"),
   analysis: File.join(repo_root, "higgs-data", "_data", "analysis.json"),
@@ -18,6 +60,14 @@ OptionParser.new do |parser|
 end.parse!
 
 options[:output] ||= options[:site]
+options[:site] = File.realpath(options[:site])
+options[:analysis] = File.realpath(options[:analysis])
+options[:fragments] = File.realpath(options[:fragments])
+options[:output] = canonical_target_path(options[:output])
+abort("ASSEMBLE_FAIL site input must stay under #{site_root}") unless path_within?(options[:site], site_root)
+abort("ASSEMBLE_FAIL analysis input must stay under #{private_root}") unless path_within?(options[:analysis], private_root)
+abort("ASSEMBLE_FAIL fragment input must stay under #{private_root}") unless path_within?(options[:fragments], private_root)
+abort("ASSEMBLE_FAIL output must stay under #{site_root}") unless path_within?(options[:output], site_root)
 
 panel_contracts = {
   "panel-overview" => ["overview.html", nil, nil],
@@ -58,6 +108,21 @@ panel_contracts.each do |panel_id, (filename, project_key, source_slug)|
       abort("ASSEMBLE_FAIL #{filename} source key mismatch index=#{index}") unless quote["data-source-key"] == expected_key
       code.content = candidate.fetch("text")
     end
+
+    replacement.css("code[data-case-prompt-excerpt]").each do |code|
+      index = Integer(code["data-case-prompt-index"], 10)
+      start_line = Integer(code["data-case-excerpt-start"], 10)
+      line_count = Integer(code["data-case-excerpt-lines"], 10)
+      candidate = candidates.fetch(index - 1)
+      lines = candidate.fetch("text").lines
+      excerpt = lines.slice(start_line, line_count)&.join.to_s
+      abort("ASSEMBLE_FAIL empty case excerpt #{filename}:#{index}") if excerpt.strip.empty?
+
+      expected_key = "#{source_slug}.quote.#{candidate.fetch('prompt_sha256')[0, 16]}"
+      abort("ASSEMBLE_FAIL case excerpt source key mismatch #{filename}:#{index}") unless code["data-source-key"] == expected_key
+      code.content = excerpt
+      code["data-excerpt-sha256"] = Digest::SHA256.hexdigest(excerpt)
+    end
   end
 
   target = document.at_css("##{panel_id}")
@@ -72,6 +137,7 @@ end
 verification = Nokogiri::HTML5.parse(serialized)
 abort("ASSEMBLE_FAIL expected eight panels") unless verification.css('[role="tabpanel"]').length == 8
 abort("ASSEMBLE_FAIL expected 36 prompt quotes") unless verification.css("[data-prompt-quote]").length == 36
+abort("ASSEMBLE_FAIL expected 12 case excerpts") unless verification.css("code[data-case-prompt-excerpt]").length == 12
 
 panel_contracts.each do |panel_id, (_filename, project_key, _source_slug)|
   next unless project_key
@@ -80,7 +146,14 @@ panel_contracts.each do |panel_id, (_filename, project_key, _source_slug)|
     index = Integer(quote.at_css("pre > code")["data-prompt-index"], 10)
     abort("ASSEMBLE_FAIL quote text drift #{panel_id}:#{index}") unless quote.at_css("pre > code").text == candidates.fetch(index - 1).fetch("text")
   end
+  verification.css("##{panel_id} code[data-case-prompt-excerpt]").each do |code|
+    index = Integer(code["data-case-prompt-index"], 10)
+    excerpt = code.text
+    expected = candidates.fetch(index - 1).fetch("text")
+    abort("ASSEMBLE_FAIL case excerpt drift #{panel_id}:#{index}") unless expected.include?(excerpt)
+    abort("ASSEMBLE_FAIL case excerpt sha drift #{panel_id}:#{index}") unless Digest::SHA256.hexdigest(excerpt) == code["data-excerpt-sha256"]
+  end
 end
 
-File.write(options[:output], serialized)
+atomic_write(options[:output], serialized)
 puts "HIGGS_ASSEMBLE_OK panels=7 quotes=36 output=#{options[:output]}"

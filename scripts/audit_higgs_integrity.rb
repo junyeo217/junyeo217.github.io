@@ -189,6 +189,7 @@ end
 
 evidence = analysis.is_a?(Hash) ? analysis.fetch("evidence", {}) : {}
 verified_quotes = []
+verified_case_excerpts = []
 
 def resolve_analysis_path(analysis, path)
   path.to_s.split(".").reduce(analysis) do |value, segment|
@@ -259,6 +260,36 @@ quotes.each_with_index do |quote, index|
   }
 end
 
+case_excerpts = document.css("code[data-case-prompt-excerpt]")
+errors << "expected 12 case prompt excerpts, got #{case_excerpts.length}" unless case_excerpts.length == 12
+case_excerpts.each_with_index do |code, index|
+  key = code["data-source-key"].to_s
+  record = evidence[key]
+  if key.empty? || !record.is_a?(Hash)
+    errors << "case excerpt #{index + 1} has no analysis evidence"
+    next
+  end
+
+  excerpt = code.text
+  errors << "case excerpt #{index + 1} is not exact source text" unless record.fetch("text", "").include?(excerpt)
+  excerpt_sha = Digest::SHA256.hexdigest(excerpt)
+  errors << "case excerpt #{index + 1} sha mismatch" unless code["data-excerpt-sha256"] == excerpt_sha
+  verified_case_excerpts << { key: key, sha256: excerpt_sha, characters: excerpt.length }
+end
+
+document.css("[data-case-point]").each_with_index do |point, index|
+  key = point["data-source-key"].to_s
+  record = evidence[key]
+  quote_text = point.at_css("q[data-case-point-quote]")&.text.to_s
+  explanation = point.at_css("[data-case-point-explanation]")&.text.to_s.strip
+  errors << "case point #{index + 1} has no analysis evidence" unless record.is_a?(Hash)
+  errors << "case point #{index + 1} quote is empty" if quote_text.empty?
+  if record.is_a?(Hash) && !quote_text.empty?
+    errors << "case point #{index + 1} quote is not exact source text" unless record.fetch("text", "").include?(quote_text)
+  end
+  errors << "case point #{index + 1} explanation is empty" if explanation.empty?
+end
+
 document.css("[data-chart], [data-derived-insight], [data-zero-finding]").each_with_index do |node, index|
   key = node["data-source-key"].to_s
   resolved = evidence[key] || resolve_analysis_path(analysis, key)
@@ -274,6 +305,8 @@ checks << { name: "raw_account_ids", count: raw_user_ids.length }
 checks << { name: "owner_handles", count: exposed_handles.length }
 checks << { name: "prompt_quotes", count: quotes.length }
 checks << { name: "verified_quotes", count: verified_quotes.length }
+checks << { name: "verified_case_excerpts", count: verified_case_excerpts.length }
+checks << { name: "verified_case_points", count: document.css("[data-case-point]").length }
 checks << { name: "evidence_grades", counts: grades }
 checks << { name: "verified_media", count: verified_media.length }
 checks << { name: "unavailable_media", count: unavailable_media.length }
