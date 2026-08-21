@@ -5,7 +5,10 @@ module HiggsHtmlSafety
   EXECUTABLE_URL_ATTRIBUTES = %w[action formaction href poster src xlink:href].freeze
   ASCII_URL_CONTROL = /[\u0000-\u001F\u007F]/.freeze
   EXECUTABLE_URL_SCHEME = /\A(?:javascript|vbscript|data:text\/html)/i.freeze
-  UNSAFE_INLINE_STYLE = /(?:expression\s*\(|javascript\s*:|url\s*\()/i.freeze
+  SAFE_INLINE_STYLE = /\A--hd-chart-value:\s*(?:100|[0-9]{1,2}(?:\.[0-9]{1,3})?)%\z/.freeze
+  RESOURCE_IRI_ATTRIBUTES = %w[
+    clip-path color-profile cursor fill filter marker marker-end marker-mid marker-start mask stroke
+  ].freeze
 
   module_function
 
@@ -16,6 +19,35 @@ module HiggsHtmlSafety
   def fragment_element_error(name)
     normalized_name = name.to_s.downcase
     return "unsafe element #{normalized_name}" if FORBIDDEN_FRAGMENT_ELEMENTS.include?(normalized_name)
+
+    nil
+  end
+
+  def fragment_errors(root)
+    ([root] + root.css("*").to_a).each_with_object([]) do |node, errors|
+      element_error = fragment_element_error(node.name)
+      errors << element_error if element_error
+
+      node.attribute_nodes.each do |attribute|
+        attribute_error = attribute_error(node.name, attribute.name, attribute.value)
+        errors << attribute_error if attribute_error
+      end
+    end
+  end
+
+  def resource_iri_error(name, value)
+    return nil unless RESOURCE_IRI_ATTRIBUTES.include?(name)
+
+    raw_value = value.to_s
+    return "external resource IRI" if raw_value.include?("\\") || raw_value.include?("/*")
+
+    canonical_value = raw_value.gsub(/\s+/, "")
+    url_count = canonical_value.scan(/url\(/i).length
+    return nil if url_count.zero?
+
+    targets = canonical_value.scan(/url\(([^()]*)\)/i).flatten
+    return "external resource IRI" unless targets.length == url_count
+    return "external resource IRI" unless targets.all? { |target| target.match?(/\A#[A-Za-z_][A-Za-z0-9_.:-]*\z/) }
 
     nil
   end
@@ -52,7 +84,12 @@ module HiggsHtmlSafety
 
     url_error = url_attribute_error(normalized_name, value)
     return url_error if url_error
-    return "unsafe inline style" if normalized_name == "style" && value.to_s.match?(UNSAFE_INLINE_STYLE)
+    if normalized_name == "style" && !value.to_s.strip.match?(SAFE_INLINE_STYLE)
+      return "unsafe inline style"
+    end
+
+    iri_error = resource_iri_error(normalized_name, value)
+    return iri_error if iri_error
 
     resource_error = resource_attribute_error(element_name, normalized_name, value)
     return resource_error if resource_error

@@ -33,6 +33,7 @@ class HiggsHtmlSafetyTest < Minitest::Test
     assert_equal "event attribute onclick", HiggsHtmlSafety.attribute_error("section", "onclick", "alert(1)")
     assert_equal "srcdoc attribute", HiggsHtmlSafety.attribute_error("section", "srcdoc", "<script>alert(1)</script>")
     assert_equal "unsafe inline style", HiggsHtmlSafety.attribute_error("section", "style", "background:url(https://attacker.invalid/a.png)")
+    assert_equal "unsafe inline style", HiggsHtmlSafety.attribute_error("section", "style", 'background-image:image-set("https://attacker.invalid/a.png" 2x)')
   end
 
   def test_rejects_external_resource_loads_beyond_img_src
@@ -51,6 +52,30 @@ class HiggsHtmlSafetyTest < Minitest::Test
     assert_nil HiggsHtmlSafety.attribute_error("script", "src", "/higgs-data/higgs-data.js?v=1")
   end
 
+  def test_fragment_traversal_rejects_external_svg_presentation_iris
+    fragment = Nokogiri::HTML5.fragment(<<~HTML)
+      <section id="panel-overview">
+        <svg>
+          <rect fill="url(https://attacker.invalid/fill.svg#paint)"></rect>
+          <g filter="url(https://attacker.invalid/filter.svg#blur)"></g>
+          <path mask="url(https://attacker.invalid/mask.svg#cutout)"></path>
+        </svg>
+      </section>
+    HTML
+
+    errors = HiggsHtmlSafety.fragment_errors(fragment.element_children.first)
+    assert_equal ["external resource IRI", "external resource IRI", "external resource IRI"], errors
+  end
+
+  def test_svg_presentation_iris_allow_only_plain_values_and_local_fragments
+    assert_nil HiggsHtmlSafety.attribute_error("rect", "fill", "#c7ff4a")
+    assert_nil HiggsHtmlSafety.attribute_error("rect", "fill", "url(#study-gradient)")
+    assert_nil HiggsHtmlSafety.attribute_error("g", "filter", "none")
+    assert_equal "external resource IRI", HiggsHtmlSafety.attribute_error("rect", "fill", "url(data:image/svg+xml,unsafe)")
+    assert_equal "external resource IRI", HiggsHtmlSafety.attribute_error("rect", "fill", "u/**/rl(https://attacker.invalid/a.svg)")
+    assert_equal "external resource IRI", HiggsHtmlSafety.attribute_error("rect", "fill", "u\\72l(https://attacker.invalid/a.svg)")
+  end
+
   def test_rejects_forbidden_fragment_elements
     %w[script iframe object embed form base link meta style foreignObject animate animateMotion animateTransform set].each do |name|
       assert_match(/unsafe element/, HiggsHtmlSafety.fragment_element_error(name))
@@ -60,6 +85,6 @@ class HiggsHtmlSafetyTest < Minitest::Test
   def test_allows_non_executable_fragment_markup
     assert_nil HiggsHtmlSafety.fragment_element_error("section")
     assert_nil HiggsHtmlSafety.attribute_error("section", "class", "study-card")
-    assert_nil HiggsHtmlSafety.attribute_error("section", "style", "--bar: 42%")
+    assert_nil HiggsHtmlSafety.attribute_error("span", "style", "--hd-chart-value: 42.125%")
   end
 end

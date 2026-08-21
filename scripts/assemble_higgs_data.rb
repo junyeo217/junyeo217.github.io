@@ -67,17 +67,8 @@ def case_metadata_display(field, value)
 end
 
 def validate_safe_fragment!(root, filename)
-  ([root] + root.css("*").to_a).each do |node|
-    tag = node.name.downcase
-    element_error = HiggsHtmlSafety.fragment_element_error(tag)
-    abort("ASSEMBLE_FAIL #{element_error} in #{filename}") if element_error
-
-    node.attribute_nodes.each do |attribute|
-      name = attribute.name.downcase
-      attribute_error = HiggsHtmlSafety.attribute_error(tag, name, attribute.value)
-      abort("ASSEMBLE_FAIL #{attribute_error} in #{filename}") if attribute_error
-    end
-  end
+  fragment_error = HiggsHtmlSafety.fragment_errors(root).first
+  abort("ASSEMBLE_FAIL #{fragment_error} in #{filename}") if fragment_error
 
   root.css("img[src]").each do |image|
     abort("ASSEMBLE_FAIL non-local image in #{filename}") unless image["src"].start_with?("/higgs-data/media/")
