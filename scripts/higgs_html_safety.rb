@@ -1,6 +1,6 @@
 module HiggsHtmlSafety
   FORBIDDEN_FRAGMENT_ELEMENTS = %w[
-    animate animatemotion animatetransform base embed foreignobject form iframe link meta object script set style
+    animate animatemotion animatetransform applet base embed fencedframe foreignobject form frame frameset iframe link meta object portal script set style
   ].freeze
   EXECUTABLE_URL_ATTRIBUTES = %w[action formaction href poster src xlink:href].freeze
   ASCII_URL_CONTROL = /[\u0000-\u001F\u007F]/.freeze
@@ -81,6 +81,7 @@ module HiggsHtmlSafety
     normalized_name = name.to_s.downcase
     return "event attribute #{normalized_name}" if normalized_name.start_with?("on")
     return "srcdoc attribute" if normalized_name == "srcdoc"
+    return "unsupported resource attribute #{normalized_name}" if %w[dynsrc imagesrcset lowsrc ping].include?(normalized_name)
 
     url_error = url_attribute_error(normalized_name, value)
     return url_error if url_error

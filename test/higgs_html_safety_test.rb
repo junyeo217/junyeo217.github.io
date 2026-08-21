@@ -34,6 +34,8 @@ class HiggsHtmlSafetyTest < Minitest::Test
     assert_equal "srcdoc attribute", HiggsHtmlSafety.attribute_error("section", "srcdoc", "<script>alert(1)</script>")
     assert_equal "unsafe inline style", HiggsHtmlSafety.attribute_error("section", "style", "background:url(https://attacker.invalid/a.png)")
     assert_equal "unsafe inline style", HiggsHtmlSafety.attribute_error("section", "style", 'background-image:image-set("https://attacker.invalid/a.png" 2x)')
+    assert_equal "unsupported resource attribute ping", HiggsHtmlSafety.attribute_error("a", "ping", "https://attacker.invalid/ping")
+    assert_equal "unsupported resource attribute lowsrc", HiggsHtmlSafety.attribute_error("img", "lowsrc", "https://attacker.invalid/preview.png")
   end
 
   def test_rejects_external_resource_loads_beyond_img_src
@@ -77,7 +79,7 @@ class HiggsHtmlSafetyTest < Minitest::Test
   end
 
   def test_rejects_forbidden_fragment_elements
-    %w[script iframe object embed form base link meta style foreignObject animate animateMotion animateTransform set].each do |name|
+    %w[script iframe object embed applet frame frameset fencedframe portal form base link meta style foreignObject animate animateMotion animateTransform set].each do |name|
       assert_match(/unsafe element/, HiggsHtmlSafety.fragment_element_error(name))
     end
   end
