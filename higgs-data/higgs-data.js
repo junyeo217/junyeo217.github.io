@@ -25,7 +25,13 @@
 
     function tabFromHash() {
       if (!historyEnabled || !window.location.hash) return null;
-      var value = decodeURIComponent(window.location.hash.slice(1));
+      var value;
+      try {
+        value = decodeURIComponent(window.location.hash.slice(1));
+      } catch (error) {
+        if (error instanceof URIError) return null;
+        throw error;
+      }
       return tabs.find(function (tab) {
         return tab.getAttribute('data-tab-value') === value && !tab.disabled;
       }) || null;
@@ -127,6 +133,14 @@
       focus: false,
       scroll: false
     });
+
+    if (initial.scrollIntoView) {
+      initial.scrollIntoView({
+        behavior: 'auto',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
 
     return {
       activate: activate,

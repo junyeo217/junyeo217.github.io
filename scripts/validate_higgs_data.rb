@@ -21,8 +21,16 @@ id_set = ids.to_h { |id| [id, true] }
 errors << "expected 8 tabs, got #{tabs.length}" unless tabs.length == 8
 errors << "expected 8 panels, got #{panels.length}" unless panels.length == 8
 errors << "duplicate ids: #{ids.tally.select { |_id, count| count > 1 }.keys.join(', ')}" unless ids.uniq.length == ids.length
-errors << "expected one selected tab" unless tabs.count { |tab| tab["aria-selected"] == "true" } == 1
-errors << "expected one initially visible panel" unless panels.count { |panel| panel["hidden"].nil? } == 1
+selected_tabs = tabs.select { |tab| tab["aria-selected"] == "true" }
+visible_panels = panels.select { |panel| panel["hidden"].nil? }
+errors << "expected one selected tab" unless selected_tabs.length == 1
+errors << "expected one initially visible panel" unless visible_panels.length == 1
+
+if selected_tabs.length == 1 && visible_panels.length == 1
+  controlled_panel = selected_tabs.first["aria-controls"]
+  visible_panel = visible_panels.first["id"]
+  errors << "selected tab controls #{controlled_panel}, but visible panel is #{visible_panel}" unless controlled_panel == visible_panel
+end
 
 expected_values = %w[overview adiliada cully-hill-boys hell-grind kok-bory oneiric zephyr-special author]
 actual_values = tabs.map { |tab| tab["data-tab-value"] }
