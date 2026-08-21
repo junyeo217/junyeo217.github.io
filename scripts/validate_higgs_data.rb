@@ -24,6 +24,23 @@ def explanatory_text_length(node)
   normalized_text_length(copy)
 end
 
+CASE_METADATA_FIELDS = %w[
+  character_count tool resolution dimensions aspect generation_count output_count
+].freeze
+
+def case_metadata_display(field, value)
+  labels = {
+    "character_count" => "chars",
+    "tool" => "tool",
+    "resolution" => "resolution",
+    "dimensions" => "dimensions",
+    "aspect" => "aspect",
+    "generation_count" => "generations",
+    "output_count" => "outputs"
+  }
+  "#{labels.fetch(field)}: #{value}"
+end
+
 unless File.file?(target)
   warn "HIGGS_DATA_INVALID missing_file=#{target}"
   exit 1
@@ -35,6 +52,34 @@ tabs = document.css('[role="tab"]')
 panels = document.css('[role="tabpanel"]')
 ids = document.css("[id]").map { |node| node["id"] }
 id_set = ids.to_h { |id| [id, true] }
+
+forbidden_elements = document.css("iframe, object, embed, foreignObject, foreignobject, form, base")
+errors << "unsafe executable/embed elements present" unless forbidden_elements.empty?
+document.css("*").each do |node|
+  node.attribute_nodes.each do |attribute|
+    name = attribute.name.downcase
+    value = attribute.value.to_s.strip
+    errors << "inline event attribute #{name} on #{node.name}" if name.start_with?("on")
+    errors << "srcdoc attribute on #{node.name}" if name == "srcdoc"
+    if %w[href src srcset formaction action].include?(name) && value.match?(/\A(?:javascript|vbscript|data:text\/html)/i)
+      errors << "executable URL on #{node.name}"
+    end
+    if name == "style" && value.match?(/(?:expression\s*\(|javascript\s*:|url\s*\()/i)
+      errors << "unsafe inline style on #{node.name}"
+    end
+  end
+end
+document.css("script").each do |script|
+  safe_json = script["type"] == "application/ld+json" && script["src"].nil?
+  safe_local = script["src"].to_s.start_with?("/higgs-data/higgs-data.js?") && script.text.strip.empty?
+  errors << "unsafe script element" unless safe_json || safe_local
+end
+document.css('link[rel~="stylesheet"]').each do |link|
+  errors << "non-local stylesheet" unless link["href"].to_s.start_with?("/higgs-data/")
+end
+document.css("img[src]").each do |image|
+  errors << "non-local public image" unless image["src"].to_s.start_with?("/higgs-data/media/")
+end
 
 errors << "expected 8 tabs, got #{tabs.length}" unless tabs.length == 8
 errors << "expected 8 panels, got #{panels.length}" unless panels.length == 8
@@ -131,8 +176,20 @@ project_panel_ids.each do |panel_id|
 
     metadata = item.at_css("[data-case-metadata]")
     errors << "#{panel_id} case #{index + 1} missing metadata chips" unless metadata
-    if metadata && metadata.element_children.length < 3
-      errors << "#{panel_id} case #{index + 1} needs at least three metadata chips"
+    if metadata
+      metadata_items = metadata.element_children
+      fields = metadata_items.map { |child| child["data-case-meta-field"].to_s }
+      errors << "#{panel_id} case #{index + 1} metadata fields mismatch" unless fields == CASE_METADATA_FIELDS
+      metadata_items.each_with_index do |child, metadata_index|
+        field = child["data-case-meta-field"].to_s
+        value = child["data-case-source-value"].to_s
+        errors << "#{panel_id} case #{index + 1} metadata #{metadata_index + 1} missing source key" if child["data-source-key"].to_s.empty?
+        errors << "#{panel_id} case #{index + 1} metadata #{metadata_index + 1} missing source value" if value.empty?
+        if CASE_METADATA_FIELDS.include?(field)
+          expected_text = case_metadata_display(field, value)
+          errors << "#{panel_id} case #{index + 1} metadata #{metadata_index + 1} display mismatch" unless child.text.strip == expected_text
+        end
+      end
     end
 
     excerpt = item.at_css("pre > code[data-case-prompt-excerpt]")
@@ -141,6 +198,12 @@ project_panel_ids.each do |panel_id|
       errors << "#{panel_id} case #{index + 1} prompt excerpt is too short" if excerpt.text.strip.length < 20
       errors << "#{panel_id} case #{index + 1} prompt excerpt missing source key" if excerpt["data-source-key"].to_s.empty?
       errors << "#{panel_id} case #{index + 1} prompt excerpt missing SHA" if excerpt["data-excerpt-sha256"].to_s.empty?
+      if metadata
+        errors << "#{panel_id} case #{index + 1} metadata source mismatch" unless metadata["data-source-key"] == excerpt["data-source-key"]
+        metadata.element_children.each do |child|
+          errors << "#{panel_id} case #{index + 1} metadata item source mismatch" unless child["data-source-key"] == excerpt["data-source-key"]
+        end
+      end
     end
 
     points = item.css("[data-case-point]")

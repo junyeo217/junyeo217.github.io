@@ -42,6 +42,56 @@ def atomic_write(path, payload)
   end
 end
 
+CASE_METADATA_FIELDS = %w[
+  character_count tool resolution dimensions aspect generation_count output_count
+].freeze
+
+def case_metadata_value(candidate, field)
+  return "#{candidate.fetch('width')}x#{candidate.fetch('height')}" if field == "dimensions"
+
+  candidate.fetch(field).to_s
+end
+
+def case_metadata_display(field, value)
+  labels = {
+    "character_count" => "chars",
+    "tool" => "tool",
+    "resolution" => "resolution",
+    "dimensions" => "dimensions",
+    "aspect" => "aspect",
+    "generation_count" => "generations",
+    "output_count" => "outputs"
+  }
+  "#{labels.fetch(field)}: #{value}"
+end
+
+def validate_safe_fragment!(root, filename)
+  forbidden_tags = %w[script iframe object embed foreignobject form base link meta].freeze
+  url_attributes = %w[href src srcset formaction action].freeze
+
+  ([root] + root.css("*").to_a).each do |node|
+    tag = node.name.downcase
+    abort("ASSEMBLE_FAIL unsafe element #{tag} in #{filename}") if forbidden_tags.include?(tag)
+
+    node.attribute_nodes.each do |attribute|
+      name = attribute.name.downcase
+      value = attribute.value.to_s.strip
+      abort("ASSEMBLE_FAIL event attribute #{name} in #{filename}") if name.start_with?("on")
+      abort("ASSEMBLE_FAIL srcdoc attribute in #{filename}") if name == "srcdoc"
+      if url_attributes.include?(name) && value.match?(/\A(?:javascript|vbscript|data:text\/html)/i)
+        abort("ASSEMBLE_FAIL executable URL in #{filename}")
+      end
+      if name == "style" && value.match?(/(?:expression\s*\(|javascript\s*:|url\s*\()/i)
+        abort("ASSEMBLE_FAIL unsafe inline style in #{filename}")
+      end
+    end
+  end
+
+  root.css("img[src]").each do |image|
+    abort("ASSEMBLE_FAIL non-local image in #{filename}") unless image["src"].start_with?("/higgs-data/media/")
+  end
+end
+
 repo_root = File.expand_path("..", __dir__)
 site_root = File.realpath(File.join(repo_root, "higgs-data"))
 private_root = File.realpath(File.join(site_root, "_data"))
@@ -91,6 +141,7 @@ panel_contracts.each do |panel_id, (filename, project_key, source_slug)|
   abort("ASSEMBLE_FAIL #{filename} must have one root") unless roots.length == 1
   replacement = roots.first
   abort("ASSEMBLE_FAIL #{filename} root id mismatch") unless replacement["id"] == panel_id
+  validate_safe_fragment!(replacement, filename)
 
   if project_key
     candidates = analysis.fetch("projects").fetch(project_key).fetch("representative_candidates")
@@ -122,6 +173,23 @@ panel_contracts.each do |panel_id, (filename, project_key, source_slug)|
       abort("ASSEMBLE_FAIL case excerpt source key mismatch #{filename}:#{index}") unless code["data-source-key"] == expected_key
       code.content = excerpt
       code["data-excerpt-sha256"] = Digest::SHA256.hexdigest(excerpt)
+
+      case_node = code.ancestors.find { |node| node.element? && node["data-case"] }
+      abort("ASSEMBLE_FAIL case excerpt has no case #{filename}:#{index}") unless case_node
+      metadata = case_node.at_css("[data-case-metadata]")
+      abort("ASSEMBLE_FAIL case excerpt has no metadata #{filename}:#{index}") unless metadata
+      metadata.children.remove
+      metadata["data-source-key"] = expected_key
+      child_name = metadata.name.downcase == "ul" ? "li" : "span"
+      CASE_METADATA_FIELDS.each do |field|
+        value = case_metadata_value(candidate, field)
+        child = Nokogiri::XML::Node.new(child_name, replacement.document)
+        child["data-case-meta-field"] = field
+        child["data-source-key"] = expected_key
+        child["data-case-source-value"] = value
+        child.content = case_metadata_display(field, value)
+        metadata.add_child(child)
+      end
     end
   end
 
