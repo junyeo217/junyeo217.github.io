@@ -1362,6 +1362,56 @@ table.hd-matrix {
   margin-top: var(--hd-space-4);
 }
 
+.hd-case__prompt {
+  max-width: 100%;
+  margin: var(--hd-space-5) 0 0;
+  padding: var(--hd-space-4);
+  overflow-x: auto;
+  border: 1px solid var(--hd-line);
+  background: var(--hd-paper-2);
+  color: var(--hd-text);
+  font-family: var(--hd-mono);
+  font-size: .75rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  scrollbar-color: var(--hd-line-strong) transparent;
+  scrollbar-width: thin;
+}
+
+.hd-case__prompt code {
+  font-family: inherit;
+}
+
+.hd-case__points {
+  display: grid;
+  margin-bottom: 0;
+  padding: 0;
+  border-top: 1px solid var(--hd-line);
+  list-style: none;
+}
+
+.hd-case__points [data-case-point] {
+  display: grid;
+  gap: var(--hd-space-2);
+  margin: 0;
+  padding: var(--hd-space-4) 0;
+  border-bottom: 1px solid var(--hd-line);
+}
+
+.hd-case__points q {
+  color: var(--hd-accent-strong);
+  font-family: var(--hd-mono);
+  font-size: .75rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.hd-case__points [data-case-point-explanation] {
+  color: var(--hd-muted);
+  line-height: 1.75;
+}
+
 .hd-case__chips {
   display: flex;
   flex-wrap: wrap;

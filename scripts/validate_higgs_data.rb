@@ -128,8 +128,38 @@ project_panel_ids.each do |panel_id|
   document.css("##{panel_id} [data-case]").each_with_index do |item, index|
     media_states = item.css("[data-media-verified], [data-media-unavailable]")
     errors << "#{panel_id} case #{index + 1} must have exactly one media state" unless media_states.length == 1
+
+    metadata = item.at_css("[data-case-metadata]")
+    errors << "#{panel_id} case #{index + 1} missing metadata chips" unless metadata
+    if metadata && metadata.element_children.length < 3
+      errors << "#{panel_id} case #{index + 1} needs at least three metadata chips"
+    end
+
+    excerpt = item.at_css("pre > code[data-case-prompt-excerpt]")
+    errors << "#{panel_id} case #{index + 1} missing prompt excerpt" unless excerpt
+    if excerpt
+      errors << "#{panel_id} case #{index + 1} prompt excerpt is too short" if excerpt.text.strip.length < 20
+      errors << "#{panel_id} case #{index + 1} prompt excerpt missing source key" if excerpt["data-source-key"].to_s.empty?
+      errors << "#{panel_id} case #{index + 1} prompt excerpt missing SHA" if excerpt["data-excerpt-sha256"].to_s.empty?
+    end
+
+    points = item.css("[data-case-point]")
+    errors << "#{panel_id} case #{index + 1} needs at least two quoted structure points" if points.length < 2
+    points.each_with_index do |point, point_index|
+      errors << "#{panel_id} case #{index + 1} point #{point_index + 1} missing exact quote" unless point.at_css("q[data-case-point-quote]")
+      errors << "#{panel_id} case #{index + 1} point #{point_index + 1} missing explanation" unless point.at_css("[data-case-point-explanation]")
+      errors << "#{panel_id} case #{index + 1} point #{point_index + 1} missing source key" if point["data-source-key"].to_s.empty?
+    end
+
+    if metadata && media_states.length == 1 && excerpt && points.any?
+      descendants = item.xpath(".//*").to_a
+      order = [metadata, media_states.first, excerpt, points.first].map { |node| descendants.index(node) }
+      errors << "#{panel_id} case #{index + 1} anatomy must be metadata, media, prompt, points" unless order == order.sort
+    end
   end
 end
+
+errors << "expected 12 case prompt excerpts" unless document.css("code[data-case-prompt-excerpt]").length == 12
 
 valid_grades = %w[A B C D]
 document.css("[data-claim]").each_with_index do |claim, index|
