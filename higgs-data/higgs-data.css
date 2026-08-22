@@ -1419,6 +1419,10 @@ table.hd-matrix {
   border-top: 1px solid var(--hd-line-strong);
 }
 
+.hd-crosscut-axis > div:first-child .hd-card__copy {
+  max-width: var(--hd-reading-measure);
+}
+
 .hd-crosscut-source {
   display: grid;
   grid-template-rows: auto minmax(calc(var(--hd-space-8) + var(--hd-space-6)), auto) auto 1fr;

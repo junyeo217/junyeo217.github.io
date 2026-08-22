@@ -52,6 +52,8 @@
       var target = document.getElementById(targetId);
       if (!panel || !target || !panel.contains(target)) return;
 
+      if (target.tagName === 'DETAILS') target.open = true;
+
       var ancestor = target.parentElement;
       while (ancestor && ancestor !== panel) {
         if (ancestor.tagName === 'DETAILS') ancestor.open = true;
