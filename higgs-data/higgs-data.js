@@ -23,18 +23,67 @@
       return tabs.filter(function (tab) { return !tab.disabled; });
     }
 
-    function tabFromHash() {
+    function routeFromHash() {
       if (!historyEnabled || !window.location.hash) return null;
-      var value;
+      var raw = window.location.hash.slice(1);
+      var separator = raw.indexOf('/');
+      var tabValue;
+      var targetId = '';
       try {
-        value = decodeURIComponent(window.location.hash.slice(1));
+        tabValue = decodeURIComponent(separator < 0 ? raw : raw.slice(0, separator));
+        if (separator >= 0) targetId = decodeURIComponent(raw.slice(separator + 1));
       } catch (error) {
         if (error instanceof URIError) return null;
         throw error;
       }
+      return { tabValue: tabValue, targetId: targetId };
+    }
+
+    function tabFromRoute(route) {
+      if (!route) return null;
       return tabs.find(function (tab) {
-        return tab.getAttribute('data-tab-value') === value && !tab.disabled;
+        return tab.getAttribute('data-tab-value') === route.tabValue && !tab.disabled;
       }) || null;
+    }
+
+    function revealTarget(tab, targetId) {
+      if (!tab || !targetId) return;
+      var panel = panelFor(tab);
+      var target = document.getElementById(targetId);
+      if (!panel || !target || !panel.contains(target)) return;
+
+      var ancestor = target.parentElement;
+      while (ancestor && ancestor !== panel) {
+        if (ancestor.tagName === 'DETAILS') ancestor.open = true;
+        ancestor = ancestor.parentElement;
+      }
+
+      if (target.matches('[data-prompt-quote]')) {
+        var promptDetails = target.querySelector('details');
+        if (promptDetails) promptDetails.open = true;
+      }
+
+      var scroll = function () {
+        target.scrollIntoView({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        });
+      };
+      if (window.requestAnimationFrame) {
+        window.requestAnimationFrame(scroll);
+      } else {
+        window.setTimeout(scroll, 0);
+      }
+    }
+
+    function applyHashRoute() {
+      var route = routeFromHash();
+      var tab = tabFromRoute(route) || defaultTab;
+      activate(tab, { updateHash: false, focus: false, scroll: false });
+      if (route && tab.getAttribute('data-tab-value') === route.tabValue) {
+        revealTarget(tab, route.targetId);
+      }
     }
 
     function setHash(tab, replace) {
@@ -121,12 +170,12 @@
 
     if (historyEnabled) {
       window.addEventListener('hashchange', function () {
-        var hashed = tabFromHash();
-        activate(hashed || defaultTab, { updateHash: false, focus: false });
+        applyHashRoute();
       });
     }
 
-    var initial = tabFromHash() || defaultTab;
+    var initialRoute = routeFromHash();
+    var initial = tabFromRoute(initialRoute) || defaultTab;
 
     activate(initial, {
       updateHash: false,
@@ -140,6 +189,10 @@
         block: 'nearest',
         inline: 'center'
       });
+    }
+
+    if (initialRoute && initial.getAttribute('data-tab-value') === initialRoute.tabValue) {
+      revealTarget(initial, initialRoute.targetId);
     }
 
     return {

@@ -14,7 +14,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://junyeo217.github.io/higgs-data/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/higgs-data/higgs-data.css?v=20260822e">
+  <link rel="stylesheet" href="/higgs-data/higgs-data.css?v=20260822f">
   <noscript>
     <style>
       .hd-panel[hidden] { display: block !important; }
@@ -99,9 +99,10 @@
           <li><a href="#overview-length"><span>04</span> 프롬프트 길이</a></li>
           <li><a href="#overview-method"><span>05</span> 수집 방법</a></li>
           <li><a href="#overview-matrix"><span>06</span> 기법 매트릭스</a></li>
-          <li><a href="#overview-conflicts"><span>07</span> 상충 사례</a></li>
-          <li><a href="#overview-correction"><span>08</span> 정정과 한계</a></li>
-          <li><a href="#overview-workflow"><span>09</span> 실행 워크플로</a></li>
+          <li><a href="#overview-crosscut"><span>07</span> 원문 교차 비교</a></li>
+          <li><a href="#overview-conflicts"><span>08</span> 상충 사례</a></li>
+          <li><a href="#overview-correction"><span>09</span> 정정과 한계</a></li>
+          <li><a href="#overview-workflow"><span>10</span> 실행 워크플로</a></li>
         </ol>
       </nav>
 
@@ -416,6 +417,105 @@
           </div>
         </section>
 
+        <section class="hd-section" id="overview-crosscut" aria-labelledby="overview-crosscut-title" data-claim="" data-evidence-grade="C">
+          <div class="hd-section__head">
+            <p class="hd-overline">Cross-project prompt evidence</p>
+            <div>
+              <span class="hd-evidence hd-evidence--synthesis">C · 교차 해석</span>
+              <h2 class="hd-section__title" id="overview-crosscut-title">같은 통제 축이 프로젝트마다 다른 문장 구조로 작동한다</h2>
+              <p class="hd-section__intro">매트릭스의 비율은 기법의 분포를 보여주고, 아래 발췌는 그 기법이 한 프롬프트 안에서 실제로 어떤 문장으로 구현되는지 보여준다. 각 원문은 프로젝트 탭의 전문과 연결하고, 비교 해석은 해당 표본과 제작 조건에 한정한다.</p>
+            </div>
+          </div>
+
+          <article class="hd-crosscut-axis hd-flow" data-crosscut-axis="camera" data-claim="" data-evidence-grade="C">
+            <div>
+              <p class="hd-overline">Axis 01 / Camera block</p>
+              <h3 class="hd-card__title">카메라 통제의 밀도와 범위</h3>
+              <p class="hd-card__copy">Camera block 행에서 KOK_BORY 88.0%와 ZEPHYR 84.2%가 함께 높으면서도 통제 범위가 뚜렷하게 달라 이 축을 선택한다.</p>
+            </div>
+            <div class="hd-card-grid hd-crosscut-grid">
+              <article class="hd-card hd-crosscut-source" data-claim="" data-evidence-grade="A">
+                <div class="hd-card__index"><span class="hd-overline">KOK_BORY · 2줄 발췌</span><span class="hd-evidence hd-evidence--observed">A · 관찰된 사실</span></div>
+                <h4 class="hd-card__title">카메라의 허용 움직임과 금지 경로를 함께 적는다</h4>
+                <p class="hd-card__note">프롬프트 SHA 69daf752bde5cb44 · <a data-crosscut-link="" href="#kok-bory/kok-prompt-02">프로젝트 탭에서 원문 전문 열기</a></p>
+                <pre class="hd-case__prompt"><code data-crosscut-excerpt="camera-kok" data-source-key="kok-bory.quote.69daf752bde5cb44" data-prompt-sha256="69daf752bde5cb442a7b278f76d0f01f345781b5011a2814d26ef001b036ec74" data-excerpt-sha256="c2d814da5e57e08ad007ef06eb92bae81f92be89d8a3afc13b5667dccf0f4c9a">DIRECTOR'S NOTES:
+1. GENTLE HANDHELD, ALMOST STILL — the camera is held in human hands, not on a tripod, with a soft living presence: a slow gentle breathing sway, the faintest drift and micro-corrections, an almost imperceptible handheld float. NOT aggressive, NOT jittery, NOT buffeted — calm, quiet, barely moving, the kind of subtle handheld that makes a still landscape feel alive and observed by a real person. The frame stays essentially on the same composition throughout, only breathing softly. No pan, no zoom, no dolly — just the quiet life of hands holding the shot.</code></pre>
+              </article>
+              <article class="hd-card hd-crosscut-source" data-claim="" data-evidence-grade="A">
+                <div class="hd-card__index"><span class="hd-overline">ZEPHYR · 2줄 발췌</span><span class="hd-evidence hd-evidence--observed">A · 관찰된 사실</span></div>
+                <h4 class="hd-card__title">화면 크기·각도·흔들림을 짧게 소유한다</h4>
+                <p class="hd-card__note">프롬프트 SHA 82af44830ada97e7 · <a data-crosscut-link="" href="#zephyr-special/zephyr-prompt-06">프로젝트 탭에서 원문 전문 열기</a></p>
+                <pre class="hd-case__prompt"><code data-crosscut-excerpt="camera-zephyr" data-source-key="zephyr-special.quote.82af44830ada97e7" data-prompt-sha256="82af44830ada97e7650ad6df3a33854d1bd578957500b2cf953f001d1fffddab" data-excerpt-sha256="24c38aafc89543902d1585f7bb4fb69a7fe5981b8194f96f28d182a5c9ce6ee4">CAMERA
+Handheld, medium shot on an interesting off-centre angle, small drift.</code></pre>
+              </article>
+            </div>
+            <article class="hd-callout" data-claim="" data-evidence-grade="C">
+              <span class="hd-evidence hd-evidence--synthesis">C · 교차 해석</span>
+              <p><strong>① 같은 점:</strong> 두 원문 모두 손에 든 카메라의 미세한 움직임을 허용한다. <strong>② 다른 점:</strong> KOK_BORY는 흔들림의 강도와 금지 이동까지 경계를 길게 세우고, ZEPHYR는 화면 크기·비대칭 각도·작은 드리프트를 한 줄로 묶는다. <strong>③ 제작 조건:</strong> 거의 정지한 풍경의 대기감을 보존해야 할 때는 허용·금지 경계를 세분하고, 인물의 반응과 다음 행동이 이어지는 장면에서는 구도와 운용 방향을 짧게 고정한 차이로 읽는다.</p>
+            </article>
+          </article>
+
+          <article class="hd-crosscut-axis hd-flow" data-crosscut-axis="action" data-claim="" data-evidence-grade="C">
+            <div>
+              <p class="hd-overline">Axis 02 / Action block</p>
+              <h3 class="hd-card__title">행동을 대상 상태로 쓰는가, 시간표로 쓰는가</h3>
+              <p class="hd-card__copy">Action block 행이 KOK_BORY 6.2%와 ZEPHYR 63.2%로 크게 갈리며 움직임을 기술하는 단위도 달라 이 축을 선택한다.</p>
+            </div>
+            <div class="hd-card-grid hd-crosscut-grid">
+              <article class="hd-card hd-crosscut-source" data-claim="" data-evidence-grade="A">
+                <div class="hd-card__index"><span class="hd-overline">KOK_BORY · 2줄 발췌</span><span class="hd-evidence hd-evidence--observed">A · 관찰된 사실</span></div>
+                <h4 class="hd-card__title">카메라·안개·산의 상태를 대상별로 나눈다</h4>
+                <p class="hd-card__note">프롬프트 SHA 69daf752bde5cb44 · <a data-crosscut-link="" href="#kok-bory/kok-prompt-02">프로젝트 탭에서 원문 전문 열기</a></p>
+                <pre class="hd-case__prompt"><code data-crosscut-excerpt="action-kok" data-source-key="kok-bory.quote.69daf752bde5cb44" data-prompt-sha256="69daf752bde5cb442a7b278f76d0f01f345781b5011a2814d26ef001b036ec74" data-excerpt-sha256="aab72985df3e0d21774cdd19131eabed06ab94059ee2a518f42ce3ebd3d371ac">1. GENTLE HANDHELD, ALMOST STILL — the camera is held in human hands, not on a tripod, with a soft living presence: a slow gentle breathing sway, the faintest drift and micro-corrections, an almost imperceptible handheld float. NOT aggressive, NOT jittery, NOT buffeted — calm, quiet, barely moving, the kind of subtle handheld that makes a still landscape feel alive and observed by a real person. The frame stays essentially on the same composition throughout, only breathing softly. No pan, no zoom, no dolly — just the quiet life of hands holding the shot.
+2. THE CLOUDS AND MIST MOVE — low cloud and fog drift slowly and smoothly across and around the mountain peaks, curling and rolling, veiling and unveiling the dark rock as they pass, banks of mist sliding along the slopes, thin wisps tearing off the ridgelines. Slow, calm, continuous, like time-lapse weather but gentle. The mountains themselves are completely still and solid.</code></pre>
+              </article>
+              <article class="hd-card hd-crosscut-source" data-claim="" data-evidence-grade="A">
+                <div class="hd-card__index"><span class="hd-overline">ZEPHYR · 2줄 발췌</span><span class="hd-evidence hd-evidence--observed">A · 관찰된 사실</span></div>
+                <h4 class="hd-card__title">초 단위 구간에 주행동과 배경 반응을 묶는다</h4>
+                <p class="hd-card__note">프롬프트 SHA 82af44830ada97e7 · <a data-crosscut-link="" href="#zephyr-special/zephyr-prompt-06">프로젝트 탭에서 원문 전문 열기</a></p>
+                <pre class="hd-case__prompt"><code data-crosscut-excerpt="action-zephyr" data-source-key="zephyr-special.quote.82af44830ada97e7" data-prompt-sha256="82af44830ada97e7650ad6df3a33854d1bd578957500b2cf953f001d1fffddab" data-excerpt-sha256="dd1550c8bde1f6d8425e2ea3fa76582acf4a8d706099684cac41f0c9f54b22e8">ACTION TIMING
+0–3s: **&lt;&lt;&lt;image_2&gt;&gt;&gt;** stands with her back to us, then turns her head/upper body to look back PAST the camera (over her shoulder, eyeline going off behind lens). Behind her **&lt;&lt;&lt;image_4&gt;&gt;&gt;**, **&lt;&lt;&lt;image_3&gt;&gt;&gt;** and **&lt;&lt;&lt;image_5&gt;&gt;&gt;** stay live on the sofa — small reactions, breathing, not frozen. Keep Haru's holographic nose strip. All blink naturally, foreheads and brows active throughout.</code></pre>
+              </article>
+            </div>
+            <article class="hd-callout" data-claim="" data-evidence-grade="C">
+              <span class="hd-evidence hd-evidence--synthesis">C · 교차 해석</span>
+              <p><strong>① 같은 점:</strong> 두 원문 모두 주대상만 움직이고 나머지가 멈춘 화면을 피하려고 주변 대상의 상태를 함께 적는다. <strong>② 다른 점:</strong> KOK_BORY는 산·구름·안개의 상반된 움직임 상태를 지속 조건으로 쓰고, ZEPHYR는 0–3초 구간에 인물의 회전과 배경 인물의 미세 반응을 배치한다. <strong>③ 제작 조건:</strong> 대기층의 연속성이 핵심인 풍경은 대상별 상태가 유효하고, 여러 인물의 연기가 한 컷에서 순차로 읽혀야 할 때는 시간 구간이 유효한 차이로 읽는다.</p>
+            </article>
+          </article>
+
+          <article class="hd-crosscut-axis hd-flow" data-crosscut-axis="style" data-claim="" data-evidence-grade="C">
+            <div>
+              <p class="hd-overline">Axis 03 / Style block</p>
+              <h3 class="hd-card__title">스타일을 배제 목록으로 닫는가, 촬영 체계로 확장하는가</h3>
+              <p class="hd-card__copy">Style block 행이 KOK_BORY 92.3%와 ZEPHYR 57.3%로 모두 강하지만 회화형과 필름형의 구현 문법이 반대여서 이 축을 선택한다.</p>
+            </div>
+            <div class="hd-card-grid hd-crosscut-grid">
+              <article class="hd-card hd-crosscut-source" data-claim="" data-evidence-grade="A">
+                <div class="hd-card__index"><span class="hd-overline">KOK_BORY · 3줄 발췌</span><span class="hd-evidence hd-evidence--observed">A · 관찰된 사실</span></div>
+                <h4 class="hd-card__title">회화 재질과 배제할 렌더 방식을 한 경계로 둔다</h4>
+                <p class="hd-card__note">프롬프트 SHA 69daf752bde5cb44 · <a data-crosscut-link="" href="#kok-bory/kok-prompt-02">프로젝트 탭에서 원문 전문 열기</a></p>
+                <pre class="hd-case__prompt"><code data-crosscut-excerpt="style-kok" data-source-key="kok-bory.quote.69daf752bde5cb44" data-prompt-sha256="69daf752bde5cb442a7b278f76d0f01f345781b5011a2814d26ef001b036ec74" data-excerpt-sha256="a3f453d83cda0e11a9e1b40be04eafd18a39c8e105a55dda0576c54269ce1bf9">Style: 8K IMAX, hand-painted 2D animation, traditional ink-wash and oil-brush texture, rough painterly brushstrokes and visible paint, matte surface, the look of a moving painting, no 3D render, no game engine, no CGI smoothness, no photographic look. NOTE: this is a quiet atmospheric landscape shot — the clouds, mist and fog drift SMOOTHLY and slowly, not stepped, not on twos; only the atmosphere moves, everything else is still.
+
+DIRECTOR'S NOTES:</code></pre>
+              </article>
+              <article class="hd-card hd-crosscut-source" data-claim="" data-evidence-grade="A">
+                <div class="hd-card__index"><span class="hd-overline">ZEPHYR · 5줄 발췌</span><span class="hd-evidence hd-evidence--observed">A · 관찰된 사실</span></div>
+                <h4 class="hd-card__title">필름 재질·카메라 운용·동기 조명을 한 체계로 잇는다</h4>
+                <p class="hd-card__note">프롬프트 SHA 82af44830ada97e7 · <a data-crosscut-link="" href="#zephyr-special/zephyr-prompt-06">프로젝트 탭에서 원문 전문 열기</a></p>
+                <pre class="hd-case__prompt"><code data-crosscut-excerpt="style-zephyr" data-source-key="zephyr-special.quote.82af44830ada97e7" data-prompt-sha256="82af44830ada97e7650ad6df3a33854d1bd578957500b2cf953f001d1fffddab" data-excerpt-sha256="25ee6f572429ced47a783bb3b06566d3707097f802c023500581182a5c8d79c7">Style: 8K IMAX, photorealism. Real organic film grain and halation. Shot on large-format film. High dynamic range. NOT a 3D render, NOT a game engine, NOT game-cutscene aesthetic, NOT a cartoon.
+
+OPERATING STYLE — HOYTE VAN HOYTEMA: large-scale realism with intimate handheld closeness, immersive in-camera feel, tactile textures, atmospheric haze and volumetric light. Shallow depth of field on the face, documentary framing, photochemical look. Anime-comedic performance is allowed.
+
+Light: motivated natural light, one soft key, desaturated rich earthy colour, faithful skin tones, soft roll-off, no heavy grade.</code></pre>
+              </article>
+            </div>
+            <article class="hd-callout" data-claim="" data-evidence-grade="C">
+              <span class="hd-evidence hd-evidence--synthesis">C · 교차 해석</span>
+              <p><strong>① 같은 점:</strong> 두 원문 모두 재질과 배제할 디지털 외관을 함께 명시해 스타일의 경계를 만든다. <strong>② 다른 점:</strong> KOK_BORY는 손그림 표면과 움직이는 대기층을 결합하고, ZEPHYR는 포토케미컬 재질을 카메라 운용·피사계 심도·동기 조명까지 확장한다. <strong>③ 제작 조건:</strong> 회화 표면을 유지해야 하는 풍경은 렌더 방식과 움직임 예외를 함께 닫고, 실사 인물 장면은 렌즈·운용·빛의 상호작용을 한 촬영 체계로 적은 차이로 읽는다.</p>
+            </article>
+          </article>
+        </section>
+
         <section class="hd-section" id="overview-conflicts" aria-labelledby="overview-conflicts-title" data-claim="" data-evidence-grade="C">
           <div class="hd-section__head">
             <p class="hd-overline">Opposite practices</p>
@@ -452,6 +552,41 @@
               <p class="hd-card__note">전환 신호: 반복의 목적이 후보 폭 확보인지, 특정 결함의 전후 비교인지 정한다.</p>
             </article>
           </div>
+
+          <article class="hd-conflict-proof hd-flow" aria-labelledby="overview-conflict-proof-title" data-claim="" data-evidence-grade="C">
+            <div>
+              <p class="hd-overline">Conflict 03 / Raw evidence</p>
+              <h3 class="hd-card__title" id="overview-conflict-proof-title">스타일·상태 중심과 행동·시간 중심을 원문으로 대조한다</h3>
+              <p class="hd-card__copy">Conflict 03의 반대 방향은 모든 프롬프트에 적용되는 규칙이 아니라, 매트릭스에서 관찰한 상대적 비중 차이를 두 실제 문장 구조에서 확인하는 비교다.</p>
+            </div>
+            <div class="hd-card-grid hd-crosscut-grid">
+              <article class="hd-card hd-crosscut-source" data-claim="" data-evidence-grade="A">
+                <div class="hd-card__index"><span class="hd-overline">KOK_BORY · 6줄 발췌</span><span class="hd-evidence hd-evidence--observed">A · 관찰된 사실</span></div>
+                <h4 class="hd-card__title">스타일 경계와 대상별 상태를 연속해서 적는다</h4>
+                <p class="hd-card__note">프롬프트 SHA 69daf752bde5cb44 · <a data-crosscut-link="" href="#kok-bory/kok-prompt-02">프로젝트 탭에서 원문 전문 열기</a></p>
+                <pre class="hd-case__prompt"><code data-crosscut-excerpt="conflict-kok" data-source-key="kok-bory.quote.69daf752bde5cb44" data-prompt-sha256="69daf752bde5cb442a7b278f76d0f01f345781b5011a2814d26ef001b036ec74" data-excerpt-sha256="c70a35259eae9d15500941fadae9ad96976917c24db1bf68c07af3816a3d8362">Style: 8K IMAX, hand-painted 2D animation, traditional ink-wash and oil-brush texture, rough painterly brushstrokes and visible paint, matte surface, the look of a moving painting, no 3D render, no game engine, no CGI smoothness, no photographic look. NOTE: this is a quiet atmospheric landscape shot — the clouds, mist and fog drift SMOOTHLY and slowly, not stepped, not on twos; only the atmosphere moves, everything else is still.
+
+DIRECTOR'S NOTES:
+1. GENTLE HANDHELD, ALMOST STILL — the camera is held in human hands, not on a tripod, with a soft living presence: a slow gentle breathing sway, the faintest drift and micro-corrections, an almost imperceptible handheld float. NOT aggressive, NOT jittery, NOT buffeted — calm, quiet, barely moving, the kind of subtle handheld that makes a still landscape feel alive and observed by a real person. The frame stays essentially on the same composition throughout, only breathing softly. No pan, no zoom, no dolly — just the quiet life of hands holding the shot.
+2. THE CLOUDS AND MIST MOVE — low cloud and fog drift slowly and smoothly across and around the mountain peaks, curling and rolling, veiling and unveiling the dark rock as they pass, banks of mist sliding along the slopes, thin wisps tearing off the ridgelines. Slow, calm, continuous, like time-lapse weather but gentle. The mountains themselves are completely still and solid.
+3. PAINTERLY, NOT PHOTOREAL — keep the rough hand-painted ink-wash quality of the reference, soft bleeding edges where rock meets fog, visible brushwork in the rock faces, the snow and mist as washes of pale paint, never sharp, never photographic.</code></pre>
+              </article>
+              <article class="hd-card hd-crosscut-source" data-claim="" data-evidence-grade="A">
+                <div class="hd-card__index"><span class="hd-overline">ZEPHYR · 5줄 발췌</span><span class="hd-evidence hd-evidence--observed">A · 관찰된 사실</span></div>
+                <h4 class="hd-card__title">초 단위 연기에서 다음 숏의 이동까지 잇는다</h4>
+                <p class="hd-card__note">프롬프트 SHA 82af44830ada97e7 · <a data-crosscut-link="" href="#zephyr-special/zephyr-prompt-06">프로젝트 탭에서 원문 전문 열기</a></p>
+                <pre class="hd-case__prompt"><code data-crosscut-excerpt="conflict-zephyr" data-source-key="zephyr-special.quote.82af44830ada97e7" data-prompt-sha256="82af44830ada97e7650ad6df3a33854d1bd578957500b2cf953f001d1fffddab" data-excerpt-sha256="a1c6cfac15c6d99a6a5b8ae6649515fecc4fb30ce0f3635a793ab4c9fed400b6">ACTION TIMING
+0–3s: **&lt;&lt;&lt;image_2&gt;&gt;&gt;** stands with her back to us, then turns her head/upper body to look back PAST the camera (over her shoulder, eyeline going off behind lens). Behind her **&lt;&lt;&lt;image_4&gt;&gt;&gt;**, **&lt;&lt;&lt;image_3&gt;&gt;&gt;** and **&lt;&lt;&lt;image_5&gt;&gt;&gt;** stay live on the sofa — small reactions, breathing, not frozen. Keep Haru's holographic nose strip. All blink naturally, foreheads and brows active throughout.
+
+
+SHOT 2 — MEDIUM, SLOW PUSH-IN / (reverse location **&lt;&lt;&lt;image_1&gt;&gt;&gt;**; interesting angle, off-centre; reveal of **&lt;&lt;&lt;image_8&gt;&gt;&gt;**): hard CUT — slow dolly-in onto Jasmin stretching on the yoga mat.</code></pre>
+              </article>
+            </div>
+            <article class="hd-callout" data-claim="" data-evidence-grade="C">
+              <span class="hd-evidence hd-evidence--synthesis">C · 교차 해석</span>
+              <p>KOK_BORY 표본은 회화 표면, 카메라의 미세 움직임, 산과 안개의 상태를 서로 맞물린 경계로 적고, ZEPHYR 표본은 0–3초 연기와 다음 숏의 푸시인을 순서로 적는다. 이 문장 구조는 Conflict 03의 방향 차이를 보여주지만 프로젝트 전체의 분포를 단독으로 증명하지 않으며, 상대적 비중은 매트릭스의 Style·Negative / locks·Action·Output / time 행으로 판단한다.</p>
+            </article>
+          </article>
 
           <article class="hd-callout hd-callout--limit" data-claim="" data-evidence-grade="D">
             <span class="hd-evidence hd-evidence--limit">D · 검증 한계</span>
@@ -2059,7 +2194,7 @@ Scene context: Moments after the explosion. The hall is dark — dust and smoke 
           </div>
           <p class="hd-section__intro" data-claim="" data-evidence-grade="D"><span class="hd-evidence hd-evidence--limit">검증 한계 · D</span> 아래 각 코드 블록에는 지정된 후보 인덱스의 검증된 전문을 싣는다. 해시 앞 16자리와 문자 수·도구·해상도·비율·생성/출력 수로 대상을 고정한다.</p>
 
-          <article class="hd-prompt-quote" data-prompt-quote="" data-prompt-index="2" data-source-key="kok-bory.quote.69daf752bde5cb44" data-claim="" data-evidence-grade="A"><p class="hd-label"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span> 후보 2 · SHA 69daf752bde5cb44</p><div class="hd-chip-row"><span class="hd-chip">5,780 chars</span><span class="hd-chip">Seedance 2.0</span><span class="hd-chip">1080p · 21:9</span><span class="hd-chip">1 generation · 4 outputs</span></div><details><summary>원문 전문 열기: 정지된 산과 부드러운 안개의 시간축</summary><pre><code data-prompt-index="2">Style: 8K IMAX, hand-painted 2D animation, traditional ink-wash and oil-brush texture, rough painterly brushstrokes and visible paint, matte surface, the look of a moving painting, no 3D render, no game engine, no CGI smoothness, no photographic look. NOTE: this is a quiet atmospheric landscape shot — the clouds, mist and fog drift SMOOTHLY and slowly, not stepped, not on twos; only the atmosphere moves, everything else is still.
+          <article class="hd-prompt-quote" id="kok-prompt-02" data-prompt-quote="" data-prompt-index="2" data-source-key="kok-bory.quote.69daf752bde5cb44" data-claim="" data-evidence-grade="A"><p class="hd-label"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span> 후보 2 · SHA 69daf752bde5cb44</p><div class="hd-chip-row"><span class="hd-chip">5,780 chars</span><span class="hd-chip">Seedance 2.0</span><span class="hd-chip">1080p · 21:9</span><span class="hd-chip">1 generation · 4 outputs</span></div><details><summary>원문 전문 열기: 정지된 산과 부드러운 안개의 시간축</summary><pre><code data-prompt-index="2">Style: 8K IMAX, hand-painted 2D animation, traditional ink-wash and oil-brush texture, rough painterly brushstrokes and visible paint, matte surface, the look of a moving painting, no 3D render, no game engine, no CGI smoothness, no photographic look. NOTE: this is a quiet atmospheric landscape shot — the clouds, mist and fog drift SMOOTHLY and slowly, not stepped, not on twos; only the atmosphere moves, everything else is still.
 
 DIRECTOR'S NOTES:
 1. GENTLE HANDHELD, ALMOST STILL — the camera is held in human hands, not on a tripod, with a soft living presence: a slow gentle breathing sway, the faintest drift and micro-corrections, an almost imperceptible handheld float. NOT aggressive, NOT jittery, NOT buffeted — calm, quiet, barely moving, the kind of subtle handheld that makes a still landscape feel alive and observed by a real person. The frame stays essentially on the same composition throughout, only breathing softly. No pan, no zoom, no dolly — just the quiet life of hands holding the shot.
@@ -3157,7 +3292,8 @@ Locations: **&lt;&lt;&lt;image_7&gt;&gt;&gt;** (main face) and **&lt;&lt;&lt;ima
       </div>
     </footer>
   </div>
-  <script src="/higgs-data/higgs-data.js?v=20260822b" defer=""></script>
+  <script src="/higgs-data/higgs-data.js?v=20260822c" defer=""></script>
+
 
 
 
