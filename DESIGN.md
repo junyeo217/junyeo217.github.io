@@ -8,6 +8,7 @@
 - Explicit exclusions: 검은 오프닝/메인 화면, 타이핑 인트로, 87–120px 초대형 타이포그래피는 사용자 지시에 따라 가져오지 않는다.
 - Content research: `Higgsfield_Project_Analysis_All_2026-08-14`의 292개 파일과 여섯 프로젝트를 전수 조사했다. 화면은 자료의 규모보다 학습 순서와 근거 상태를 우선한다.
 - Deep-study revision (2026-08-21): 95개의 `prompts_part_*.md`에 네 개의 owner-level `prompts.md`가 더 있음을 재측정했다. v2는 99개 프롬프트 문서를 스트리밍 집계하고, 원문·통계·0건 발견·정정 이력을 같은 근거 체계로 연결한다.
+- Readability correction (2026-08-22): 검증 완료된 문장·수치·근거 구조는 보존하고, 37rem 읽기 폭, 12px 이상 한글 라벨, 20px H3, 줄바꿈되는 원문, 축소된 목차 열과 우측 호흡 공간으로 표현 계층만 보정한다.
 - Interaction reference: beui.dev `tabs` 원본에서 밑줄형 선택 표시, 활성 패널의 4px 상승/불투명도 전환, 모든 패널의 DOM 유지, reduced-motion 경로를 메커니즘으로 채택했다. React/Motion 코드는 가져오지 않고 현재 정적 사이트에 맞는 CSS/vanilla JS로 구현한다.
 - Skipped lanes: Lazyweb와 Imagen 시안은 구체적인 실사이트 레퍼런스가 이미 있어 불필요하다. 브랜드 자산·로고·카피는 복제하지 않는다.
 
@@ -52,12 +53,12 @@
 | Page title | `clamp(2.25rem, 5vw, 4rem)` | 560 | 1.02 | `-.045em` | 페이지 제목, 한 번만 사용 |
 | H1 / panel title | `clamp(2rem, 4vw, 3rem)` | 560 | 1.1 | `-.035em` | 각 탭의 제목 |
 | H2 / section | `clamp(1.35rem, 2.4vw, 2rem)` | 560 | 1.25 | `-.025em` | 학습 섹션 |
-| H3 / card | `1.0625rem` | 650 | 1.4 | `-.01em` | 카드 제목 |
-| Lead | `clamp(1.05rem, 1.8vw, 1.35rem)` | 430 | 1.65 | `-.01em` | 패널 리드 |
+| H3 / card | `1.25rem` | 650 | 1.4 | `-.01em` | 카드 제목 |
+| Lead | `clamp(1.05rem, 1.5vw, 1.125rem)` | 430 | 1.65 | `-.01em` | 패널 리드 |
 | Body | `1rem` | 400 | 1.75 | `-.01em` | 기본 본문 |
 | Body / small | `.875rem` | 400 | 1.65 | `0` | 메모와 표 설명 |
-| Label | `.6875rem` | 650 | 1.35 | `.16em` | 탭, 근거 표지, 메타 |
-| Micro | `.625rem` | 650 | 1.35 | `.14em` | 번호와 지표 단위 |
+| Label | `.8125rem` | 650 | 1.35 | `.16em` | 탭, 근거 표지, 메타 |
+| Micro | `.75rem` | 650 | 1.35 | `.14em` | 번호와 지표 단위 |
 
 ### Font Stack
 
@@ -68,8 +69,9 @@
 ### Rules
 
 - 한국어 본문은 `word-break: keep-all`; 긴 영문 식별자와 URL에는 국소적으로 `overflow-wrap: anywhere`를 쓴다.
-- 본문은 14px 아래로 내리지 않는다. 라벨만 의미가 짧고 반복될 때 10–11px을 허용한다.
+- 본문은 14px 아래로 내리지 않는다. 한글을 포함한 라벨·지표·메타는 12px 아래로 내리지 않는다.
 - 제목이 모바일에서 네 줄 이상이 되면 크기를 낮추고 의미 단위로 줄바꿈한다.
+- H3는 같은 카드나 섹션의 본문보다 작아지지 않으며, 20px·650을 기본으로 한다.
 
 ## 4. Spacing & Layout
 
@@ -90,18 +92,20 @@
 | `--hd-space-12` | `48px` | 패널 소구획 |
 | `--hd-space-16` | `64px` | 큰 섹션 경계 |
 | `--hd-space-20` | `80px` | 데스크톱 패널 상단 |
-| `--hd-nav-width` | `240px` | 심화 탭 내부의 고정 목차 폭 |
+| `--hd-nav-width` | `180px` | 심화 탭 내부의 고정 목차 폭 |
+| `--hd-study-end-space` | `112px` | 데스크톱 본문 오른쪽의 호흡 공간 |
+| `--hd-reading-measure` | `37rem` | 제목·리드·본문·캡션의 공통 읽기 폭 |
 | `--hd-code-max` | `46rem` | 원문 인용 본문의 편안한 읽기 폭 |
 
 ### Grid
 
 - 최대 콘텐츠 폭: 1440px.
 - 가로 패딩: `clamp(20px, 4vw, 64px)`.
-- 데스크톱: 12열 개념, 본문은 주로 4/8 또는 5/7 비대칭 분할.
+- 데스크톱: 12열 개념을 유지하되 섹션 헤드는 라벨과 제목을 한 열로 쌓고, 읽는 텍스트는 37rem, 차트·표·이미지·코드는 본문 열 전체를 사용한다.
 - 태블릿 768–1023px: 한 열을 기본으로 하되 지표는 2열 유지 가능.
 - 모바일 0–767px: 20px 패딩, 모든 핵심 콘텐츠 1열, 수평 스크롤은 탭 레일만 허용.
 - 탭 레일은 헤더 안에서 자체 스크롤을 갖고, 본문에는 수평 스크롤이 생기지 않는다.
-- 심화 탭 내부는 데스크톱에서 `240px / minmax(0, 1fr)` 목차·본문 2열이다. 목차만 sticky이고 문서가 스크롤 소유자다.
+- 심화 탭 내부는 데스크톱에서 `180px / minmax(0, 1fr) / 112px` 목차·본문·우측 호흡 3열이다. 목차만 sticky이고 문서가 스크롤 소유자다.
 - 1023px 이하에서는 목차가 본문 위 수평 섹션 레일로 바뀐다. 375px에서도 섹션 링크와 코드 블록만 자체 스크롤하며 페이지 자체는 넘치지 않는다.
 
 ## 5. Components
@@ -174,7 +178,7 @@
 
 ### Section Navigator
 
-- **Structure**: 현재 패널의 8–9개 `section[id]`로 연결되는 짧은 번호·이름 링크 목록. 데스크톱은 좌측 sticky, 태블릿·모바일은 본문 위 수평 레일이다.
+- **Structure**: 현재 패널의 8–9개 `section[id]`로 연결되는 짧은 번호·이름 링크 목록. 데스크톱은 180px 좌측 sticky, 태블릿·모바일은 본문 위 수평 레일이다. 번호와 항목명 사이에는 최소 8px 시각 간격을 둔다.
 - **Variants**: overview, project, compact author. 작성자 탭에는 심화 목차를 강제하지 않는다.
 - **States**: 기본 muted, hover/focus primary, 현재 섹션은 `aria-current="location"`과 강한 왼쪽 선/밑줄로 함께 표시한다.
 - **Accessibility**: 패널마다 고유한 `aria-label`; 해시 이동 뒤 제목이 sticky header 아래에 보이고 키보드 포커스를 빼앗지 않는다.
@@ -193,7 +197,7 @@
 - **Structure**: evidence badge → 익명 슬롯·문자 수·도구·해상도·SHA 칩 → `details/summary` → `pre > code` 원문 → “무엇을 하는가 / 왜 쓰는가 / 재사용 포인트” 해설 → 출처 상태.
 - **Variants**: verified archive prompt, brief-embedded excerpt, unavailable-corpus limitation.
 - **States**: closed/open, keyboard-native. 첫 번째 대표 원문은 열린 상태로 시작할 수 있다.
-- **Accessibility**: summary는 원문의 역할을 설명하고, 긴 코드에는 국소 스크롤과 `aria-label`을 제공한다. 익명 슬롯 외 계정·owner 문자열은 공개하지 않는다.
+- **Accessibility**: summary는 원문의 역할을 설명하고, 원문은 `pre-wrap`과 `overflow-wrap:anywhere`로 현재 열 안에서 읽힌다. 표처럼 폭 보존이 필요한 코드만 국소 스크롤을 허용하며, 익명 슬롯 외 계정·owner 문자열은 공개하지 않는다.
 - **Motion**: native disclosure only; no animated height.
 
 ### Named Technique Card
@@ -260,6 +264,8 @@ Strategy: **borders + tonal shift**.
 - Complete keyboard tab flow; selected-tab focus, direct hash, Back/Forward navigation, skip link, visible focus.
 - 44×44px minimum tab and contact targets.
 - At 375px, 768px, 1280px and 200% zoom: no primary-content horizontal overflow or clipped Korean glyphs.
+- At 1440px: 읽는 텍스트의 문자 수용량은 30–48자에 90% 이상 수렴하고 20자 미만·55자 초과 측정 폭을 만들지 않는다.
+- 원문 `pre` 48개는 1440px과 375px 모두에서 `scrollWidth <= clientWidth + 2px`를 만족한다.
 - Screen reader: unique landmark names, valid heading hierarchy, correct tab/tabpanel relationships, table captions, explanatory link text.
 - Cognitive: stable anatomy across six project panels; evidence vocabulary remains identical; metrics define their units; no auto-advancing content.
 - Cognitive: 8–9개 섹션 목차는 모든 프로젝트에서 같은 순서를 유지한다. 긴 원문은 disclosure로 접되 역할·메타·해설은 접기 전에도 보인다.
