@@ -14,7 +14,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://junyeo217.github.io/higgs-data/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/higgs-data/higgs-data.css?v=20260822f">
+  <link rel="stylesheet" href="/higgs-data/higgs-data.css?v=20260823a">
   <noscript>
     <style>
       .hd-panel[hidden] { display: block !important; }
@@ -179,14 +179,20 @@
                 <text x="0" y="256">ZEPHYR</text><rect x="174" y="242" width="2" height="8" data-source-key="projects.ZEPHYR_Special.corpus.parsed_generation_rows" data-source-value="195"></rect><rect x="174" y="254" width="2" height="8" data-source-key="projects.ZEPHYR_Special.corpus.parsed_output_references" data-source-value="197"></rect>
               </g>
             </svg>
-            <ul class="hd-bar-list" aria-label="프로젝트별 원수치">
-              <li><strong>ADILIADA</strong> <span>생성 6,742 · 출력 11,279 · 생성당 출력 1.673</span></li>
-              <li><strong>THE CULLY HILL BOYS</strong> <span>생성 131,183 · 출력 473,561 · 생성당 출력 3.610</span></li>
-              <li><strong>HELL GRIND</strong> <span>생성 38,483 · 출력 115,450 · 생성당 출력 3.000</span></li>
-              <li><strong>KOK_BORY</strong> <span>생성 703 · 출력 2,722 · 생성당 출력 3.872</span></li>
-              <li><strong>ONEIRIC</strong> <span>생성 11,544 · 출력 41,096 · 생성당 출력 3.560</span></li>
-              <li><strong>ZEPHYR Special</strong> <span>생성 195 · 출력 197 · 생성당 출력 1.010</span></li>
-            </ul>
+            <div class="hd-table-wrap">
+              <table class="hd-table hd-comparison-table" aria-label="프로젝트별 생성 행·출력 참조·생성당 출력">
+                <caption>차트의 정확한 원수치. 생성당 출력은 출력 참조 ÷ 생성 행이다.</caption>
+                <thead><tr><th scope="col">프로젝트</th><th scope="col">생성 행</th><th scope="col">출력 참조</th><th scope="col">생성당 출력</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">ADILIADA</th><td>6,742</td><td>11,279</td><td>1.673</td></tr>
+                  <tr><th scope="row">THE CULLY HILL BOYS</th><td>131,183</td><td>473,561</td><td>3.610</td></tr>
+                  <tr><th scope="row">HELL GRIND</th><td>38,483</td><td>115,450</td><td>3.000</td></tr>
+                  <tr><th scope="row">KOK_BORY</th><td>703</td><td>2,722</td><td>3.872</td></tr>
+                  <tr><th scope="row">ONEIRIC</th><td>11,544</td><td>41,096</td><td>3.560</td></tr>
+                  <tr><th scope="row">ZEPHYR Special</th><td>195</td><td>197</td><td>1.010</td></tr>
+                </tbody>
+              </table>
+            </div>
             <figcaption>계산식: 프로젝트별 출력 참조 ÷ 생성 행. 전체는 644,305 ÷ 188,850 = 3.412다. 이 비율은 한 생성 행이 연결한 출력 참조의 평균일 뿐, 한 번의 요청에서 나온 고유 결과 수나 채택률과 동일하지 않다.</figcaption>
           </figure>
 
@@ -232,14 +238,20 @@
                 <text x="0" y="246">ZEPHYR</text><rect x="174" y="232" width="226" height="16" data-source-key="projects.ZEPHYR_Special.distributions.tools.seedance_2_0" data-source-value="105"></rect><text x="408" y="246">53.8%</text>
               </g>
             </svg>
-            <ul class="hd-bar-list" aria-label="Seedance 2.0 원수치와 분모">
-              <li><strong>ADILIADA</strong> <span>3,788 / 6,742 = 56.2%</span></li>
-              <li><strong>THE CULLY HILL BOYS</strong> <span>105,377 / 131,183 = 80.3%</span></li>
-              <li><strong>HELL GRIND</strong> <span>34,323 / 38,483 = 89.2%</span></li>
-              <li><strong>KOK_BORY</strong> <span>688 / 703 = 97.9%</span></li>
-              <li><strong>ONEIRIC</strong> <span>5,703 / 11,544 = 49.4%</span></li>
-              <li><strong>ZEPHYR Special</strong> <span>105 / 195 = 53.8%; Seedance 2.5는 90 / 195 = 46.2%</span></li>
-            </ul>
+            <div class="hd-table-wrap">
+              <table class="hd-table hd-comparison-table" aria-label="프로젝트별 Seedance 도구 원수치와 분모">
+                <caption>차트의 정확한 원수치. 비중은 해당 프로젝트 도구 분포의 분모 대비 값이다.</caption>
+                <thead><tr><th scope="col">프로젝트</th><th scope="col">Seedance 2.0</th><th scope="col">분모</th><th scope="col">비중</th><th scope="col">Seedance 2.5</th><th scope="col">비중</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">ADILIADA</th><td>3,788</td><td>6,742</td><td>56.2%</td><td>—</td><td>—</td></tr>
+                  <tr><th scope="row">THE CULLY HILL BOYS</th><td>105,377</td><td>131,183</td><td>80.3%</td><td>—</td><td>—</td></tr>
+                  <tr><th scope="row">HELL GRIND</th><td>34,323</td><td>38,483</td><td>89.2%</td><td>—</td><td>—</td></tr>
+                  <tr><th scope="row">KOK_BORY</th><td>688</td><td>703</td><td>97.9%</td><td>—</td><td>—</td></tr>
+                  <tr><th scope="row">ONEIRIC</th><td>5,703</td><td>11,544</td><td>49.4%</td><td>—</td><td>—</td></tr>
+                  <tr><th scope="row">ZEPHYR Special</th><td>105</td><td>195</td><td>53.8%</td><td>90</td><td>46.2%</td></tr>
+                </tbody>
+              </table>
+            </div>
             <figcaption>계산식: 각 프로젝트의 Seedance 2.0 행 ÷ 해당 프로젝트 도구 분포 총합 × 100. 분모는 모두 파싱된 생성 행과 일치한다. 이 비중은 선호 또는 작업 집중도를 보여 주지만, 도구별 품질·비용·성공률을 비교하지 않는다.</figcaption>
           </figure>
 
@@ -295,14 +307,20 @@
                 <text x="0" y="256">ZEPHYR</text><rect x="174" y="242" width="304" height="8" data-source-key="projects.ZEPHYR_Special.length_stats.mean" data-source-value="7647.41"></rect><rect x="174" y="254" width="265" height="8" data-source-key="projects.ZEPHYR_Special.length_stats.p50" data-source-value="6677"></rect>
               </g>
             </svg>
-            <ul class="hd-bar-list" aria-label="프로젝트별 문자 수 통계">
-              <li><strong>ADILIADA</strong> <span>평균 5,694.33 · 중앙값 1,686 · 90백분위 15,788 · 최대 43,539</span></li>
-              <li><strong>THE CULLY HILL BOYS</strong> <span>평균 10,222.93 · 중앙값 9,169 · 90백분위 19,207 · 최대 58,490</span></li>
-              <li><strong>HELL GRIND</strong> <span>평균 9,485.69 · 중앙값 6,341 · 90백분위 23,486 · 최대 39,815</span></li>
-              <li><strong>KOK_BORY</strong> <span>평균 10,583.02 · 중앙값 10,305 · 90백분위 15,653 · 최대 25,011</span></li>
-              <li><strong>ONEIRIC</strong> <span>평균 5,567.12 · 중앙값 4,363 · 90백분위 12,831 · 최대 37,412</span></li>
-              <li><strong>ZEPHYR Special</strong> <span>평균 7,647.41 · 중앙값 6,677 · 90백분위 13,930 · 최대 20,808</span></li>
-            </ul>
+            <div class="hd-table-wrap">
+              <table class="hd-table hd-comparison-table" aria-label="프로젝트별 프롬프트 문자 수 통계">
+                <caption>차트의 정확한 원수치. 단위는 문자 수다.</caption>
+                <thead><tr><th scope="col">프로젝트</th><th scope="col">평균</th><th scope="col">중앙값</th><th scope="col">90백분위</th><th scope="col">최대</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">ADILIADA</th><td>5,694.33</td><td>1,686</td><td>15,788</td><td>43,539</td></tr>
+                  <tr><th scope="row">THE CULLY HILL BOYS</th><td>10,222.93</td><td>9,169</td><td>19,207</td><td>58,490</td></tr>
+                  <tr><th scope="row">HELL GRIND</th><td>9,485.69</td><td>6,341</td><td>23,486</td><td>39,815</td></tr>
+                  <tr><th scope="row">KOK_BORY</th><td>10,583.02</td><td>10,305</td><td>15,653</td><td>25,011</td></tr>
+                  <tr><th scope="row">ONEIRIC</th><td>5,567.12</td><td>4,363</td><td>12,831</td><td>37,412</td></tr>
+                  <tr><th scope="row">ZEPHYR Special</th><td>7,647.41</td><td>6,677</td><td>13,930</td><td>20,808</td></tr>
+                </tbody>
+              </table>
+            </div>
             <figcaption>막대의 위 행은 평균, 아래 행은 중앙값이며 KOK_BORY 평균 10,583.02자를 100%로 둔 선형 눈금이다. 전체 최소는 0자, 최대는 58,490자다. 0자 레코드가 있으므로 평균만으로 “전형적인 프롬프트”를 설명하지 않고 중앙값과 90백분위를 함께 본다.</figcaption>
           </figure>
 
@@ -2853,9 +2871,23 @@ Photoreal. Cinematic. 16:9. 12s. SFX only, no music, no subtitles. VERY STRONG A
               <p class="hd-section__intro" data-claim="" data-evidence-grade="A"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span> 아래 전문은 조립 시 공개용 분석의 대응 레코드와 SHA-256으로 대조된다. 표본은 길이순이 아니라 서로 다른 통제 문법을 보여 주는 여섯 후보 인덱스 1–6이다.</p>
             </div>
           </div>
+          <div class="hd-table-wrap">
+            <table class="hd-table hd-comparison-table" aria-label="ZEPHYR Special 원문 후보 메타데이터">
+              <caption>여섯 원문 후보의 비교 메타데이터. 아래 전문은 같은 후보 번호로 연결된다.</caption>
+              <thead><tr><th scope="col">후보</th><th scope="col">문자 수</th><th scope="col">도구</th><th scope="col">해상도</th><th scope="col">치수</th><th scope="col">화면비</th><th scope="col">출력</th></tr></thead>
+              <tbody>
+                <tr data-source-key="zephyr-special.quote.cd34e0c2ddf06ab0"><th scope="row">01</th><td>869</td><td>Seedance 2.0</td><td>4K</td><td>4032×1728</td><td>21:9</td><td>1</td></tr>
+                <tr data-source-key="zephyr-special.quote.6dfeeab7e045a560"><th scope="row">02</th><td>1,664</td><td>Seedance 2.0</td><td>4K</td><td>4032×1728</td><td>21:9</td><td>1</td></tr>
+                <tr data-source-key="zephyr-special.quote.713404d2df79245e"><th scope="row">03</th><td>2,941</td><td>Seedance 2.0</td><td>4K</td><td>4032×1728</td><td>21:9</td><td>1</td></tr>
+                <tr data-source-key="zephyr-special.quote.e2b413072a725b8f"><th scope="row">04</th><td>3,957</td><td>Seedance 2.0</td><td>4K</td><td>4032×1728</td><td>21:9</td><td>1</td></tr>
+                <tr data-source-key="zephyr-special.quote.8ff8953815cfbf7c"><th scope="row">05</th><td>5,318</td><td>Seedance 2.0</td><td>4K</td><td>4032×1728</td><td>21:9</td><td>1</td></tr>
+                <tr data-source-key="zephyr-special.quote.82af44830ada97e7"><th scope="row">06</th><td>6,104</td><td>Seedance 2.0</td><td>1080p</td><td>2016×864</td><td>21:9</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </div>
 
           <article class="hd-prompt-evidence" id="zephyr-prompt-01" data-prompt-quote="" data-source-key="zephyr-special.quote.cd34e0c2ddf06ab0" data-claim="" data-evidence-grade="A">
-            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 01</span><span>869자</span><span>Seedance 2.0</span><span>4K · 4032×1728 · 21:9</span><span>출력 1</span></div>
+            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 01</span></div>
             <details><summary>악기 근접 인서트 원문 열기</summary><pre class="hd-code"><code data-prompt-index="1">K-pop × rock music video. Extreme close-up of a worn orange SG guitar &lt;&lt;&lt;image_1&gt;&gt;&gt; being played, on a blooming green hillside, location &lt;&lt;&lt;image_2&gt;&gt;&gt;.
 Lighting: natural sunlight only, high-contrast, hard shadows. No studio or artificial light. Visible wood grain, wear marks, highlights on the strings.
 Atmosphere: very strong wind is blowing — powerfully sweeping the whole field, flowers and grass surging in turbulent waves, petals swirling through the air in gusts. Clouds moving fast across the sky. Realistic cinematic look, slight desaturation, Japanese-summer mood.
@@ -2864,7 +2896,7 @@ Camera films only the guitar in super close-up: fingers running fast over the fr
           </article>
 
           <article class="hd-prompt-evidence" id="zephyr-prompt-02" data-prompt-quote="" data-source-key="zephyr-special.quote.6dfeeab7e045a560" data-claim="" data-evidence-grade="A">
-            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 02</span><span>1,664자</span><span>Seedance 2.0</span><span>4K · 4032×1728 · 21:9</span><span>출력 1</span></div>
+            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 02</span></div>
             <details><summary>상공 회전 카메라 원문 열기</summary><pre class="hd-code"><code data-prompt-index="2">Style: photoreal cinematic music-video frame, real film grain. NOT a 3D render, NOT a game engine, NOT a cartoon. Vivid, punchy MV look.
 FORMAT: anamorphic, 21:9, ~6s, real-time. Subtle anamorphic lens character. NO barrel/fisheye distortion, NO vignette. Single continuous shot - no cuts.
 LOCATION + LOOK: &lt;&lt;&lt;image_2&gt;&gt;&gt; - a lush green field full of flowers; only natural SUNLIGHT, warm directional, real soft shadows. STRONG WIND blows through the field - flowers, grass, hair and clothes streaming.
@@ -2877,7 +2909,7 @@ AUDIO: locked to the input music track; ambient wind. (Music from input &lt;&lt;
           </article>
 
           <article class="hd-prompt-evidence" id="zephyr-prompt-03" data-prompt-quote="" data-source-key="zephyr-special.quote.713404d2df79245e" data-claim="" data-evidence-grade="A">
-            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 03</span><span>2,941자</span><span>Seedance 2.0</span><span>4K · 4032×1728 · 21:9</span><span>출력 1</span></div>
+            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 03</span></div>
             <details><summary>메카 내부의 역할 분리 원문 열기</summary><pre class="hd-code"><code data-prompt-index="3">Tags: &lt;&lt;&lt;image_1&gt;&gt;&gt; = Jasmine · &lt;&lt;&lt;image_2&gt;&gt;&gt; = Naomi · &lt;&lt;&lt;image_3&gt;&gt;&gt; = mech cabin · location &lt;&lt;&lt;image_4&gt;&gt;&gt; = broken bridge (light reference)
 GLOBAL STYLE
 
@@ -2898,7 +2930,7 @@ Inside &lt;&lt;&lt;image_3&gt;&gt;&gt;: a tight 3/4 close-up of the two women cr
           </article>
 
           <article class="hd-prompt-evidence" id="zephyr-prompt-04" data-prompt-quote="" data-source-key="zephyr-special.quote.e2b413072a725b8f" data-claim="" data-evidence-grade="A">
-            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 04</span><span>3,957자</span><span>Seedance 2.0</span><span>4K · 4032×1728 · 21:9</span><span>출력 1</span></div>
+            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 04</span></div>
             <details><summary>다중 샷 운영 원문 열기</summary><pre class="hd-code"><code data-prompt-index="4">Style: 8K IMAX, photorealism. Real organic film grain and halation. Shot on large-format film. High dynamic range. NOT a 3D render, NOT a game engine, NOT game-cutscene aesthetic, NOT a cartoon.
 
 OPERATING STYLE — HOYTE VAN HOYTEMA: large-scale realism with intimate handheld closeness, immersive in-camera feel, tactile textures, atmospheric haze and volumetric light. Shallow depth of field on the face, documentary framing, photochemical look. Anime-comedic performance is allowed.
@@ -2946,7 +2978,7 @@ ACTION TIMING
           </article>
 
           <article class="hd-prompt-evidence" id="zephyr-prompt-05" data-prompt-quote="" data-source-key="zephyr-special.quote.8ff8953815cfbf7c" data-claim="" data-evidence-grade="A">
-            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 05</span><span>5,318자</span><span>Seedance 2.0</span><span>4K · 4032×1728 · 21:9</span><span>출력 1</span></div>
+            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 05</span></div>
             <details><summary>근접 추적 프레임 원문 열기</summary><pre class="hd-code"><code data-prompt-index="5">**ENGLISH PROMPT**
 
 ```
@@ -2972,7 +3004,7 @@ LOCKS — @Naomi_kpop EXACTLY per the sheet (dark wavy bob, rimless oval glasses
           </article>
 
           <article class="hd-prompt-evidence" id="zephyr-prompt-06" data-prompt-quote="" data-source-key="zephyr-special.quote.82af44830ada97e7" data-claim="" data-evidence-grade="A">
-            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 06</span><span>6,104자</span><span>Seedance 2.0</span><span>1080p · 2016×864 · 21:9</span><span>출력 1</span></div>
+            <div class="hd-prompt-evidence__meta"><span class="hd-evidence hd-evidence--observed">관찰된 사실 · A</span><span>후보 06</span></div>
             <details><summary>배치도 기반 다중 인물 원문 열기</summary><pre class="hd-code"><code data-prompt-index="6">Style: 8K IMAX, photorealism. Real organic film grain and halation. Shot on large-format film. High dynamic range. NOT a 3D render, NOT a game engine, NOT game-cutscene aesthetic, NOT a cartoon.
 
 OPERATING STYLE — HOYTE VAN HOYTEMA: large-scale realism with intimate handheld closeness, immersive in-camera feel, tactile textures, atmospheric haze and volumetric light. Shallow depth of field on the face, documentary framing, photochemical look. Anime-comedic performance is allowed.

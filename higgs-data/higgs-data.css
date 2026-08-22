@@ -360,7 +360,7 @@ button {
 
 .hd-split {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-columns: minmax(24em, 1fr) minmax(24em, 1fr);
   gap: clamp(var(--hd-space-8), 5vw, var(--hd-space-16));
   align-items: start;
 }
@@ -374,6 +374,8 @@ button {
 
 .hd-card {
   min-width: 0;
+  margin: 0;
+  container-type: inline-size;
   padding: var(--hd-space-8);
   border-right: 1px solid var(--hd-line);
   border-bottom: 1px solid var(--hd-line);
@@ -545,6 +547,36 @@ button {
   text-transform: uppercase;
 }
 
+.hd-table :is(th, td),
+.hd-prompt-evidence__meta,
+.hd-case__chips,
+.hd-panel__meta,
+.hd-kicker,
+.hd-label,
+.hd-overline,
+.hd-section-nav,
+.hd-prompt-step,
+.hd-evidence {
+  font-variant-numeric: tabular-nums;
+}
+
+.hd-comparison-table {
+  min-width: 46rem;
+}
+
+.hd-comparison-table :is(th, td):not(:first-child) {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.hd-comparison-table :is(th, td):first-child {
+  min-width: 11rem;
+}
+
+.hd-comparison-table caption {
+  font-size: .875rem;
+}
+
 .hd-prompt-steps {
   margin: 0;
   padding: 0;
@@ -556,7 +588,7 @@ button {
 .hd-prompt-step {
   counter-increment: prompt-step;
   display: grid;
-  grid-template-columns: 3rem minmax(0, 3fr) minmax(0, 6fr);
+  grid-template-columns: 3rem max-content minmax(0, 1fr);
   gap: var(--hd-space-6);
   padding-block: var(--hd-space-5);
   border-bottom: 1px solid var(--hd-line);
@@ -564,20 +596,35 @@ button {
 
 .hd-prompt-step::before {
   content: counter(prompt-step, decimal-leading-zero);
+  grid-column: 1;
+  grid-row: 1 / span 2;
   color: var(--hd-faint);
   font-family: var(--hd-mono);
   font-size: var(--hd-type-label);
 }
 
+.hd-prompt-step > .hd-evidence {
+  grid-column: 2;
+  grid-row: 1;
+}
+
 .hd-prompt-step strong {
   font-size: .9375rem;
   line-height: 1.5;
+  grid-column: 3;
+  grid-row: 1;
 }
 
 .hd-prompt-step span {
   color: var(--hd-muted);
   font-size: .875rem;
   line-height: 1.65;
+}
+
+.hd-prompt-step > span:last-child {
+  grid-column: 2 / -1;
+  grid-row: 2;
+  max-width: var(--hd-reading-measure);
 }
 
 .hd-code {
@@ -602,7 +649,7 @@ button {
 
 .hd-list__item {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
+  grid-template-columns: minmax(9rem, 3fr) minmax(24em, 7fr);
   gap: var(--hd-space-6);
   padding-block: var(--hd-space-5);
   border-bottom: 1px solid var(--hd-line);
@@ -615,8 +662,16 @@ button {
 
 .hd-list__desc {
   margin: 0;
+  max-width: var(--hd-reading-measure);
   color: var(--hd-muted);
   font-size: .9375rem;
+}
+
+@container (max-width: 48rem) {
+  .hd-list__item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--hd-space-2);
+  }
 }
 
 .hd-source-list {
@@ -722,6 +777,7 @@ button {
 }
 
 .hd-callout p {
+  max-width: var(--hd-reading-measure);
   margin: 0;
 }
 
@@ -731,6 +787,12 @@ button {
 
 .hd-callout p + p {
   margin-top: var(--hd-space-4);
+}
+
+.hd-callout strong,
+.hd-card__copy strong,
+.hd-section__intro strong {
+  font-variant-numeric: tabular-nums;
 }
 
 .hd-noscript {
@@ -1010,6 +1072,7 @@ button.hd-chip:focus-visible {
 .hd-technique,
 .hd-case {
   min-width: 0;
+  container-type: inline-size;
   padding: var(--hd-space-6);
   border-right: 1px solid var(--hd-line);
   border-bottom: 1px solid var(--hd-line);
@@ -1095,6 +1158,11 @@ table.hd-matrix {
 .hd-matrix :is(th, td):first-child,
 .hd-matrix-wrap :is(th, td):first-child {
   border-left: 1px solid var(--hd-line);
+}
+
+.hd-matrix :is(th, td):last-child,
+.hd-matrix-wrap :is(th, td):last-child {
+  white-space: nowrap;
 }
 
 .hd-matrix thead th,
@@ -1211,6 +1279,17 @@ table.hd-matrix {
   font-weight: 650;
   text-align: right;
   white-space: nowrap;
+}
+
+.hd-chart figcaption,
+.hd-chart > p,
+.hd-quant-chart > p,
+.hd-correction dd {
+  max-width: var(--hd-reading-measure);
+}
+
+.hd-correction dd {
+  margin-inline-start: 0;
 }
 
 .hd-chart__bar,
@@ -1476,15 +1555,38 @@ table.hd-matrix {
   border-bottom: 1px solid var(--hd-line);
 }
 
+.hd-case__points .hd-list__item {
+  grid-template-columns: minmax(24em, 1fr) minmax(24em, 1fr);
+}
+
+@container (max-width: 48rem) {
+  .hd-case__points .hd-list__item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .hd-case__points q {
   color: var(--hd-accent-strong);
   font-family: var(--hd-mono);
-  font-size: .75rem;
+  max-width: var(--hd-reading-measure);
+  display: block;
+  font-size: var(--hd-type-label);
   line-height: 1.55;
   overflow-wrap: anywhere;
 }
 
+.hd-case-point-explanation {
+  display: block;
+  max-width: var(--hd-reading-measure);
+}
+
+[data-case-point-explanation] {
+  display: block;
+  max-width: var(--hd-reading-measure);
+}
+
 .hd-case__points [data-case-point-explanation] {
+  display: block;
   color: var(--hd-muted);
   line-height: 1.75;
 }
@@ -1568,6 +1670,11 @@ table.hd-matrix {
   color: var(--hd-faint);
   font-size: .8125rem;
   line-height: 1.65;
+}
+
+.hd-case p,
+.hd-deep-case p {
+  max-width: var(--hd-reading-measure);
 }
 
 .hd-conflict-set {
@@ -1710,6 +1817,11 @@ table.hd-matrix {
   .hd-crosscut-source {
     grid-template-rows: auto;
   }
+
+  .hd-list__item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--hd-space-2);
+  }
 }
 
 @media (max-width: 767px) {
@@ -1755,7 +1867,20 @@ table.hd-matrix {
   }
 
   .hd-card {
-    padding: var(--hd-space-6) var(--hd-space-5);
+    padding: var(--hd-space-6) var(--hd-space-3);
+  }
+
+  .hd-callout,
+  .hd-correction,
+  .hd-case,
+  .hd-deep-case {
+    padding-inline: var(--hd-space-3);
+    font-size: .9375rem;
+  }
+
+  .hd-case > .hd-callout {
+    padding-inline: var(--hd-space-2);
+    font-size: .875rem;
   }
 
   .hd-stat-grid {
@@ -1771,8 +1896,15 @@ table.hd-matrix {
     gap: var(--hd-space-4);
   }
 
-  .hd-prompt-step span {
+  .hd-prompt-step::before {
+    grid-row: 1 / span 3;
+  }
+
+  .hd-prompt-step > .hd-evidence,
+  .hd-prompt-step strong,
+  .hd-prompt-step > span:last-child {
     grid-column: 2;
+    grid-row: auto;
   }
 
   .hd-chart__head {
@@ -1802,7 +1934,7 @@ table.hd-matrix {
 
   .hd-technique,
   .hd-case {
-    padding: var(--hd-space-5);
+    padding: var(--hd-space-5) var(--hd-space-3);
   }
 
   .hd-list__item,
