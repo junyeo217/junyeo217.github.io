@@ -430,6 +430,7 @@ button {
   border-top: 1px solid currentColor;
   color: var(--hd-faint);
   font-size: .8125rem;
+  font-variant-numeric: tabular-nums;
   line-height: 1.65;
 }
 
@@ -1372,6 +1373,7 @@ table.hd-matrix {
   font-family: var(--hd-mono);
   font-size: var(--hd-type-label);
   line-height: 1.5;
+  font-variant-numeric: tabular-nums;
   list-style: none;
 }
 
@@ -1398,6 +1400,7 @@ table.hd-matrix {
   color: var(--hd-faint);
   font-family: var(--hd-mono);
   font-size: var(--hd-type-label);
+  font-variant-numeric: tabular-nums;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
