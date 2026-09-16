@@ -30,7 +30,7 @@
   </script>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="/css/home.css?v=20260820c">
+  <link rel="stylesheet" href="/css/home.css?v=20260916a">
   <noscript>
     <style>
       body { overflow: auto !important; }
@@ -40,16 +40,16 @@
   </noscript>
 </head>
 <body data-active-view="home">
-  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <a class="skip-link" href="#main" data-en="Skip to content">본문으로 건너뛰기</a>
 
   <div class="intro" id="intro" aria-hidden="true">
     <p class="intro-copy">
-      <span class="intro-typed-line" data-intro-text="AI로 장면을 만들고,">
-        <span class="intro-measure">AI로 장면을 만들고,</span>
+      <span class="intro-typed-line" data-intro-text="AI로 장면을 만들고," data-en-intro="I create scenes with AI,">
+        <span class="intro-measure" data-en="I create scenes with AI,">AI로 장면을 만들고,</span>
         <span class="intro-runtime"><span class="intro-text"></span><span class="intro-caret"></span></span>
       </span>
-      <span class="intro-typed-line" data-intro-text="이야기로 완성합니다.">
-        <span class="intro-measure">이야기로 완성합니다.</span>
+      <span class="intro-typed-line" data-intro-text="이야기로 완성합니다." data-en-intro="and shape them into stories.">
+        <span class="intro-measure" data-en="and shape them into stories.">이야기로 완성합니다.</span>
         <span class="intro-runtime"><span class="intro-text"></span><span class="intro-caret"></span></span>
       </span>
     </p>
@@ -57,10 +57,16 @@
   </div>
 
   <header class="site-header">
-    <a class="wordmark" href="#home" data-view-link="home" aria-label="조중현 포트폴리오 홈">조중현</a>
-    <nav class="site-nav" aria-label="주요 메뉴">
-      <a href="#works" data-view-link="works">Works</a>
+    <a class="wordmark" href="#home" data-view-link="home" aria-label="조중현 포트폴리오 홈" data-en-aria-label="Joonghyun Cho portfolio home" data-en="Joonghyun Cho">조중현</a>
+    <nav class="site-nav" aria-label="주요 메뉴" data-en-aria-label="Main navigation">
+      <div class="language-switch" role="group" aria-label="언어 선택" data-en-aria-label="Select language">
+        <button type="button" data-language="ko" aria-pressed="true" aria-label="한국어" data-en-label="Korean">KR</button>
+        <span aria-hidden="true">|</span>
+        <button type="button" data-language="en" aria-pressed="false" aria-label="English">EN</button>
+      </div>
       <a href="#about" data-view-link="about">About</a>
+      <a href="#works" data-view-link="works">Works</a>
+      <a href="#activity" data-view-link="activity">Activity</a>
       <a href="#contact" data-view-link="contact">Contact</a>
     </nav>
   </header>
@@ -76,20 +82,20 @@
       <div class="hero-shade" aria-hidden="true"></div>
 
       <div class="hero-copy">
-        <p class="sr-only">AI로 장면을 만들고, 이야기로 완성합니다.</p>
-        <p class="eyebrow">AI Filmmaker · Video Creator</p>
-        <h1 id="homeTitle">조중현</h1>
+        <p class="sr-only" data-en="I create scenes with AI and bring them together through story.">AI로 장면을 만들고, 이야기로 완성합니다.</p>
+        <p class="eyebrow" data-en="Video Creator &amp; Software Builder">영상 제작 및 프로그램 빌더</p>
+        <h1 id="homeTitle" data-en="Joonghyun Cho">조중현</h1>
       </div>
 
       <div class="hero-bottom">
         <dl class="hero-meta">
-          <div><dt>Based in</dt><dd>Anyang, Korea</dd></div>
+          <div><dt data-en="Based in">Based in</dt><dd>Anyang, Korea</dd></div>
           <div><dt>Working with</dt><dd>AI Film · Short-form</dd></div>
-          <div><dt>Status</dt><dd>Open to Work</dd></div>
+          <div><dt>Status</dt><dd data-en="Employed">재직중</dd></div>
         </dl>
         <a class="featured-link" href="#works" data-view-link="works">
           <span>Featured Work</span>
-          <strong>부재중 · 2026</strong>
+          <strong data-en="Missed Call · 2026">부재중 · 2026</strong>
         </a>
       </div>
     </section>
@@ -98,7 +104,7 @@
       <div class="view-scroll">
         <div class="view-inner works-layout">
           <div class="view-heading">
-            <p class="section-index">01 / Selected Works</p>
+            <p class="section-index">02 / Selected Works</p>
             <h2 id="worksTitle">Works</h2>
           </div>
 
@@ -106,22 +112,22 @@
             <article class="project" aria-labelledby="hopeTitle">
               <div class="project-media">
                 <video controls playsinline preload="none" poster="/assets/poster_film.jpg"
-                       aria-label="단편 너가 힘들지 않았으면 해 전체 영상">
+                       aria-label="단편 너가 힘들지 않았으면 해 전체 영상" data-en-aria-label="I Hope You Won’t Have to Struggle, full short film">
                   <source src="/assets/FILM_master_web.mp4" type="video/mp4">
-                  <track kind="captions" src="/assets/captions_hope_ko.vtt" srclang="ko" label="한국어">
-                  <p>이 브라우저에서는 영상을 재생할 수 없습니다. <a href="/assets/FILM_master_web.mp4">영상 파일 열기</a></p>
+                  <track kind="captions" src="/assets/captions_hope_ko.vtt" srclang="ko" label="한국어" data-en-label="Korean">
+                  <p><span data-en="Your browser cannot play this video.">이 브라우저에서는 영상을 재생할 수 없습니다.</span> <a href="/assets/FILM_master_web.mp4" data-en="Open video file">영상 파일 열기</a></p>
                 </video>
               </div>
               <div class="project-caption">
                 <div class="project-id">
                   <p class="project-number">01</p>
-                  <h3 id="hopeTitle">너가 힘들지 않았으면 해</h3>
+                  <h3 id="hopeTitle" data-en="I Hope You Won’t Have to Struggle">너가 힘들지 않았으면 해</h3>
                   <p class="project-format">AI Short Film · 3:14 · 2026</p>
                 </div>
                 <div class="project-copy">
-                  <p>서로를 위해 대신 결정을 내려온 연인 현과 선. 이별의 밤을 지나, 두 사람은 혼자 결정하지 않는 방식으로 관계를 다시 바라본다.</p>
+                  <p data-en="Hyun and Sun have always made decisions on each other’s behalf. After a night of separation, they begin to see their relationship differently, learning to decide together rather than alone.">서로를 위해 대신 결정을 내려온 연인 현과 선. 이별의 밤을 지나, 두 사람은 혼자 결정하지 않는 방식으로 관계를 다시 바라본다.</p>
                   <dl class="project-details">
-                    <div><dt>Role</dt><dd>1인 제작</dd></div>
+                    <div><dt>Role</dt><dd data-en="Solo production">1인 제작</dd></div>
                     <div><dt>Tools</dt><dd>Seedance 2.5 · GPT Image 2 · Topaz AI · Higgsfield · Magnific</dd></div>
                   </dl>
                 </div>
@@ -131,22 +137,22 @@
             <article class="project" aria-labelledby="missedCallTitle">
               <div class="project-media">
                 <video controls playsinline preload="none" poster="/assets/poster_missed_call.jpg"
-                       aria-label="단편 부재중 전체 영상">
+                       aria-label="단편 부재중 전체 영상" data-en-aria-label="Missed Call, full short film">
                   <source src="/assets/film_missed_call.mp4" type="video/mp4">
-                  <track kind="captions" src="/assets/captions_missed_call_ko.vtt" srclang="ko" label="한국어">
-                  <p>이 브라우저에서는 영상을 재생할 수 없습니다. <a href="/assets/film_missed_call.mp4">영상 파일 열기</a></p>
+                  <track kind="captions" src="/assets/captions_missed_call_ko.vtt" srclang="ko" label="한국어" data-en-label="Korean">
+                  <p><span data-en="Your browser cannot play this video.">이 브라우저에서는 영상을 재생할 수 없습니다.</span> <a href="/assets/film_missed_call.mp4" data-en="Open video file">영상 파일 열기</a></p>
                 </video>
               </div>
               <div class="project-caption">
                 <div class="project-id">
                   <p class="project-number">02</p>
-                  <h3 id="missedCallTitle">부재중</h3>
+                  <h3 id="missedCallTitle" data-en="Missed Call">부재중</h3>
                   <p class="project-format">AI Short Film · 1:45 · 2026</p>
                 </div>
                 <div class="project-copy">
-                  <p>바쁘다는 이유로 엄마의 전화를 미룬 꽃집 사장 지우. 마지막 음성메시지를 들은 밤, 그녀는 끝내 받지 않을 전화를 건다.</p>
+                  <p data-en="Jiwoo, a florist, keeps putting off her mother’s calls because she is busy. On the night she hears the final voicemail, she makes a call that will never be answered.">바쁘다는 이유로 엄마의 전화를 미룬 꽃집 사장 지우. 마지막 음성메시지를 들은 밤, 그녀는 끝내 받지 않을 전화를 건다.</p>
                   <dl class="project-details">
-                    <div><dt>Role</dt><dd>1인 제작</dd></div>
+                    <div><dt>Role</dt><dd data-en="Solo production">1인 제작</dd></div>
                     <div><dt>Tools</dt><dd>Seedance 2.5 · GPT Image 2 · Topaz AI · Higgsfield · Magnific</dd></div>
                   </dl>
                 </div>
@@ -154,7 +160,7 @@
             </article>
           </div>
           <div class="footer-line">
-            <span>조중현</span>
+            <span data-en="Joonghyun Cho">조중현</span>
             <span>AI Filmmaker Portfolio · © 2026</span>
           </div>
         </div>
@@ -165,20 +171,45 @@
       <div class="view-scroll">
         <div class="view-inner about-layout">
           <div class="view-heading">
-            <p class="section-index">02 / About</p>
+            <p class="section-index">01 / About</p>
             <h2 id="aboutTitle">About</h2>
           </div>
           <div class="about-content">
-            <p class="about-lead">서사를 기획하고, 생성형 AI로 장면을 설계하며, 편집과 검증을 거쳐 최종본까지 완주합니다.</p>
-            <p class="about-note">기술 시연보다 인물과 감정이 남는 영상을 지향합니다. 기획한 이야기를 장면으로 만들고, 끝까지 완성된 결과물로 전달합니다.</p>
+            <p class="about-lead" data-en="I develop stories, craft scenes with generative AI, and carry each project through editing and review to the final cut.">서사를 기획하고, 생성형 AI로 장면을 설계하며, 편집과 검증을 거쳐 최종본까지 완주합니다.</p>
+            <p class="about-note" data-en="I make films that leave an impression through characters and emotions, not just technical demonstrations. I turn stories into scenes and see them through to a finished work.">기술 시연보다 인물과 감정이 남는 영상을 지향합니다. 기획한 이야기를 장면으로 만들고, 끝까지 완성된 결과물로 전달합니다.</p>
             <dl class="about-meta">
-              <div><dt>Focus</dt><dd>AI Film · Video Content</dd></div>
-              <div><dt>Based in</dt><dd>Anyang, Korea</dd></div>
-              <div><dt>Status</dt><dd>Open to Work</dd></div>
+              <div><dt data-en="Profession">직업</dt><dd data-en="Video Creator &amp; Software Builder">영상 제작 및 프로그램 빌더</dd></div>
+              <div><dt data-en="Based in">Based in</dt><dd>Anyang, Korea</dd></div>
+              <div><dt>Status</dt><dd data-en="Employed">재직중</dd></div>
             </dl>
           </div>
           <div class="footer-line">
-            <span>조중현</span>
+            <span data-en="Joonghyun Cho">조중현</span>
+            <span>AI Filmmaker Portfolio · © 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view view-paper view-activity" id="activity" data-view="activity" aria-labelledby="activityTitle">
+      <div class="view-scroll">
+        <div class="view-inner activity-layout">
+          <div class="view-heading">
+            <p class="section-index">03 / Activity</p>
+            <h2 id="activityTitle">Activity</h2>
+          </div>
+          <div class="activity-archive" aria-label="활동 이력" data-en-aria-label="Activity archive">
+            <div class="activity-year"><h3>2026</h3></div>
+            <article class="activity-entry" aria-labelledby="festivalTitle">
+              <p class="activity-category" data-en="Recognition">수상</p>
+              <div class="activity-detail">
+                <h4 id="festivalTitle">Next AI Film Festival</h4>
+                <p data-en="Selected for Online Screening">온라인 상영 선정</p>
+              </div>
+            </article>
+          </div>
+          <div class="footer-line">
+            <span data-en="Joonghyun Cho">조중현</span>
             <span>AI Filmmaker Portfolio · © 2026</span>
           </div>
         </div>
@@ -189,18 +220,18 @@
       <div class="view-scroll">
         <div class="view-inner contact-layout">
           <div class="view-heading">
-            <p class="section-index">03 / Contact</p>
+            <p class="section-index">04 / Contact</p>
             <h2 id="contactTitle">Contact</h2>
           </div>
           <div class="contact-content">
-            <p class="contact-copy">함께 만들 이야기가 있다면,<br>편하게 연락해 주세요.</p>
-            <div class="contact-channels" aria-label="연락처">
+            <p class="contact-copy" data-en="Have a story we could create together?&lt;br&gt;Feel free to get in touch.">함께 만들 이야기가 있다면,<br>편하게 연락해 주세요.</p>
+            <div class="contact-channels" aria-label="연락처" data-en-aria-label="Contact details">
               <p class="contact-mail">junyeo.ai@gmail.com</p>
               <p class="contact-handle">@junyeo.ai</p>
             </div>
           </div>
           <div class="footer-line">
-            <span>조중현</span>
+            <span data-en="Joonghyun Cho">조중현</span>
             <span>AI Filmmaker Portfolio · © 2026</span>
           </div>
         </div>
@@ -208,6 +239,7 @@
     </section>
   </main>
 
-  <script src="/js/home.js?v=20260820c" defer></script>
+  <script src="/js/language.js?v=20260916a" defer></script>
+  <script src="/js/home.js?v=20260916a" defer></script>
 </body>
 </html>

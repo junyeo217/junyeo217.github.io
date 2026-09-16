@@ -161,3 +161,34 @@ main { position: relative; width: 100%; height: 100%; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   .intro-pending .intro { display: none; }
 }
+
+/* Bilingual navigation and year-based activity archive. */
+.language-switch { display: flex; align-items: center; gap: 7px; white-space: nowrap; }
+.language-switch button { border: 0; padding: 13px 0; background: none; color: inherit; font-size: 10px; font-weight: 600; letter-spacing: .08em; cursor: pointer; opacity: .45; }
+.language-switch button[aria-pressed="true"], .language-switch button:hover, .language-switch button:focus-visible { opacity: 1; }
+.language-switch span { font-size: 10px; opacity: .3; }
+body[data-active-view="activity"] .site-header { color: var(--ink); background: rgba(240,239,235,.94); border-bottom-color: var(--line); }
+.activity-layout { display: flex; flex-direction: column; }
+.activity-archive { display: grid; grid-template-columns: minmax(110px, 1fr) 4fr; gap: 40px; padding: 28px 0 48px; border-top: 1px solid var(--ink); }
+.activity-year h3 { margin: 0; font-size: clamp(24px, 3vw, 40px); font-weight: 500; letter-spacing: -.04em; }
+.activity-entry { display: grid; grid-template-columns: 1fr 3fr; gap: 32px; }
+.activity-category { margin: 6px 0 0; color: var(--muted); font-size: 12px; letter-spacing: .08em; }
+.activity-detail h4 { margin: 0; font-size: clamp(25px, 3vw, 44px); font-weight: 500; line-height: 1.2; letter-spacing: -.035em; }
+.activity-detail p { margin: 18px 0 0; color: var(--muted); font-size: 16px; line-height: 1.6; }
+.activity-layout .footer-line { margin-top: auto; }
+.about-content { padding-bottom: 48px; }
+html[lang="en"] .intro-copy { font-size: clamp(18px, 3.4vw, 52px); }
+html[lang="en"] .hero-copy h1 { font-size: clamp(54px, 9vw, 135px); line-height: 1; }
+html[lang="en"] .contact-copy { max-width: 22ch; }
+@media (max-width: 700px) {
+  :root { --header-h: 104px; }
+  .site-header { flex-wrap: wrap; align-content: center; gap: 0; padding-top: 6px; padding-bottom: 6px; }
+  .wordmark { width: 100%; padding: 6px 0; }
+  .site-nav { width: 100%; justify-content: space-between; gap: 8px; }
+  .language-switch { gap: 6px; }
+  .view-inner { padding-top: 138px; }
+  .activity-archive { grid-template-columns: 1fr; gap: 30px; }
+  .activity-entry { grid-template-columns: 1fr; gap: 14px; }
+  html[lang="en"] .hero-copy h1 { font-size: clamp(44px, 12vw, 72px); }
+  html[lang="en"] .intro-copy { font-size: clamp(17px, 4.8vw, 29px); }
+}

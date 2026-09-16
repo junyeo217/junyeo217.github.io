@@ -5,7 +5,7 @@
   var body = document.body;
   var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
   var links = Array.prototype.slice.call(document.querySelectorAll('[data-view-link]'));
-  var valid = { home: true, works: true, about: true, contact: true };
+  var valid = { home: true, works: true, about: true, activity: true, contact: true };
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var activeView = '';
 
@@ -148,7 +148,7 @@
   function keyDelay(character, index) {
     if (character === ' ') return 45;
     if (character === ',' || character === '.') return 150;
-    return 68 + (index % 3) * 9;
+    return document.documentElement.lang === 'en' ? 30 : 68 + (index % 3) * 9;
   }
 
   function typeLine(lineIndex) {
