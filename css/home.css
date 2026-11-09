@@ -196,3 +196,18 @@ html[lang="en"] .contact-copy { max-width: 22ch; }
 /* Two metadata fields remain after removing employment status. */
 .hero-meta, .about-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 700px) { .about-meta { grid-template-columns: 1fr; } }
+
+.works-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-block: -16px 40px; }
+.works-tabs button { max-inline-size: 100%; overflow-wrap: anywhere; min-height: 44px; padding: 10px 20px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+.works-tabs button[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.work-panel[hidden] { display: none; }
+.work-panel { min-width: 0; }
+.project { min-width: 0; }
+.project h3, .project-copy { overflow-wrap: anywhere; }
+.project-media--portrait { aspect-ratio: 9 / 16; max-width: 360px; margin-inline: auto; }
+.project-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 20px; }
+.project-links a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 5px; }
+@media (max-width: 600px) {
+  .project-media--portrait { margin-inline: auto; width: 100%; }
+  .works-tabs button { padding-inline: 16px; }
+}

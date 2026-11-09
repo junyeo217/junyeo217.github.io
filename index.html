@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>조중현 | AI Filmmaker Portfolio</title>
-  <meta name="description" content="생성형 AI로 장면을 설계하고 이야기로 완성하는 조중현의 영상 포트폴리오. 단편 「부재중」과 「너가 힘들지 않았으면 해」를 소개합니다.">
+  <meta name="description" content="생성형 AI로 장면을 설계하고 이야기로 완성하는 조중현의 영상 포트폴리오. 필름, 숏드라마, 숏코미디와 광고 작품을 소개합니다.">
   <meta name="author" content="조중현">
   <meta name="theme-color" content="#17150f">
   <meta property="og:type" content="website">
@@ -30,12 +30,14 @@
   </script>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="/css/home.css?v=20260916b">
+  <link rel="stylesheet" href="/css/home.css?v=20261109a">
   <noscript>
     <style>
       body { overflow: auto !important; }
       .view { position: relative !important; min-height: 100vh; }
       .view[hidden] { display: block !important; }
+      .work-panel[hidden] { display: block !important; }
+      .works-tabs { display: none; }
     </style>
   </noscript>
 </head>
@@ -107,7 +109,48 @@
             <h2 id="worksTitle">Works</h2>
           </div>
 
+          <div class="works-tabs" role="tablist" aria-label="작품 유형" data-en-aria-label="Work categories">
+            <button id="tab-film" type="button" role="tab" aria-controls="panel-film" aria-selected="true" data-work-tab="film" data-en="Film · 4">필름 · 4</button>
+            <button id="tab-drama" type="button" role="tab" aria-controls="panel-drama" aria-selected="false" tabindex="-1" data-work-tab="drama" data-en="Short Drama · 10">숏드라마 · 10</button>
+            <button id="tab-comedy" type="button" role="tab" aria-controls="panel-comedy" aria-selected="false" tabindex="-1" data-work-tab="comedy" data-en="Short Comedy · 30">숏코미디 · 30</button>
+            <button id="tab-commercial" type="button" role="tab" aria-controls="panel-commercial" aria-selected="false" tabindex="-1" data-work-tab="commercial" data-en="Commercial · 5">광고 · 5</button>
+          </div>
+          <div class="work-panel" id="panel-film" role="tabpanel" aria-labelledby="tab-film" data-work-panel="film">
           <div class="works-grid">
+            <article class="project" aria-labelledby="factory-voice-title" data-added-work>
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/works/factory-voice.jpg" aria-label="공장의 목소리" data-en-aria-label="Voice of the Factory">
+                  <source src="/assets/works/factory-voice.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="factory-voice-title" data-en="Voice of the Factory">공장의 목소리</h3>
+                  <p class="project-format">1:13 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A short film created with generative AI.">생성형 AI로 제작한 단편 영상.</p>
+                  <div class="project-links"><a href="/assets/works/factory-voice.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="wont-ask-title" data-added-work>
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/works/wont-ask.jpg" aria-label="안 물어볼게 (가제)" data-en-aria-label="I Will Not Ask (Working Title)">
+                  <source src="/assets/works/wont-ask.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="wont-ask-title" data-en="I Will Not Ask (Working Title)">안 물어볼게 (가제)</h3>
+                  <p class="project-format">1:00 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A short film created with generative AI.">생성형 AI로 제작한 단편 영상.</p>
+                  <div class="project-links"><a href="/assets/works/wont-ask.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
             <article class="project" aria-labelledby="hopeTitle">
               <div class="project-media">
                 <video controls playsinline preload="none" poster="/assets/poster_film.jpg"
@@ -157,6 +200,781 @@
                 </div>
               </div>
             </article>
+          </div>
+          </div>
+          <div class="work-panel" id="panel-drama" role="tabpanel" aria-labelledby="tab-drama" data-work-panel="drama" hidden>
+            <div class="works-grid">
+            <article class="project" aria-labelledby="good-person-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/good-person.jpg" aria-label="좋은 사람 대행" data-en-aria-label="A Good Person for Hire">
+                  <source src="/assets/works/good-person.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="good-person-title" data-en="A Good Person for Hire">좋은 사람 대행</h3>
+                  <p class="project-format">1:28 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A short film created with generative AI.">생성형 AI로 제작한 단편 영상.</p>
+                  <div class="project-links"><a href="/assets/works/good-person.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="roommate-00-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/roommate-00.jpg" aria-label="이름도 몰랐던 남자랑 삽니다 &#183; 티저" data-en-aria-label="I Live With a Man Whose Name I Never Knew &#183; Teaser">
+                  <source src="/assets/works/roommate-00.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="roommate-00-title" data-en="I Live With a Man Whose Name I Never Knew &#183; Teaser">이름도 몰랐던 남자랑 삽니다 &#183; 티저</h3>
+                  <p class="project-format">1:01 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A room viewing reunites former college classmates after nine years, beginning a romance between unexpected roommates.">방을 보러 간 집에서 9년 전 대학 동기를 만난다. 그의 이름조차 기억하지 못한 채 시작되는 동거 로맨스.</p>
+                  <div class="project-links"><a href="/assets/works/roommate-00.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="roommate-01-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/roommate-01.jpg" aria-label="이름도 몰랐던 남자랑 삽니다 &#183; 1화" data-en-aria-label="I Live With a Man Whose Name I Never Knew &#183; Episode 1">
+                  <source src="/assets/works/roommate-01.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="roommate-01-title" data-en="I Live With a Man Whose Name I Never Knew &#183; Episode 1">이름도 몰랐던 남자랑 삽니다 &#183; 1화</h3>
+                  <p class="project-format">1:21 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A room viewing reunites former college classmates after nine years, beginning a romance between unexpected roommates.">방을 보러 간 집에서 9년 전 대학 동기를 만난다. 그의 이름조차 기억하지 못한 채 시작되는 동거 로맨스.</p>
+                  <div class="project-links"><a href="/assets/works/roommate-01.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="roommate-02-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/roommate-02.jpg" aria-label="이름도 몰랐던 남자랑 삽니다 &#183; 2화" data-en-aria-label="I Live With a Man Whose Name I Never Knew &#183; Episode 2">
+                  <source src="/assets/works/roommate-02.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="roommate-02-title" data-en="I Live With a Man Whose Name I Never Knew &#183; Episode 2">이름도 몰랐던 남자랑 삽니다 &#183; 2화</h3>
+                  <p class="project-format">1:19 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A room viewing reunites former college classmates after nine years, beginning a romance between unexpected roommates.">방을 보러 간 집에서 9년 전 대학 동기를 만난다. 그의 이름조차 기억하지 못한 채 시작되는 동거 로맨스.</p>
+                  <div class="project-links"><a href="/assets/works/roommate-02.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="roommate-03-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/roommate-03.jpg" aria-label="이름도 몰랐던 남자랑 삽니다 &#183; 3화" data-en-aria-label="I Live With a Man Whose Name I Never Knew &#183; Episode 3">
+                  <source src="/assets/works/roommate-03.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="roommate-03-title" data-en="I Live With a Man Whose Name I Never Knew &#183; Episode 3">이름도 몰랐던 남자랑 삽니다 &#183; 3화</h3>
+                  <p class="project-format">1:21 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A room viewing reunites former college classmates after nine years, beginning a romance between unexpected roommates.">방을 보러 간 집에서 9년 전 대학 동기를 만난다. 그의 이름조차 기억하지 못한 채 시작되는 동거 로맨스.</p>
+                  <div class="project-links"><a href="/assets/works/roommate-03.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="roommate-04-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/roommate-04.jpg" aria-label="이름도 몰랐던 남자랑 삽니다 &#183; 4화" data-en-aria-label="I Live With a Man Whose Name I Never Knew &#183; Episode 4">
+                  <source src="/assets/works/roommate-04.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="roommate-04-title" data-en="I Live With a Man Whose Name I Never Knew &#183; Episode 4">이름도 몰랐던 남자랑 삽니다 &#183; 4화</h3>
+                  <p class="project-format">1:15 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A room viewing reunites former college classmates after nine years, beginning a romance between unexpected roommates.">방을 보러 간 집에서 9년 전 대학 동기를 만난다. 그의 이름조차 기억하지 못한 채 시작되는 동거 로맨스.</p>
+                  <div class="project-links"><a href="/assets/works/roommate-04.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="roommate-05-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/roommate-05.jpg" aria-label="이름도 몰랐던 남자랑 삽니다 &#183; 5화" data-en-aria-label="I Live With a Man Whose Name I Never Knew &#183; Episode 5">
+                  <source src="/assets/works/roommate-05.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="roommate-05-title" data-en="I Live With a Man Whose Name I Never Knew &#183; Episode 5">이름도 몰랐던 남자랑 삽니다 &#183; 5화</h3>
+                  <p class="project-format">1:29 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A room viewing reunites former college classmates after nine years, beginning a romance between unexpected roommates.">방을 보러 간 집에서 9년 전 대학 동기를 만난다. 그의 이름조차 기억하지 못한 채 시작되는 동거 로맨스.</p>
+                  <div class="project-links"><a href="/assets/works/roommate-05.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="villainess-01-title" data-added-work>
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/works/villainess-01.jpg" aria-label="악녀 사직합니다 &#183; 1화" data-en-aria-label="The Villainess Resigns &#183; Episode 1">
+                  <source src="/assets/works/villainess-01.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="villainess-01-title" data-en="The Villainess Resigns &#183; Episode 1">악녀 사직합니다 &#183; 1화</h3>
+                  <p class="project-format">1:28 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A romantic fantasy comedy about Selena and her attempt to leave the villainess role behind.">악녀의 역할을 벗어나려는 셀레나의 로맨스 판타지 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/villainess-01.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="villainess-02-title" data-added-work>
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/works/villainess-02.jpg" aria-label="악녀 사직합니다 &#183; 2화" data-en-aria-label="The Villainess Resigns &#183; Episode 2">
+                  <source src="/assets/works/villainess-02.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="villainess-02-title" data-en="The Villainess Resigns &#183; Episode 2">악녀 사직합니다 &#183; 2화</h3>
+                  <p class="project-format">1:38 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A romantic fantasy comedy about Selena and her attempt to leave the villainess role behind.">악녀의 역할을 벗어나려는 셀레나의 로맨스 판타지 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/villainess-02.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="villainess-03-title" data-added-work>
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/works/villainess-03.jpg" aria-label="악녀 사직합니다 &#183; 3화" data-en-aria-label="The Villainess Resigns &#183; Episode 3">
+                  <source src="/assets/works/villainess-03.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="villainess-03-title" data-en="The Villainess Resigns &#183; Episode 3">악녀 사직합니다 &#183; 3화</h3>
+                  <p class="project-format">1:10 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A romantic fantasy comedy about Selena and her attempt to leave the villainess role behind.">악녀의 역할을 벗어나려는 셀레나의 로맨스 판타지 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/villainess-03.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article></div>
+          </div>
+          <div class="work-panel" id="panel-comedy" role="tabpanel" aria-labelledby="tab-comedy" data-work-panel="comedy" hidden>
+            <div class="works-grid">
+            <article class="project" aria-labelledby="timmy-00-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-00.jpg" aria-label="티미와 서아 EP.00 &#183; 마침표는 내 편 한글날" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 00">
+                  <source src="/assets/works/timmy-00.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-00-title" data-en="Timmy &amp; Seoa &#183; Episode 00">티미와 서아 EP.00 &#183; 마침표는 내 편 한글날</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-00.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-01-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-01.jpg" aria-label="티미와 서아 EP.01 &#183; 리모컨" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 01">
+                  <source src="/assets/works/timmy-01.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-01-title" data-en="Timmy &amp; Seoa &#183; Episode 01">티미와 서아 EP.01 &#183; 리모컨</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-01.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-02-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-02.jpg" aria-label="티미와 서아 EP.02 &#183; 다른 고양이 냄새" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 02">
+                  <source src="/assets/works/timmy-02.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-02-title" data-en="Timmy &amp; Seoa &#183; Episode 02">티미와 서아 EP.02 &#183; 다른 고양이 냄새</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-02.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-03-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-03.jpg" aria-label="티미와 서아 EP.03 &#183; 진단서" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 03">
+                  <source src="/assets/works/timmy-03.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-03-title" data-en="Timmy &amp; Seoa &#183; Episode 03">티미와 서아 EP.03 &#183; 진단서</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-03.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-04-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-04.jpg" aria-label="티미와 서아 EP.04 &#183; 캐리어" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 04">
+                  <source src="/assets/works/timmy-04.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-04-title" data-en="Timmy &amp; Seoa &#183; Episode 04">티미와 서아 EP.04 &#183; 캐리어</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-04.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-05-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-05.jpg" aria-label="티미와 서아 EP.05 &#183; 마지막한알" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 05">
+                  <source src="/assets/works/timmy-05.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-05-title" data-en="Timmy &amp; Seoa &#183; Episode 05">티미와 서아 EP.05 &#183; 마지막한알</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-05.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-06-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-06.jpg" aria-label="티미와 서아 EP.06 &#183; 상속" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 06">
+                  <source src="/assets/works/timmy-06.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-06-title" data-en="Timmy &amp; Seoa &#183; Episode 06">티미와 서아 EP.06 &#183; 상속</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-06.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-07-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-07.jpg" aria-label="티미와 서아 EP.07 &#183; 드라이기" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 07">
+                  <source src="/assets/works/timmy-07.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-07-title" data-en="Timmy &amp; Seoa &#183; Episode 07">티미와 서아 EP.07 &#183; 드라이기</h3>
+                  <p class="project-format">0:32 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-07.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-08-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-08.jpg" aria-label="티미와 서아 EP.08 &#183; 무릎감옥" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 08">
+                  <source src="/assets/works/timmy-08.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-08-title" data-en="Timmy &amp; Seoa &#183; Episode 08">티미와 서아 EP.08 &#183; 무릎감옥</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-08.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-09-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-09.jpg" aria-label="티미와 서아 EP.09 &#183; 요가강사" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 09">
+                  <source src="/assets/works/timmy-09.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-09-title" data-en="Timmy &amp; Seoa &#183; Episode 09">티미와 서아 EP.09 &#183; 요가강사</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-09.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-10-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-10.jpg" aria-label="티미와 서아 EP.10 &#183; 5분만" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 10">
+                  <source src="/assets/works/timmy-10.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-10-title" data-en="Timmy &amp; Seoa &#183; Episode 10">티미와 서아 EP.10 &#183; 5분만</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-10.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-11-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-11.jpg" aria-label="티미와 서아 EP.11 &#183; 화분재판" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 11">
+                  <source src="/assets/works/timmy-11.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-11-title" data-en="Timmy &amp; Seoa &#183; Episode 11">티미와 서아 EP.11 &#183; 화분재판</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-11.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-12-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-12.jpg" aria-label="티미와 서아 EP.12 &#183; 각방" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 12">
+                  <source src="/assets/works/timmy-12.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-12-title" data-en="Timmy &amp; Seoa &#183; Episode 12">티미와 서아 EP.12 &#183; 각방</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-12.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-13-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-13.jpg" aria-label="티미와 서아 EP.13 &#183; 물세례" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 13">
+                  <source src="/assets/works/timmy-13.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-13-title" data-en="Timmy &amp; Seoa &#183; Episode 13">티미와 서아 EP.13 &#183; 물세례</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-13.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-14-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-14.jpg" aria-label="티미와 서아 EP.14 &#183; 합의금" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 14">
+                  <source src="/assets/works/timmy-14.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-14-title" data-en="Timmy &amp; Seoa &#183; Episode 14">티미와 서아 EP.14 &#183; 합의금</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-14.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-15-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-15.jpg" aria-label="티미와 서아 EP.15 &#183; 청혼" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 15">
+                  <source src="/assets/works/timmy-15.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-15-title" data-en="Timmy &amp; Seoa &#183; Episode 15">티미와 서아 EP.15 &#183; 청혼</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-15.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-16-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-16.jpg" aria-label="티미와 서아 EP.16 &#183; 센터" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 16">
+                  <source src="/assets/works/timmy-16.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-16-title" data-en="Timmy &amp; Seoa &#183; Episode 16">티미와 서아 EP.16 &#183; 센터</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-16.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-17-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-17.jpg" aria-label="티미와 서아 EP.17 &#183; 기미상궁" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 17">
+                  <source src="/assets/works/timmy-17.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-17-title" data-en="Timmy &amp; Seoa &#183; Episode 17">티미와 서아 EP.17 &#183; 기미상궁</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-17.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-18-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-18.jpg" aria-label="티미와 서아 EP.18 &#183; 야식속보" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 18">
+                  <source src="/assets/works/timmy-18.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-18-title" data-en="Timmy &amp; Seoa &#183; Episode 18">티미와 서아 EP.18 &#183; 야식속보</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-18.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-19-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-19.jpg" aria-label="티미와 서아 EP.19 &#183; 전기장판분양" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 19">
+                  <source src="/assets/works/timmy-19.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-19-title" data-en="Timmy &amp; Seoa &#183; Episode 19">티미와 서아 EP.19 &#183; 전기장판분양</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-19.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-20-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-20.jpg" aria-label="티미와 서아 EP.20 &#183; 가면무도회" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 20">
+                  <source src="/assets/works/timmy-20.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-20-title" data-en="Timmy &amp; Seoa &#183; Episode 20">티미와 서아 EP.20 &#183; 가면무도회</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-20.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-21-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-21.jpg" aria-label="티미와 서아 EP.21 &#183; 캣타워홈쇼핑" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 21">
+                  <source src="/assets/works/timmy-21.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-21-title" data-en="Timmy &amp; Seoa &#183; Episode 21">티미와 서아 EP.21 &#183; 캣타워홈쇼핑</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-21.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-22-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-22.jpg" aria-label="티미와 서아 EP.22 &#183; 체중계훈련소" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 22">
+                  <source src="/assets/works/timmy-22.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-22-title" data-en="Timmy &amp; Seoa &#183; Episode 22">티미와 서아 EP.22 &#183; 체중계훈련소</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-22.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-23-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-23.jpg" aria-label="티미와 서아 EP.23 &#183; 최면술사" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 23">
+                  <source src="/assets/works/timmy-23.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-23-title" data-en="Timmy &amp; Seoa &#183; Episode 23">티미와 서아 EP.23 &#183; 최면술사</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-23.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-24-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-24.jpg" aria-label="티미와 서아 EP.24 &#183; 압박면접" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 24">
+                  <source src="/assets/works/timmy-24.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-24-title" data-en="Timmy &amp; Seoa &#183; Episode 24">티미와 서아 EP.24 &#183; 압박면접</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-24.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-25-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-25.jpg" aria-label="티미와 서아 EP.25 &#183; 사과문" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 25">
+                  <source src="/assets/works/timmy-25.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-25-title" data-en="Timmy &amp; Seoa &#183; Episode 25">티미와 서아 EP.25 &#183; 사과문</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-25.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-26-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-26.jpg" aria-label="티미와 서아 EP.26 &#183; 인질협상" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 26">
+                  <source src="/assets/works/timmy-26.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-26-title" data-en="Timmy &amp; Seoa &#183; Episode 26">티미와 서아 EP.26 &#183; 인질협상</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-26.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-27-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-27.jpg" aria-label="티미와 서아 EP.27 &#183; 세관 검사" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 27">
+                  <source src="/assets/works/timmy-27.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-27-title" data-en="Timmy &amp; Seoa &#183; Episode 27">티미와 서아 EP.27 &#183; 세관 검사</h3>
+                  <p class="project-format">0:33 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-27.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-28-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-28.jpg" aria-label="티미와 서아 EP.28 &#183; 밥친구" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 28">
+                  <source src="/assets/works/timmy-28.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-28-title" data-en="Timmy &amp; Seoa &#183; Episode 28">티미와 서아 EP.28 &#183; 밥친구</h3>
+                  <p class="project-format">1:01 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-28.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="timmy-30-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/timmy-30.jpg" aria-label="티미와 서아 EP.30 &#183; 빨래도둑" data-en-aria-label="Timmy &amp; Seoa &#183; Episode 30">
+                  <source src="/assets/works/timmy-30.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="timmy-30-title" data-en="Timmy &amp; Seoa &#183; Episode 30">티미와 서아 EP.30 &#183; 빨래도둑</h3>
+                  <p class="project-format">0:59 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="Everyday comedy with Seoa and Timmy, a talking cat.">서아와 말하는 고양이 티미의 일상 코미디.</p>
+                  <div class="project-links"><a href="/assets/works/timmy-30.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article></div>
+          </div>
+          <div class="work-panel" id="panel-commercial" role="tabpanel" aria-labelledby="tab-commercial" data-work-panel="commercial" hidden>
+            <div class="works-grid">
+            <article class="project" aria-labelledby="nepda-title" data-added-work>
+              <div class="project-media project-media--portrait">
+                <video controls playsinline preload="none" poster="/assets/works/nepda.jpg" aria-label="넾다세일 &#183; 브랜드 실험" data-en-aria-label="NEPDA Sale &#183; Brand Experiment">
+                  <source src="/assets/works/nepda.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="nepda-title" data-en="NEPDA Sale &#183; Brand Experiment">넾다세일 &#183; 브랜드 실험</h3>
+                  <p class="project-format">0:22 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="An AI advertising experiment featuring the Naver Plus Store NEPDA sale.">네이버플러스 스토어 넾다세일을 소재로 만든 AI 광고 실험작.</p>
+                  <div class="project-links"><a href="/assets/works/nepda.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="witim-cinematic-title" data-added-work>
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/works/witim-cinematic.jpg" aria-label="WITIM &#183; 다이나믹 브랜드 필름" data-en-aria-label="WITIM &#183; Dynamic Brand Film">
+                  <source src="/assets/works/witim-cinematic.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="witim-cinematic-title" data-en="WITIM &#183; Dynamic Brand Film">WITIM &#183; 다이나믹 브랜드 필름</h3>
+                  <p class="project-format">0:30 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A 30-second brand film connecting cinematic AI-generated scenes.">실사형 AI 장면을 짧은 호흡으로 연결한 30초 브랜드 영상.</p>
+                  <div class="project-links"><a href="/assets/works/witim-cinematic.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="witim-dynamic-title" data-added-work>
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/works/witim-dynamic.jpg" aria-label="WITIM &#183; 다이나믹 모션" data-en-aria-label="WITIM &#183; Dynamic Motion">
+                  <source src="/assets/works/witim-dynamic.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="witim-dynamic-title" data-en="WITIM &#183; Dynamic Motion">WITIM &#183; 다이나믹 모션</h3>
+                  <p class="project-format">0:30 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A WITIM introduction built with kinetic typography and motion graphics.">빠른 타이포그래피와 모션그래픽으로 구성한 위팀 소개 영상.</p>
+                  <div class="project-links"><a href="/assets/works/witim-dynamic.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="witim-film-title" data-added-work>
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/works/witim-film.jpg" aria-label="WITIM &#183; 브랜드 필름" data-en-aria-label="WITIM &#183; Brand Film">
+                  <source src="/assets/works/witim-film.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="witim-film-title" data-en="WITIM &#183; Brand Film">WITIM &#183; 브랜드 필름</h3>
+                  <p class="project-format">0:45 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A 45-second brand film introducing WITIM through cinematic AI-generated scenes.">위팀의 서비스를 실사형 AI 장면으로 소개하는 45초 브랜드 영상.</p>
+                  <div class="project-links"><a href="/assets/works/witim-film.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article>
+            <article class="project" aria-labelledby="witim-intro-title" data-added-work>
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/works/witim-intro.jpg" aria-label="WITIM &#183; 모션그래픽 소개" data-en-aria-label="WITIM &#183; Motion Introduction">
+                  <source src="/assets/works/witim-intro.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <h3 id="witim-intro-title" data-en="WITIM &#183; Motion Introduction">WITIM &#183; 모션그래픽 소개</h3>
+                  <p class="project-format">0:45 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A 45-second introduction to WITIM through motion graphics.">차분한 모션그래픽으로 위팀을 소개하는 45초 영상.</p>
+                  <div class="project-links"><a href="/assets/works/witim-intro.mp4" target="_blank" rel="noopener" data-en="Open film">영상 크게 보기</a></div>
+                </div>
+              </div>
+            </article></div>
           </div>
           <div class="footer-line">
             <span data-en="Joonghyun Cho">조중현</span>
@@ -237,7 +1055,8 @@
     </section>
   </main>
 
-  <script src="/js/language.js?v=20260916b" defer></script>
-  <script src="/js/home.js?v=20260916b" defer></script>
+  <script src="/js/language.js?v=20261109a" defer></script>
+  <script src="/js/home.js?v=20261109a" defer></script>
+  <script src="/js/works.js?v=20261109a" defer></script>
 </body>
 </html>
