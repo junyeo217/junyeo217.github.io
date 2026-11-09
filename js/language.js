@@ -35,6 +35,7 @@
       else url.searchParams.delete('lang');
       history.replaceState(history.state, '', url.pathname + url.search + url.hash);
     }
+    document.dispatchEvent(new Event('portfolio-language-change'));
   }
   var initial = new URLSearchParams(location.search).get('lang');
   if (initial !== 'ko' && initial !== 'en') {
