@@ -22,7 +22,7 @@
     buttons.forEach(function (button) { button.setAttribute('aria-pressed', button.dataset.language === lang ? 'true' : 'false'); });
     var name = lang === 'en' ? 'Joonghyun Cho' : '조중현';
     document.title = name + ' | AI Filmmaker Portfolio';
-    description.content = lang === 'en' ? 'The film portfolio of Joonghyun Cho, an AI Film & builder crafting stories with generative AI. Explore films, short dramas, short comedies and commercials.' : originalDescription;
+    description.content = lang === 'en' ? 'The film portfolio of Joonghyun Cho, an AI Film & builder crafting stories with generative AI. Explore films, short dramas and commercials.' : originalDescription;
     document.querySelector('meta[name="author"]').content = name;
     document.querySelector('meta[property="og:title"]').content = document.title;
     document.querySelector('meta[property="og:locale"]').content = lang === 'en' ? 'en_US' : 'ko_KR';
