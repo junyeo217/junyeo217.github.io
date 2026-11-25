@@ -226,6 +226,7 @@ html[lang="en"] .contact-copy { max-width: 22ch; }
 .series-open img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: var(--ink); }
 .series-open h3 { font-size: 24px; line-height: 1.25; font-weight: 540; letter-spacing: -.035em; margin: 16px 0 8px; overflow-wrap: anywhere; }
 .series-meta { display: block; color: var(--muted); font-size: 13px; }
+.series-logline { display: block; margin-top: 10px; font-size: 14px; line-height: 1.55; overflow-wrap: anywhere; }
 .series-action { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; font-size: 14px; text-decoration: underline; text-underline-offset: 5px; }
 .series-open:hover .series-action, .series-open:active .series-action { text-decoration-thickness: 2px; }
 .series-dialog { width: min(920px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 24px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); overflow: auto; overscroll-behavior: contain; }

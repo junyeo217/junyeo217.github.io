@@ -30,7 +30,7 @@
   </script>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="/css/home.css?v=20261110c">
+  <link rel="stylesheet" href="/css/home.css?v=20261125a">
   <noscript>
     <style>
       body { overflow: auto !important; }
@@ -77,8 +77,8 @@
     <section class="view view-home is-active" id="home" data-view="home" aria-labelledby="homeTitle">
       <div class="hero-media" aria-hidden="true">
         <video class="hero-video" autoplay muted loop playsinline preload="metadata"
-               poster="/assets/poster_missed_call.jpg" tabindex="-1">
-          <source src="/assets/hero_missed_call.mp4" type="video/mp4">
+               poster="/assets/hero_gamyo.jpg" tabindex="-1">
+          <source src="/assets/hero_gamyo.mp4" type="video/mp4">
         </video>
       </div>
       <div class="hero-shade" aria-hidden="true"></div>
@@ -96,7 +96,7 @@
         </dl>
         <a class="featured-link" href="#works" data-view-link="works">
           <span>Featured Work</span>
-          <strong data-en="Missed Call · 2026">부재중 · 2026</strong>
+          <strong data-en="Gamyo · 2026">가묘 · 2026</strong>
         </a>
       </div>
     </section>
@@ -110,12 +110,37 @@
           </div>
 
           <div class="works-tabs" role="tablist" aria-label="작품 유형" data-en-aria-label="Work categories">
-            <button id="tab-film" type="button" role="tab" aria-controls="panel-film" aria-selected="true" data-work-tab="film" data-en="Film · 2">필름 · 2</button>
-            <button id="tab-drama" type="button" role="tab" aria-controls="panel-drama" aria-selected="false" tabindex="-1" data-work-tab="drama" data-en="Short Drama · 3 titles">숏드라마 · 3작품</button>
+            <button id="tab-film" type="button" role="tab" aria-controls="panel-film" aria-selected="true" data-work-tab="film" data-en="Film · 3">필름 · 3</button>
+            <button id="tab-drama" type="button" role="tab" aria-controls="panel-drama" aria-selected="false" tabindex="-1" data-work-tab="drama" data-en="Short Drama · 4 titles">숏드라마 · 4작품</button>
+            <button id="tab-longform" type="button" role="tab" aria-controls="panel-longform" aria-selected="false" tabindex="-1" data-work-tab="longform" data-en="Long-form Drama · 2 titles">롱폼 드라마 · 2작품</button>
             <button id="tab-commercial" type="button" role="tab" aria-controls="panel-commercial" aria-selected="false" tabindex="-1" data-work-tab="commercial" data-en="Commercial · 1">광고 · 1</button>
           </div>
           <div class="work-panel" id="panel-film" role="tabpanel" aria-labelledby="tab-film" data-work-panel="film">
           <div class="works-grid">
+            <article class="project" aria-labelledby="gamyoTitle">
+              <div class="project-media">
+                <video controls playsinline preload="none" poster="/assets/poster_gamyo.jpg"
+                       aria-label="단편 가묘 전체 영상" data-en-aria-label="Gamyo, full short film">
+                  <source src="/assets/film_gamyo.mp4" type="video/mp4">
+                  <p><span data-en="Your browser cannot play this video.">이 브라우저에서는 영상을 재생할 수 없습니다.</span> <a href="/assets/film_gamyo.mp4" data-en="Open video file">영상 파일 열기</a></p>
+                </video>
+              </div>
+              <div class="project-caption">
+                <div class="project-id">
+                  <p class="project-number">01</p>
+                  <h3 id="gamyoTitle" data-en="Gamyo">가묘</h3>
+                  <p class="project-format">AI Short Film · 5:19 · 2026</p>
+                </div>
+                <div class="project-copy">
+                  <p data-en="A family mows an ancestor’s grave, digs a pit the length of their living son beside it, covers it, and drives home.">조상의 묘를 벌초한 가족이 그 옆에 살아 있는 아들의 키만 한 구덩이를 판다. 그리고 덮고, 차를 타고 집으로 돌아간다.</p>
+                  <dl class="project-details">
+                    <div><dt>Studio</dt><dd>Junyeo Studio</dd></div>
+                    <div><dt>Tools</dt><dd>Seedance 2.5 · Midjourney · Seedream · Topaz</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </article>
+
             <article class="project" aria-labelledby="hopeTitle">
               <div class="project-media">
                 <video controls playsinline preload="none" poster="/assets/poster_film.jpg"
@@ -127,7 +152,7 @@
               </div>
               <div class="project-caption">
                 <div class="project-id">
-                  <p class="project-number">01</p>
+                  <p class="project-number">02</p>
                   <h3 id="hopeTitle" data-en="I Hope You Won’t Have to Struggle">너가 힘들지 않았으면 해</h3>
                   <p class="project-format">AI Short Film · 3:14 · 2026</p>
                 </div>
@@ -152,7 +177,7 @@
               </div>
               <div class="project-caption">
                 <div class="project-id">
-                  <p class="project-number">02</p>
+                  <p class="project-number">03</p>
                   <h3 id="missedCallTitle" data-en="Missed Call">부재중</h3>
                   <p class="project-format">AI Short Film · 1:45 · 2026</p>
                 </div>
@@ -170,18 +195,28 @@
           <div class="work-panel" id="panel-drama" role="tabpanel" aria-labelledby="tab-drama" data-work-panel="drama" hidden>
             <div class="series-grid">
 <article class="series-card">
-              <a class="series-open" href="/assets/works/good-person.mp4" data-series-open="series-good-person" aria-haspopup="dialog">
-                <img src="/assets/works/good-person.jpg" alt="" width="480" height="270" loading="lazy">
-                <h3 data-en="Good Person Agency">좋은 사람 대행</h3>
-                <span class="series-meta" data-en="1 video">1편</span>
+              <a class="series-open" href="/assets/works/nice-to-meet-00.mp4" data-series-open="series-nice-to-meet" aria-haspopup="dialog">
+                <img src="/assets/works/nice-to-meet-00.jpg" alt="" width="480" height="270" loading="lazy">
+                <h3 data-en="Nice to Meet You, That’s a Lie">처음 뵙겠습니다, 거짓말입니다</h3>
+                <span class="series-meta" data-en="Teaser + 2 episodes">티저 + 2화</span>
+                <span class="series-logline" data-en="Two former classmates move in together as landlord and tenant. Both recognize each other at first sight, and both pretend they don’t.">대학 동기였던 두 사람이 집주인과 세입자로 한집에 산다. 둘 다 첫눈에 알아봤지만, 둘 다 모르는 척한다.</span>
                 <span class="series-action" data-en="View episodes →">회차 보기 →</span>
               </a>
             </article>
 <article class="series-card">
-              <a class="series-open" href="/assets/works/roommate-01.mp4" data-series-open="series-roommate" aria-haspopup="dialog">
-                <img src="/assets/works/roommate-01.jpg" alt="" width="480" height="270" loading="lazy">
-                <h3 data-en="Living with a Man Whose Name I Never Knew">이름도 몰랐던 남자랑 삽니다</h3>
-                <span class="series-meta" data-en="Teaser + 5 episodes">티저 + 5화</span>
+              <a class="series-open" href="/assets/works/landlord-01.mp4" data-series-open="series-landlord" aria-haspopup="dialog">
+                <img src="/assets/works/landlord-01.jpg" alt="" width="480" height="270" loading="lazy">
+                <h3 data-en="The Landlord Only I Don’t Know">나만 모르는 우리 집주인</h3>
+                <span class="series-meta" data-en="3 episodes">3화</span>
+                <span class="series-logline" data-en="After her family’s collapse and a broken engagement, Hari goes looking for a cheap room and becomes the tenant of Uju, the classmate she once turned her back on.">집안이 무너지고 파혼한 하리가 싼 방을 구하러 갔다가, 대학 시절 외면했던 동기 우주의 세입자가 된다.</span>
+                <span class="series-action" data-en="View episodes →">회차 보기 →</span>
+              </a>
+            </article>
+<article class="series-card">
+              <a class="series-open" href="/assets/works/good-person.mp4" data-series-open="series-good-person" aria-haspopup="dialog">
+                <img src="/assets/works/good-person.jpg" alt="" width="480" height="270" loading="lazy">
+                <h3 data-en="Good Person Agency">좋은 사람 대행</h3>
+                <span class="series-meta" data-en="1 video">1편</span>
                 <span class="series-action" data-en="View episodes →">회차 보기 →</span>
               </a>
             </article>
@@ -191,6 +226,28 @@
                 <h3 data-en="I Quit Being the Villainess">악녀 사직합니다</h3>
                 <span class="series-meta" data-en="3 episodes">3화</span>
                 <span class="series-action" data-en="View episodes →">회차 보기 →</span>
+              </a>
+            </article>
+            </div>
+          </div>
+          <div class="work-panel" id="panel-longform" role="tabpanel" aria-labelledby="tab-longform" data-work-panel="longform" hidden>
+            <div class="series-grid">
+<article class="series-card">
+              <a class="series-open" href="/assets/works/bride-curse-01.mp4" data-series-open="series-bride-curse" aria-haspopup="dialog">
+                <img src="/assets/works/bride-curse-01.jpg" alt="" width="480" height="270" loading="lazy">
+                <h3 data-en="Give Your New Bride the Curse">그 저주, 새 신부에게 주세요</h3>
+                <span class="series-meta" data-en="3 parts · English dialogue · KO/EN subtitles">3부 · 영어 대사 · 한/영 자막</span>
+                <span class="series-logline" data-en="On her divorce day, the crown prince tells Elin to give her wedding ring to his new bride. She does, and hands over the curse she has been carrying for him.">이혼하는 날, 황태자는 엘린에게 결혼반지를 새 신부에게 넘기라고 한다. 엘린은 반지를 넘긴다. 그를 위해 대신 짊어져 온 저주까지 함께.</span>
+                <span class="series-action" data-en="View parts →">회차 보기 →</span>
+              </a>
+            </article>
+<article class="series-card">
+              <a class="series-open" href="/assets/works/lottery-ticket.mp4" data-series-open="series-lottery-ticket" aria-haspopup="dialog">
+                <img src="/assets/works/lottery-ticket.jpg" alt="" width="480" height="270" loading="lazy">
+                <h3 data-en="That Lottery Ticket Isn’t Yours">그 복권, 네 거 아니야</h3>
+                <span class="series-meta" data-en="1 video · 5:37">1편 · 5:37</span>
+                <span class="series-logline" data-en="Her in-laws split the winnings from the lottery ticket she bought and leave her nothing. But the ticket her husband takes to the bank is a losing one she swapped in.">시댁은 며느리가 산 1등 복권 당첨금을 나눠 갖기로 하고 며느리 몫은 0원으로 정한다. 하지만 남편이 은행에 들고 간 복권은 그녀가 바꿔 넣은 낙첨 용지였다.</span>
+                <span class="series-action" data-en="Watch →">영상 보기 →</span>
               </a>
             </article>
             </div>
@@ -320,9 +377,9 @@
       </div>
     </div>
   </dialog>
-  <dialog class="series-dialog" id="series-roommate" aria-labelledby="series-roommate-title">
+  <dialog class="series-dialog" id="series-nice-to-meet" aria-labelledby="series-nice-to-meet-title">
     <div class="series-header">
-      <h2 id="series-roommate-title" data-en="Living with a Man Whose Name I Never Knew">이름도 몰랐던 남자랑 삽니다</h2>
+      <h2 id="series-nice-to-meet-title" data-en="Nice to Meet You, That’s a Lie">처음 뵙겠습니다, 거짓말입니다</h2>
       <button type="button" data-series-close autofocus data-en="Close">닫기</button>
     </div>
     <div class="series-detail">
@@ -331,8 +388,24 @@
         <p class="episode-status" aria-live="polite"></p>
       </div>
       <div class="episode-list">
-        <h3 data-en="Episodes · Teaser + 5 episodes">회차 목록 · 티저 + 5화</h3>
-        <ol><li><a href="/assets/works/roommate-00.mp4" data-episode data-poster="/assets/works/roommate-00.jpg" data-portrait="true"><span data-en="Teaser">티저</span><span class="episode-duration">1:01</span></a></li><li><a href="/assets/works/roommate-01.mp4" data-episode data-poster="/assets/works/roommate-01.jpg" data-portrait="true"><span data-en="Episode 1">1화</span><span class="episode-duration">1:21</span></a></li><li><a href="/assets/works/roommate-02.mp4" data-episode data-poster="/assets/works/roommate-02.jpg" data-portrait="true"><span data-en="Episode 2">2화</span><span class="episode-duration">1:19</span></a></li><li><a href="/assets/works/roommate-03.mp4" data-episode data-poster="/assets/works/roommate-03.jpg" data-portrait="true"><span data-en="Episode 3">3화</span><span class="episode-duration">1:21</span></a></li><li><a href="/assets/works/roommate-04.mp4" data-episode data-poster="/assets/works/roommate-04.jpg" data-portrait="true"><span data-en="Episode 4">4화</span><span class="episode-duration">1:15</span></a></li><li><a href="/assets/works/roommate-05.mp4" data-episode data-poster="/assets/works/roommate-05.jpg" data-portrait="true"><span data-en="Episode 5">5화</span><span class="episode-duration">1:29</span></a></li></ol>
+        <h3 data-en="Episodes · Teaser + 2 episodes">회차 목록 · 티저 + 2화</h3>
+        <ol><li><a href="/assets/works/nice-to-meet-00.mp4" data-episode data-poster="/assets/works/nice-to-meet-00.jpg" data-portrait="true"><span data-en="Teaser">티저</span><span class="episode-duration">0:22</span></a></li><li><a href="/assets/works/nice-to-meet-01.mp4" data-episode data-poster="/assets/works/nice-to-meet-01.jpg" data-portrait="true"><span data-en="Episode 1">1화</span><span class="episode-duration">1:33</span></a></li><li><a href="/assets/works/nice-to-meet-02.mp4" data-episode data-poster="/assets/works/nice-to-meet-02.jpg" data-portrait="true"><span data-en="Episode 2">2화</span><span class="episode-duration">1:02</span></a></li></ol>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="series-dialog" id="series-landlord" aria-labelledby="series-landlord-title">
+    <div class="series-header">
+      <h2 id="series-landlord-title" data-en="The Landlord Only I Don’t Know">나만 모르는 우리 집주인</h2>
+      <button type="button" data-series-close autofocus data-en="Close">닫기</button>
+    </div>
+    <div class="series-detail">
+      <div class="series-player">
+        <video controls playsinline preload="none"></video>
+        <p class="episode-status" aria-live="polite"></p>
+      </div>
+      <div class="episode-list">
+        <h3 data-en="Episodes · 3 episodes">회차 목록 · 3화</h3>
+        <ol><li><a href="/assets/works/landlord-01.mp4" data-episode data-poster="/assets/works/landlord-01.jpg" data-portrait="true"><span data-en="Episode 1">1화</span><span class="episode-duration">1:18</span></a></li><li><a href="/assets/works/landlord-02.mp4" data-episode data-poster="/assets/works/landlord-02.jpg" data-portrait="true"><span data-en="Episode 2">2화</span><span class="episode-duration">1:07</span></a></li><li><a href="/assets/works/landlord-03.mp4" data-episode data-poster="/assets/works/landlord-03.jpg" data-portrait="true"><span data-en="Episode 3">3화</span><span class="episode-duration">0:55</span></a></li></ol>
       </div>
     </div>
   </dialog>
@@ -349,6 +422,38 @@
       <div class="episode-list">
         <h3 data-en="Episodes · 3 episodes">회차 목록 · 3화</h3>
         <ol><li><a href="/assets/works/villainess-01.mp4" data-episode data-poster="/assets/works/villainess-01.jpg" data-portrait="false"><span data-en="The Villainess Resigns · Episode 1">1화</span><span class="episode-duration">1:28</span></a></li><li><a href="/assets/works/villainess-02.mp4" data-episode data-poster="/assets/works/villainess-02.jpg" data-portrait="false"><span data-en="The Villainess Resigns · Episode 2">2화</span><span class="episode-duration">1:38</span></a></li><li><a href="/assets/works/villainess-03.mp4" data-episode data-poster="/assets/works/villainess-03.jpg" data-portrait="false"><span data-en="The Villainess Resigns · Episode 3">3화</span><span class="episode-duration">1:10</span></a></li></ol>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="series-dialog" id="series-bride-curse" aria-labelledby="series-bride-curse-title">
+    <div class="series-header">
+      <h2 id="series-bride-curse-title" data-en="Give Your New Bride the Curse">그 저주, 새 신부에게 주세요</h2>
+      <button type="button" data-series-close autofocus data-en="Close">닫기</button>
+    </div>
+    <div class="series-detail">
+      <div class="series-player">
+        <video controls playsinline preload="none"></video>
+        <p class="episode-status" aria-live="polite"></p>
+      </div>
+      <div class="episode-list">
+        <h3 data-en="Parts · 3 parts">회차 목록 · 3부</h3>
+        <ol><li><a href="/assets/works/bride-curse-01.mp4" data-episode data-poster="/assets/works/bride-curse-01.jpg" data-portrait="false"><span data-en="Part 1">1부</span><span class="episode-duration">5:57</span></a></li><li><a href="/assets/works/bride-curse-02.mp4" data-episode data-poster="/assets/works/bride-curse-02.jpg" data-portrait="false"><span data-en="Part 2">2부</span><span class="episode-duration">5:45</span></a></li><li><a href="/assets/works/bride-curse-03.mp4" data-episode data-poster="/assets/works/bride-curse-03.jpg" data-portrait="false"><span data-en="Part 3">3부</span><span class="episode-duration">5:43</span></a></li></ol>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="series-dialog" id="series-lottery-ticket" aria-labelledby="series-lottery-ticket-title">
+    <div class="series-header">
+      <h2 id="series-lottery-ticket-title" data-en="That Lottery Ticket Isn’t Yours">그 복권, 네 거 아니야</h2>
+      <button type="button" data-series-close autofocus data-en="Close">닫기</button>
+    </div>
+    <div class="series-detail">
+      <div class="series-player">
+        <video controls playsinline preload="none"></video>
+        <p class="episode-status" aria-live="polite"></p>
+      </div>
+      <div class="episode-list">
+        <h3 data-en="Episodes · 1 video">회차 목록 · 1편</h3>
+        <ol><li><a href="/assets/works/lottery-ticket.mp4" data-episode data-poster="/assets/works/lottery-ticket.jpg" data-portrait="false"><span data-en="That Lottery Ticket Isn’t Yours">그 복권, 네 거 아니야</span><span class="episode-duration">5:37</span></a></li></ol>
       </div>
     </div>
   </dialog>
